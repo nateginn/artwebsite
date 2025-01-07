@@ -1,0 +1,82 @@
+/* main/static/main/css/style.css */
+
+:root {
+    --primary-color: #3991C9;
+    --secondary-color: #0060a0;
+    --text-color: #333333;
+    --light-bg: #f8f8f8;
+}
+
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+#wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Header styles */
+.base-header {
+    background: var(--light-bg);
+    padding: 2rem 0;
+}
+
+.grid-block {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.base-header__title {
+    font-size: 2.5rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+}
+
+.base-header__description {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.base-header__button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.base-header__button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Footer styles */
+footer {
+    background: var(--light-bg);
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .base-header__title {
+        font-size: 2rem;
+    }
+    
+    .base-header__description {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="car.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5393939"
+     inkscape:cx="396.58465"
+     inkscape:cy="561.25984"
+     inkscape:window-width="3840"
+     inkscape:window-height="1994"
+     inkscape:window-x="2869"
+     inkscape:window-y="49"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 99.212135,147.20755 1.166815,-3.38319 c 0.14155,-0.40002 0.51197,-0.68478 0.95647,-0.68478 h 7.4623 c 0.4445,0 0.82154,0.28476 0.95621,0.68478 l 1.1221,3.38319 h 1.57189 v 1.35599 h -1.347 v 5.42396 h -2.02036 v -1.35599 h -8.08196 v 1.35599 h -2.020357 v -5.42396 H 97.63125 v -1.35599 z m 1.584585,0 h 8.48572 l -0.87551,-2.72321 h -6.7347 z m 0.5387,3.38998 c 0.55906,0 1.01018,-0.45427 1.01018,-1.01698 0,-0.56275 -0.45112,-1.01701 -1.01018,-1.01701 -0.55907,0 -1.01018,0.45426 -1.01018,1.01701 0,0.56271 0.45111,1.01698 1.01018,1.01698 z m 7.40833,0 c 0.55906,0 1.01018,-0.45427 1.01018,-1.01698 0,-0.56275 -0.45112,-1.01701 -1.01018,-1.01701 -0.55907,0 -1.01018,0.45426 -1.01018,1.01701 0,0.56271 0.45111,1.01698 1.01018,1.01698 z"
+       fill="#ffdd3b"
+       id="use69"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

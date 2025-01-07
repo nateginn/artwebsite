@@ -1,0 +1,11 @@
+<!-- Update the head section in main/templates/main/base.html -->
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Accelerated Rehab Therapy{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="{% static 'main/css/jquery-ui.min.css' %}" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>

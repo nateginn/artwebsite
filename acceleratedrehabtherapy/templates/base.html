@@ -1,0 +1,110 @@
+<!-- acceleratedrehabtherapy/templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>{% block title %}{{ meta_title|default:"Accelerated Rehab Therapy" }}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ meta_description|default:'Professional chiropractic and rehabilitation services.' }}{% endblock %}">
+    
+    {% load static %}
+    {% load compress %}
+    
+    <!-- Tailwind CSS -->
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+    {% endcompress %}
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+
+    {% compress css %}
+    <style>
+        :root {
+            /* Viewport-relative units */
+            --vw: 1vw;
+            --vh: 1vh;
+            
+            /* Fluid typography scale */
+            --fluid-h1: clamp(2rem, calc(1.8rem + 2vw), 4rem);
+            --fluid-h2: clamp(1.8rem, calc(1.5rem + 1.5vw), 3.5rem);
+            --fluid-h3: clamp(1.5rem, calc(1.3rem + 1vw), 3rem);
+            --fluid-body: clamp(1rem, calc(0.9rem + 0.5vw), 1.25rem);
+            
+            /* Fluid spacing */
+            --space-xs: clamp(0.5rem, calc(0.4rem + 0.5vw), 1rem);
+            --space-sm: clamp(1rem, calc(0.8rem + 1vw), 2rem);
+            --space-md: clamp(2rem, calc(1.5rem + 2vw), 4rem);
+            --space-lg: clamp(3rem, calc(2rem + 3vw), 6rem);
+            
+            /* Container widths */
+            --container-padding: max(1rem, calc(1rem + ((100vw - 320px) * 0.005)));
+        }
+
+        /* Fluid container class */
+        .container-fluid {
+            width: min(100% - (var(--container-padding) * 2), 1920px);
+            margin-inline: auto;
+            padding-inline: var(--container-padding);
+        }
+
+        /* Maintain image aspect ratios */
+        .fluid-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Fluid hero section */
+        .hero-section {
+            min-height: max(600px, 100vh);
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+        }
+
+        /* Text scaling utilities */
+        .text-fluid-h1 { font-size: var(--fluid-h1); }
+        .text-fluid-h2 { font-size: var(--fluid-h2); }
+        .text-fluid-h3 { font-size: var(--fluid-h3); }
+        .text-fluid-body { font-size: var(--fluid-body); }
+
+        /* Fluid spacing utilities */
+        .space-fluid-xs { padding: var(--space-xs); }
+        .space-fluid-sm { padding: var(--space-sm); }
+        .space-fluid-md { padding: var(--space-md); }
+        .space-fluid-lg { padding: var(--space-lg); }
+    </style>
+    {% endcompress %}
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="wrapper" class="flex flex-col min-h-screen">
+        <!-- Fixed Header -->
+        <header class="absolute top-0 left-0 right-0 z-50">
+            {% include 'includes/header.html' %}
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow relative">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="relative bg-[#001524] text-white">
+            {% include 'includes/footer.html' %}
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

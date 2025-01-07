@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="medblueswoosharrow.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5393939"
+     inkscape:cx="396.58465"
+     inkscape:cy="561.25984"
+     inkscape:window-width="3840"
+     inkscape:window-height="1994"
+     inkscape:window-x="2869"
+     inkscape:window-y="49"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 128.82695,135.20208 -0.61621,-0.82682 c -1.5978,0.71887 -3.87083,0.15028 -4.65032,-1.29858 0.52459,0.39503 1.02314,0.61569 1.77443,0.47387 0.83664,-0.15795 1.21383,-0.62679 1.8674,-1.10463 l -0.50419,-1.21259 c 1.02706,0.0736 2.97529,0.23151 4.00611,0.2757 -0.49292,1.6756 -1.33588,3.16018 -1.87722,3.69305 z"
+       fill="#0750ac"
+       id="path61"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

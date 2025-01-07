@@ -1,0 +1,85 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/home.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Accelerated Rehab Therapy{% endblock %}
+{% block content %}
+<section class="relative h-screen overflow-hidden"
+         x-data="{ 
+             currentSlide: 0,
+             slides: [
+                 {
+                     image: '{% static "img/slider/01.jpg" %}',
+                     title: 'Keep Your Life Moving',
+                     subtitle: 'Visit A.R.T. to find your relief from chronic pain, auto injury, or whatever ails you.'
+                 },
+                 {
+                     image: '{% static "img/slider/02.jpg" %}',
+                     title: 'Keep Your Life Moving',
+                     subtitle: 'Experience exceptional physical therapy and rehabilitation services in Greeley.'
+                 },
+                 {
+                     image: '{% static "img/slider/03.jpg" %}',
+                     title: 'Keep Your Life Moving',
+                     subtitle: 'Our expert team is dedicated to helping you recover and heal.'
+                 },
+                 {
+                     image: '{% static "img/slider/04.jpg" %}',
+                     title: 'Keep Your Life Moving',
+                     subtitle: 'Get back to what matters most with our comprehensive care.'
+                 }
+             ],
+             progressBar: 0
+         }"
+         x-init="
+             $nextTick(() => {
+                 setInterval(() => {
+                     currentSlide = (currentSlide + 1) % slides.length;
+                     progressBar = 0;
+                 }, 4500);
+
+                 // Progress bar animation
+                 setInterval(() => {
+                     progressBar = Math.min(progressBar + 1, 100);
+                 }, 35);
+             })
+         ">
+    <!-- Background Images -->
+    <div class="absolute inset-0 overflow-hidden">
+        <template x-for="(slide, index) in slides" :key="index">
+            <div class="absolute inset-0 transition-opacity duration-1000"
+                 :class="{'opacity-100': currentSlide === index, 
+                         'opacity-0': currentSlide !== index}">
+                <img :src="slide.image" 
+                     :alt="slide.title"
+                     class="h-full w-full object-cover">
+            </div>
+        </template>
+    </div>
+
+    <!-- Scrolling Title -->
+    <div class="absolute top-1/2 transform -translate-y-1/2 w-full px-4 text-center overflow-hidden">
+        <div class="whitespace-nowrap text-white text-[8rem] font-bold animate-scroll"
+             x-text="slides[currentSlide].title">
+        </div>
+        <p class="text-xl md:text-2xl mt-4 text-white"
+           x-text="slides[currentSlide].subtitle">
+        </p>
+        <a href="#"
+           class="mt-8 inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-md text-lg font-semibold
+                  hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300">
+            I Want To Feel Better
+        </a>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/75">
+        <div class="h-full bg-blue-950 transition-all ease-linear"
+             :style="{ width: `${progressBar}%` }">
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- <h2 class="main-slider__title"><span class="main-slider__ticker" style="left: -271px;">keep your life moving</span></h2> -->

@@ -1,0 +1,19 @@
+{
+  "name": "acceleratedrehabtherapy-theme",
+  "version": "1.0.0",
+  "description": "Tailwind CSS theme for Accelerated Rehab Therapy",
+  "scripts": {
+    "start": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32"
+  }
+}
