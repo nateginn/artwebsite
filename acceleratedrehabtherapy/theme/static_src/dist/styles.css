@@ -827,6 +827,26 @@ a:hover {
   }
 }
 
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 16;
+}
+
+.aspect-w-16 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1020,6 +1040,10 @@ a:hover {
   max-width: 80rem;
 }
 
+.max-w-\[200px\] {
+  max-width: 200px;
+}
+
 .flex-none {
   flex: none;
 }
@@ -1079,6 +1103,10 @@ a:hover {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-items-center {
+  justify-items: center;
 }
 
 .gap-4 {
@@ -1262,6 +1290,26 @@ a:hover {
   background-color: rgb(36 142 166 / var(--tw-bg-opacity, 1));
 }
 
+.bg-\[\#004A74\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 74 116 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#003454\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 52 84 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#083B57\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 59 87 / var(--tw-bg-opacity, 1));
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -1297,6 +1345,10 @@ a:hover {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-4 {
@@ -1347,6 +1399,11 @@ a:hover {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .pb-3 {
@@ -1492,6 +1549,12 @@ a:hover {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-1000 {
   transition-duration: 1000ms;
 }
@@ -1562,6 +1625,15 @@ a:hover {
   opacity: 0.9;
 }
 
+.hover\:opacity-80:hover {
+  opacity: 0.8;
+}
+
+.group:hover .group-hover\:text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+
 @media (min-width: 640px) {
   .sm\:px-6 {
     padding-left: 1.5rem;
@@ -1580,6 +1652,10 @@ a:hover {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:text-2xl {

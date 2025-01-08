@@ -1,0 +1,21 @@
+<!-- acceleratedrehabtherapy/templates/includes/_partners.html -->
+{% load static %}
+
+<section class="bg-[#004A74] text-white py-6 flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold text-center mb-2 text-white">
+            OUR PARTNERS
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+            <!-- Partner Logo Example -->
+            <a href="https://familywalkinclinic.org/" target="_blank" rel="noopener noreferrer" 
+               class="block w-full max-w-[200px] transition-opacity hover:opacity-80">
+                <img src="{% static 'img/Family-Walk-In-Clinic-Logo-160.png' %}" 
+                     alt="Partner Logo" 
+                     class="w-full h-auto">
+            </a>
+            <!-- Add more partner logos here -->
+        </div>
+    </div>
+</section>
