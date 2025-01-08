@@ -1,0 +1,101 @@
+<!-- acceleratedrehabtherapy/templates/includes/_reviews.html -->
+<section class="bg-[#004A74] text-white py-16" 
+         x-data="{ 
+            currentSlide: 0,
+            reviews: [],
+            loaded: false,
+            error: null,
+            async fetchReviews() {
+                try {
+                    console.log('Fetching reviews...');
+                    const response = await fetch('/api/reviews/');
+                    console.log('Response:', response.status);
+                    const data = await response.json();
+                    console.log('Data:', data);
+                    if (data.status === 'success') {
+                        this.reviews = data.reviews;
+                        console.log('Reviews loaded:', this.reviews.length);
+                    } else {
+                        this.error = data.message || 'Failed to load reviews';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    this.error = error.message;
+                }
+                this.loaded = true;
+            },
+            init() {
+                this.fetchReviews();
+            }
+         }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold text-center mb-12 text-white">
+            WHAT OUR PATIENTS ARE SAYING
+        </h2>
+
+        <!-- Error Message -->
+        <div x-show="error" class="bg-red-600 text-white p-4 rounded mb-4" x-text="error"></div>
+
+        <!-- Debug Info -->
+        <div class="mb-4">
+            <p>Total Reviews: <span x-text="reviews.length"></span></p>
+            <p>Current Slide: <span x-text="currentSlide + 1"></span></p>
+        </div>
+
+        <!-- Reviews Slider -->
+        <div class="relative" x-show="loaded">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <template x-for="(review, index) in reviews.slice(currentSlide * 2, (currentSlide * 2) + 2)" :key="index">
+                    <div class="space-y-4">
+                        <!-- Star Rating -->
+                        <div class="flex space-x-1">
+                            <template x-for="star in 5">
+                                <svg class="h-6 w-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                            </template>
+                        </div>
+
+                        <!-- Review Text -->
+                        <p class="text-lg" x-text="review.text"></p>
+
+                        <!-- Author & Profession -->
+                        <div class="mt-4">
+                            <p class="text-lg font-bold" x-text="review.author"></p>
+                            <p class="text-sm text-gray-300" x-text="review.profession || review.type || 'Patient'"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex items-center justify-between mt-8">
+                <button @click="currentSlide = Math.max(currentSlide - 1, 0)"
+                        class="p-2 text-white hover:text-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                        :disabled="currentSlide === 0">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+
+                <div class="text-center text-lg">
+                    <span x-text="currentSlide + 1"></span> / 
+                    <span x-text="Math.ceil(reviews.length / 2)"></span>
+                </div>
+
+                <button @click="currentSlide = Math.min(currentSlide + 1, Math.ceil(reviews.length / 2) - 1)"
+                        class="p-2 text-white hover:text-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                        :disabled="currentSlide >= Math.ceil(reviews.length / 2) - 1">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div x-show="!loaded" class="flex justify-center py-12">
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+        </div>
+    </div>
+</section>

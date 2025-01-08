@@ -1,54 +1,168 @@
 # acceleratedrehabtherapy/apps/main/views.py
-from dataclasses import dataclass
-from typing import Any
-from django.http import HttpRequest, HttpResponse
-from django.views.generic import ListView
-from django.utils.decorators import method_decorator
+
+import hashlib
+import json
+import os
+import requests
+from django.conf import settings
+from django.core.cache import cache
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_GET
-from django.template.response import TemplateResponse
 
-from .models import MainPageConfig
+@require_GET
+def home(request):
+    """Main home page view"""
+    context = {
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
+    }
+    return render(request, 'main/home.html', context)
 
+def generate_review_hash(review_text, author):
+    """Generate a unique hash for a review based on content and author"""
+    content = f"{review_text}{author}".encode('utf-8')
+    return hashlib.md5(content).hexdigest()
 
-@dataclass
-class MainPageContext:
-    """Structured data class for main page context"""
-    config: MainPageConfig
-    is_main_page: bool = True
-    meta_title: str | None = None
-    meta_description: str | None = None
+def get_google_reviews():
+    cache_key = 'google_reviews'
+    cached_reviews = cache.get(cache_key)
+    
+    if cached_reviews:
+        return cached_reviews
 
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            'config': self.config,
-            'is_main_page': self.is_main_page,
-            'meta_title': self.meta_title or self.config.title,
-            'meta_description': self.meta_description or self.config.description
-        }
+    api_key = os.getenv('GOOGLE_MAPS_API_KEY')
+    place_id = os.getenv('GOOGLE_PLACE_ID')
+    
+    if not api_key or not place_id:
+        return []
 
+    url = f'https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&fields=reviews&key={api_key}'
+    
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+        data = response.json()
+        
+        if 'result' in data:
+            reviews = data['result'].get('reviews', [])
+            filtered_reviews = [
+                {
+                    'id': generate_review_hash(review['text'], review['author_name']),
+                    'author': review['author_name'],
+                    'text': review['text'],
+                    'rating': review['rating'],
+                    'time': review['time'],
+                    'type': 'Google Review',
+                    'source': 'google',
+                    'profession': 'Customer'
+                }
+                for review in reviews
+                if review['rating'] >= 4
+            ]
+            
+            if filtered_reviews:
+                cache.set(cache_key, filtered_reviews, 43200)  # 12 hours
+            return filtered_reviews
+        else:
+            return []
+            
+    except Exception:
+        return []
 
-class MainPageView(ListView):
-    model = MainPageConfig
-    template_name = 'main/home.html'
-    context_object_name = 'pages'
-    ordering = ['-created']
+def get_legacy_reviews():
+    try:
+        json_path = os.path.join(settings.BASE_DIR, 'acceleratedrehabtherapy','data', 'legacy_reviews.json')
+        if not os.path.exists(json_path):
+            return []
+            
+        with open(json_path) as f:
+            data = json.load(f)
+            reviews = data.get('legacy_reviews', [])
+            formatted_reviews = [
+                {
+                    'id': generate_review_hash(review['text'], review['author']),
+                    'author': review['author'],
+                    'text': review['text'],
+                    'rating': review['rating'],
+                    'type': review.get('type', 'Patient'),
+                    'source': 'legacy',
+                    'profession': review.get('profession', '-')
+                }
+                for review in reviews
+            ]
+            return formatted_reviews
+    except Exception:
+        return []
 
-    @method_decorator(cache_page(60 * 15))  # Cache for 15 minutes
-    @method_decorator(require_GET)
-    def dispatch(self, *args: Any, **kwargs: Any) -> HttpResponse:
-        return super().dispatch(*args, **kwargs)
+def merge_reviews(google_reviews, legacy_reviews):
+    """Merge reviews, removing duplicates based on content hash"""
+    seen_hashes = set()
+    merged_reviews = []
+    
+    # Add Google reviews first (they take precedence)
+    for review in google_reviews:
+        seen_hashes.add(review['id'])
+        merged_reviews.append(review)
+    
+    # Add legacy reviews only if they're unique
+    for review in legacy_reviews:
+        if review['id'] not in seen_hashes:
+            seen_hashes.add(review['id'])
+            merged_reviews.append(review)
+    
+    return merged_reviews
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        if self.object_list:
-            latest = self.object_list[0]
-            context['page'] = latest
-            context['meta_title'] = latest.title
-            context['meta_description'] = latest.description
-        return context
+@require_GET
+@cache_page(60 * 15)  # Cache for 15 minutes
+def reviews_api(request):
+    """API endpoint for fetching combined Google and legacy reviews"""
+    try:
+        # Get legacy reviews first
+        legacy_reviews = get_legacy_reviews()
+        
+        # If we have Google API credentials, try to get Google reviews
+        if os.getenv('GOOGLE_MAPS_API_KEY') and os.getenv('GOOGLE_PLACE_ID'):
+            google_reviews = get_google_reviews()
+            all_reviews = merge_reviews(google_reviews, legacy_reviews)
+        else:
+            all_reviews = legacy_reviews
+        
+        # Sort reviews by rating and time
+        if all_reviews:
+            all_reviews.sort(key=lambda x: (-x['rating'], -x.get('time', 0)))
+        
+        return JsonResponse({
+            'status': 'success',
+            'reviews': all_reviews
+        })
+    except Exception as e:
+        return JsonResponse({
+            'status': 'error',
+            'message': str(e)
+        }, status=500)
 
-    def render_to_response(self, context: dict[str, Any], **response_kwargs: Any) -> TemplateResponse:
-        """Override to add custom headers or response modifications if needed"""
-        response = super().render_to_response(context, **response_kwargs)
-        return response
+@require_GET
+def test_google_reviews(request):
+    """Temporary endpoint to test Google Reviews API only"""
+    try:
+        api_key = os.getenv('GOOGLE_MAPS_API_KEY')
+        place_id = os.getenv('GOOGLE_PLACE_ID')
+        
+        if not api_key or not place_id:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Missing API credentials'
+            }, status=400)
+            
+        google_reviews = get_google_reviews()
+        
+        return JsonResponse({
+            'status': 'success',
+            'reviews': google_reviews
+        })
+    except Exception as e:
+        return JsonResponse({
+            'status': 'error',
+            'message': str(e)
+        }, status=500)

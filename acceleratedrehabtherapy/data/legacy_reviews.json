@@ -1,0 +1,28 @@
+{
+    "legacy_reviews": [
+      {
+        "author": "Eric M.",
+        "text": "Left me relaxed and calm. All the doctors are great. All the staff is top-notch. The massage staff is awesome! 5 Stars for sure.",
+        "rating": 5,
+        "type": "Patient"
+      },
+      {
+        "author": "Maaly Younis",
+        "text": "Best crew ever. Dr.Joe is very kind and great in spotting what is needed, as well as being communicative and responsive to one's needs. Everyone in the office is very friendly and helpful. This is a wonderful place to heal, highly recommend!",
+        "rating": 5,
+        "type": "Patient"
+      },
+      {
+        "author": "Joanne",
+        "text": "They helped me with my pain and I couldn't be happier that I went to ART! The doctors were incredibly attentive and really listened to me before tailoring my treatment to perfectly fit my needs.",
+        "rating": 5,
+        "profession": "Engineer, Forefront Development"
+      },
+      {
+        "author": "Ellen",
+        "text": "I was having daily headaches after work. After only a few sessions with the great folks at ART I started feeling better almost right away.",
+        "rating": 5,
+        "profession": "Teacher, Boulder Valley School District"
+      }
+    ]
+  }

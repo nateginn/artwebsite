@@ -3,8 +3,10 @@
 from django.urls import path
 from . import views
 
-app_name = 'main'  # Add this line to set the namespace
+app_name = 'main'
 
 urlpatterns = [
-    path("", views.MainPageView.as_view(), name="home"),  # Root URL for the app
+    path("", views.home, name="home"),  # Root URL for the app
+    path("api/reviews/", views.reviews_api, name="reviews_api"),
+    path("api/test-google-reviews/", views.test_google_reviews, name="test_google_reviews"),
 ]
