@@ -2,11 +2,11 @@
 
 {% load static %}
 
-<div class="relative bg-transparent mx-auto max-w-7xl" x-data="{ mobileMenuOpen: false, servicesDropdownOpen: false }">
+<div class="relative bg-transparent mx-auto max-w-8xl" x-data="{ mobileMenuOpen: false, servicesDropdownOpen: false }">
   <div class="w-full mx-auto px-4">
       <div class="flex items-center justify-between py-1">
           <!-- Logo -->
-          <div class="flex-shrink-0 w-40">
+          <div class="flex-shrink-0 w-60 ml-8">
               <a href="{% url 'main:home' %}" class="block transition-opacity hover:opacity-75">
                   <span class="sr-only">A.R.T.</span>
                   <img class="h-auto w-full" src="{% static 'img/ARTlogoWHITE.png' %}" alt="A.R.T. Logo">
@@ -34,7 +34,7 @@
           </nav>
 
           <!-- Contact Box -->
-          <div class="hidden lg:block flex-shrink-0">
+          <div class="hidden lg:block flex-shrink-0 mr-8">
               <div class="bg-gradient-to-b from-yellow-400 to-orange-600 rounded-br-lg px-4 py-2 text-center ml-auto">
                   <a href="tel:+19703241750" class="block text-2xl font-bold text-black hover:opacity-90">
                       970-324-1750
