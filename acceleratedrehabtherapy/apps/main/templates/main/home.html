@@ -58,24 +58,44 @@
         </template>
     </div>
 
-    <!-- Scrolling Title -->
-    <div class="absolute top-1/2 transform -translate-y-1/2 w-full px-4 text-center overflow-hidden">
-        <div class="whitespace-nowrap text-white text-[8rem] font-bold animate-scroll"
-             x-text="slides[currentSlide].title">
+    <!-- Hero Content Section -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center">
+        <!-- Text Layer -->
+        <div class="text-center mb-8 z-10">
+            <div 
+                class="text-white text-5xl md:text-8xl lg:text-10xl font-bold"
+                x-text="slides[currentSlide].title">
+            </div>
+            
+            <p 
+                class="text-xl md:text-2xl mt-4 text-white"
+                x-text="slides[currentSlide].subtitle">
+            </p>
         </div>
-        <p class="text-xl md:text-2xl mt-4 text-white"
-           x-text="slides[currentSlide].subtitle">
-        </p>
-        <div class="relative mt-8">
-            <img src="{% static 'img/arrow_mobile.png' %}" alt="arrow" 
-                 class="absolute w-12 h-12 -left-8 top-1/2 transform -translate-y-1/2">
-            <a href="#"
-               class="inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-md text-lg font-semibold
-                      hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300">
-                I Want To Feel Better
+
+        <!-- Arrow and Button Group -->
+        <div class="relative flex items-center justify-center z-0">
+            <!-- Arrow -->
+            <div class="absolute -bottom-14 -left-24">
+                <img 
+                    src="{% static 'img/arrow__mobile.png' %}" 
+                    alt="arrow" 
+                    class="w-32 h-auto md:w-48 lg:w-60" 
+                    style="transform: rotate(5deg);">
+            </div>
+            
+            <!-- Button -->
+            <a 
+                href="#"
+                class="inline-block bg-gradient-to-b from-yellow-300 to-orange-600 text-gray-900 px-8 py-4 rounded-md text-lg font-bold
+                    hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300 z-10">
+                I WANT TO FEEL BETTER
             </a>
         </div>
     </div>
+
+
+
 
     <!-- Progress Bar -->
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/75">

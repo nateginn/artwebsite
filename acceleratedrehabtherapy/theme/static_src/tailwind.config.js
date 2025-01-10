@@ -46,6 +46,20 @@ module.exports = {
           950: '#020617',
         },
       },
+      container: {
+        center: true, // Keeps the container centered
+        padding: '1rem', // Optional: Add some padding inside the container
+        screens: {
+          sm: '100%', // Set container to 100% width on small screens
+          md: '100%', // Same for medium screens
+          lg: '100%', // Same for large screens
+          xl: '100%', // Same for extra-large screens
+          '2xl': '100%', // Same for 2xl screens
+        },
+      },
+      // rotate: {
+      //   'rot': 'rot(--rotation-angle)', // Use a CSS variable for rotation
+      // },
       typography: {
         DEFAULT: {
           css: {
@@ -112,3 +126,4 @@ module.exports = {
     },
   },
 };
+

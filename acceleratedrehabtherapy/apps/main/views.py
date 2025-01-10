@@ -166,3 +166,8 @@ def test_google_reviews(request):
             'status': 'error',
             'message': str(e)
         }, status=500)
+
+@require_GET
+def auto_injury(request):
+    """Auto injury page view"""
+    return render(request, 'main/auto_injury.html')

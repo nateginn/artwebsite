@@ -15,12 +15,12 @@
 
           <!-- Desktop Navigation -->
           <nav class="hidden lg:flex gap-x-4">
-              <a href="#" class="text-md font-medium text-white hover:text-yellow-400">AUTO INJURY</a>
-              <a href="#" class="text-md font-medium text-white hover:text-yellow-400">WORK COMP INJURY</a>
-              <a href="#" class="text-md font-medium text-white hover:text-yellow-400">MASSAGE</a>
+              <a href="{% url 'main:auto_injury' %}" class="text-lg font-bold text-white hover:text-yellow-400">AUTO INJURY</a>
+              <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">WORK COMP INJURY</a>
+              <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">MASSAGE</a>
               <!-- Services Dropdown -->
               <div class="relative" @mouseover="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false">
-                  <button class="flex items-center text-md font-medium text-white hover:text-yellow-400">
+                  <button class="flex items-center text-lg font-bold text-white hover:text-yellow-400">
                       SERVICES
                       <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
@@ -28,16 +28,16 @@
                   </button>
                   <!-- Dropdown content remains the same -->
               </div>
-              <a href="#" class="text-md font-medium text-white hover:text-yellow-400">ABOUT</a>
-              <a href="#" class="text-md font-medium text-white hover:text-yellow-400">BLOG</a>
-              <a href="#" class="text-md font-medium text-white hover:text-yellow-400">CONTACT</a>
+              <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">ABOUT</a>
+              <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">BLOG</a>
+              <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">CONTACT</a>
           </nav>
 
           <!-- Contact Box -->
           <div class="hidden lg:block flex-shrink-0">
               <div class="bg-gradient-to-b from-yellow-400 to-orange-600 rounded-br-lg px-4 py-2 text-center ml-auto">
                   <a href="tel:+19703241750" class="block text-2xl font-bold text-black hover:opacity-90">
-                      970 324 1750
+                      970-324-1750
                   </a>
                   <button class="mt-2 bg-blue-600 text-white px-6 py-2 rounded text-sm font-bold hover:bg-blue-700">
                       Make Appointment
@@ -72,7 +72,7 @@
          x-transition:enter-end="opacity-100 scale-100"
          style="display: none;">
         <div class="space-y-1 px-4 pb-3 pt-2">
-            <a href="#" class="block rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">AUTO INJURY</a>
+            <a href="{% url 'main:auto_injury' %}" class="block px-4 py-2 text-lg font-bold text-gray-900 hover:text-yellow-400">AUTO INJURY</a>
             <a href="#" class="block rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">WORK COMP INJURY</a>
             <a href="#" class="block rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">MASSAGE</a>
             <button @click="servicesDropdownOpen = !servicesDropdownOpen" class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">
