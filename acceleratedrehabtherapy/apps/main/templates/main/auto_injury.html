@@ -1,10 +1,133 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/auto_injury.html -->
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Auto Injury - Accelerated Rehab Therapy{% endblock %}
 
 {% block content %}
-<div class="bg-[#001524] text-white mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-4">Auto Injury</h1>
-</div>
+<!-- Hero Section -->
+<section class="relative bg-white pt-6 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-4" aria-label="Breadcrumb">
+            <ol class="list-none p-0 inline-flex text-[15px]">
+                <li class="flex items-center">
+                    <a href="{% url 'main:home' %}" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </li>
+                <li class="flex items-center">
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Chiropractic</a>
+                    <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </li>
+                <li>
+                    <span class="text-gray-500">Auto Injury</span>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                TURN TO AN EXPERIENCED AUTO INJURY DOCTOR<br class="hidden md:block"> 
+                FOR PAIN MANAGEMENT
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-4">
+                    A chiropractor can help you better recover from soft tissue injuries, such as ligament, tendon and muscle sprains, that you may have sustained during a car accident. This is done through manipulation and rehab therapy.
+                </p>
+
+                <div class="flex items-start gap-0">
+                    <img src="{% static 'img/arrow__mobile.png' %}" 
+                         alt="arrow" 
+                         class="w-48 h-auto transform -translate-y-28 translate-x-24">
+                         
+                    <a href="#appointment" 
+                       class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-10 py-4 
+                              rounded-md text-2xl font-bold hover:from-yellow-300 hover:to-orange-400 
+                              transform hover:scale-105 transition-all duration-300 shadow-lg">
+                        I WANT TO FEEL BETTER
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+        <h2 class="text-4xl font-bold text-[#001524] mb-4">CHIROPRACTIC SERVICES</h2>
+        
+        <div class="grid grid-cols-3 gap-x-16 gap-y-6 text-lg font-bold">
+            <!-- Column 1 -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">AUTO INJURY</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">WORK COMP INJURY</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">SPORTS INJURY</span>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">HEAD INJURY</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">BACK INJURY</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">NECK INJURY</span>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">HIP INJURY</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">KNEE INJURY</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                    </svg>
+                    <span class="text-[#001524]">SHOULDER INJURY</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
