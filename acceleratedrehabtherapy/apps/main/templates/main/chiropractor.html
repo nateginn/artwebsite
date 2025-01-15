@@ -1,0 +1,169 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/chiropractor.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Find a Chiropractor Near Me - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-white pt-4 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-4" aria-label="Breadcrumb">
+            <ol class="list-none p-0 inline-flex text-[15px]">
+                <li class="flex items-center">
+                    <a href="{% url 'main:home' %}" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </li>
+                <li>
+                    <span class="text-gray-500">Chiropractic</span>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                HOW DO I FIND AN EXCELLENT<br class="hidden md:block"> 
+                CHIROPRACTOR NEAR ME?
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-4">
+                    Work and auto accident pain are real for millions of people. If you have an injury, turn to Accelerated Rehab Therapy to overcome it. Get the right treatment you need.
+                </p>
+
+                <div class="flex items-start gap-0">
+                    <img src="{% static 'img/arrow__mobile.png' %}" 
+                         alt="arrow" 
+                         class="w-48 h-auto transform -translate-y-28 translate-x-24">
+                         
+                    <a href="#appointment" 
+                       class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-10 py-4 
+                              rounded-md text-2xl font-bold hover:from-yellow-300 hover:to-orange-400 
+                              transform hover:scale-105 transition-all duration-300 shadow-lg">
+                        I WANT TO FEEL BETTER
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="w-full bg-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-8">
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    Are you tired of searching for a "chiropractor near me" but without much success? If you need to see a 
+                    <a href="#" class="text-blue-600 hover:text-blue-800">car accident chiropractor</a> due to pain, immobility, or some other problem, turn to the experts at Accelerated Rehab Therapy. For the convenience of our patients, we have several different facilities. Therefore, when looking for a "Chiropractor near me," you can add in a specific city name. In return, you'll receive a link to our website for that location.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    Stop spending valuable time trying to find "the best chiropractor near me." At Accelerated Rehab Therapy, we have incredibly skilled experts eager to help improve your quality of life.
+                </p>
+            </div>
+
+            <!-- Section Title -->
+            <div class="pt-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">
+                    CHIROPRACTIC BENEFITS: FROM RELAXATION TO HEALING
+                </h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    Along with searching for the right doctor of chiropractic care, it's important to understand the advantages of seeking this particular type of treatment. Especially when dealing with auto accident pain, you need to consider all the chiropractic benefits and how they can give you much-needed relief. As a prime example, it's common for car crash pain to involve different nerves and joints within the body. For that, the best chiropractor can release pressure, immediately stopping the pain.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    Another one of the many chiropractic benefits is that this helps with auto accident pain involving the back and neck. In fact, of all the complaints a chiropractic physician hears, this is the most common. If you've been in a relatively serious crash, you probably don't realize how much it jostled your body around. Even if you don't experience pain right away, you will within the next few days. Instead of allowing it to compromise your quality of life, talk to a chiropractor about rehab.
+                </p>
+            </div>
+
+            <!-- Services Section -->
+            <div class="pt-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">
+                    WE PROVIDE UNPARALLELED CHIROPRACTIC SERVICES
+                </h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    As part of your search to "find a chiropractor near me," you'll discover that not all clinics provide the same type of chiropractic services. Therefore, it's imperative that you choose the right one based on your specific needs. Along with the correct treatment for car crash pain, the best chiropractor helps with sprains and strains, migraine headaches, arthritic pain, and much more.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    While the priority entails finding the right professional, you still need to consider cost. Just as you did for your initial search, you can look for "chiropractic prices near me," to find quality chiropractic services that fit your budget. Also, make sure you select someone that can work with a workman's comp claim if applicable.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed">
+                    For outstanding chiropractic care in Greeley, and Fort Collins, Colorado, you'll never go wrong choosing Accelerated Rehab Therapy. We genuinely care about our patients and provide each one with a customized solution. With our professional services, there's no reason to suffer with pain. Do something good for yourself by calling us to schedule an appointment today.
+                </p>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="bg-gradient-to-r from-[#0078E7] to-[#012E47] text-white py-12 -mx-4 sm:-mx-6 lg:-mx-8 mt-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-4xl font-bold mb-4">BOOK APPOINTMENT RIGHT NOW</h2>
+                            <p class="text-lg mb-0">
+                                Making an appointment with us is quick and easy. Just fill out the information and we will contact you as soon as possible.
+                            </p>
+                        </div>
+
+                        <div class="flex justify-center items-center">
+                            <img src="{% static 'img/arrow__mobile.png' %}" 
+                                alt="arrow" 
+                                class="w-24 h-auto lg:w-36">
+                            <a href="#appointment-form" 
+                               class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-6 py-3
+                                    rounded-md text-lg font-bold hover:from-yellow-300 hover:to-orange-400 
+                                    transform hover:scale-105 transition-all duration-300">
+                                APPOINTMENT REQUEST
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQs Section -->
+            <div class="pt-12">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">FAQS</h2>
+                <div class="space-y-6">
+                    <!-- FAQ Items -->
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Q: What conditions do chiropractors treat?</h3>
+                        <p class="text-gray-700">A: An excellent chiropractor can help with the treatment of varied health problems, including:</p>
+                        <ul class="list-disc pl-8 mt-2 text-gray-700">
+                            <li>Sprains & Strains</li>
+                            <li>Migraine Headaches</li>
+                            <li>Arthritic Pain</li>
+                            <li>Various Kinds of Injuries</li>
+                        </ul>
+                    </div>
+
+                    <!-- Additional FAQs from screenshots -->
+                    {% include 'includes/_chiropractor_faqs.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'includes/_services.html' %}
+
+{% endblock %}

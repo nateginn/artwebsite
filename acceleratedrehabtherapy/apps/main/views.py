@@ -171,3 +171,16 @@ def test_google_reviews(request):
 def auto_injury(request):
     """Auto injury page view"""
     return render(request, 'main/auto_injury.html')
+
+@require_GET
+def home(request):
+    """Main home page view"""
+    context = {
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
+    }
+    return render(request, 'main/home.html', context)
+
+@require_GET
+def chiropractor(request):
+    """Chiropractor page view"""
+    return render(request, 'main/chiropractor.html')

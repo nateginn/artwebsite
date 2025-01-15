@@ -6,7 +6,7 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-white pt-6 pb-16">
+<section class="relative bg-white pt-4 pb-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Breadcrumb -->
         <nav class="mb-4" aria-label="Breadcrumb">
@@ -58,10 +58,10 @@
     </div>
 
     <!-- Services Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-        <h2 class="text-4xl font-bold text-[#001524] mb-4">CHIROPRACTIC SERVICES</h2>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 -mt-24 py-8">
+        <h2 class="text-4xl font-bold text-[#001524] mb-2">CHIROPRACTIC SERVICES</h2>
         
-        <div class="grid grid-cols-3 gap-x-16 gap-y-6 text-lg font-bold">
+        <div class="grid grid-cols-3 gap-x-8 gap-justify-center text-lg font-bold">
             <!-- Column 1 -->
             <div class="space-y-6">
                 <div class="flex items-center gap-3">
@@ -127,6 +127,141 @@
                     <span class="text-[#001524]">SHOULDER INJURY</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Chiropractic Info Section -->
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-8">
+                <!-- First Paragraph -->
+                <div class="max-w-3xl mx-auto text-center">
+                    <p class="text-gray-700 leading-relaxed">
+                        According to the National Safety Council, there are over 12 million motor vehicle accidents that involve more than 20 million vehicles each year. Choosing a <a href="#" class="text-blue-600 hover:text-blue-800">doctor for chiropractic</a> care after a car accident is a wise choice, especially because soft tissue injuries are some of the most common after a car accident. A car accident chiropractor can help individuals heal from an injury such as whiplash, which is common even in minor auto accidents.
+                    </p>
+                </div>
+
+                <!-- Second Paragraph -->
+                <div class="max-w-3xl mx-auto text-center">
+                    <p class="text-gray-700 leading-relaxed">
+                        An auto injury doctor can help you recover from problems like muscle and ligament sprains. After a car accident, chiropractic care is the method of choice for many people. The auto injury doctor can help you get work injury compensation. Without proper documentation from a medical professional soon after the accident, it is often very difficult to get workers' comp.
+                    </p>
+                </div>
+
+                <!-- Section Title -->
+                <div class="pt-8 text-center">
+                    <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 mx-auto">
+                        SEEING A CHIROPRACTOR AFTER<br>A CAR ACCIDENT
+                    </h2>
+                </div>
+
+                <!-- Content Paragraphs -->
+                <div class="max-w-3xl space-y-6 mx-auto text-center">
+                    <p class="text-gray-700 leading-relaxed">
+                        After being involved in a car accident, you should immediately schedule an appointment with an auto accident injury chiropractor. Even if you feel okay, it is still important to get checked out by a chiropractor after a car accident. It is possible that you may have sustained injuries that do not show symptoms right away.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed">
+                        The longer you delay treatment, the more likely you are to suffer from lasting injuries. Getting car accident physical therapy can help you regain function in your muscles. Many times, putting off treatment results in chronic pain for many years.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed">
+                        Another reason to see a chiropractor after a car accident is to document any injuries while you still have them. This will be important for insurance purposes later. If you do not obtain documentation, you may not receive compensation for rehab bills or workers' comp. An automobile injury chiropractic practice can give you the evaluation that you need for your car crash pain.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Treatment Info Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white text-center -mt-12">
+        <h2 class="text-4xl font-bold mb-4 text-[#001524] leading-tight mx-auto">AUTO INJURY TREATMENT<br>IN GREELEY AND FORT COLLINS</h2>
+        
+        <p class="text-gray-700 mb-0 ">
+            When you come to our chiropractic auto injury clinic, we will determine the extent of your injuries. We can also estimate what auto injury treatment will look like for you. If you are looking for auto injury treatment in the Greeley, CO; or Fort Collins, CO, areas, look no further than Accelerated Rehab Therapy. We can help you recover from your auto accident pain and other injuries. Call us today to learn more about the treatment we offer for your auto injury.
+        </p>
+    </div>
+
+    <!-- Appointment Section -->
+    <div class="bg-gradient-to-r from-[#0078E7] to-[#012E47] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Text Content Container -->
+                <div>
+                    <h2 class="text-4xl font-bold mb-4 text-left sm:text-center">BOOK APPOINTMENT RIGHT NOW</h2>
+                    <p class="text-lg mb-0 text-left sm:text-center max-w-xl mx-auto">
+                        Making an appointment with us is quick and easy. Just fill out the information and we will contact you as soon as possible.
+                    </p>
+                </div>
+
+                <!-- Arrow and Button Container -->
+                <div class="flex justify-center items-center">
+                    <!-- Arrow -->
+                    <img src="{% static 'img/arrow__mobile.png' %}" 
+                        alt="arrow" 
+                        class="w-24 h-auto lg:w-36">
+                        
+                        <!-- Button -->
+                        <a href="#appointment-form" 
+                            class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-6 py-3
+                                rounded-md text-lg font-bold hover:from-yellow-300 hover:to-orange-400 
+                                transform hover:scale-105 transition-all duration-300">
+                            APPOINTMENT REQUEST
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FAQs Section -->
+    <div class="w-full bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold mb-6 -mt-8 text-[#001524]">FAQS</h2>
+        
+        <div class="space-y-8">
+            <div>
+                <h3 class="text-lg font-bold mb-2">Q: How can chiropractic care help me after an auto accident?</h3>
+                <p class="text-gray-700">A: At Accelerated Rehab Therapy, our chiropractic treatments can help you better recover from soft tissue injuries, such as muscle sprains, that you may have sustained during an auto accident.</p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-2">Q: How does chiropractic care bring pain relief?</h3>
+                <p class="text-gray-700">A: At Accelerated Rehab Therapy, our chiropractors conduct spinal manipulations to decrease pain. It naturally releases pain-relieving hormones in your body and potentially minimizes pain throughout your body.</p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-2">Q: What Are Some Signs that I May Have a Whiplash Injury?</h3>
+                <p class="text-gray-700">A: Signs and symptoms of whiplash usually develop within days of the injury and may include:</p>
+                <ul class="list-disc pl-8 mt-2 text-gray-700 space-y-2">
+                    <li>Neck pain and stiffness</li>
+                    <li>Ringing in ears (tinnitus)</li>
+                    <li>Loss of range of motion in the neck</li>
+                    <li>Headaches, most often starting at the base of the skull</li>
+                    <li>Tenderness or pain in the shoulder, upper back, or arms</li>
+                    <li>Tingling or numbness in the arms</li>
+                    <li>Sleep disturbances</li>
+                    <li>Dizziness</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-2">Q: How Does Chiropractic Care Relieve Auto Accident Back Pain and Neck Pain?</h3>
+                <p class="text-gray-700">A: Chiropractic treatment addresses the underlying injury, whether it is spinal or whiplash. Chiropractic adjustments not only can relieve pressure on the muscles and nerves but also brings alignment back to the spine. Additional therapies, such as corrective exercise, can help bring back the body's full range of motion.</p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-2">Q: What Can I Expect from My First Appointment?</h3>
+                <p class="text-gray-700">A: As with other doctor appointments, your first visit to Accelerated Rehab Therapy will start with your medical history and a physical exam, followed by treatment. Before you leave, the chiropractor might give you exercises to do at home and provide you with a diet and nutrition plan.</p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-2">Q: What is the cost of my auto injury services?</h3>
+                <p class="text-gray-700">A: In Colorado your personal Auto insurance typically has "MEDPAY" that will cover a limited amount of your care. The party who is "at-fault" should also be responsible for some of your medical bills, if not all. If these options aren't available, we can often use your personal commercial insurance to cover your care, which will depend on the plan coverage.</p>
+            </div>
+        </div>
         </div>
     </div>
 </section>
