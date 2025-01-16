@@ -7,7 +7,7 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-white pt-4 pb-4">
+<section class="relative bg-white pt-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Breadcrumb -->
         <nav class="mb-4" aria-label="Breadcrumb">
@@ -36,18 +36,7 @@
                     Work and auto accident pain are real for millions of people. If you have an injury, turn to Accelerated Rehab Therapy to overcome it. Get the right treatment you need.
                 </p>
 
-                <div class="flex items-start gap-0">
-                    <img src="{% static 'img/arrow__mobile.png' %}" 
-                         alt="arrow" 
-                         class="w-48 h-auto transform -translate-y-28 translate-x-24">
-                         
-                    <a href="#appointment" 
-                       class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-10 py-4 
-                              rounded-md text-2xl font-bold hover:from-yellow-300 hover:to-orange-400 
-                              transform hover:scale-105 transition-all duration-300 shadow-lg">
-                        I WANT TO FEEL BETTER
-                    </a>
-                </div>
+                {% include 'includes/_cta_arrow_button.html' %}
             </div>
         </div>
     </div>
@@ -164,6 +153,7 @@
     </div>
 </div>
 
-{% include 'includes/_services.html' %}
+{% include 'includes/_holistic_approach.html' %}
+{% include 'includes/_reviews.html' %}
 
 {% endblock %}

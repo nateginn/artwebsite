@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_http_methods
 
 @require_GET
 def home(request):
@@ -184,3 +185,10 @@ def home(request):
 def chiropractor(request):
     """Chiropractor page view"""
     return render(request, 'main/chiropractor.html')
+
+@require_http_methods(["GET", "POST"])
+def contact(request):
+    if request.method == "POST":
+        # Add form processing logic here
+        pass
+    return render(request, 'main/contact.html')

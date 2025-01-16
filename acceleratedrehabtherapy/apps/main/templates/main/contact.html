@@ -1,0 +1,80 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/contact.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<div class="bg-[#001524] min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <!-- Breadcrumb -->
+        <nav class="mb-4" aria-label="Breadcrumb">
+            <ol class="list-none p-0 inline-flex text-[15px]">
+                <li class="flex items-center">
+                    <a href="{% url 'main:home' %}" class="text-gray-400 hover:text-white">Home</a>
+                    <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </li>
+                <li>
+                    <span class="text-gray-400">Contact</span>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Content -->
+        <div class="max-w-3xl mx-auto py-12">
+            <h1 class="text-5xl font-bold text-white mb-8">CONTACT US</h1>
+            
+            <p class="text-gray-300 mb-8">
+                Our support team is on-hand to assist with any issues you are experiencing. Please use the form 
+                to contact us with your needs. Send us a message and we'll respond as soon as possible. Also, 
+                you can call us: <a href="tel:9703241750" class="text-white hover:text-yellow-400">970-324-1750</a>. 
+                An expert waiting to help you now.
+            </p>
+
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Name -->
+                <div>
+                    <input type="text" 
+                           name="name" 
+                           placeholder="Name" 
+                           required
+                           class="w-full bg-[#003454] text-white placeholder-gray-400 border-2 border-gray-700 rounded-lg p-3 focus:outline-none focus:border-yellow-400">
+                </div>
+
+                <!-- Phone and Email row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="tel" 
+                           name="phone" 
+                           placeholder="Phone" 
+                           required
+                           class="w-full bg-[#003454] text-white placeholder-gray-400 border-2 border-gray-700 rounded-lg p-3 focus:outline-none focus:border-yellow-400">
+                    
+                    <input type="email" 
+                           name="email" 
+                           placeholder="E-mail" 
+                           required
+                           class="w-full bg-[#003454] text-white placeholder-gray-400 border-2 border-gray-700 rounded-lg p-3 focus:outline-none focus:border-yellow-400">
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <textarea name="message" 
+                              placeholder="Message" 
+                              rows="6" 
+                              required
+                              class="w-full bg-[#003454] text-white placeholder-gray-400 border-2 border-gray-700 rounded-lg p-3 focus:outline-none focus:border-yellow-400"></textarea>
+                </div>
+
+                <!-- Submit Button with Arrow -->
+                <div class="flex justify-center pt-6">
+                    {% include 'includes/_cta_arrow_button.html' with button_text="SUBMIT" %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
