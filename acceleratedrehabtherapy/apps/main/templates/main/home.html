@@ -68,30 +68,12 @@
             </div>
             
             <p 
-                class="text-xl md:text-2xl mt-4 text-white"
+                class="text-xl md:text-2xl mt-4 mb-16 text-white"
                 x-text="slides[currentSlide].subtitle">
             </p>
         </div>
 
-        <!-- Arrow and Button Group -->
-        <div class="relative flex items-center justify-center z-0">
-            <!-- Arrow -->
-            <div class="absolute -bottom-14 -left-24">
-                <img 
-                    src="{% static 'img/arrow__mobile.png' %}" 
-                    alt="arrow" 
-                    class="w-32 h-auto md:w-48 lg:w-60" 
-                    style="transform: rotate(5deg);">
-            </div>
-            
-            <!-- Button -->
-            <a 
-                href="#"
-                class="inline-block bg-gradient-to-b from-yellow-300 to-orange-600 text-gray-900 px-8 py-4 rounded-md text-lg font-bold
-                    hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300 z-10">
-                I WANT TO FEEL BETTER
-            </a>
-        </div>
+    {% include 'includes/_cta_arrow_button.html' %}  
     </div>
 
 

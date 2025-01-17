@@ -16,98 +16,16 @@
             </h1>
             
             <div class="relative max-w-3xl">
-                <p class="text-md text-gray-600 leading-relaxed mb-4">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
                     A chiropractor can help you better recover from soft tissue injuries, such as ligament, tendon and muscle sprains, that you may have sustained during a car accident. This is done through manipulation and rehab therapy.
                 </p>
 
-                <div class="flex items-start gap-0">
-                    <img src="{% static 'img/arrow__mobile.png' %}" 
-                         alt="arrow" 
-                         class="w-48 h-auto transform -translate-y-28 translate-x-24">
-                         
-                    <a href="#appointment" 
-                       class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-10 py-4 
-                              rounded-md text-2xl font-bold hover:from-yellow-300 hover:to-orange-400 
-                              transform hover:scale-105 transition-all duration-300 shadow-lg">
-                        I WANT TO FEEL BETTER
-                    </a>
-                </div>
+                {% include 'includes/_cta_arrow_button.html' %}
             </div>
         </div>
     </div>
 
-    <!-- Services Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 -mt-24 py-8">
-        <h2 class="text-4xl font-bold text-[#001524] mb-2">CHIROPRACTIC SERVICES</h2>
-        
-        <div class="grid grid-cols-3 gap-x-8 gap-justify-center text-lg font-bold">
-            <!-- Column 1 -->
-            <div class="space-y-6">
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">AUTO INJURY</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">WORK COMP INJURY</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">SPORTS INJURY</span>
-                </div>
-            </div>
-
-            <!-- Column 2 -->
-            <div class="space-y-6">
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">HEAD INJURY</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">BACK INJURY</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">NECK INJURY</span>
-                </div>
-            </div>
-
-            <!-- Column 3 -->
-            <div class="space-y-6">
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">HIP INJURY</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">KNEE INJURY</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
-                    </svg>
-                    <span class="text-[#001524]">SHOULDER INJURY</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'includes/_services_grid.html' with services=services hide_margin=hide_margin|default:False %}
 
     <!-- Chiropractic Info Section -->
     <div class="w-full bg-white py-12">
@@ -162,43 +80,13 @@
         </p>
     </div>
 
-    <!-- Appointment Section -->
-    <div class="bg-gradient-to-r from-[#0078E7] to-[#012E47] text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Text Content Container -->
-                <div>
-                    <h2 class="text-4xl font-bold mb-4 text-left sm:text-center">BOOK APPOINTMENT RIGHT NOW</h2>
-                    <p class="text-lg mb-0 text-left sm:text-center max-w-xl mx-auto">
-                        Making an appointment with us is quick and easy. Just fill out the information and we will contact you as soon as possible.
-                    </p>
-                </div>
-
-                <!-- Arrow and Button Container -->
-                <div class="flex justify-center items-center">
-                    <!-- Arrow -->
-                    <img src="{% static 'img/arrow__mobile.png' %}" 
-                        alt="arrow" 
-                        class="w-24 h-auto lg:w-36">
-                        
-                        <!-- Button -->
-                        <a href="#appointment-form" 
-                            class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-6 py-3
-                                rounded-md text-lg font-bold hover:from-yellow-300 hover:to-orange-400 
-                                transform hover:scale-105 transition-all duration-300">
-                            APPOINTMENT REQUEST
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'includes/_cta_section.html' %}
 
 
     <!-- FAQs Section -->
     <div class="w-full bg-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-bold mb-6 -mt-8 text-[#001524]">FAQS</h2>
+        <h2 class="text-4xl font-bold mb-6 text-[#001524]">FAQS</h2>
         
         <div class="space-y-8">
             <div>

@@ -16,7 +16,7 @@
           <!-- Desktop Navigation -->
           <nav class="hidden lg:flex gap-x-4">
               <a href="{% url 'main:auto_injury' %}" class="text-lg font-bold text-white hover:text-yellow-400">AUTO INJURY</a>
-              <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">WORK COMP INJURY</a>
+              <a href="{% url 'main:work_comp' %}" class="text-lg font-bold text-white hover:text-yellow-400">WORK COMP INJURY</a>
               <a href="#" class="text-lg font-bold text-white hover:text-yellow-400">MASSAGE</a>
               <!-- Services Dropdown -->
               <div class="relative" x-data="{ timeout: null }" @mouseover="clearTimeout(timeout); servicesDropdownOpen = true" @mouseleave="timeout = setTimeout(() => servicesDropdownOpen = false, 200)">
@@ -83,7 +83,7 @@
          style="display: none;">
         <div class="space-y-1 px-4 pb-3 pt-2">
             <a href="{% url 'main:auto_injury' %}" class="block px-4 py-2 text-lg font-bold text-gray-900 hover:text-yellow-400">AUTO INJURY</a>
-            <a href="#" class="block rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">WORK COMP INJURY</a>
+            <a href="{% url 'main:work_comp' %}" class="block px-4 py-2 text-lg font-bold text-gray-900 hover:text-yellow-400">WORK COMP INJURY</a>
             <a href="#" class="block rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">MASSAGE</a>
             <button @click="servicesDropdownOpen = !servicesDropdownOpen" class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-sm font-medium text-gray-900 hover:bg-gray-50">
                 SERVICES

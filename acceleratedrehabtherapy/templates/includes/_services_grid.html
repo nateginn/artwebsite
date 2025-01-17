@@ -1,0 +1,41 @@
+<!-- acceleratedrehabtherapy/templates/includes/_services_grid.html -->
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 py-8 {% if not hide_margin %}mt-12{% endif %}">
+    <div class="grid grid-cols-3 gap-x-8 gap-justify-center text-lg font-bold">
+        <!-- Column 1 -->
+        <div class="space-y-6">
+            {% for service in services|slice:":3" %}
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                </svg>
+                <span class="text-[#001524]">{{ service }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Column 2 -->
+        <div class="space-y-6">
+            {% for service in services|slice:"3:6" %}
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                </svg>
+                <span class="text-[#001524]">{{ service }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Column 3 -->
+        <div class="space-y-6">
+            {% for service in services|slice:"6:9" %}
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-blue-600 transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 19l9 2-9-18-9 18 9-2zm0-3v-8"/>
+                </svg>
+                <span class="text-[#001524]">{{ service }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

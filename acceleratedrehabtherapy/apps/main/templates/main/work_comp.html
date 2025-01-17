@@ -1,0 +1,85 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/work_comp.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Work Comp Injury Treatment - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-white pt-16 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                TYPES OF WORK-RELATED INJURIES
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
+                    For workplace injuries, it's important to seek proper medical care and rehabilitation. People with work-related injuries can count on Accelerated Rehab Therapy to help them recover.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_services_grid.html' with services=services hide_margin=hide_margin|default:False %}
+
+    
+     <!-- Work Injuries Intro -->
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <p class="text-gray-700 leading-relaxed">
+                        There are several types of workplace injuries. In some cases, an individual sustains only minor bumps and bruises. Other times, work-related injuries are life-threatening. For more serious issues, it's not uncommon for physicians to refer patients to a <a href="#" class="text-blue-600 hover:text-blue-800">Doctor of Chiropractic</a>. For many years, this was taboo. Today, most physicians recognize the value of chiropractic care.
+                    </p>
+                </div>
+
+                <!-- Types of Work Injuries -->
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-2xl font-bold text-[#001524] mb-4">Common Work-Related Injuries</h2>
+                    <p class="text-gray-700 mb-4">
+                        As far as the types of work-related injuries, these range from mild to severe. The following represent the work-related injuries that benefit the most from rehabilitation:
+                    </p>
+                    <ul class="list-disc pl-8 space-y-2 text-gray-700">
+                        <li>Muscle strains</li>
+                        <li>Repetitive strains</li>
+                        <li>Sprains or fractures from slips and falls</li>
+                        <li>Car crash pain</li>
+                        <li>Migraines from inhaling toxic fumes</li>
+                        <li>Post-surgical</li>
+                        <li>Spinal cord trauma</li>
+                    </ul>
+                </div>
+
+                <!-- Treatment Options -->
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-2xl font-bold text-[#001524] mb-4">Our Rehabilitation Approach</h2>
+                    <p class="text-gray-700 mb-4">
+                        At Accelerated Rehab Therapy, we offer four distinct types of rehabilitation, namely, chiropractic care, physical therapy, therapeutic massage, and nutrition counseling. Our No. 1 goal, regardless of the type of work comp injury, is to help patients achieve a full recovery in the fastest time possible.
+                    </p>
+                </div>
+
+                <!-- Overcoming Work Comp Injuries -->
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 mx-auto text-center">
+                        OVERCOMING WORKERS' COMP INJURIES
+                    </h2>
+                    <p class="text-gray-700 mb-4">
+                        Along with chiropractic care, physical therapy, and other treatment options for workers' comp injuries, we address problems that have nothing to do with the job. For instance, our skilled team at Accelerated Rehab Therapy sees a lot of patients with an auto injury. For that reason, we have an actual auto accident plan that streamlines the treatment and billing processes.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        We also specialize in work injury cases. Our licenced specialist has seen just about everything. We understand that workers' comp injuries can sometimes pose challenges. Obviously, the patient needs rehabilitation as quickly as possible, but that can mean fighting with the insurance provider.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        For workers' comp chiropractic care, our goal is to provide patients with the care they need, but at the same time, we de-escalate stress that comes from dealing with the insurance company. If you've suffered from an injury that happened at work, contact us at Accelerated Rehab Therapy today by calling (970) 324-1750.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+{% endblock %}

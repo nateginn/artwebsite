@@ -169,17 +169,42 @@ def test_google_reviews(request):
         }, status=500)
 
 @require_GET
-def auto_injury(request):
-    """Auto injury page view"""
-    return render(request, 'main/auto_injury.html')
-
-@require_GET
 def home(request):
     """Main home page view"""
     context = {
         'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
     }
     return render(request, 'main/home.html', context)
+
+CHIROPRACTIC_SERVICES = [
+    'AUTO INJURY',
+    'WORK COMP INJURY',
+    'SPORTS INJURY',
+    'HEAD INJURY',
+    'BACK INJURY',
+    'NECK INJURY',
+    'HIP INJURY',
+    'KNEE INJURY',
+    'SHOULDER INJURY'
+]
+
+@require_GET
+def work_comp(request):
+    """Work comp page view"""
+    context = {
+        'services': CHIROPRACTIC_SERVICES,
+        'hide_margin': False  # Set to True if you want to hide the top margin
+    }
+    return render(request, 'main/work_comp.html', context)
+
+@require_GET
+def auto_injury(request):
+    """Auto injury page view"""
+    context = {
+        'services': CHIROPRACTIC_SERVICES,
+        'hide_margin': False
+    }
+    return render(request, 'main/auto_injury.html', context)
 
 @require_GET
 def chiropractor(request):
@@ -192,3 +217,4 @@ def contact(request):
         # Add form processing logic here
         pass
     return render(request, 'main/contact.html')
+
