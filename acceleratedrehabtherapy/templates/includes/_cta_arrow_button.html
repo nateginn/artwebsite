@@ -1,20 +1,15 @@
 <!-- acceleratedrehabtherapy/templates/includes/_cta_arrow_button.html -->
 {% load static %}
 
-<div class="relative flex items-center justify-center z-0">
-    <!-- Arrow -->
-    <div class="absolute -bottom-14 -left-24">
-        <img src="{% static 'img/arrow__mobile.png' %}" 
-             alt="arrow" 
-             class="w-32 h-auto md:w-48 lg:w-60" 
-             style="transform: rotate(5deg);">
-    </div>
-    
-    <!-- Button -->
-    <a href="{% url 'main:contact' %}"
-       class="inline-block bg-gradient-to-b from-yellow-300 to-orange-600 text-gray-900 px-8 py-4 
-              rounded-md text-lg font-bold hover:from-yellow-300 hover:to-orange-400 
-              transform hover:scale-105 transition-all duration-300 z-10">
+<div class="flex items-start gap-0 h-fit -mb-40">
+    <img src="{% static 'img/arrow__mobile.png' %}" 
+         alt="arrow" 
+         class="w-48 h-auto transform -translate-y-28 translate-x-24">
+         
+    <a href="#appointment" 
+       class="inline-block bg-gradient-to-b from-yellow-400 to-orange-500 text-black px-10 py-4 
+              rounded-md text-2xl font-bold hover:from-yellow-300 hover:to-orange-400 
+              transform hover:scale-105 transition-all duration-300 shadow-lg">
         I WANT TO FEEL BETTER
     </a>
 </div>

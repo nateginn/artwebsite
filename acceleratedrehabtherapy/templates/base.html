@@ -89,12 +89,12 @@
 <body class="flex flex-col min-h-screen">
     <div id="wrapper" class="flex flex-col min-h-screen">
         <!-- Fixed Header -->
-        <header class="w-full bg-[#001524]">
+        <header class="fixed top-0 left-0 right-0 w-full bg-[#001524] z-50">
             {% include 'includes/header.html' %}
         </header>
 
         <!-- Main Content -->
-        <main class="flex-grow relative">
+        <main class="flex-grow relative pt-24">
             {% block content %}{% endblock %}
         </main>
 
