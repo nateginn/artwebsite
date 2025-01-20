@@ -1,0 +1,107 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/massage.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Massage Therapy - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-white pt-16 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                I NEED QUALITY MASSAGE THERAPY<br class="hidden md:block"> 
+                NEAR GREELEY, CO
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
+                    Whether getting a massage as part of your work comp claim or having your insurance cover it, this is a great way to overcome an injury. Relax and heal at the same time.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Massage Services Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 py-8 mt-8">
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">MASSAGE SERVICES</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Medical Massage -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">MEDICAL MASSAGE</h3>
+                <p class="text-gray-700">Specialized treatment focusing on specific injuries or medical conditions. Our therapists work with your healthcare providers to support your recovery.</p>
+            </div>
+
+            <!-- Neuromuscular Massage -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">NEUROMUSCULAR MASSAGE</h3>
+                <p class="text-gray-700">Advanced techniques targeting nerve and muscle interactions to relieve chronic pain and improve mobility.</p>
+            </div>
+
+            <!-- Trigger Point Massage -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">TRIGGER POINT MASSAGE</h3>
+                <p class="text-gray-700">Focused treatment on specific areas of muscle tension and pain, providing targeted relief and improved function.</p>
+            </div>
+
+            <!-- Sports Massage -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">SPORTS MASSAGE</h3>
+                <p class="text-gray-700">Specialized techniques for athletes and active individuals, helping with performance, recovery, and injury prevention.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Superior Healing Section -->
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-8">
+                <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 text-center">
+                    WE OFFER SUPERIOR HEALING<br>
+                    HANDS MASSAGE THERAPY
+                </h2>
+
+                <div class="max-w-3xl mx-auto text-center">
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Getting a massage to relax is nice but when in pain, you need healing hands massage therapy. With this, a highly experienced and trained therapeutic massage therapist focuses on providing a healing form of treatment. Whether you deal with pain, stiff joints, headaches, or some other issue, our healing hands massage therapy works wonders.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        At Accelerated Rehab Therapy, we have the best massage therapist specific to your needs. While our entire staff dedicates itself to helping patients, some people have a preference for a male or female massage therapist. Often, women feel more comfortable getting a therapeutic massage from another female. We have both male and female massage therapists. Regardless of your preference, you'll receive an excellent treatment that yields outstanding results.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed">
+                        Without question, therapeutic massage is a great way to overcome a lot of things, including auto accident pain. If you've been in a crash and now suffer from major discomfort, the right rehab facility will devise a plan so you can get the relief needed. Massage not only helps with pain but also limited mobility, headaches, and even depression.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-8 text-center">
+                OUTSTANDING BENEFITS OF A<br>
+                PRO MASSAGE THERAPIST
+            </h2>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Seeing a pro massage therapist is the best way to feel better. Especially if you have car crash pain, you'll notice a quick improvement. Remember, when looking for "the best massage therapist near me," you can define your search however you want. That means if you prefer a deep muscle massage, you can change the words. If you're looking for a pro massage therapist that also performs hot stone therapy, you would use that as part of your search term.
+                </p>
+
+                <p class="text-gray-700 leading-relaxed">
+                    At Accelerated Rehab Therapy, we take a great deal of pride in the range of services that we offer our clients. Even with an extended list of quality treatment options, we keep our massage therapy prices affordable. We know how wonderful massages are and how they help both the body and mind. That's why we want other people to experience them. Whether dealing with a workman's comp situation, auto accident, fall down the stairs, or some kind of physical disorder, we have the experience and expertise required to help make your life better. Call us today.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+</section>
+{% endblock %}

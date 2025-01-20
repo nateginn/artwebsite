@@ -211,6 +211,26 @@ def chiropractor(request):
     """Chiropractor page view"""
     return render(request, 'main/chiropractor.html')
 
+@require_GET
+def massage(request):
+    """Massage page view"""
+    return render(request, 'main/massage.html')
+
+@require_GET
+def acupuncture(request):
+    """Acupuncture page view"""
+    return render(request, 'main/acupuncture.html')
+
+@require_GET
+def physical_therapy(request):
+    """Physical therapy page view"""
+    return render(request, 'main/physical_therapy.html')
+
+@require_GET
+def contact(request):
+    """Contact page view"""
+    return render(request, 'main/contact.html')
+
 @require_http_methods(["GET", "POST"])
 def contact(request):
     if request.method == "POST":

@@ -1,0 +1,107 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/physical_therapy.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Physical Therapy - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<section class="relative bg-white pt-16 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                I AM SEARCHING FOR PHYSICAL<br class="hidden md:block"> 
+                THERAPY NEAR GREELEY, CO
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
+                    Don't let work or auto accident pain keep you from doing what you want. Achieve improvement with physical therapy and go on to enjoy a productive life.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Physical Therapy Services Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 py-8 mt-8">
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">PHYSICAL THERAPY</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Sports Physical Therapy -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">SPORTS PHYSICAL THERAPY</h3>
+                <p class="text-gray-700">Specialized treatment for athletes and active individuals, helping with recovery and performance enhancement.</p>
+            </div>
+
+            <!-- Injury Physical Therapy -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">INJURY PHYSICAL THERAPY</h3>
+                <p class="text-gray-700">Focused care for injuries from accidents, work-related incidents, or other causes.</p>
+            </div>
+
+            <!-- Orthopedic Physical Therapy -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-[#001524] mb-4">ORTHOPEDIC PHYSICAL THERAPY</h3>
+                <p class="text-gray-700">Treatment for musculoskeletal issues affecting bones, joints, muscles, and soft tissues.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Sections -->
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-12">
+                <!-- Introduction Section -->
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Rather than waste a lot of valuable time searching online for the right "physical therapy near me," especially if you need an auto injury doctor right away, utilize our professional services at Accelerated Rehab Therapy. One quick phone call to schedule an appointment will stop the endless searching for "physical therapy near me." Instead, you can start getting the relief you need.
+                    </p>
+                    
+                    <p class="text-gray-700 leading-relaxed">
+                        Although there are many physical therapists with multiple locations like Greeley, and Fort Collins, Colorado, not all provide the same caliber of service. With everything that we offer at Accelerated Rehab Therapy, there's no reason to continue on the quest of trying to find "the best physical therapy near me."
+                    </p>
+                </div>
+
+                <!-- Advanced Therapy Section -->
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 text-center">
+                        WE OFFER ADVANCED PHYSICAL<br>THERAPY
+                    </h2>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        With the best physical therapy, you can overcome just about anything. Especially when it comes to advanced physical therapy, a trained professional can help people with a broad range of physical challenges. Along with reducing or eliminating auto accident pain, this is an excellent way to improve on mobility. This type of therapy is often used to deal with the more challenging problems, and it yields outstanding results. Best of all, this often helps people avoid surgery.
+                    </p>
+                    
+                    <p class="text-gray-700 leading-relaxed">
+                        For example, if someone's in a car accident that results in badly broken bones, there's a good chance of that person needing surgery. However, there are also cases in which an individual can avoid surgery by going to advanced physical therapy. Most reputable medical doctors will do everything possible to keep a person out of the operating room. A big part of that involves sending them to physical therapy at a trusted clinic.
+                    </p>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 text-center">
+                        WHAT ARE THE MAIN BENEFITS OF<br>PROFESSIONAL PHYSICAL THERAPY?
+                    </h2>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Professional physical therapy offers many excellent benefits in addition to easing pain associated with a work injury or auto injury. As mentioned, this is a great way to improve mobility. Professional physical therapy also improves balance for individuals who tend to fall, it helps with managing vascular conditions and diabetes, and it can make it easier for a stroke patient to recover.
+                    </p>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Considering everything this type of rehab does, you might automatically think of physical therapy cost as out of reach. Fortunately, most insurance companies cover treatments. The right clinic will help with a workman's comp claim if applicable. While dealing with the work comp issue, you can focus on achieving optimal health and wellness.
+                    </p>
+                    
+                    <p class="text-gray-700 leading-relaxed">
+                        No matter what your situation is, our dedicated experts at Accelerated Rehab Therapy can help. We offer innovative treatment plans and utilize state-of-the-art equipment. Instead of cookie-cutter solutions, we customize every treatment according to the patient's needs. For more information or to schedule an appointment, give us a call. We are proud to serve Greeley, and Fort Collins, CO.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+    {% include 'includes/_pt_faqs.html' %}
+</section>
+{% endblock %}

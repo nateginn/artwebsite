@@ -7,7 +7,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Company Info -->
             <div>
-                <div class="flex items-center space-x-2 mb-4">
+                <div class="flex items-center space-x-2 mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-yellow-400">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                     </svg>
@@ -15,6 +15,10 @@
                         970-324-1750
                     </a>
                 </div>
+                <a href="{% url 'main:contact' %}" class="block text-sm text-gray-400 hover:text-yellow-400 ml-8 mb-4">
+                    Schedule Appointment
+                </a>
+                
                 <div class="flex items-center space-x-2 mb-4">
                     <span class="text-gray-400">Company rating:</span>
                     <div class="flex text-yellow-400">
@@ -25,19 +29,32 @@
                         {% endfor %}
                     </div>
                 </div>
-                <p class="text-sm mb-2">2928 W 10th St Greeley, CO 80634</p>
+                
+                <a href="https://maps.google.com/maps?daddr=40.422457,-104.728624&z=15" 
+                target="_blank" 
+                class="text-sm mb-2 block hover:text-yellow-400">
+                    2928 W 10th St Greeley, CO 80634
+                </a>
+
+                <a href="https://maps.google.com/maps?daddr=40.515388483146566, -105.07832820846961" 
+                target="_blank" 
+                class="text-sm mb-2 block hover:text-yellow-400">
+                    105 Coronado Ct. STE B-102 Fort Collins, CO 80525
+                </a>
+                
                 <p class="text-sm text-gray-400">© 2024. Accelerated Rehab Therapy</p>
             </div>
 
             <!-- Navigation Links -->
             <div class="flex flex-col gap-2">
-                <a href="#" class="text-sm font-bold hover:text-yellow-400">AUTO INJURY</a>
-                <a href="#" class="text-sm font-bold hover:text-yellow-400">WORK COMP INJURY</a>
-                <a href="#" class="text-sm font-bold hover:text-yellow-400">MASSAGE</a>
-                <a href="#" class="text-sm font-bold hover:text-yellow-400">SERVICES</a>
+                <a href="{% url 'main:auto_injury' %}" class="text-sm font-bold hover:text-yellow-400">AUTO INJURY</a>
+                <a href="{% url 'main:work_comp' %}" class="text-sm font-bold hover:text-yellow-400">WORK COMP INJURY</a>
+                <a href="{% url 'main:chiropractor' %}" class="text-sm font-bold hover:text-yellow-400">CHIROPRACTIC</a>
+                <a href="{% url 'main:massage' %}" class="text-sm font-bold hover:text-yellow-400">MASSAGE</a>
+                <a href="{% url 'main:acupuncture' %}" class="text-sm font-bold hover:text-yellow-400">ACUPUNCTURE</a>
+                <a href="{% url 'main:physical_therapy' %}" class="text-sm font-bold hover:text-yellow-400">PHYSICAL THERAPY</a>
                 <a href="#" class="text-sm font-bold hover:text-yellow-400">ABOUT</a>
                 <a href="#" class="text-sm font-bold hover:text-yellow-400">BLOG</a>
-                <a href="#" class="text-sm font-bold hover:text-yellow-400">CONTACT</a>
             </div>
             
             <!-- Business Hours -->

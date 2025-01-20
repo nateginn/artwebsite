@@ -1,0 +1,88 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/acupuncture.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Acupuncture - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<section class="relative bg-white pt-16 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                WHERE CAN I FIND THE BEST<br class="hidden md:block"> 
+                ACUPUNCTURE NEAR GREELEY, CO?
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
+                    Receiving acupuncture from a licensed professional will help with your injury, whether a car accident or work comp situation. Take the appropriate action today.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <p class="text-gray-700 leading-relaxed">
+                    Are you trying to find the best acupuncture clinic close to home? If you are looking for an <a href="{% url 'main:auto_injury' %}" class="text-blue-600 hover:text-blue-800">auto injury doctor</a>, Accelerated Rehab Therapy can help. Just imagine not ever having to search for "acupuncture near me" again. We have a therapist who uses both ancient Chinese and modern acupuncture, giving you the best of both worlds. Knowing you have help available, whether in Fort Collins, or Greeley, your days of searching for "acupuncture near me" are over.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Relief Section -->
+    <div class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 text-center">
+                OUR ACUPUNCTURE DOCTOR WILL<br>
+                HELP YOU FIND RELIEF
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <p class="text-gray-700 leading-relaxed">
+                    Even though an acupuncture doctor provides this ancient treatment, most now offer what's known as "modern acupuncture." That simply means treating people using both old and new techniques. Regardless, an expert would still perform medical acupuncture, which provides a host of benefits.
+                </p>
+                
+                <p class="text-gray-700 leading-relaxed">
+                    Just like the more traditional approach, there's solid proof that modern acupuncture decreases inflammation, improves blood flow, and eases a person's discomfort. Whether you suffer from headaches or chronic pain affecting the back, neck, joints, or muscles, you'll appreciate the acupuncture advantage.
+                </p>
+                
+                <p class="text-gray-700 leading-relaxed">
+                    For example, if you have car crash pain days or even weeks following an accident, an acupuncturist can help. The same goes if you experienced a bad fall at work. However, this natural treatment also alleviates discomfort associated with arthritis, fibromyalgia, RSD, and other disorders. In fact, one acupuncture advantage that some people aren't aware of is that it helps ease anxiety and depression by targeting the right areas of the body.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Natural Healing Section -->
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-6 text-center">
+                ACUPUNCTURE HEALING ALLOWS<br>
+                YOUR BODY TO HEAL NATURALLY
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <p class="text-gray-700 leading-relaxed">
+                    Acupuncture healing is very real. This ancient treatment works by stimulating blood flow, normalizing the nervous system, and overall, improving well-being. Acupuncture healing occurs because it has a direct effect on serotonin, dopamine, and endorphins, all chemicals in the brain. The tiny needles placed into key points of the body trigger a positive response. Restoring blood flow is what activates the body's natural ability to heal itself. Even for someone with intense car crash pain, it works incredibly well.
+                </p>
+                
+                <p class="text-gray-700 leading-relaxed">
+                    Rather than an expensive option, the right clinic has an acupuncture cost that anyone can afford. Not only does this natural treatment help with a broad range of health-related problems but it's also safe for virtually anyone. Because of that, there's no reason to continue suffering in silence. Reclaim quality of life with this amazing alternative approach. Even medical doctors often recommend acupuncture to their patients in conjunction with traditional medicine.
+                </p>
+                
+                <p class="text-gray-700 leading-relaxed">
+                    If you live with pain, regardless of the cause, and perhaps need assistance with a work comp claim, <a href="{% url 'main:home' %}" class="text-blue-600 hover:text-blue-800">Accelerated Rehab Therapy</a> is your ideal source. With our acupuncture treatment, you can relax while the expert goes to work in helping you achieve optimal wellness. We have a rehab facility in Greeley, and Fort Collins, Colorado. Call today for an appointment.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+</section>
+{% endblock %}
