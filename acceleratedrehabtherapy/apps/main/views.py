@@ -231,6 +231,21 @@ def contact(request):
     """Contact page view"""
     return render(request, 'main/contact.html')
 
+@require_GET
+def about(request):
+    """About page view"""
+    return render(request, 'main/about_us.html')
+
+@require_GET
+def resources(request):
+    """Resources page view"""
+    return render(request, 'main/resources.html')
+
+@require_GET
+def blog(request):
+    """Blog page view"""
+    return render(request, 'main/blog.html')
+
 @require_http_methods(["GET", "POST"])
 def contact(request):
     if request.method == "POST":

@@ -1,0 +1,144 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/resources.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resources - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<section class="relative bg-white pt-16 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Section -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                HEALTH & WELLNESS RESOURCE CENTER
+            </h1>
+            
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
+                    Expert guidance and comprehensive information about injury recovery, pain management, and maintaining optimal health. All resources are reviewed by our medical professionals.
+                </p>
+            </div>
+        </div>
+
+        <!-- Resource Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <!-- Auto Injury Resources -->
+            <div class="bg-[#236E8C] rounded-lg p-6 text-white hover:bg-[#1a5268] transition-colors">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-4">Auto Injury Resources</h2>
+                <ul class="space-y-2 text-gray-100">
+                    <li>• Whiplash Treatment & Recovery</li>
+                    <li>• Post-Accident Care Guidelines</li>
+                    <li>• Insurance & Documentation</li>
+                    <li>• Common Auto Injury Conditions</li>
+                </ul>
+                <a href="#" class="inline-block mt-4 text-yellow-400 hover:text-yellow-300">
+                    Learn More →
+                </a>
+            </div>
+
+            <!-- Work Injury Recovery -->
+            <div class="bg-[#236E8C] rounded-lg p-6 text-white hover:bg-[#1a5268] transition-colors">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-4">Work Injury Recovery</h2>
+                <ul class="space-y-2 text-gray-100">
+                    <li>• Workplace Ergonomics</li>
+                    <li>• Common Work-Related Injuries</li>
+                    <li>• Workers' Compensation Guide</li>
+                    <li>• Return-to-Work Programs</li>
+                </ul>
+                <a href="#" class="inline-block mt-4 text-yellow-400 hover:text-yellow-300">
+                    Learn More →
+                </a>
+            </div>
+
+            <!-- Pain Management -->
+            <div class="bg-[#236E8C] rounded-lg p-6 text-white hover:bg-[#1a5268] transition-colors">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-4">Pain Management & Treatment</h2>
+                <ul class="space-y-2 text-gray-100">
+                    <li>• Back & Neck Pain</li>
+                    <li>• Joint Pain Solutions</li>
+                    <li>• Sports Injuries</li>
+                    <li>• Treatment Options</li>
+                </ul>
+                <a href="#" class="inline-block mt-4 text-yellow-400 hover:text-yellow-300">
+                    Learn More →
+                </a>
+            </div>
+
+            <!-- Chiropractic Education -->
+            <div class="bg-[#236E8C] rounded-lg p-6 text-white hover:bg-[#1a5268] transition-colors">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-4">Chiropractic Education</h2>
+                <ul class="space-y-2 text-gray-100">
+                    <li>• Understanding Chiropractic Care</li>
+                    <li>• Treatment Techniques</li>
+                    <li>• What to Expect</li>
+                    <li>• Benefits & Safety</li>
+                </ul>
+                <a href="#" class="inline-block mt-4 text-yellow-400 hover:text-yellow-300">
+                    Learn More →
+                </a>
+            </div>
+
+            <!-- Wellness & Prevention -->
+            <div class="bg-[#236E8C] rounded-lg p-6 text-white hover:bg-[#1a5268] transition-colors">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-4">Wellness & Prevention</h2>
+                <ul class="space-y-2 text-gray-100">
+                    <li>• Posture Improvement</li>
+                    <li>• Exercise Guidelines</li>
+                    <li>• Injury Prevention Tips</li>
+                    <li>• Lifestyle Recommendations</li>
+                </ul>
+                <a href="#" class="inline-block mt-4 text-yellow-400 hover:text-yellow-300">
+                    Learn More →
+                </a>
+            </div>
+
+            <!-- Patient Success Stories -->
+            <div class="bg-[#236E8C] rounded-lg p-6 text-white hover:bg-[#1a5268] transition-colors">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-4">Patient Success Stories</h2>
+                <ul class="space-y-2 text-gray-100">
+                    <li>• Recovery Journeys</li>
+                    <li>• Treatment Experiences</li>
+                    <li>• Long-term Outcomes</li>
+                    <li>• Patient Testimonials</li>
+                </ul>
+                <a href="#" class="inline-block mt-4 text-yellow-400 hover:text-yellow-300">
+                    Learn More →
+                </a>
+            </div>
+        </div>
+
+        <!-- Featured Resources Section -->
+        <div class="mt-16">
+            <h2 class="text-3xl font-bold text-[#001524] mb-8">Featured Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Whiplash Guide -->
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-[#001524] mb-2">Complete Guide to Whiplash Recovery</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive information about whiplash treatment, recovery timeline, and prevention strategies.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800">Read More →</a>
+                </div>
+
+                <!-- Back Pain Guide -->
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-[#001524] mb-2">Understanding Back & Neck Pain</h3>
+                    <p class="text-gray-600 mb-4">Expert insights on managing chronic pain, treatment options, and long-term relief strategies.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800">Read More →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Disclaimer -->
+        <div class="mt-16 bg-gray-100 p-6 rounded-lg">
+            <h3 class="text-lg font-bold text-[#001524] mb-2">Medical Disclaimer</h3>
+            <p class="text-sm text-gray-600">
+                The information provided in these resources is for general educational purposes only and is not intended as a substitute for professional medical advice. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+            </p>
+            <p class="text-sm text-gray-600 mt-2">
+                Last updated: {% now "F Y" %}
+            </p>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+</section>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/blog.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - Accelerated Rehab Therapy{% endblock %}
+
+{% block content %}
+<section class="relative bg-white pt-16 pb-4">
+    <!-- Hero Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                ABOUT ACCELERATED REHAB THERAPY —<br class="hidden md:block"> 
+                IN GREELEY, COLORADO
+            </h1>
+            
+            <div class="relative max-w-3xl mb-16">
+                <p class="text-md text-gray-600 leading-relaxed">
+                    We all seek a life of enjoyment, happiness and well-being. A big part of this is feeling healthy and living with a body that is free from pain.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Statement Section -->
+    <div class="bg-[#012E47] text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8">OUR MISSION</h2>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg leading-relaxed mb-6">
+                    At Accelerated Rehab Therapy, our mission is to empower our patients to live life without limitations through personalized, evidence-based rehabilitation care. We combine clinical excellence with compassionate service to help each individual achieve optimal wellness and maintain an active lifestyle.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Through our integrated approach to physical therapy, chiropractic care, massage therapy, and acupuncture, we're committed to accelerating your journey to recovery and long-term health.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Values Section -->
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-[#001524] mb-12">OUR CORE VALUES</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Patient-Centered Care -->
+                <div class="bg-[#236E8C] rounded-lg p-6 text-white">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-4">PATIENT-CENTERED CARE</h3>
+                    <p class="text-gray-100">Every treatment plan is tailored to your specific needs, goals, and lifestyle. We listen, we care, and we adapt our approach to ensure the best possible outcomes for each patient.</p>
+                </div>
+
+                <!-- Clinical Excellence -->
+                <div class="bg-[#236E8C] rounded-lg p-6 text-white">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-4">CLINICAL EXCELLENCE</h3>
+                    <p class="text-gray-100">Our team maintains the highest standards of professional expertise through continuous education and implementation of evidence-based practices.</p>
+                </div>
+
+                <!-- Collaborative Approach -->
+                <div class="bg-[#236E8C] rounded-lg p-6 text-white">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-4">COLLABORATIVE APPROACH</h3>
+                    <p class="text-gray-100">We believe in the power of integrated care. Our team works together, combining different therapeutic approaches to provide comprehensive treatment solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-[#001524] mb-12">WHY CHOOSE A.R.T.?</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-[#001524] mb-4">Comprehensive Care</h3>
+                    <p class="text-gray-700">We offer a full spectrum of rehabilitation services under one roof, including chiropractic care, physical therapy, massage therapy, and acupuncture. This integrated approach ensures you receive the most effective combination of treatments for your condition.</p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-[#001524] mb-4">Experienced Team</h3>
+                    <p class="text-gray-700">Our skilled practitioners bring years of experience in treating various conditions, from auto and work injuries to chronic pain and sports-related issues. We're committed to staying current with the latest treatment techniques and technologies.</p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-[#001524] mb-4">Convenient Locations</h3>
+                    <p class="text-gray-700">With locations in Greeley, Fort Collins, and at the UNC campus, we make it easy for you to access quality care. Our flexible scheduling and efficient insurance processing help ensure a smooth treatment experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+</section>
+{% endblock %}
