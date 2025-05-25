@@ -1,0 +1,160 @@
+INFO 2025-05-24 20:04:21,124 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:04:51,039 basehttp "POST /contact/ HTTP/1.1" 200 24077
+INFO 2025-05-24 20:04:57,511 basehttp "GET / HTTP/1.1" 200 54894
+INFO 2025-05-24 20:04:57,539 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,550 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,550 basehttp "GET /static/img/massage.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,552 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,552 basehttp "GET /static/img/therapy.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,554 basehttp "GET /static/img/newcar.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,554 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,554 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,554 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,556 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:57,557 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 304 0
+WARNING 2025-05-24 20:04:57,566 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:04:57,566 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-05-24 20:04:57,566 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+INFO 2025-05-24 20:04:58,068 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:58,068 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:58,068 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:04:58,068 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:05:03,898 basehttp "GET /contact/ HTTP/1.1" 200 24009
+INFO 2025-05-24 20:05:21,070 basehttp "POST /contact/ HTTP/1.1" 200 24058
+INFO 2025-05-24 20:05:47,167 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-05-24 20:05:47,597 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:06:23,209 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:06:39,105 basehttp "GET / HTTP/1.1" 200 54894
+WARNING 2025-05-24 20:06:39,514 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-05-24 20:06:39,517 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:06:39,519 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 20:06:43,769 basehttp "GET /contact/ HTTP/1.1" 200 24028
+INFO 2025-05-24 20:06:56,081 basehttp "POST /contact/ HTTP/1.1" 200 24073
+INFO 2025-05-24 20:07:26,597 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-05-24 20:07:27,004 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:07:32,714 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:07:33,139 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:08:26,710 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:08:30,991 basehttp "GET / HTTP/1.1" 200 54894
+WARNING 2025-05-24 20:08:31,043 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-05-24 20:08:31,046 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:08:31,048 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 20:08:36,493 basehttp "GET /contact/ HTTP/1.1" 200 24028
+INFO 2025-05-24 20:08:56,487 basehttp "POST /contact/ HTTP/1.1" 200 24073
+INFO 2025-05-24 20:09:41,386 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-05-24 20:09:41,826 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:09:49,655 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-05-24 20:09:50,077 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:10:36,614 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:11:48,955 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:11:49,373 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:12:32,992 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:12:43,793 basehttp "GET / HTTP/1.1" 200 54894
+INFO 2025-05-24 20:12:43,822 basehttp "GET /static/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,823 basehttp "GET /static/img/ARTlogoWHITE.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,823 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,831 basehttp "GET /static/img/massage.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,831 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,831 basehttp "GET /static/img/therapy.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,834 basehttp "GET /static/img/newcar.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,834 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,834 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,835 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,836 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:43,837 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 304 0
+WARNING 2025-05-24 20:12:43,841 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+INFO 2025-05-24 20:12:43,841 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 304 0
+WARNING 2025-05-24 20:12:43,846 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:12:43,846 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 20:12:44,076 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:44,076 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:44,076 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:44,076 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:12:44,078 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+INFO 2025-05-24 20:12:48,207 basehttp "GET /contact/ HTTP/1.1" 200 24028
+INFO 2025-05-24 20:13:01,721 basehttp "POST /contact/ HTTP/1.1" 302 0
+INFO 2025-05-24 20:13:01,726 basehttp "GET /contact/ HTTP/1.1" 200 24318
+INFO 2025-05-24 20:15:38,783 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-05-24 20:15:39,227 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:15:49,085 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-05-24 20:15:49,525 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:16:25,024 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:16:55,517 basehttp "GET / HTTP/1.1" 200 54894
+WARNING 2025-05-24 20:16:55,573 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:16:55,574 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-05-24 20:16:55,578 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 20:16:59,527 basehttp "GET /contact/ HTTP/1.1" 200 24028
+INFO 2025-05-24 20:17:13,678 basehttp "POST /contact/ HTTP/1.1" 302 0
+INFO 2025-05-24 20:17:13,682 basehttp "GET /contact/ HTTP/1.1" 200 24318
+INFO 2025-05-24 20:19:52,160 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:19:52,605 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:33:22,398 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:33:22,818 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:33:33,680 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:33:34,099 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:33:38,807 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:33:39,222 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:33:43,921 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:33:44,334 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:34:57,552 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:35:01,842 basehttp "GET / HTTP/1.1" 200 54894
+INFO 2025-05-24 20:35:01,865 basehttp "GET /static/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,865 basehttp "GET /static/img/ARTlogoWHITE.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,866 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,881 basehttp "GET /static/img/therapy.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,881 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,881 basehttp "GET /static/img/massage.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,883 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,884 basehttp "GET /static/img/newcar.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,885 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,885 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,885 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:01,885 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 304 0
+WARNING 2025-05-24 20:35:01,889 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+INFO 2025-05-24 20:35:01,890 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 304 0
+WARNING 2025-05-24 20:35:01,895 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:35:01,895 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 20:35:02,273 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:02,273 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:02,273 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:02,275 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:35:02,277 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+INFO 2025-05-24 20:35:06,820 basehttp "GET /contact/ HTTP/1.1" 200 24028
+INFO 2025-05-24 20:35:29,771 basehttp "POST /contact/ HTTP/1.1" 302 0
+INFO 2025-05-24 20:35:29,777 basehttp "GET /contact/ HTTP/1.1" 200 24318
+INFO 2025-05-24 20:46:13,488 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:46:13,982 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:49:09,832 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-05-24 20:49:10,243 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:53:29,434 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 20:53:36,707 basehttp "GET / HTTP/1.1" 200 54894
+INFO 2025-05-24 20:53:36,735 basehttp "GET /static/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,737 basehttp "GET /static/img/ARTlogoWHITE.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,737 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,746 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,747 basehttp "GET /static/img/massage.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,751 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,752 basehttp "GET /static/img/therapy.png HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,752 basehttp "GET /static/img/newcar.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,752 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,752 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,752 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,754 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,757 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 304 0
+WARNING 2025-05-24 20:53:36,767 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-05-24 20:53:36,767 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 20:53:36,768 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 20:53:36,861 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,861 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,862 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,862 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 304 0
+INFO 2025-05-24 20:53:36,865 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+INFO 2025-05-24 20:53:41,190 basehttp "GET /contact/ HTTP/1.1" 200 24028
+INFO 2025-05-24 20:54:01,808 basehttp "POST /contact/ HTTP/1.1" 302 0
+INFO 2025-05-24 20:54:01,813 basehttp "GET /contact/ HTTP/1.1" 200 24318
+INFO 2025-05-24 21:04:14,200 autoreload Watching for file changes with StatReloader
+INFO 2025-05-24 21:04:23,591 basehttp "GET / HTTP/1.1" 200 54894
+WARNING 2025-05-24 21:04:23,641 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-05-24 21:04:23,641 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-24 21:04:23,641 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-24 21:04:49,975 basehttp "GET /static/img/pin.png HTTP/1.1" 304 0
