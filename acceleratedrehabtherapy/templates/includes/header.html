@@ -43,19 +43,66 @@
               <a href="{% url 'main:contact' %}" class="text-lg font-bold text-white hover:text-yellow-400">CONTACT</a>
           </nav>
 
-          <!-- Contact Box -->
-          <div class="hidden lg:block flex-shrink-0 mr-8">
-              <div class="bg-gradient-to-b from-yellow-400 to-orange-600 rounded-br-lg px-4 py-2 text-center ml-auto">
-                  <a href="tel:+19703241750" class="block text-2xl font-bold text-black hover:opacity-90">
+          <!-- Contact Boxes -->
+          <div class="hidden lg:flex flex-shrink-0 space-x-4">
+              <!-- Greeley Location -->
+              <div class="bg-gradient-to-b from-yellow-400 to-orange-600 rounded-br-lg px-4 py-3 text-center">
+                  <h4 class="text-sm font-bold text-black mb-1">GREELEY</h4>
+                  <a href="tel:+19703241750" class="block text-xl font-bold text-black hover:text-blue-700">
                       970-324-1750
                   </a>
-                  <button class="mt-2 bg-blue-600 text-white px-6 py-2 rounded text-sm font-bold hover:bg-blue-700">
-                      Make Appointment
-                  </button>
-                  <div class="mt-2 text-xs text-white font-medium">
-                      <div>Mon, Wed - 8 am to 5:30 pm</div>
-                      <div>Fri - 9 am to 4 pm</div>
-                      <div>Thursday - By appointment</div>
+                  <div class="relative inline-block overflow-hidden">
+                      <a href="tel:+19703241750" 
+                         @click.prevent="
+                             const rect = $el.getBoundingClientRect();
+                             const x = event.clientX - rect.left;
+                             const y = event.clientY - rect.top;
+                             const ripple = document.createElement('span');
+                             ripple.className = 'absolute bg-white/30 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none';
+                             ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+                             ripple.style.left = x + 'px';
+                             ripple.style.top = y + 'px';
+                             $el.appendChild(ripple);
+                             setTimeout(() => { $el.removeChild(ripple); }, 1000);
+                             window.location.href = 'tel:+19703241750';
+                         " 
+                         class="relative z-10 mt-2 inline-block bg-blue-600 text-white px-4 py-1 rounded text-xs font-bold hover:bg-orange-500 hover:text-white">
+                          Call Greeley
+                      </a>
+                  </div>
+                  <div class="mt-2 text-xs text-black font-medium">
+                      <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
+                  </div>
+              </div>
+              
+              <!-- Denver Location -->
+              <div class="bg-blue-600 rounded-br-lg px-4 py-3 text-center shadow-md">
+                  <h4 class="text-sm font-bold text-white mb-1">DENVER</h4>
+                  <a href="tel:+17206042792" class="block text-xl font-bold text-white hover:no-underline hover:text-white">
+                      720-604-2792
+                  </a>
+                  <div class="relative inline-block overflow-hidden mt-2">
+                      <a href="tel:+17206042792" 
+                         @click.prevent="
+                             const rect = $el.getBoundingClientRect();
+                             const x = event.clientX - rect.left;
+                             const y = event.clientY - rect.top;
+                             const ripple = document.createElement('span');
+                             ripple.className = 'absolute bg-white/30 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none';
+                             ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+                             ripple.style.left = x + 'px';
+                             ripple.style.top = y + 'px';
+                             $el.appendChild(ripple);
+                             setTimeout(() => { $el.removeChild(ripple); }, 1000);
+                             window.location.href = 'tel:+17206042792';
+                         " 
+                         class="relative z-10 inline-block bg-orange-500 text-white px-4 py-1.5 rounded text-xs font-bold hover:bg-orange-600 hover:text-white shadow-md">
+                          Call Denver
+                      </a>
+                  </div>
+                  <div class="mt-2 text-xs text-blue-100 font-medium">
+                      <div>Mon & Wed: 8:00 AM - 5:30 PM</div>
+                      <div>Fri: 8:00 AM - 2:00 PM</div>
                   </div>
               </div>
           </div>
