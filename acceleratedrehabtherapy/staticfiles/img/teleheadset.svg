@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="teleheadset.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5393939"
+     inkscape:cx="396.58465"
+     inkscape:cy="561.25984"
+     inkscape:window-width="3840"
+     inkscape:window-height="1994"
+     inkscape:window-x="2869"
+     inkscape:window-y="49"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 138.23875,129.61408 c -0.0701,0 -0.12755,-0.0566 -0.12755,-0.127 0,-0.0701 0.0563,-0.12673 0.12631,-0.12673 0.95149,0 1.72453,-0.77311 1.72453,-1.72323 v -1.30572 c 0,-0.95039 -0.77304,-1.7235 -1.72329,-1.7235 -0.95148,0 -1.72453,0.77311 -1.72453,1.7235 v 1.34673 c 0,0.0701 -0.0568,0.127 -0.1269,0.127 -0.0701,0 -0.1269,-0.0569 -0.1269,-0.127 v -1.34673 c 0,-1.09035 0.88694,-1.97723 1.97709,-1.97723 1.09141,0 1.97829,0.88688 1.97829,1.97723 v 1.30572 c 0,1.09008 -0.88688,1.97696 -1.97705,1.97696 z"
+       fill="#ffffff"
+       fill-opacity="0.95"
+       id="path48"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="black" stroke-width="2">
+  <!-- Head -->
+  <circle cx="50" cy="20" r="8" fill="black" />
+
+  <!-- Body -->
+  <line x1="50" y1="28" x2="50" y2="50" />
+
+  <!-- Left Arm -->
+  <line x1="50" y1="35" x2="35" y2="45" />
+
+  <!-- Right Arm -->
+  <line x1="50" y1="35" x2="65" y2="25" />
+
+  <!-- Left Leg -->
+  <line x1="50" y1="50" x2="40" y2="70" />
+
+  <!-- Right Leg -->
+  <line x1="50" y1="50" x2="70" y2="65" />
+
+  <!-- Floor (slipping effect) -->
+  <line x1="30" y1="80" x2="80" y2="85" stroke-dasharray="4 4" />
+</svg>

@@ -47,6 +47,10 @@
     .form-label {
         @apply block text-sm font-medium text-gray-700;
     }
+    .grid-block {
+        @apply mx-auto px-5;
+        max-width: 1080px;
+    }
 }
 
 /* Custom utilities */
@@ -59,5 +63,14 @@
     }
     .text-shadow-lg {
         text-shadow: 15px 15px 30px rgba(0,0,0,0.11);
+    }
+    .logo-invert {
+        filter: invert(1) brightness(2);
+    }
+    
+    @media (max-width: 1079px) {
+        .grid-block {
+            width: 100%;
+        }
     }
 }
