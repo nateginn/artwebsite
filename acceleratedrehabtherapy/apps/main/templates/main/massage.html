@@ -2,17 +2,72 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Massage Therapy - Accelerated Rehab Therapy{% endblock %}
+{% block meta_description %}Professional massage therapy in Greeley & Denver. Specializing in medical massage, deep tissue, and relaxation techniques. Book your appointment today!{% endblock %}
+
+{% block og_title %}Expert Massage Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Find relief from pain and stress with our professional massage therapy services. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Accelerated Rehab Therapy - Massage Therapy",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/massage-therapy.jpg' %}",
+  "@id": "{{ request.build_absolute_uri }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "telephone": "+19703517465",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3615 W 20th St",
+    "addressLocality": "Greeley",
+    "addressRegion": "CO",
+    "postalCode": "80634",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.3969,
+    "longitude": -104.7589
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/acceleratedrehabtherapy",
+    "https://www.instagram.com/acceleratedrehabtherapy/"
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Hero Section with Schema.org markup -->
+<main itemscope itemtype="https://schema.org/MedicalBusiness">
 <section class="relative bg-white pt-16 pb-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
                 I NEED QUALITY MASSAGE THERAPY<br class="hidden md:block"> 
-                NEAR GREELEY, CO
+                IN GREELEY & DENVER, CO
             </h1>
             
             <div class="relative max-w-3xl">
@@ -95,8 +150,8 @@
                     Seeing a pro massage therapist is the best way to feel better. Especially if you have car crash pain, you'll notice a quick improvement. Remember, when looking for "the best massage therapist near me," you can define your search however you want. That means if you prefer a deep muscle massage, you can change the words. If you're looking for a pro massage therapist that also performs hot stone therapy, you would use that as part of your search term.
                 </p>
 
-                <p class="text-gray-700 leading-relaxed">
-                    At Accelerated Rehab Therapy, we take a great deal of pride in the range of services that we offer our clients. Even with an extended list of quality treatment options, we keep our massage therapy prices affordable. We know how wonderful massages are and how they help both the body and mind. That's why we want other people to experience them. Whether dealing with a workman's comp situation, auto accident, fall down the stairs, or some kind of physical disorder, we have the experience and expertise required to help make your life better. Call us today.
+                <p class="text-gray-700 leading-relaxed" itemprop="description">
+                    At Accelerated Rehab Therapy, we take a great deal of pride in the range of services that we offer our clients across both our Greeley and Denver locations. Even with an extended list of quality treatment options, we keep our massage therapy prices affordable. We know how wonderful massages are and how they help both the body and mind. That's why we want other people to experience them. Whether dealing with a workman's comp situation, auto accident, fall down the stairs, or some kind of physical disorder, we have the experience and expertise required to help make your life better. Call us today to schedule at either our Greeley or Denver location.
                 </p>
             </div>
         </div>
@@ -104,4 +159,5 @@
 
     {% include 'includes/_cta_section.html' %}
 </section>
+</main>
 {% endblock %}
