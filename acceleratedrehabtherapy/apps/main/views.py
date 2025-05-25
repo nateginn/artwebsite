@@ -226,9 +226,80 @@ def physical_therapy(request):
     """Physical therapy page view"""
     return render(request, 'main/physical_therapy.html')
 
-@require_GET
+import logging
+import sys
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+from django.http import HttpResponse
+from django.views.decorators.http import require_http_methods, require_GET
+
+# Debug print to verify module loading
+print("\n=== VIEWS.PY LOADED ===")
+print(f"Current module: {__name__}")
+print(f"File: {__file__}")
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    stream=sys.stdout
+)
+logger = logging.getLogger('contact_form')
+
+@require_http_methods(["GET", "POST"])
 def contact(request):
-    """Contact page view"""
+    logger = logging.getLogger('contact_form')
+    
+    if request.method == "POST":
+        # Get form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone', '')
+        message = request.POST.get('message', '')
+        
+        # Basic validation
+        if not all([name, email, message]):
+            messages.error(request, 'Please fill in all required fields.')
+            logger.warning("Form validation failed - missing required fields")
+            return redirect('contact')
+            
+        logger.info(f"New contact form submission from {name} ({email})")
+        
+        # Prepare email content
+        subject = f'New Contact Form Submission from {name}'
+        email_message = f"""
+        New contact form submission:
+        
+        Name: {name}
+        Email: {email}
+        Phone: {phone}
+        
+        Message:
+        {message}
+        """
+        
+        try:
+            send_mail(
+                subject=subject,
+                message=email_message.strip(),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.EMAIL_HOST_USER],
+                fail_silently=False,
+            )
+            logger.info(f"Contact form email sent successfully to {settings.EMAIL_HOST_USER}")
+            messages.success(request, 'Thank you for your message. We will get back to you soon!')
+            return redirect('contact')
+            
+        except Exception as e:
+            logger.error(f"Error sending contact form email: {str(e)}")
+            messages.error(request, 'There was an error sending your message. Please try again later.')
+            # Log the error with stack trace
+            logger.exception("Error sending email")
+            messages.error(request, 'There was an error sending your message. Please try again.')
+    
+    # For GET requests or if there was an error
+    logger.debug("Rendering contact form template")
     return render(request, 'main/contact.html')
 
 @require_GET
@@ -240,11 +311,4 @@ def about(request):
 def resources(request):
     """Resources page view"""
     return render(request, 'main/resources.html')
-
-@require_http_methods(["GET", "POST"])
-def contact(request):
-    if request.method == "POST":
-        # Add form processing logic here
-        pass
-    return render(request, 'main/contact.html')
 
