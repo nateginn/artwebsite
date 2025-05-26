@@ -1,0 +1,56 @@
+{% load static %}
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Accelerated Rehab Therapy",
+  "description": "Professional chiropractic care and rehabilitation services in Greeley and Denver, CO. Specializing in auto injuries, work comp, and chronic pain relief.",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "1705 61st Ave Unit C",
+      "addressLocality": "Greeley",
+      "addressRegion": "CO",
+      "postalCode": "80634",
+      "addressCountry": "US"
+    },
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "2480 W 26th Ave #90B",
+      "addressLocality": "Denver",
+      "addressRegion": "CO",
+      "postalCode": "80211",
+      "addressCountry": "US"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.422457",
+    "longitude": "-104.728624"
+  },
+  "telephone": "+19703241750",
+  "email": "greeleyrehab@gmail.com",
+  "url": "{{ request.build_absolute_uri }}",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo.png' %}",
+  "sameAs": [
+    "https://www.facebook.com/yourpage",
+    "https://www.instagram.com/yourprofile"
+  ]
+}
+</script>

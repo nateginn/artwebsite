@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="firstaidkitblue.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5393939"
+     inkscape:cx="396.58465"
+     inkscape:cy="561.25984"
+     inkscape:window-width="3840"
+     inkscape:window-height="1994"
+     inkscape:window-x="2869"
+     inkscape:window-y="49"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="paint0_linear"
+       x1="496.15399"
+       y1="10.4526"
+       x2="449.39401"
+       y2="21.2754"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.26458333,0,0,0.26458333,-8.7312467,120.65)">
+      <stop
+         stop-color="#00D1FF"
+         id="stop63" />
+      <stop
+         offset="1"
+         stop-color="#084ACB"
+         id="stop64" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 120.66905,123.28972 h -1.45547 v -1.21085 c 0,-0.64036 -0.52388,-1.16429 -1.16417,-1.16429 h -2.25875 c -0.64055,0 -1.16443,0.52393 -1.16443,1.16429 v 1.19921 h -1.45521 c -0.97816,0 -1.78143,0.80335 -1.78143,1.78136 v 4.65712 c 0,0.978 0.80327,1.78136 1.78143,1.78136 h 7.49803 c 0.9779,0 1.78118,-0.80336 1.78118,-1.78136 v -4.65712 c 0,-0.97801 -0.80328,-1.76972 -1.78118,-1.76972 z m -4.94824,-1.21085 c 0,-0.0349 0.0349,-0.0699 0.0699,-0.0699 h 2.24711 c 0.0349,0 0.0699,0.0349 0.0699,0.0699 v 1.19921 h -2.38681 z m 3.28322,6.04262 h -1.3507 v 1.36221 h -1.46685 v -1.36221 h -1.3507 v -1.45534 h 1.36234 v -1.36221 h 1.45521 v 1.36221 h 1.36234 v 1.45534 z"
+       fill="url(#paint0_linear)"
+       id="path38"
+       style="fill:url(#paint0_linear);stroke-width:0.264583" />
+  </g>
+</svg>

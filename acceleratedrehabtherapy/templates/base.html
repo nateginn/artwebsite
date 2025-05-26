@@ -1,27 +1,64 @@
 <!-- acceleratedrehabtherapy/templates/base.html -->
 
 <!DOCTYPE html>
+{% load static %}
+{% load compress %}
 <html lang="en" class="h-full">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
-    <title>{% block title %}{{ meta_title|default:"Accelerated Rehab Therapy" }}{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}{{ meta_description|default:'Professional chiropractic and rehabilitation services.' }}{% endblock %}">
+    <title>{% block title %}{{ meta_title|default:"Accelerated Rehab Therapy | Chiropractic & Rehabilitation Services in Greeley & Denver" }}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ meta_description|default:'Expert chiropractic care, physical therapy, and rehabilitation services in Greeley and Denver. Specializing in auto injuries, work comp, and chronic pain relief.' }}{% endblock %}">
+    <meta name="keywords" content="chiropractor Greeley, physical therapy Denver, rehabilitation services, auto injury treatment, work comp therapy, pain management, chiropractic care, sports injury therapy">
+    <meta name="author" content="Accelerated Rehab Therapy">
+    <meta name="robots" content="index, follow">
     
-    {% load static %}
-    {% load compress %}
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}{{ meta_title|default:'Accelerated Rehab Therapy' }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ meta_description|default:'Expert chiropractic and rehabilitation services in Greeley and Denver' }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-default.jpg' %}{% endblock %}">
     
-    <!-- Tailwind CSS -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ meta_title|default:'Accelerated Rehab Therapy' }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ meta_description|default:'Expert chiropractic and rehabilitation services in Greeley and Denver' }}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-default.jpg' %}{% endblock %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="{% static 'dist/styles.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{% static 'dist/styles.css' %}?v={% now 'Ymd' %}"></noscript>
+    
+    <!-- Google Fonts with preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"></noscript>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    
     {% compress css %}
     <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
     {% endcompress %}
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <!-- Structured Data -->
+    {% include 'includes/_structured_data.html' %}
     
-
     {% compress css %}
     <style>
         :root {

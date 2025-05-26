@@ -3,17 +3,72 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Find a Chiropractor Near Me - Accelerated Rehab Therapy{% endblock %}
+{% block meta_description %}Expert chiropractic care in Greeley & Denver. Specializing in auto accident recovery, back pain relief, and holistic treatment. Accepting new patients. Call today!{% endblock %}
+
+{% block og_title %}Expert Chiropractor in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Find relief from back pain, auto injuries, and more with our expert chiropractic care. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Accelerated Rehab Therapy - Chiropractic Care",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/chiropractic-care.jpg' %}",
+  "@id": "{{ request.build_absolute_uri }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "telephone": "+19703517465",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3615 W 20th St",
+    "addressLocality": "Greeley",
+    "addressRegion": "CO",
+    "postalCode": "80634",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.3969,
+    "longitude": -104.7589
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/acceleratedrehabtherapy",
+    "https://www.instagram.com/acceleratedrehabtherapy/"
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Hero Section with Schema.org markup -->
+<main itemscope itemtype="https://schema.org/MedicalBusiness">
 <section class="relative bg-white pt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
                 HOW DO I FIND AN EXCELLENT<br class="hidden md:block"> 
-                CHIROPRACTOR NEAR ME?
+                CHIROPRACTOR IN GREELEY OR DENVER?
             </h1>
             
             <div class="relative max-w-3xl">
@@ -33,8 +88,7 @@
         <div class="space-y-8 mt-4 relative z-20">
             <div class="max-w-3xl mx-auto">
                 <p class="text-gray-700 leading-relaxed">
-                    Are you tired of searching for a "chiropractor near me" but without much success? If you need to see a 
-                    <a href="#" class="text-blue-600 hover:text-blue-800">car accident chiropractor</a> due to pain, immobility, or some other problem, turn to the experts at Accelerated Rehab Therapy. For the convenience of our patients, we have several different facilities. Therefore, when looking for a "Chiropractor near me," you can add in a specific city name. In return, you'll receive a link to our website for that location.
+                    Are you searching for expert chiropractic care in Northern Colorado? Whether you need a <a href="#" class="text-blue-600 hover:text-blue-800">car accident chiropractor</a> for pain relief, improved mobility, or other health concerns, Accelerated Rehab Therapy has you covered. With convenient locations in both Greeley and Denver, we make it easy to access expert chiropractic care close to home. No matter which location you choose, you'll receive the same high-quality, personalized care from our team of experienced professionals.
                 </p>
             </div>
 
@@ -84,7 +138,7 @@
 
             <div class="max-w-3xl mx-auto">
                 <p class="text-gray-700 leading-relaxed">
-                    For outstanding chiropractic care in Greeley, and Fort Collins, Colorado, you'll never go wrong choosing Accelerated Rehab Therapy. We genuinely care about our patients and provide each one with a customized solution. With our professional services, there's no reason to suffer with pain. Do something good for yourself by calling us to schedule an appointment today.
+                    For outstanding chiropractic care in Northern Colorado, you'll never go wrong choosing Accelerated Rehab Therapy. With convenient locations in both Greeley and Denver, we make it easy to access the expert care you need. Our team genuinely cares about our patients and provides each one with a customized solution. Whether you're dealing with chronic pain, recovering from an injury, or seeking preventive care, our professional services can help. Don't wait any longer to feel your best - call us today to schedule an appointment at either our Greeley or Denver location.
                 </p>
             </div>
 
@@ -94,17 +148,20 @@
 
 {% include 'includes/_cta_section.html' %}
 
-<div class="w-full bg-white">
+<div class="w-full bg-white" itemscope itemtype="https://schema.org/FAQPage">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="space-y-8 mt-4 relative z-20">
 
             <!-- FAQs Section -->
             <div class="pt-8">
-                <h2 class="text-4xl font-bold text-[#001524] mb-6">FAQS</h2>
+                <h2 class="text-4xl font-bold text-[#001524] mb-6" id="faq">Frequently Asked Questions</h2>
                 <div class="space-y-6">
                     <!-- FAQ Items -->
                     <div>
-                        <h3 class="text-lg font-bold mb-2">Q: What conditions do chiropractors treat?</h3>
+                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 class="text-lg font-bold mb-2" itemprop="name">What conditions do chiropractors treat?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
                         <p class="text-gray-700">A: An excellent chiropractor can help with the treatment of varied health problems, including:</p>
                         <ul class="list-disc pl-8 mt-2 text-gray-700">
                             <li>Sprains & Strains</li>
@@ -112,6 +169,9 @@
                             <li>Arthritic Pain</li>
                             <li>Various Kinds of Injuries</li>
                         </ul>
+        </div>
+    </div>
+</div>
                     </div>
 
                     <!-- Additional FAQs from screenshots -->

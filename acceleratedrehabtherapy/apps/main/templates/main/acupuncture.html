@@ -2,16 +2,73 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Acupuncture - Accelerated Rehab Therapy{% endblock %}
+{% block meta_description %}Professional acupuncture services in Greeley & Denver. Specializing in pain management, stress relief, and holistic healing. Book your session today!{% endblock %}
+
+{% block og_title %}Expert Acupuncture in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Find relief from pain and stress with our professional acupuncture services. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Accelerated Rehab Therapy - Acupuncture",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/acupuncture.jpg' %}",
+  "@id": "{{ request.build_absolute_uri }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "telephone": "+19703517465",
+  "priceRange": "$$",
+  "medicalSpecialty": "Acupuncture",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3615 W 20th St",
+    "addressLocality": "Greeley",
+    "addressRegion": "CO",
+    "postalCode": "80634",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.3969,
+    "longitude": -104.7589
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/acceleratedrehabtherapy",
+    "https://www.instagram.com/acceleratedrehabtherapy/"
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
+<!-- Hero Section with Schema.org markup -->
+<main itemscope itemtype="https://schema.org/MedicalBusiness">
 <section class="relative bg-white pt-16 pb-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
                 WHERE CAN I FIND THE BEST<br class="hidden md:block"> 
-                ACUPUNCTURE NEAR GREELEY, CO?
+                ACUPUNCTURE IN GREELEY & DENVER, CO?
             </h1>
             
             <div class="relative max-w-3xl">
@@ -29,7 +86,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto space-y-8">
                 <p class="text-gray-700 leading-relaxed">
-                    Are you trying to find the best acupuncture clinic close to home? If you are looking for an <a href="{% url 'main:auto_injury' %}" class="text-blue-600 hover:text-blue-800">auto injury doctor</a>, Accelerated Rehab Therapy can help. Just imagine not ever having to search for "acupuncture near me" again. We have a therapist who uses both ancient Chinese and modern acupuncture, giving you the best of both worlds. Knowing you have help available, whether in Fort Collins, or Greeley, your days of searching for "acupuncture near me" are over.
+                    Are you looking for the best acupuncture clinic in Northern Colorado? At Accelerated Rehab Therapy, we're proud to serve both Greeley and Denver with expert acupuncture services. Whether you need treatment for an auto injury, chronic pain, or other health concerns, our skilled therapists combine ancient Chinese techniques with modern acupuncture methods. With convenient locations in both cities, you'll never need to search for "acupuncture near me" again.
                 </p>
             </div>
         </div>
@@ -77,7 +134,7 @@
                 </p>
                 
                 <p class="text-gray-700 leading-relaxed">
-                    If you live with pain, regardless of the cause, and perhaps need assistance with a work comp claim, <a href="{% url 'main:home' %}" class="text-blue-600 hover:text-blue-800">Accelerated Rehab Therapy</a> is your ideal source. With our acupuncture treatment, you can relax while the expert goes to work in helping you achieve optimal wellness. We have a rehab facility in Greeley, and Fort Collins, Colorado. Call today for an appointment.
+                    If you live with pain, regardless of the cause, and perhaps need assistance with a work comp claim, <a href="{% url 'main:home' %}" class="text-blue-600 hover:text-blue-800">Accelerated Rehab Therapy</a> is your ideal source. With our acupuncture treatment, you can relax while the expert goes to work in helping you achieve optimal wellness. We have convenient rehab facilities in both Greeley and Denver, Colorado, making it easy to access quality care no matter which part of the Front Range you call home. Call today to schedule an appointment at either location.
                 </p>
             </div>
         </div>
@@ -85,4 +142,5 @@
 
     {% include 'includes/_cta_section.html' %}
 </section>
+</main>
 {% endblock %}

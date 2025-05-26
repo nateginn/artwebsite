@@ -53,6 +53,8 @@
                          'opacity-0': currentSlide !== index}">
                 <img :src="slide.image" 
                      :alt="slide.title"
+                     loading="lazy"
+                     decoding="async"
                      class="h-full w-full object-cover">
             </div>
         </template>

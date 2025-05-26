@@ -2,16 +2,73 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Physical Therapy - Accelerated Rehab Therapy{% endblock %}
+{% block meta_description %}Expert physical therapy in Greeley & Denver. Specializing in injury recovery, pain management, and rehabilitation. Accepting new patients. Call today!{% endblock %}
+
+{% block og_title %}Expert Physical Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Regain mobility and reduce pain with our professional physical therapy services. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Accelerated Rehab Therapy - Physical Therapy",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/physical-therapy.jpg' %}",
+  "@id": "{{ request.build_absolute_uri }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "telephone": "+19703517465",
+  "priceRange": "$$",
+  "medicalSpecialty": "Physical Therapy",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3615 W 20th St",
+    "addressLocality": "Greeley",
+    "addressRegion": "CO",
+    "postalCode": "80634",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.3969,
+    "longitude": -104.7589
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/acceleratedrehabtherapy",
+    "https://www.instagram.com/acceleratedrehabtherapy/"
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
+<!-- Hero Section with Schema.org markup -->
+<main itemscope itemtype="https://schema.org/MedicalBusiness">
 <section class="relative bg-white pt-16 pb-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
                 I AM SEARCHING FOR PHYSICAL<br class="hidden md:block"> 
-                THERAPY NEAR GREELEY, CO
+                THERAPY IN GREELEY & DENVER, CO
             </h1>
             
             <div class="relative max-w-3xl">
@@ -60,7 +117,7 @@
                     </p>
                     
                     <p class="text-gray-700 leading-relaxed">
-                        Although there are many physical therapists with multiple locations like Greeley, and Fort Collins, Colorado, not all provide the same caliber of service. With everything that we offer at Accelerated Rehab Therapy, there's no reason to continue on the quest of trying to find "the best physical therapy near me."
+                        Although there are many physical therapists in the Front Range, not all provide the same caliber of service as Accelerated Rehab Therapy. With our convenient locations in both Greeley and Denver, Colorado, there's no need to continue searching for "the best physical therapy near me."
                     </p>
                 </div>
 
@@ -94,7 +151,7 @@
                     </p>
                     
                     <p class="text-gray-700 leading-relaxed">
-                        No matter what your situation is, our dedicated experts at Accelerated Rehab Therapy can help. We offer innovative treatment plans and utilize state-of-the-art equipment. Instead of cookie-cutter solutions, we customize every treatment according to the patient's needs. For more information or to schedule an appointment, give us a call. We are proud to serve Greeley, and Fort Collins, CO.
+                        No matter what your situation is, our dedicated experts at Accelerated Rehab Therapy can help. We offer innovative treatment plans and utilize state-of-the-art equipment. Instead of cookie-cutter solutions, we customize every treatment according to the patient's needs. For more information or to schedule an appointment, give us a call. We are proud to serve both Greeley and Denver, Colorado with convenient locations in both cities.
                     </p>
                 </div>
             </div>
@@ -104,4 +161,5 @@
     {% include 'includes/_cta_section.html' %}
     {% include 'includes/_pt_faqs.html' %}
 </section>
+</main>
 {% endblock %}

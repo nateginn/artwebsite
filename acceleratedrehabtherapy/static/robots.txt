@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /static/admin/
+Disallow: /accounts/
+
+Sitemap: https://www.acceleratedrehabtherapy.com/sitemap.xml

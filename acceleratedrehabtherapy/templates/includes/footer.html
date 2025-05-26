@@ -2,47 +2,71 @@
 
 {% load static %}
 
-<footer class="bg-[#001524] text-white py-8">
+<footer class="bg-[#001524] text-white border-t border-gray-700 py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Company Info -->
             <div>
-                <div class="flex items-center space-x-2 mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-yellow-400">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                    <a href="tel:+19703241750" class="text-xl font-bold hover:text-yellow-400">
-                        970-324-1750
-                    </a>
-                </div>
-                <a href="{% url 'main:contact' %}" class="block text-sm text-gray-400 hover:text-yellow-400 ml-8 mb-4">
-                    Schedule Appointment
-                </a>
-                
-                <div class="flex items-center space-x-2 mb-4">
-                    <span class="text-gray-400">Company rating:</span>
-                    <div class="flex text-yellow-400">
-                        {% for i in "12345" %}
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        {% endfor %}
+                <div class="space-y-4">
+                    <!-- Greeley Location -->
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-bold text-yellow-400">GREELEY</h3>
+                        <div class="flex items-start space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-1 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <a href="https://maps.google.com/maps?daddr=40.422457,-104.728624&z=15" target="_blank" class="hover:text-yellow-400">
+                                1705 61st Ave Unit C<br>Greeley, CO 80634
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:970-324-1750" class="hover:text-yellow-400">970-324-1750</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:greeleyrehab@gmail.com" class="hover:text-yellow-400">greeleyrehab@gmail.com</a>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Monday-Friday: 8:00 AM - 6:00 PM
+                        </div>
+                    </div>
+
+                    <!-- Denver Location -->
+                    <div class="space-y-2 pt-4">
+                        <h3 class="text-lg font-bold text-yellow-400">DENVER</h3>
+                        <div class="flex items-start space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-1 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <a href="https://maps.google.com/maps?daddr=39.7392,-104.9903&z=15" target="_blank" class="hover:text-yellow-400">
+                                2480 W 26th Ave #90B<br>Denver, CO 80211
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:720-604-2792" class="hover:text-yellow-400">720-604-2792</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:artdenver.art@gmail.com" class="hover:text-yellow-400">artdenver.art@gmail.com</a>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Monday & Wednesday: 8:00 AM - 5:30 PM<br>
+                            Friday: 8:00 AM - 2:00 PM
+                        </div>
                     </div>
                 </div>
-                
-                <a href="https://maps.google.com/maps?daddr=40.422457,-104.728624&z=15" 
-                target="_blank" 
-                class="text-sm mb-2 block hover:text-yellow-400">
-                    2928 W 10th St Greeley, CO 80634
-                </a>
-
-                <a href="https://maps.google.com/maps?daddr=40.515388483146566, -105.07832820846961" 
-                target="_blank" 
-                class="text-sm mb-2 block hover:text-yellow-400">
-                    105 Coronado Ct. STE B-102 Fort Collins, CO 80525
-                </a>
-                
-                <p class="text-sm text-gray-400">© 2024. Accelerated Rehab Therapy</p>
             </div>
 
             <!-- Navigation Links -->
@@ -57,16 +81,35 @@
                 <a href="{% url 'main:about_us' %}" class="text-sm font-bold hover:text-yellow-400">ABOUT</a>
             </div>
             
-            <!-- Business Hours -->
-            <div class="text-md space-y-2">
-                <h3 class="text-lg font-bold text-yellow-400 mb-2">Business Hours</h3>
-                <h4 class="text-md font-bold">ART</h4>
-                <p>Monday: 8 am to 5:30 pm</p>
-                <p>Wednesday: 8 am to 5:30 pm</p>
-                <p>Friday: 9 am to 4 pm</p>
-                <h4 class="text-md font-bold">UNC</h4>
-                <p>Wednesday: 9 am to 4 pm</p>
-                <p>Thursday: 9 am to 4 pm</p>
+            <!-- UNC Location (Closed for Summer) -->
+            <div class="space-y-3 bg-gray-800/30 p-4 rounded-lg border border-yellow-400/20">
+                <div class="flex items-center gap-2">
+                    <h3 class="text-lg font-bold text-yellow-400">UNC</h3>
+                    <span class="text-xs bg-yellow-400/20 text-yellow-300 px-2 py-0.5 rounded-full">Closed for Summer</span>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-1 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <a href="https://maps.google.com/maps?q=1901+10th+Ave+Cassidy+Hall+Greeley+CO+80639" target="_blank" class="hover:text-yellow-400">
+                        1901 10th Ave, Cassidy Hall<br>Greeley, CO 80639
+                    </a>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <a href="tel:970-351-2412" class="hover:text-yellow-400">970-351-2412</a>
+                </div>
+                <div class="text-xs text-yellow-300/80 mt-2">
+                    <p class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        Currently closed for summer break
+                    </p>
+                </div>
             </div>
 
             <!-- Social and Credits -->
