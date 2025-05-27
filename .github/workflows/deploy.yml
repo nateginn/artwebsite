@@ -42,11 +42,25 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /var/www/artwebsite
+          # Fix Git safe directory issue
+          git config --global --add safe.directory /var/www/artwebsite
+          
+          # Navigate to project directory
+          cd /var/www/artwebsiteOk ok Cortana
+          
+          # Update code
           git fetch
           git reset --hard origin/main
+          
+          # Install dependencies
+          export PATH="$HOME/.local/bin:$PATH"
           poetry install --no-interaction
+          
+          # Run migrations and collect static files
           poetry run python manage.py migrate
           poetry run python manage.py collectstatic --noinput
+          
+          # Restart Gunicorn
           sudo systemctl restart gunicorn
+          
           echo "Deployment successful!"
