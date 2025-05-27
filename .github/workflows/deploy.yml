@@ -19,6 +19,8 @@ jobs:
       uses: snok/install-poetry@v1
     
     - name: Set up environment variables
+      run: |
+        echo "Environment variables set"
       env:
         EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
         EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
