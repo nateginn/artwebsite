@@ -13,6 +13,8 @@ jobs:
       EMAIL_USE_TLS: ${{ secrets.EMAIL_USE_TLS }}
       EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
       EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+      DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
+      SERVER_EMAIL: ${{ secrets.SERVER_EMAIL }}
 
     steps:
     - uses: actions/checkout@v3
