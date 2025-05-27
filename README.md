@@ -1,13 +1,18 @@
-# artwebsite\README.md
-
 # Accelerated Rehab Therapy Website
 
-A modern, Django-based website for Accelerated Rehab Therapy, built with Python 3.12 and modern web technologies.
+A modern, Django-based website for Accelerated Rehab Therapy, featuring a complete CI/CD pipeline, PostgreSQL database, and production-ready deployment.
 
 ## 🚀 Technologies
 
+### Backend
 - Python 3.12
 - Django 5.1.4
+- PostgreSQL
+- Gunicorn
+- Nginx
+- Poetry (Dependency Management)
+
+### Frontend
 - Tailwind CSS
 - HTMX
 - Alpine.js
@@ -17,9 +22,17 @@ A modern, Django-based website for Accelerated Rehab Therapy, built with Python 
 
 ## 📋 Prerequisites
 
+### Development
 - Python 3.12+
 - Poetry (Python package manager)
 - Node.js and npm (for Tailwind CSS)
+- Git
+
+### Production
+- Ubuntu Server (tested on 22.04 LTS)
+- Nginx
+- PostgreSQL
+- Systemd (for Gunicorn service)
 
 ## 🛠️ Setup
 
@@ -90,32 +103,80 @@ artwebsite/
   poetry run python manage.py collectstatic
   ```
 
-## 🎯 Current Features
+## 🎯 Features
 
-1. Modern Responsive Header
-   - Navigation menu
-   - Logo
-   - Contact information
-   - Mobile-friendly design
+### Website
+- Modern responsive design with mobile-first approach
+- Dynamic content management through Django admin
+- SEO-optimized pages
+- Fast loading with optimized static files
 
-2. Dynamic Home Page
-   - Full-screen hero slider with 4 images
-   - Automatic transitions with progress bar
-   - Call-to-action buttons
-   - Modern typography and layout
+### Admin Interface
+- Customized Django Jazzmin theme
+- Rich text editing with CKEditor 5
+- User and permission management
+- Activity logs
 
-3. Admin Interface
-   - Django Jazzmin theme
-   - CKEditor 5 for rich text editing
-   - User-friendly content management
+### Development
+- Complete CI/CD pipeline
+- Automated testing
+- Code quality checks
+- Environment-specific settings
+
+### Security
+- Production-ready security settings
+- Environment-based configuration
+- Secure password hashing
+- CSRF and XSS protection
 
 ## 🚀 Deployment
 
-1. Set `DEBUG=False` in production
-2. Configure proper database settings
-3. Set up proper static files serving (WhiteNoise configured)
-4. Configure proper media files handling
-5. Set up proper security settings
+The project includes GitHub Actions for CI/CD. Pushing to the `main` branch triggers automatic deployment.
+
+### Production Server Setup
+
+1. **Server Requirements**:
+   - Ubuntu 22.04 LTS
+   - Python 3.12
+   - PostgreSQL
+   - Nginx
+   - Git
+
+2. **Environment Variables**
+   Create a `.env` file in the project root with:
+   ```
+   DEBUG=False
+   SECRET_KEY=your-secret-key
+   ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com,server-ip
+   DATABASE_URL=postgres://user:password@localhost/dbname
+   EMAIL_HOST=smtp.gmail.com
+   EMAIL_PORT=587
+   EMAIL_USE_TLS=True
+   EMAIL_HOST_USER=your-email@gmail.com
+   EMAIL_HOST_PASSWORD=your-app-password
+   DEFAULT_FROM_EMAIL=your-email@gmail.com
+   SERVER_EMAIL=your-email@gmail.com
+   ```
+
+3. **CI/CD Pipeline**
+   - Automatic testing on push to `main`
+   - Automatic deployment on successful tests
+   - Environment variable management through GitHub Secrets
+
+4. **Manual Deployment Steps** (if needed):
+   ```bash
+   # Install dependencies
+   poetry install --no-interaction
+   
+   # Run migrations
+   poetry run python manage.py migrate
+   
+   # Collect static files
+   poetry run python manage.py collectstatic --noinput
+   
+   # Restart Gunicorn
+   sudo systemctl restart gunicorn
+   ```
 
 ## 📝 License
 
@@ -124,3 +185,29 @@ This project is proprietary and confidential.
 ## 🤝 Contributing
 
 For internal development team only. Please follow the project's coding standards and submit pull requests for review.
+
+### Development Workflow
+
+1. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. Make your changes and test locally
+
+3. Commit your changes with a descriptive message:
+   ```bash
+   git add .
+   git commit -m "Add your feature description"
+   ```
+
+4. Push to the repository:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. Open a pull request to the `main` branch
+
+## 📞 Support
+
+For support, please contact the development team at [growyourbiz4ever@gmail.com].

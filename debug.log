@@ -792,3 +792,16 @@ WARNING 2025-05-26 13:04:17,291 basehttp "GET /static/site.webmanifest HTTP/1.1"
 INFO 2025-05-26 13:04:18,588 basehttp "GET /static/img/pin.png HTTP/1.1" 304 0
 INFO 2025-05-26 13:04:51,030 basehttp "GET /resources/ HTTP/1.1" 200 37993
 WARNING 2025-05-26 13:04:51,208 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-05-26 14:54:02,183 autoreload Watching for file changes with StatReloader
+INFO 2025-05-26 15:10:20,858 autoreload Watching for file changes with StatReloader
+INFO 2025-05-26 15:10:31,237 basehttp "GET / HTTP/1.1" 200 64809
+WARNING 2025-05-26 15:10:31,592 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-05-26 15:10:31,592 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-05-26 15:10:31,592 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-05-26 15:10:31,698 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-05-26 15:10:31,808 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+WARNING 2025-05-26 15:10:31,810 basehttp "GET /static/img/favicon.ico HTTP/1.1" 404 1972
+WARNING 2025-05-26 15:10:31,828 basehttp "GET /static/img/favicon-32x32.png HTTP/1.1" 404 1990
+WARNING 2025-05-26 15:10:31,908 basehttp "GET /static/img/favicon-16x16.png HTTP/1.1" 404 1990
+INFO 2025-05-26 15:11:05,044 basehttp "GET /contact/ HTTP/1.1" 200 37712
+WARNING 2025-05-26 15:11:05,154 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
