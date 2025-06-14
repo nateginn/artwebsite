@@ -141,6 +141,84 @@
         </footer>
     </div>
 
+    <!-- Custom ZocDoc Booking Button - Styled to Match Site -->
+    <style>
+        /* Subtle pulse animation for booking button */
+        .art-pulse {
+            animation: art-pulse 2s infinite;
+        }
+        @keyframes art-pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            50% { transform: scale(1.07); box-shadow: 0 8px 16px rgba(245,158,11,0.35); }
+            100% { transform: scale(1); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        }
+        /* Gentle bounce animation for calendar icon */
+        .art-bounce {
+            animation: art-bounce 1.7s infinite;
+            display: inline-block;
+        }
+        @keyframes art-bounce {
+            0%, 100% { transform: translateY(0); }
+            10% { transform: translateY(-2px); }
+            20% { transform: translateY(-5px); }
+            30% { transform: translateY(-9px); }
+            40% { transform: translateY(-5px); }
+            50% { transform: translateY(0); }
+            60% { transform: translateY(2px); }
+            70% { transform: translateY(0); }
+        }
+    </style>
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <div class="group">
+            <!-- Custom Button with Site-Matching Styling, Pulse & Animated Icon -->
+            <a href="https://www.zocdoc.com/practice/accelerated-rehab-therapy-57575?lock=true&isNewPatient=false&referrerType=widget"
+               target="_blank" rel="noopener noreferrer"
+               class="art-pulse"
+               style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; 
+                      background: linear-gradient(to bottom, #f59e0b, #ea580c); 
+                      color: black; font-weight: bold; text-decoration: none; 
+                      border-radius: 9999px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+                      transition: all 0.3s ease; font-size: 14px;" 
+               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 8px rgba(0,0,0,0.15)';"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)';"
+               title="Book Appointment - Accelerated Rehab Therapy">
+                <!-- Animated Calendar Icon -->
+                <svg class="art-bounce" style="width: 18px; height: 18px; flex-shrink: 0;" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zM4 8h12v8H4V8z"/>
+                </svg>
+                <span style="display: inline;">Book Appointment</span>
+            </a>
+            
+            <!-- Mobile Tooltip -->
+            <div style="position: absolute; bottom: 100%; right: 0; margin-bottom: 8px; padding: 6px 12px;
+                        background-color: #1f2937; color: white; font-size: 12px; border-radius: 4px;
+                        opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap;"
+                 class="tooltip">
+                Book Appointment
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Tooltip Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('a[title="Book Appointment - Accelerated Rehab Therapy"]');
+            const tooltip = document.querySelector('.tooltip');
+            
+            if (window.innerWidth < 640) { // Mobile view
+                button.addEventListener('touchstart', function() {
+                    tooltip.style.opacity = '1';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    setTimeout(function() {
+                        tooltip.style.opacity = '0';
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+
     <!-- JavaScript -->
     {% block extra_js %}{% endblock %}
 </body>
