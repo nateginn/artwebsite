@@ -805,3 +805,253 @@ WARNING 2025-05-26 15:10:31,828 basehttp "GET /static/img/favicon-32x32.png HTTP
 WARNING 2025-05-26 15:10:31,908 basehttp "GET /static/img/favicon-16x16.png HTTP/1.1" 404 1990
 INFO 2025-05-26 15:11:05,044 basehttp "GET /contact/ HTTP/1.1" 200 37712
 WARNING 2025-05-26 15:11:05,154 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 21:39:03,604 autoreload Watching for file changes with StatReloader
+INFO 2025-06-13 21:43:02,331 autoreload Watching for file changes with StatReloader
+ERROR 2025-06-13 21:43:20,913 exception Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\utils\deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+WARNING 2025-06-13 21:43:20,983 log Bad Request: /
+WARNING 2025-06-13 21:43:20,983 basehttp "GET / HTTP/1.1" 400 90992
+ERROR 2025-06-13 21:43:21,259 exception Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\utils\deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+WARNING 2025-06-13 21:43:21,275 log Bad Request: /favicon.ico
+WARNING 2025-06-13 21:43:21,276 basehttp "GET /favicon.ico HTTP/1.1" 400 90795
+INFO 2025-06-13 21:44:20,592 autoreload Watching for file changes with StatReloader
+ERROR 2025-06-13 21:44:24,906 exception Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\utils\deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+WARNING 2025-06-13 21:44:24,925 log Bad Request: /
+WARNING 2025-06-13 21:44:24,925 basehttp "GET / HTTP/1.1" 400 91129
+ERROR 2025-06-13 21:44:25,071 exception Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\utils\deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+WARNING 2025-06-13 21:44:25,086 log Bad Request: /favicon.ico
+WARNING 2025-06-13 21:44:25,086 basehttp "GET /favicon.ico HTTP/1.1" 400 90795
+INFO 2025-06-13 21:46:08,033 autoreload Watching for file changes with StatReloader
+INFO 2025-06-13 21:46:12,442 basehttp "GET / HTTP/1.1" 200 67130
+INFO 2025-06-13 21:46:12,496 basehttp "GET /static/dist/styles.css HTTP/1.1" 200 41227
+INFO 2025-06-13 21:46:12,497 basehttp "GET /static/img/ARTlogoWHITE.png HTTP/1.1" 200 56787
+INFO 2025-06-13 21:46:12,498 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 200 1676
+INFO 2025-06-13 21:46:12,499 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 200 46722
+INFO 2025-06-13 21:46:12,499 basehttp "GET /static/img/massage.png HTTP/1.1" 200 38644
+INFO 2025-06-13 21:46:12,501 basehttp "GET /static/img/therapy.png HTTP/1.1" 200 29642
+INFO 2025-06-13 21:46:12,502 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 200 18466
+INFO 2025-06-13 21:46:12,508 basehttp "GET /static/img/newcar.svg HTTP/1.1" 200 428
+INFO 2025-06-13 21:46:12,508 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 200 530
+INFO 2025-06-13 21:46:12,514 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 200 945
+INFO 2025-06-13 21:46:12,516 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 200 12312
+INFO 2025-06-13 21:46:12,517 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 200 532
+WARNING 2025-06-13 21:46:12,528 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 21:46:12,528 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+INFO 2025-06-13 21:46:12,677 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-06-13 21:46:12,681 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-06-13 21:46:12,770 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 200 116452
+INFO 2025-06-13 21:46:12,771 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 200 179980
+INFO 2025-06-13 21:46:12,773 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 200 233714
+INFO 2025-06-13 21:46:12,774 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 200 142900
+INFO 2025-06-13 21:46:12,781 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 200 267927
+WARNING 2025-06-13 21:46:13,068 basehttp "GET /static/img/favicon.ico HTTP/1.1" 404 1972
+WARNING 2025-06-13 21:46:13,072 basehttp "GET /static/img/favicon-32x32.png HTTP/1.1" 404 1990
+WARNING 2025-06-13 21:46:13,076 basehttp "GET /static/img/favicon-16x16.png HTTP/1.1" 404 1990
+WARNING 2025-06-13 21:46:13,370 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 21:46:15,763 basehttp "GET /static/img/pin.png HTTP/1.1" 200 458
+INFO 2025-06-13 21:47:55,816 basehttp "GET / HTTP/1.1" 200 67132
+WARNING 2025-06-13 21:47:55,837 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 21:47:56,114 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 21:47:56,145 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 21:47:56,889 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 21:48:28,434 autoreload Watching for file changes with StatReloader
+INFO 2025-06-13 21:48:33,926 basehttp "GET / HTTP/1.1" 200 67132
+WARNING 2025-06-13 21:48:33,945 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 21:48:33,945 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 21:48:34,165 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 21:48:34,614 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 21:54:08,824 basehttp "GET / HTTP/1.1" 200 64809
+WARNING 2025-06-13 21:54:08,844 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 21:54:08,851 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 21:54:09,071 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 21:54:09,957 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 21:59:33,022 basehttp "GET / HTTP/1.1" 200 65798
+WARNING 2025-06-13 21:59:33,039 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 21:59:33,048 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 21:59:33,270 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 21:59:34,251 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 21:59:51,503 basehttp "GET / HTTP/1.1" 200 65798
+WARNING 2025-06-13 21:59:51,527 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 21:59:51,527 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 21:59:51,754 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 21:59:51,781 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:01:36,831 basehttp "GET / HTTP/1.1" 200 65329
+WARNING 2025-06-13 22:01:36,848 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:01:36,856 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+INFO 2025-06-13 22:01:37,078 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-06-13 22:01:37,081 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:01:37,486 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:01:50,811 basehttp "GET /contact/ HTTP/1.1" 200 38232
+WARNING 2025-06-13 22:01:51,074 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+WARNING 2025-06-13 22:01:56,418 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:03:57,804 basehttp "GET / HTTP/1.1" 200 65842
+WARNING 2025-06-13 22:03:57,820 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:03:58,102 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:03:58,130 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:03:58,535 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:04:53,022 basehttp "GET / HTTP/1.1" 200 64809
+WARNING 2025-06-13 22:04:53,041 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:04:53,041 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:04:53,270 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:04:53,392 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:09:30,608 basehttp "GET / HTTP/1.1" 200 65337
+WARNING 2025-06-13 22:09:30,623 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:09:30,635 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:09:30,855 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:09:31,151 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:09:31,151 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:09:31,664 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:09:39,694 basehttp "GET / HTTP/1.1" 200 65337
+WARNING 2025-06-13 22:09:39,711 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:09:39,712 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:09:39,947 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:09:40,108 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:09:40,108 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:09:40,121 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:10:52,451 basehttp "GET / HTTP/1.1" 200 65748
+WARNING 2025-06-13 22:10:52,466 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:10:52,475 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:10:52,699 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:10:53,156 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+WARNING 2025-06-13 22:12:12,891 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:13:01,510 basehttp "GET / HTTP/1.1" 200 65748
+WARNING 2025-06-13 22:13:01,530 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:13:01,533 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:13:01,834 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:13:01,876 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:13:03,384 basehttp "GET / HTTP/1.1" 200 65748
+WARNING 2025-06-13 22:13:03,401 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:13:03,401 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:13:03,636 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:13:04,038 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:16:09,667 basehttp "GET / HTTP/1.1" 200 65748
+WARNING 2025-06-13 22:16:09,690 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:16:09,692 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:16:09,918 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:16:10,353 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:18:11,944 basehttp "GET / HTTP/1.1" 200 65578
+WARNING 2025-06-13 22:18:11,981 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:18:11,981 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+INFO 2025-06-13 22:18:12,189 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-06-13 22:18:12,192 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:18:12,636 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:20:25,512 basehttp "GET / HTTP/1.1" 200 67548
+WARNING 2025-06-13 22:20:25,528 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:20:25,534 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:20:25,759 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:20:26,115 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+WARNING 2025-06-13 22:20:39,532 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:22:04,898 basehttp "GET / HTTP/1.1" 200 67605
+WARNING 2025-06-13 22:22:04,914 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:22:04,926 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:22:05,145 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:22:05,515 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:23:37,293 basehttp "GET /work-comp/ HTTP/1.1" 200 42944
+WARNING 2025-06-13 22:23:37,775 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:25:47,893 basehttp "GET /work-comp/ HTTP/1.1" 200 43434
+WARNING 2025-06-13 22:25:48,300 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:26:37,866 basehttp "GET /work-comp/ HTTP/1.1" 200 43649
+WARNING 2025-06-13 22:26:38,048 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:27:34,316 basehttp "GET /work-comp/ HTTP/1.1" 200 43688
+WARNING 2025-06-13 22:27:34,797 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:28:21,399 basehttp "GET /work-comp/ HTTP/1.1" 200 44078
+WARNING 2025-06-13 22:28:21,484 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:33:47,107 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2025-06-13 22:33:47,547 autoreload Watching for file changes with StatReloader
+INFO 2025-06-13 22:35:38,903 basehttp "GET /work-comp/ HTTP/1.1" 200 44078
+WARNING 2025-06-13 22:35:39,359 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:41:04,766 basehttp "GET /work-comp/ HTTP/1.1" 200 44078
+WARNING 2025-06-13 22:41:05,248 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:41:49,202 basehttp "GET /work-comp/ HTTP/1.1" 200 44078
+WARNING 2025-06-13 22:41:49,346 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:41:57,863 basehttp "GET / HTTP/1.1" 200 68752
+WARNING 2025-06-13 22:41:57,898 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:41:57,898 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:41:57,902 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-06-13 22:41:58,195 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-06-13 22:41:58,306 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-06-13 22:53:18,851 basehttp "GET / HTTP/1.1" 200 68752
+WARNING 2025-06-13 22:53:18,868 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-06-13 22:53:18,875 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-06-13 22:53:19,100 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+WARNING 2025-06-13 22:53:19,478 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-07-06 17:16:08,459 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 17:16:27,096 basehttp "GET / HTTP/1.1" 200 68806
+INFO 2025-07-06 17:16:27,106 basehttp "GET / HTTP/1.1" 200 68806
+INFO 2025-07-06 17:16:27,303 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 200 1676
+INFO 2025-07-06 17:16:27,304 basehttp "GET /static/img/massage.png HTTP/1.1" 200 38644
+INFO 2025-07-06 17:16:27,308 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 200 18466
+WARNING 2025-07-06 17:16:27,312 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-07-06 17:16:27,313 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 200 46722
+INFO 2025-07-06 17:16:27,314 basehttp "GET /static/img/newcar.svg HTTP/1.1" 200 428
+INFO 2025-07-06 17:16:27,315 basehttp "GET /static/img/therapy.png HTTP/1.1" 200 29642
+INFO 2025-07-06 17:16:27,316 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 200 530
+INFO 2025-07-06 17:16:27,317 basehttp "GET /static/dist/styles.css HTTP/1.1" 200 41227
+INFO 2025-07-06 17:16:27,318 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 200 12312
+INFO 2025-07-06 17:16:27,318 basehttp "GET /static/img/ARTlogoWHITE.png HTTP/1.1" 200 56787
+INFO 2025-07-06 17:16:27,319 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 200 945
+INFO 2025-07-06 17:16:27,320 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 200 532
+WARNING 2025-07-06 17:16:27,329 basehttp "GET /static/img/blog/neck-pain.jpg HTTP/1.1" 404 1993
+WARNING 2025-07-06 17:16:27,329 basehttp "GET /static/img/blog/auto-injury.jpg HTTP/1.1" 404 1999
+WARNING 2025-07-06 17:16:27,329 basehttp "GET /static/img/blog/covid.jpg HTTP/1.1" 404 1981
+INFO 2025-07-06 17:16:27,331 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 200 116452
+INFO 2025-07-06 17:16:27,407 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+INFO 2025-07-06 17:16:27,420 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 200 142900
+INFO 2025-07-06 17:16:27,421 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 200 179980
+INFO 2025-07-06 17:16:27,422 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 200 233714
+INFO 2025-07-06 17:16:27,422 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 200 267927
+WARNING 2025-07-06 17:16:27,462 basehttp "GET /static/img/favicon-32x32.png HTTP/1.1" 404 1990
+WARNING 2025-07-06 17:16:27,468 basehttp "GET /static/img/favicon-16x16.png HTTP/1.1" 404 1990
+INFO 2025-07-06 17:16:38,980 basehttp "GET /static/img/pin.png HTTP/1.1" 200 458
+INFO 2025-07-06 17:16:38,983 basehttp "GET /static/img/pin.png HTTP/1.1" 200 458
