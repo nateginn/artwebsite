@@ -113,9 +113,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Blog Post 1: Understanding Whiplash -->
                 <article id="blog-auto-injury" class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center mb-4">
-                        <img src="{% static 'img/blog/auto-injury.jpg' %}" alt="Understanding Whiplash After a Car Accident" class="w-32 h-24 object-cover rounded mr-6">
-                        <h3 class="text-2xl font-bold text-[#083B57]">Understanding Whiplash After a Car Accident: How Chiropractic Care Can Help</h3>
+                    <h3 class="text-2xl font-bold text-[#083B57] mb-4">Understanding Whiplash After a Car Accident: How Chiropractic Care Can Help</h3>
+                    <div class="flex justify-center mb-4">
+                        <img src="{% static 'Chiro assessing neck.png' %}" alt="Understanding Whiplash After a Car Accident" class="w-48 h-40 object-cover rounded">
                     </div>
                     <div class="prose max-w-none">
                         <h4>Understanding Whiplash After a Car Accident: How Chiropractic Care Can Help</h4>
@@ -192,9 +192,9 @@
                 </article>
                 <!-- Blog Post 2: How Chiropractic Care Can Help Relieve Neck Pain Naturally -->
                 <article id="blog-neck-pain" class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center mb-4">
-                        <img src="{% static 'img/blog/neck-pain.jpg' %}" alt="How Chiropractic Care Can Help Relieve Neck Pain Naturally" class="w-32 h-24 object-cover rounded mr-6">
-                        <h3 class="text-2xl font-bold text-[#083B57]">How Chiropractic Care Can Help Relieve Neck Pain Naturally</h3>
+                    <h3 class="text-2xl font-bold text-[#083B57] mb-4">How Chiropractic Care Can Help Relieve Neck Pain Naturally</h3>
+                    <div class="flex justify-center mb-4">
+                        <img src="{% static 'Man with neck pain.png' %}" alt="How Chiropractic Care Can Help Relieve Neck Pain Naturally" class="w-48 h-40 object-cover rounded">
                     </div>
                     <div class="prose max-w-none">
                         <h4>Find Natural Relief: How Chiropractic Care Can Help Relieve Neck Pain</h4>
@@ -243,10 +243,10 @@
                 </article>
                 <!-- Blog Post 3: Unlocking Wellness -->
                 <article id="blog-unlocking-wellness" class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center mb-4">
-                        <span class="text-5xl text-gray-400 mr-6">🧑‍⚕️</span>
-                        <h3 class="text-2xl font-bold text-[#083B57]">Unlocking Wellness: How Chiropractic Care Can Transform Your Health</h3>
+                    <div class="flex justify-center mb-4">
+                        <img src="{% static 'Mountain top.png' %}" alt="Unlocking Wellness: How Chiropractic Care Can Transform Your Health" class="w-48 h-40 object-cover rounded">
                     </div>
+                    <h3 class="text-2xl font-bold text-[#083B57] mb-4">Unlocking Wellness: How Chiropractic Care Can Transform Your Health</h3>
                     <div class="prose max-w-none">
                         <p>When it comes to health and wellness, many of us focus on diet and exercise. But one crucial piece of the puzzle often gets overlooked: the role of a well-functioning spine and nervous system. Chiropractic care can be a game-changer for those seeking relief from pain, enhanced movement, and a greater sense of overall well-being. In this blog post, we’ll explore what chiropractic care is, its benefits, and how it can support your journey toward a healthier life.</p>
                         <h4>What is Chiropractic Care?</h4>
@@ -273,10 +273,10 @@
                 </article>
                 <!-- Blog Post 4: Better Posture and Spine Health -->
                 <article id="blog-better-posture" class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center mb-4">
-                        <span class="text-5xl text-gray-400 mr-6">💪</span>
-                        <h3 class="text-2xl font-bold text-[#083B57]">How Chiropractic Care Supports Better Posture and a Healthier Spine</h3>
+                    <div class="flex justify-center mb-4">
+                        <img src="{% static 'healthy spine.png' %}" alt="How Chiropractic Care Supports Better Posture and a Healthier Spine" class="w-48 h-40 object-cover rounded">
                     </div>
+                    <h3 class="text-2xl font-bold text-[#083B57] mb-4">How Chiropractic Care Supports Better Posture and a Healthier Spine</h3>
                     <div class="prose max-w-none">
                         <h4>How Chiropractic Care Supports Better Posture and a Healthier Spine</h4>
                         
@@ -332,17 +332,134 @@
             <h2 class="text-3xl font-bold text-[#001524] mb-8">Featured Resources</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Whiplash Guide -->
-                <div class="bg-gray-100 rounded-lg p-6">
+                <div id="whiplash-guide" class="bg-gray-100 rounded-lg p-6">
                     <h3 class="text-xl font-bold text-[#001524] mb-2">Complete Guide to Whiplash Recovery</h3>
                     <p class="text-gray-600 mb-4">Comprehensive information about whiplash treatment, recovery timeline, and prevention strategies.</p>
-                    <a href="#" class="text-blue-600 hover:text-blue-800">Read More →</a>
+                    
+                    <div class="flex justify-center my-4">
+                        <div class="w-3/4 md:w-1/2">
+                            <img src="{% static 'Chiro adjusting neck.png' %}" alt="Chiropractor performing neck adjustment" class="rounded-lg shadow-sm w-full h-auto" draggable="false" data-nosnippet>
+                            <p class="text-xs text-gray-500 mt-1 text-center">Gentle chiropractic adjustment can help realign the spine after whiplash</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 prose prose-sm max-w-none">
+                        <h4 class="text-lg font-semibold text-[#083B57]">What Is Whiplash?</h4>
+                        <p>Whiplash is a neck injury caused by a rapid back-and-forth motion of the head, commonly resulting from car accidents, sports injuries, or falls. This motion can strain or sprain the muscles, ligaments, and other soft tissues in the neck, leading to symptoms such as neck pain, stiffness, headaches, and sometimes dizziness or tingling in the arms.</p>
+                        
+                        <h4 class="text-lg font-semibold text-[#083B57] mt-4">Treatment Options</h4>
+                        
+                        <h5 class="font-medium text-[#001524]">Self-Care and Initial Management</h5>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Rest:</strong> Short-term rest (1–2 days) can help immediately after injury, but prolonged inactivity is discouraged.</li>
+                            <li><strong>Ice and Heat:</strong> Apply ice packs for the first 24–48 hours to reduce swelling, then switch to heat to relax muscles and improve blood flow.</li>
+                            <li><strong>Over-the-Counter Medications:</strong> NSAIDs like ibuprofen or acetaminophen can help manage pain and inflammation.</li>
+                            <li><strong>Gentle Movement:</strong> Gradually resume normal activities and perform gentle neck movements to maintain flexibility.</li>
+                        </ul>
+                        
+                        <h5 class="font-medium text-[#001524] mt-3">Professional Care</h5>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Physical Therapy:</strong> Guided exercises to restore range of motion and strengthen neck muscles.</li>
+                            <li><strong>Chiropractic Care:</strong> Adjustments and therapies to help manage pain and restore normal function.</li>
+                            <li><strong>Medical Interventions:</strong> May include prescription medications or injections for severe cases.</li>
+                        </ul>
+                        
+                        <h4 class="text-lg font-semibold text-[#083B57] mt-4">Recovery Timeline</h4>
+                        <p>Recovery varies based on injury severity, age, health status, and treatment timing:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Mild cases:</strong> A few days to 3 months</li>
+                            <li><strong>Moderate cases:</strong> 1 to 4 months</li>
+                            <li><strong>Severe/Chronic cases:</strong> 3 to 6 months or longer</li>
+                        </ul>
+                        <p class="text-sm italic">Most people experience significant improvement within the first few weeks to three months.</p>
+                        
+                        <h4 class="text-lg font-semibold text-[#083B57] mt-4">Prevention Strategies</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Adjust vehicle headrests properly</li>
+                            <li>Always wear seatbelts correctly</li>
+                            <li>Practice neck strengthening exercises</li>
+                            <li>Maintain proper ergonomics at workstations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5 class="text-sm font-semibold">Helpful Resources:</h5>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            <li><a href="https://www.mayoclinic.org/diseases-conditions/whiplash/diagnosis-treatment/drc-20378926" target="_blank" class="hover:text-blue-800">Mayo Clinic: Whiplash - Diagnosis and Treatment</a></li>
+                            <li><a href="https://my.clevelandclinic.org/health/diseases/11982-whiplash" target="_blank" class="hover:text-blue-800">Cleveland Clinic: Whiplash (Neck Strain)</a></li>
+                            <li><a href="https://www.spine-health.com/conditions/neck-pain/whiplash-treatments-and-recovery" target="_blank" class="hover:text-blue-800">Spine-Health: Whiplash Treatments and Recovery</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="{% static 'resources/whiplash-recovery-guide.md' %}" download class="text-blue-600 hover:text-blue-800 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download Full Guide
+                        </a>
+                        <a href="#blog-auto-injury" class="text-blue-600 hover:text-blue-800">Read Related Blog →</a>
+                    </div>
                 </div>
 
                 <!-- Back Pain Guide -->
-                <div class="bg-gray-100 rounded-lg p-6">
+                <div id="back-pain-guide" class="bg-gray-100 rounded-lg p-6">
                     <h3 class="text-xl font-bold text-[#001524] mb-2">Understanding Back & Neck Pain</h3>
-                    <p class="text-gray-600 mb-4">Expert insights on managing chronic pain, treatment options, and long-term relief strategies.</p>
-                    <a href="#" class="text-blue-600 hover:text-blue-800">Read More →</a>
+                    <p class="text-gray-600 mb-4">Expert insights on managing chronic pain, with a focus on chiropractic treatment, plus other options for long-term relief.</p>
+                    
+                    <div class="flex justify-center my-4">
+                        <div class="w-3/4 md:w-1/2">
+                            <img src="{% static 'chiro teaching.png' %}" alt="Chiropractor explaining spine anatomy to patient" class="rounded-lg shadow-sm w-full h-auto" draggable="false" data-nosnippet>
+                            <p class="text-xs text-gray-500 mt-1 text-center">Educational approach to understanding back and neck pain</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 prose prose-sm max-w-none">
+                        <h4 class="text-lg font-semibold text-[#083B57]">The Role of Chiropractic Care</h4>
+                        <p>Chiropractic care is a leading, non-invasive approach for managing back and neck pain. Chiropractors specialize in diagnosing and treating musculoskeletal issues, particularly those related to spinal alignment and nerve function. Their primary technique—spinal manipulation or adjustment—realigns the spine to reduce nerve pressure, restore mobility, and relieve pain.</p>
+                        
+                        <h4 class="text-lg font-semibold text-[#083B57] mt-4">What Happens During Treatment</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Assessment:</strong> Health history review, symptom discussion, and physical exam</li>
+                            <li><strong>Spinal Adjustments:</strong> Controlled force applied to spinal joints to improve alignment</li>
+                            <li><strong>Soft Tissue Therapy:</strong> Massage and myofascial release to relax muscles</li>
+                            <li><strong>Exercise & Lifestyle Guidance:</strong> Customized plans to support recovery</li>
+                        </ul>
+                        
+                        <h4 class="text-lg font-semibold text-[#083B57] mt-4">Evidence for Effectiveness</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Back Pain:</strong> Research confirms chiropractic adjustments effectively relieve acute and chronic low back pain</li>
+                            <li><strong>Neck Pain:</strong> Spinal manipulation is supported as a first-line treatment</li>
+                            <li><strong>Chronic Pain:</strong> Addresses root causes for long-term relief without drugs or surgery</li>
+                        </ul>
+                        
+                        <h4 class="text-lg font-semibold text-[#083B57] mt-4">Long-Term Relief Strategies</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Regular chiropractic maintenance visits</li>
+                            <li>Proper ergonomics and posture awareness</li>
+                            <li>Targeted exercise and stretching routines</li>
+                            <li>Lifestyle modifications (weight management, stress reduction)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5 class="text-sm font-semibold">Helpful Resources:</h5>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            <li><a href="https://www.mayoclinic.org/tests-procedures/chiropractic-adjustment/about/pac-20393513" target="_blank" class="hover:text-blue-800">Mayo Clinic: Chiropractic Adjustment</a></li>
+                            <li><a href="https://www.spine-health.com/treatment/chiropractic/chiropractic-treatments-lower-back-pain" target="_blank" class="hover:text-blue-800">Spine-Health: Chiropractic Treatments for Lower Back Pain</a></li>
+                            <li><a href="https://www.acatoday.org/patients/neck-pain-and-chiropractic/" target="_blank" class="hover:text-blue-800">American Chiropractic Association: Neck Pain</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="{% static 'resources/Understanding Back & Neck Pain.md' %}" download class="text-blue-600 hover:text-blue-800 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download Full Guide
+                        </a>
+                        <a href="#blog-neck-pain" class="text-blue-600 hover:text-blue-800">Read Related Blog →</a>
+                    </div>
                 </div>
             </div>
         </div>
