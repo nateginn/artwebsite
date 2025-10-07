@@ -312,3 +312,67 @@ def resources(request):
     """Resources page view"""
     return render(request, 'main/resources.html')
 
+@require_GET
+def es_info(request):
+    """Spanish information page summarizing clinic services (not linked in top menu)."""
+    html = """
+    <!DOCTYPE html>
+    <html lang=\"es\">
+    <head>
+        <meta charset=\"utf-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+        <title>A.R.T. | Información en Español</title>
+        <meta name=\"description\" content=\"Hablamos Español. Clínica de rehabilitación y quiropráctica en Greeley y Denver: lesiones de auto y trabajo, terapia física, masaje y acupuntura.\">
+        <style>
+            body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #0b1320; }
+            header { background: #001524; color: #fff; padding: 18px 16px; }
+            header a { color: #ffd166; text-decoration: none; font-weight: 700; }
+            main { padding: 24px 16px; max-width: 880px; margin: 0 auto; line-height: 1.6; }
+            h1 { font-size: 1.75rem; margin: 0 0 8px; }
+            h2 { font-size: 1.25rem; margin-top: 24px; }
+            .pill { display: inline-block; background: #f59e0b; color: #000; font-weight: 700; padding: 4px 10px; border-radius: 9999px; font-size: 0.8rem; }
+            .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+            .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; }
+            .footer { font-size: 0.85rem; color: #475569; margin-top: 28px; }
+            @media (min-width: 700px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div style=\"max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;\">
+                <div>
+                    <div class=\"pill\">Hablamos Español</div>
+                    <div style=\"margin-top:6px; font-size: 0.95rem;\">Accelerated Rehab Therapy — Greeley & Denver</div>
+                </div>
+                <nav><a href=\"/\">Inicio</a></nav>
+            </div>
+        </header>
+        <main>
+            <h1>Información en Español</h1>
+            <p>
+                En Accelerated Rehab Therapy, apoyamos a nuestra comunidad hispana con atención en Español. 
+                Ofrecemos cuidado quiropráctico, terapia física, masaje terapéutico y acupuntura para 
+                lesiones de auto, lesiones de trabajo y dolor crónico.
+            </p>
+
+            <h2>Servicios Principales</h2>
+            <div class=\"grid\">
+                <div class=\"card\"><strong>Lesiones de Auto</strong><br>Evaluación, documentación y tratamiento para dolor de cuello (latigazo), espalda y tejidos blandos.</div>
+                <div class=\"card\"><strong>Lesiones de Trabajo</strong><br>Atención coordinada para reclamos de Work Comp y regreso seguro al trabajo.</div>
+                <div class=\"card\"><strong>Terapia Física</strong><br>Planes personalizados para mejorar movilidad, fuerza y reducir el dolor.</div>
+                <div class=\"card\"><strong>Quiropráctica</strong><br>Ajustes y rehabilitación para aliviar dolor y mejorar la función.</div>
+                <div class=\"card\"><strong>Masaje Terapéutico</strong><br>Alivio de tensión muscular y apoyo a la recuperación.</div>
+                <div class=\"card\"><strong>Acupuntura</strong><br>Complemento para manejo de dolor y bienestar general.</div>
+            </div>
+
+            <h2>Ubicaciones y Citas</h2>
+            <p>
+                Greeley: <a href=\"tel:+19703241750\">970-324-1750</a><br>
+                Denver: <a href=\"tel:+17206042792\">720-604-2792</a>
+            </p>
+            <p class=\"footer\">¿Prefiere atención en Español? Llámenos y con gusto le ayudamos.</p>
+        </main>
+    </body>
+    </html>
+    """
+    return HttpResponse(html)

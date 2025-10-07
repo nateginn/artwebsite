@@ -131,7 +131,7 @@
         </header>
 
         <!-- Main Content -->
-        <main class="flex-grow relative pt-24">
+        <main class="flex-grow relative pt-28">
             {% block content %}{% endblock %}
         </main>
 
@@ -169,11 +169,32 @@
         }
     </style>
     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <div class="group">
+        <div class="group" style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+            <!-- Spanish Support Button -->
+            <a href="tel:+19703241750"
+               target="_self" rel="noopener noreferrer"
+               class="art-pulse"
+               data-tooltip-id="tooltip-es"
+               style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; 
+                      background: linear-gradient(to bottom, #34d399, #059669); 
+                      color: black; font-weight: bold; text-decoration: none; 
+                      border-radius: 9999px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+                      transition: all 0.3s ease; font-size: 14px;" 
+               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 8px rgba(0,0,0,0.15)';"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)';"
+               title="Hablamos Español - Llámanos">
+                <!-- Phone Icon -->
+                <svg class="art-bounce" style="width: 18px; height: 18px; flex-shrink: 0;" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884c-.06-1.045.748-1.93 1.793-1.99a18.64 18.64 0 0112.4 4.84 18.64 18.64 0 014.84 12.4c.06 1.045-.945 1.93-1.99 1.793a2.003 2.003 0 01-1.71-1.102l-1.22-2.44a2 2 0 00-1.26-1.02l-2.79-.7a2 2 0 00-1.97.57l-.8.81a15.94 15.94 0 01-7.52-7.52l.81-.8a2 2 0 00.57-1.97l-.7-2.79a2 2 0 00-1.02-1.26l-2.44-1.22a2.003 2.003 0 01-1.102-1.71z" />
+                </svg>
+                <span style="display: inline;">Hablamos Español</span>
+            </a>
+            
             <!-- Custom Button with Site-Matching Styling, Pulse & Animated Icon -->
             <a href="https://www.zocdoc.com/practice/accelerated-rehab-therapy-57575?lock=true&isNewPatient=false&referrerType=widget"
                target="_blank" rel="noopener noreferrer"
                class="art-pulse"
+               data-tooltip-id="tooltip-book"
                style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; 
                       background: linear-gradient(to bottom, #f59e0b, #ea580c); 
                       color: black; font-weight: bold; text-decoration: none; 
@@ -189,11 +210,15 @@
                 <span style="display: inline;">Book Appointment</span>
             </a>
             
-            <!-- Mobile Tooltip -->
-            <div style="position: absolute; bottom: 100%; right: 0; margin-bottom: 8px; padding: 6px 12px;
+            <!-- Mobile Tooltips -->
+            <div id="tooltip-es" style="position: absolute; bottom: 100%; right: 0; margin-bottom: 8px; padding: 6px 12px;
                         background-color: #1f2937; color: white; font-size: 12px; border-radius: 4px;
-                        opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap;"
-                 class="tooltip">
+                        opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap;">
+                Hablamos Español
+            </div>
+            <div id="tooltip-book" style="position: absolute; bottom: 100%; right: 0; margin-bottom: 8px; padding: 6px 12px;
+                        background-color: #1f2937; color: white; font-size: 12px; border-radius: 4px;
+                        opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap;">
                 Book Appointment
             </div>
         </div>
@@ -202,18 +227,21 @@
     <!-- Mobile Tooltip Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const button = document.querySelector('a[title="Book Appointment - Accelerated Rehab Therapy"]');
-            const tooltip = document.querySelector('.tooltip');
-            
             if (window.innerWidth < 640) { // Mobile view
-                button.addEventListener('touchstart', function() {
-                    tooltip.style.opacity = '1';
-                });
-                
-                button.addEventListener('touchend', function() {
-                    setTimeout(function() {
-                        tooltip.style.opacity = '0';
-                    }, 1500);
+                const buttons = document.querySelectorAll('a[data-tooltip-id]');
+                buttons.forEach((button) => {
+                    const tooltipId = button.getAttribute('data-tooltip-id');
+                    const tooltip = document.getElementById(tooltipId);
+                    if (!tooltip) return;
+
+                    button.addEventListener('touchstart', function() {
+                        tooltip.style.opacity = '1';
+                    });
+                    button.addEventListener('touchend', function() {
+                        setTimeout(function() {
+                            tooltip.style.opacity = '0';
+                        }, 1500);
+                    });
                 });
             }
         });

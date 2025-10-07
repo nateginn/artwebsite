@@ -4,13 +4,22 @@
 
 <div class="relative bg-transparent mx-auto max-w-8xl" x-data="{ mobileMenuOpen: false, servicesDropdownOpen: false }">
   <div class="w-full mx-auto px-4">
-      <div class="flex items-center justify-between py-1">
+      <div class="flex items-center justify-between py-2">
           <!-- Logo -->
           <div class="flex-shrink-0 w-60 ml-8">
               <a href="{% url 'main:home' %}" class="block transition-opacity hover:opacity-75">
                   <span class="sr-only">A.R.T.</span>
                   <img class="h-auto w-full" src="{% static 'img/ARTlogoWHITE.png' %}" alt="A.R.T. Logo">
               </a>
+              <!-- Spanish Support Note under Logo -->
+              <div class="mt-1">
+                  <span class="inline-flex items-center gap-1.5 bg-white/10 text-white px-2 py-0.5 rounded">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 opacity-90">
+                        <path d="M18 13a1 1 0 01-1 1h-3l-3 3v-3H5a1 1 0 01-1-1V5a1 1 0 011-1h12a1 1 0 011 1v8z" />
+                      </svg>
+                      <span class="text-xs font-semibold tracking-wide">Hablamos Español</span>
+                  </span>
+              </div>
           </div>
 
           <!-- Desktop Navigation -->

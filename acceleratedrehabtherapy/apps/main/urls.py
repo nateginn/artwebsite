@@ -18,4 +18,6 @@ urlpatterns = [
     path("resources/", views.resources, name="resources"),  # Resources page  
     path("api/reviews/", views.reviews_api, name="reviews_api"),
     path("api/test-google-reviews/", views.test_google_reviews, name="test_google_reviews"),
+    # Spanish info page (not linked in top menu)
+    path("es/", views.es_info, name="es_info"),
 ]

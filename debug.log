@@ -1999,3 +1999,66 @@ INFO 2025-07-07 16:05:23,961 basehttp "GET / HTTP/1.1" 200 63935
 WARNING 2025-07-07 16:05:24,001 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
 INFO 2025-07-07 16:05:28,652 basehttp "GET /resources/ HTTP/1.1" 200 77927
 WARNING 2025-07-07 16:05:28,714 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-07-07 16:53:04,873 basehttp "GET / HTTP/1.1" 200 63935
+INFO 2025-07-07 16:53:04,889 basehttp "GET /static/Chiro%20assessing%20neck.png HTTP/1.1" 304 0
+INFO 2025-07-07 16:53:04,890 basehttp "GET /static/Man%20with%20neck%20pain.png HTTP/1.1" 304 0
+INFO 2025-07-07 16:53:04,890 basehttp "GET /static/Mountain%20top.png HTTP/1.1" 304 0
+INFO 2025-07-07 16:53:04,890 basehttp "GET /static/healthy%20spine.png HTTP/1.1" 304 0
+INFO 2025-07-07 16:53:04,984 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-07-07 16:53:05,004 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:31:32,986 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 22:31:44,116 basehttp "GET / HTTP/1.1" 200 66778
+INFO 2025-10-06 22:31:44,247 basehttp "GET /static/img/ARTlogoWHITE.png HTTP/1.1" 200 56787
+INFO 2025-10-06 22:31:44,250 basehttp "GET /static/img/acupuncture.png HTTP/1.1" 200 18466
+INFO 2025-10-06 22:31:44,252 basehttp "GET /static/img/newcar.svg HTTP/1.1" 200 428
+INFO 2025-10-06 22:31:44,254 basehttp "GET /static/img/newhardhat.svg HTTP/1.1" 200 530
+INFO 2025-10-06 22:31:44,256 basehttp "GET /static/img/newbasketball.svg HTTP/1.1" 200 12312
+INFO 2025-10-06 22:31:44,256 basehttp "GET /static/dist/styles.css HTTP/1.1" 200 41227
+INFO 2025-10-06 22:31:44,258 basehttp "GET /static/img/newslipandfall.svg HTTP/1.1" 200 945
+INFO 2025-10-06 22:31:44,258 basehttp "GET /static/img/newambulance.svg HTTP/1.1" 200 532
+INFO 2025-10-06 22:31:44,265 basehttp "GET /static/img/arrow__mobile.png HTTP/1.1" 200 1676
+INFO 2025-10-06 22:31:44,305 basehttp "GET /static/img/massage.png HTTP/1.1" 200 38644
+INFO 2025-10-06 22:31:44,305 basehttp "GET /static/img/therapy.png HTTP/1.1" 200 29642
+INFO 2025-10-06 22:31:44,306 basehttp "GET /static/img/Chiropractic.png HTTP/1.1" 200 46722
+INFO 2025-10-06 22:31:44,309 basehttp "GET /static/img/Family-Walk-In-Clinic-Logo-160.png HTTP/1.1" 200 116452
+INFO 2025-10-06 22:31:44,309 basehttp "GET /static/Chiro%20assessing%20neck.png HTTP/1.1" 200 2420865
+INFO 2025-10-06 22:31:44,310 basehttp "GET /static/Man%20with%20neck%20pain.png HTTP/1.1" 200 2449726
+INFO 2025-10-06 22:31:44,311 basehttp "GET /static/Mountain%20top.png HTTP/1.1" 200 2420846
+INFO 2025-10-06 22:31:44,320 basehttp "GET /static/healthy%20spine.png HTTP/1.1" 200 2032234
+INFO 2025-10-06 22:31:44,445 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+INFO 2025-10-06 22:31:44,458 basehttp "GET /static/img/slider/03.jpg HTTP/1.1" 200 142900
+INFO 2025-10-06 22:31:44,458 basehttp "GET /static/img/slider/02.jpg HTTP/1.1" 200 179980
+INFO 2025-10-06 22:31:44,458 basehttp "GET /static/img/slider/01.jpg HTTP/1.1" 200 233714
+INFO 2025-10-06 22:31:44,460 basehttp "GET /static/img/slider/04.jpg HTTP/1.1" 200 267927
+WARNING 2025-10-06 22:31:44,606 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+WARNING 2025-10-06 22:31:44,608 basehttp "GET /static/img/favicon.ico HTTP/1.1" 404 1972
+WARNING 2025-10-06 22:31:44,620 basehttp "GET /static/img/favicon-32x32.png HTTP/1.1" 404 1990
+WARNING 2025-10-06 22:31:44,634 basehttp "GET /static/img/favicon-16x16.png HTTP/1.1" 404 1990
+INFO 2025-10-06 22:34:05,321 basehttp "GET / HTTP/1.1" 200 66778
+WARNING 2025-10-06 22:34:05,568 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:34:22,640 basehttp "GET / HTTP/1.1" 200 66778
+WARNING 2025-10-06 22:34:22,879 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:38:06,163 basehttp "GET / HTTP/1.1" 200 67139
+WARNING 2025-10-06 22:38:06,443 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:42:25,666 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\urls.py changed, reloading.
+INFO 2025-10-06 22:42:26,198 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 22:42:33,059 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2025-10-06 22:42:33,496 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 22:42:56,318 basehttp "GET / HTTP/1.1" 200 67139
+WARNING 2025-10-06 22:42:56,569 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:43:10,052 basehttp "GET /es/ HTTP/1.1" 200 3673
+WARNING 2025-10-06 22:43:10,200 log Not Found: /favicon.ico
+WARNING 2025-10-06 22:43:10,201 basehttp "GET /favicon.ico HTTP/1.1" 404 6129
+INFO 2025-10-06 22:44:13,676 basehttp "GET / HTTP/1.1" 200 67139
+WARNING 2025-10-06 22:44:13,856 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:48:09,260 basehttp "GET /about/ HTTP/1.1" 200 44405
+WARNING 2025-10-06 22:48:09,506 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:48:15,512 basehttp "GET /es/ HTTP/1.1" 200 3673
+WARNING 2025-10-06 22:48:47,246 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:49:19,546 basehttp "GET /massage/ HTTP/1.1" 200 47046
+WARNING 2025-10-06 22:49:19,783 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:57:15,448 basehttp "GET /massage/ HTTP/1.1" 200 47068
+WARNING 2025-10-06 22:57:15,681 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2025-10-06 22:59:54,503 basehttp "GET / HTTP/1.1" 200 67501
+INFO 2025-10-06 22:59:54,657 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
+WARNING 2025-10-06 22:59:54,772 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
