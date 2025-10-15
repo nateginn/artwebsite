@@ -41,6 +41,12 @@ ALLOWED_HOSTS = [
     'www.acceleratedrehabtherapy.com',
 ]
 
+# CSRF Trusted Origins for HTTPS
+CSRF_TRUSTED_ORIGINS = [
+    'https://acceleratedrehabtherapy.com',
+    'https://www.acceleratedrehabtherapy.com',
+]
+
 
 # Application definition
 
