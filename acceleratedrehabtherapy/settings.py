@@ -301,17 +301,18 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 SERVER_EMAIL = os.getenv('SERVER_EMAIL')
 
-# Verify required email settings are configured
-required_email_settings = [
-    'EMAIL_HOST_USER',
-    'EMAIL_HOST_PASSWORD',
-    'DEFAULT_FROM_EMAIL',
-    'SERVER_EMAIL'
-]
-
-for setting in required_email_settings:
-    if not os.getenv(setting):
-        raise ValueError(f"Missing required email setting: {setting}. Please check your .env file.")
+# Verify required email settings are configured (only in DEBUG mode)
+if DEBUG:
+    required_email_settings = [
+        'EMAIL_HOST_USER',
+        'EMAIL_HOST_PASSWORD',
+        'DEFAULT_FROM_EMAIL',
+        'SERVER_EMAIL'
+    ]
+    
+    for setting in required_email_settings:
+        if not os.getenv(setting):
+            raise ValueError(f"Missing required email setting: {setting}. Please check your .env file.")
 
 # In production, you would use settings like this:
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
