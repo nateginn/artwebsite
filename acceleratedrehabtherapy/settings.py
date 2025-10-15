@@ -298,8 +298,8 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-SERVER_EMAIL = os.getenv('SERVER_EMAIL')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@acceleratedrehabtherapy.com')
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@acceleratedrehabtherapy.com')
 
 # Verify required email settings are configured (only in DEBUG mode)
 if DEBUG:
@@ -314,17 +314,6 @@ if DEBUG:
         if not os.getenv(setting):
             raise ValueError(f"Missing required email setting: {setting}. Please check your .env file.")
 
-# In production, you would use settings like this:
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'your-email@gmail.com'
-# EMAIL_HOST_PASSWORD = 'your-app-specific-password'
-
-# Default 'from' email
-DEFAULT_FROM_EMAIL = 'noreply@acceleratedrehabtherapy.com'
-SERVER_EMAIL = 'noreply@acceleratedrehabtherapy.com'
 
 # Logging Configuration
 LOGGING = {
