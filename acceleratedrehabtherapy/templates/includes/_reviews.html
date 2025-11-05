@@ -36,11 +36,6 @@
         <!-- Error Message -->
         <div x-show="error" class="bg-red-600 text-white p-4 rounded mb-4" x-text="error"></div>
 
-        <!-- Debug Info -->
-        <div class="mb-4">
-            <p>Total Reviews: <span x-text="reviews.length"></span></p>
-            <p>Current Slide: <span x-text="currentSlide + 1"></span></p>
-        </div>
 
         <!-- Reviews Slider -->
         <div class="relative" x-show="loaded">
@@ -90,6 +85,16 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                 </button>
+            </div>
+
+            <!-- Google Reviews Link -->
+            <div class="text-center mt-8">
+                <a href="https://www.google.com/search?sca_esv=eaab408515b938ef&sxsrf=AE3TifOrRVlO-Xn38CeJgR2QTfTI1bdkNw:1762384875876&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s3w69iau5RwZaAdiFBKN2PDBleU3V82o5MjaUnl-YqhpIzykSVFKDf34I7Gk4S9zugT225kZds9ASjoBCDS9ehCgQbiSnLeSLQmeff-i-nLT8xVNWN7_DsSiWgaPw_LHvdlp92Q%3D&q=Accelerated+Rehab+Therapy+of+Greeley+CO+Reviews&sa=X&ved=2ahUKEwiruO-jk9yQAxUrX0EAHfCOEcMQ0bkNegQIKBAE&biw=1536&bih=706&dpr=1.25"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="inline-block bg-yellow-400 text-[#001524] font-bold py-3 px-6 rounded-lg hover:bg-yellow-300 transition-colors">
+                    Read More Reviews on Google
+                </a>
             </div>
         </div>
 
