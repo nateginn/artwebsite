@@ -7,7 +7,7 @@
 
     <div class="flex flex-col md:flex-row items-start justify-between max-w-7xl mx-auto gap-4 md:gap-0 pb-8">
         <!-- Chiropractic -->
-        <div class="flex flex-col items-center">
+        <a href="{% url 'main:chiropractor' %}" class="flex flex-col items-center">
             <img src="{% static 'img/Chiropractic.png' %}" alt="Chiropractic Services" class="w-24 h-auto mx-auto mb-4"> 
             <div class="bg-[#236E8C] rounded-lg p-6 hover:bg-[#1a5268] transition-colors w-full md:w-[400px]">
                 <h3 class="text-2xl font-bold text-yellow-400 mb-4">CHIROPRACTIC</h3>                
@@ -23,10 +23,10 @@
                     <li>Shoulder Injury</li>
                 </ul>
             </div>
-        </div>
+        </a>
 
         <!-- Massage -->
-        <div class="flex flex-col items-center">
+        <a href="{% url 'main:massage' %}" class="flex flex-col items-center">
             <img src="{% static 'img/massage.png' %}" alt="Massage Services" class="w-24 h-auto mx-auto mb-4">
             <div class="bg-[#236E8C] rounded-lg p-6 hover:bg-[#1a5268] transition-colors w-full md:w-[250px]">
                 <h3 class="text-2xl font-bold text-yellow-400 mb-4">MASSAGE</h3>
@@ -37,23 +37,23 @@
                     <li>Sports Massage</li>
                 </ul>
             </div>
-        </div>  
+        </a>  
 
-        <!-- Physical Rehab -->
-        <div class="flex flex-col items-center">
+        <!-- Physical Therapy -->
+        <a href="{% url 'main:physical_therapy' %}" class="flex flex-col items-center">
             <img src="{% static 'img/therapy.png' %}" alt="Physical Therapy Services" class="w-24 h-auto mx-auto mb-4">
             <div class="bg-[#236E8C] rounded-lg p-6 hover:bg-[#1a5268] transition-colors w-full md:w-[250px]">
-                <h3 class="text-2xl font-bold text-yellow-400 mb-4">PHYSICAL REHAB</h3>
+                <h3 class="text-2xl font-bold text-yellow-400 mb-4">PHYSICAL THERAPY</h3>
                 <ul class="space-y-2 text-white">
                     <li>Sports Physical Therapy</li>
                     <li>Injury Physical Therapy</li>
                     <li>Orthopedic Physical Therapy</li>
                 </ul>
             </div>
-        </div>
+        </a>
 
         <!-- Acupuncture -->
-        <div class="flex flex-col items-center">
+        <a href="{% url 'main:acupuncture' %}" class="flex flex-col items-center">
             <img src="{% static 'img/acupuncture.png' %}" alt="Acupuncture Services" class="w-24 h-auto mx-auto mb-4">
             <div class="bg-[#236E8C] rounded-lg p-6 hover:bg-[#1a5268] transition-colors w-full md:w-[250px]">
                 <h3 class="text-2xl font-bold text-yellow-400 mb-4">ACUPUNCTURE</h3>
@@ -63,6 +63,6 @@
                     <li>Pain Management</li>
                 </ul>
             </div>
-        </div>
+        </a>
     </div>
 </div>
