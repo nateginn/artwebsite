@@ -193,7 +193,8 @@ def work_comp(request):
     """Work comp page view"""
     context = {
         'services': CHIROPRACTIC_SERVICES,
-        'hide_margin': False  # Set to True if you want to hide the top margin
+        'hide_margin': False,  # Set to True if you want to hide the top margin
+        'meta_title': 'Work Comp Injury Care in Greeley & Denver | Accelerated Rehab Therapy'
     }
     return render(request, 'main/work_comp.html', context)
 
@@ -202,29 +203,42 @@ def auto_injury(request):
     """Auto injury page view"""
     context = {
         'services': CHIROPRACTIC_SERVICES,
-        'hide_margin': False
+        'hide_margin': False,
+        'meta_title': 'Auto Injury Treatment in Greeley & Denver | Accelerated Rehab Therapy'
     }
     return render(request, 'main/auto_injury.html', context)
 
 @require_GET
 def chiropractor(request):
     """Chiropractor page view"""
-    return render(request, 'main/chiropractor.html')
+    context = {
+        'meta_title': 'Chiropractor Services in Greeley & Denver | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/chiropractor.html', context)
 
 @require_GET
 def massage(request):
     """Massage page view"""
-    return render(request, 'main/massage.html')
+    context = {
+        'meta_title': 'Therapeutic Massage in Greeley & Denver | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/massage.html', context)
 
 @require_GET
 def acupuncture(request):
     """Acupuncture page view"""
-    return render(request, 'main/acupuncture.html')
+    context = {
+        'meta_title': 'Acupuncture Treatment in Greeley & Denver | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/acupuncture.html', context)
 
 @require_GET
 def physical_therapy(request):
     """Physical therapy page view"""
-    return render(request, 'main/physical_therapy.html')
+    context = {
+        'meta_title': 'Physical Therapy in Greeley & Denver | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/physical_therapy.html', context)
 
 import logging
 import sys
@@ -300,17 +314,26 @@ def contact(request):
     
     # For GET requests or if there was an error
     logger.debug("Rendering contact form template")
-    return render(request, 'main/contact.html')
+    context = {
+        'meta_title': 'Contact Us in Greeley & Denver | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/contact.html', context)
 
 @require_GET
 def about(request):
     """About page view"""
-    return render(request, 'main/about_us.html')
+    context = {
+        'meta_title': 'About Accelerated Rehab Therapy | Greeley & Denver'
+    }
+    return render(request, 'main/about_us.html', context)
 
 @require_GET
 def resources(request):
     """Resources page view"""
-    return render(request, 'main/resources.html')
+    context = {
+        'meta_title': 'Patient Resources & Information | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/resources.html', context)
 
 @require_GET
 def es_info(request):
