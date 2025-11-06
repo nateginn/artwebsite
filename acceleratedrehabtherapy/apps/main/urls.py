@@ -20,4 +20,5 @@ urlpatterns = [
     path("api/test-google-reviews/", views.test_google_reviews, name="test_google_reviews"),
     # Spanish info page (not linked in top menu)
     path("es/", views.es_info, name="es_info"),
+    path("privacy-policy/", views.privacy_policy, name="privacy_policy"),  # Privacy policy page
 ]

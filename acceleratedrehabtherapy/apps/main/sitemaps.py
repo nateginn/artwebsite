@@ -21,6 +21,7 @@ class StaticViewSitemap(Sitemap):
             'main:about_us',
             'main:resources',
             'main:es_info',
+            'main:privacy_policy',
         ]
 
     def location(self, item):

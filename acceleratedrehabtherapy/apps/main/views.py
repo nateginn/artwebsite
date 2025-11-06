@@ -399,3 +399,11 @@ def es_info(request):
     </html>
     """
     return HttpResponse(html)
+
+@require_GET
+def privacy_policy(request):
+    """Privacy policy page view"""
+    context = {
+        'meta_title': 'Privacy Policy | Accelerated Rehab Therapy'
+    }
+    return render(request, 'main/privacy_policy.html', context)
