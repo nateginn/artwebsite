@@ -131,7 +131,7 @@
         </header>
 
         <!-- Main Content -->
-        <main class="flex-grow relative pt-44">
+        <main id="main-content" class="flex-grow relative">
             {% block content %}{% endblock %}
         </main>
 
@@ -247,6 +247,16 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const mainContent = document.getElementById('main-content');
+            if (header && mainContent) {
+                const headerHeight = header.offsetHeight;
+                mainContent.style.paddingTop = headerHeight + 'px';
+            }
+        });
+    </script>
     <!-- JavaScript -->
     {% block extra_js %}{% endblock %}
 </body>
