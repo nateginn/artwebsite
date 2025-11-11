@@ -224,9 +224,9 @@
         </div>
     </div>
     
-    <!-- Custom Scripts -->
-    <script src="{% static 'js/main.js' %}" defer></script>
-
+    {% compress js %}
+    <script src="{% static 'js/main.js' %}"></script>
     {% block extra_js %}{% endblock %}
+    {% endcompress %}
 </body>
 </html>
