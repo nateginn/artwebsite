@@ -131,7 +131,7 @@
         </header>
 
         <!-- Main Content -->
-        <main id="main-content" class="flex-grow relative">
+        <main id="main-content" class="flex-grow relative" style="padding-top: 120px;">
             {% block content %}{% endblock %}
         </main>
 
@@ -224,40 +224,9 @@
         </div>
     </div>
     
-    <!-- Mobile Tooltip Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.innerWidth < 640) { // Mobile view
-                const buttons = document.querySelectorAll('a[data-tooltip-id]');
-                buttons.forEach((button) => {
-                    const tooltipId = button.getAttribute('data-tooltip-id');
-                    const tooltip = document.getElementById(tooltipId);
-                    if (!tooltip) return;
+    <!-- Custom Scripts -->
+    <script src="{% static 'js/main.js' %}" defer></script>
 
-                    button.addEventListener('touchstart', function() {
-                        tooltip.style.opacity = '1';
-                    });
-                    button.addEventListener('touchend', function() {
-                        setTimeout(function() {
-                            tooltip.style.opacity = '0';
-                        }, 1500);
-                    });
-                });
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.querySelector('header');
-            const mainContent = document.getElementById('main-content');
-            if (header && mainContent) {
-                const headerHeight = header.offsetHeight;
-                mainContent.style.paddingTop = headerHeight + 'px';
-            }
-        });
-    </script>
-    <!-- JavaScript -->
     {% block extra_js %}{% endblock %}
 </body>
 </html>
