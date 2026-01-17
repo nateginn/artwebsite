@@ -3,59 +3,105 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block meta_description %}Expert chiropractic care in Greeley & Denver. Specializing in auto accident recovery, back pain relief, and holistic treatment. Accepting new patients. Call today!{% endblock %}
+{% block meta_description %}Experienced chiropractors in Greeley and Denver for auto-injury rehab, neck and back pain, migraines and work injuries. Book an appointment today.{% endblock %}
+
+{% block title %}Chiropractor Greeley & Denver | Auto Injury & Pain Relief{% endblock %}
 
 {% block og_title %}Expert Chiropractor in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
 {% block og_description %}Find relief from back pain, auto injuries, and more with our expert chiropractic care. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
 
 {% block extra_head %}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "name": "Accelerated Rehab Therapy - Chiropractic Care",
-  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/chiropractic-care.jpg' %}",
-  "@id": "{{ request.build_absolute_uri }}",
-  "url": "{{ request.build_absolute_uri }}",
-  "telephone": "+19703517465",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "3615 W 20th St",
-    "addressLocality": "Greeley",
-    "addressRegion": "CO",
-    "postalCode": "80634",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.3969,
-    "longitude": -104.7589
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday"
-      ],
-      "opens": "08:00",
-      "closes": "17:00"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Chiropractic",
+    "name": "Accelerated Rehab Therapy - Chiropractic Care",
+    "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/chiropractic-care.jpg' %}",
+    "@id": "{{ request.build_absolute_uri }}",
+    "url": "{{ request.build_absolute_uri }}",
+    "telephone": "+19703517465",
+    "priceRange": "$$",
+    "medicalSpecialty": "Chiropractic Care",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3615 W 20th St",
+      "addressLocality": "Greeley",
+      "addressRegion": "CO",
+      "postalCode": "80634",
+      "addressCountry": "US"
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Friday",
-      "opens": "08:00",
-      "closes": "14:00"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.3969,
+      "longitude": -104.7589
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "08:00",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/acceleratedrehabtherapy",
+      "https://www.instagram.com/acceleratedrehabtherapy/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Chiropractic Services",
+      "itemListElement": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Auto-Injury & Work-Comp Chiropractic",
+          "description": "Specialized care for whiplash, back injuries, neck injuries, and workplace accidents with medical liens and insurance assistance."
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Back & Neck Pain Relief",
+          "description": "Comprehensive treatment for sciatica, herniated discs, pinched nerves, and migraine headaches."
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Chiropractic Techniques",
+          "description": "Advanced treatments including spinal decompression, manual adjustments, and soft-tissue therapy."
+        }
+      ]
     }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/acceleratedrehabtherapy",
-    "https://www.instagram.com/acceleratedrehabtherapy/"
-  ]
-}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalTherapy",
+    "name": "Chiropractic Care Services",
+    "description": "Expert chiropractic care in Greeley and Denver, specializing in auto injuries, work injuries, and chronic pain management.",
+    "medicineSystem": "Chiropractic",
+    "recognizingAuthority": "Colorado Board of Chiropractic Examiners",
+    "relevantSpecialty": [
+      "Auto Injury Treatment",
+      "Work Injury Rehabilitation",
+      "Spinal Adjustment",
+      "Pain Management"
+    ],
+    "study": [
+      {
+        "@type": "MedicalStudy",
+        "description": "Evidence-based chiropractic techniques for optimal pain relief and mobility improvement"
+      }
+    ]
+  }
+]
 </script>
 {% endblock %}
 
@@ -67,8 +113,7 @@
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
-                HOW DO I FIND AN EXCELLENT<br class="hidden md:block"> 
-                CHIROPRACTOR IN GREELEY OR DENVER?
+                Chiropractic Care in Greeley & Denver
             </h1>
             
             <div class="relative max-w-3xl">
@@ -86,16 +131,60 @@
 <div class="w-full bg-white py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="space-y-8 mt-4 relative z-20">
-            <div class="max-w-3xl mx-auto">
-                <p class="text-gray-700 leading-relaxed">
-                    Are you searching for expert chiropractic care in Northern Colorado? Whether you need a <a href="#" class="text-blue-600 hover:text-blue-800">car accident chiropractor</a> for pain relief, improved mobility, or other health concerns, Accelerated Rehab Therapy has you covered. With convenient locations in both Greeley and Denver, we make it easy to access expert chiropractic care close to home. No matter which location you choose, you'll receive the same high-quality, personalized care from our team of experienced professionals.
-                </p>
+            <!-- Auto-Injury & Work-Comp Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Auto-Injury & Work-Comp Chiropractic</h2>
+                <p class="text-gray-700 mb-4">Specialized care for accident and workplace injuries, including:</p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li>Whiplash treatment and recovery</li>
+                    <li>Back injury rehabilitation</li>
+                    <li>Neck injury care</li>
+                    <li>Knee injury management</li>
+                    <li>Head injury assessment and treatment</li>
+                    <li>Medical liens and insurance claims assistance</li>
+                </ul>
             </div>
 
-            <div class="max-w-3xl mx-auto">
-                <p class="text-gray-700 leading-relaxed">
-                    Stop spending valuable time trying to find "the best chiropractor near me." At Accelerated Rehab Therapy, we have incredibly skilled experts eager to help improve your quality of life.
-                </p>
+            <!-- Back & Neck Pain Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Back & Neck Pain Relief</h2>
+                <p class="text-gray-700 mb-4">Comprehensive treatment for various conditions:</p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li>Spinal adjustments and alignments</li>
+                    <li>Sciatica treatment</li>
+                    <li>Herniated disc therapy</li>
+                    <li>Pinched nerve relief</li>
+                    <li>Migraine headache management</li>
+                    <li>Sprains and strains recovery</li>
+                </ul>
+            </div>
+
+            <!-- Techniques Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Chiropractic Techniques & Benefits</h2>
+                <p class="text-gray-700 mb-4">Our advanced treatment methods include:</p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li>Spinal decompression therapy</li>
+                    <li>Manual adjustments</li>
+                    <li>Soft-tissue therapy</li>
+                    <li>Chiropractic rehabilitation exercises</li>
+                    <li>Posture improvement techniques</li>
+                    <li>Mobility enhancement programs</li>
+                </ul>
+            </div>
+
+            <!-- Local Search Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Find a Chiropractor Near Me</h2>
+                <p class="text-gray-700 mb-4">Why choose Accelerated Rehab Therapy for chiropractic care?</p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li>Best-rated chiropractor in Greeley</li>
+                    <li>Expert Denver chiropractor for neck pain</li>
+                    <li>Convenient locations near major neighborhoods</li>
+                    <li>Same-day appointments available</li>
+                    <li>Most insurance plans accepted</li>
+                    <li>Bilingual staff (English/Spanish)</li>
+                </ul>
             </div>
 
             <!-- Section Title -->
@@ -107,7 +196,7 @@
 
             <div class="max-w-3xl mx-auto">
                 <p class="text-gray-700 leading-relaxed">
-                    Along with searching for the right doctor of chiropractic care, it's important to understand the advantages of seeking this particular type of treatment. Especially when dealing with auto accident pain, you need to consider all the chiropractic benefits and how they can give you much-needed relief. As a prime example, it's common for car crash pain to involve different nerves and joints within the body. For that, the best chiropractor can release pressure, immediately stopping the pain.
+                    Along with searching for the right doctor of chiropractic care, it's important to understand the advantages of seeking this particular type of treatment. Especially when dealing with auto accident pain, you need to consider all the chiropractic benefits and how they can give you much-needed relief. For comprehensive recovery, we often combine chiropractic care with <a href="{% url 'main:physical_therapy' %}" class="text-blue-600 hover:text-blue-800">physical therapy</a> and <a href="{% url 'main:massage' %}" class="text-blue-600 hover:text-blue-800">therapeutic massage</a>. As a prime example, it's common for car crash pain to involve different nerves and joints within the body. For that, the best chiropractor can release pressure, immediately stopping the pain.
                 </p>
             </div>
 
@@ -126,7 +215,7 @@
 
             <div class="max-w-3xl mx-auto">
                 <p class="text-gray-700 leading-relaxed">
-                    As part of your search to "find a chiropractor near me," you'll discover that not all clinics provide the same type of chiropractic services. Therefore, it's imperative that you choose the right one based on your specific needs. Along with the correct treatment for car crash pain, the best chiropractor helps with sprains and strains, migraine headaches, arthritic pain, and much more.
+                    As part of your search to "find a chiropractor near me," you'll discover that not all clinics provide the same type of chiropractic services. Therefore, it's imperative that you choose the right one based on your specific needs. Along with the correct treatment for car crash pain, the best chiropractor helps with sprains and strains, migraine headaches, arthritic pain, and much more. For optimal results, many patients combine our chiropractic care with <a href="{% url 'main:physical_therapy' %}" class="text-blue-600 hover:text-blue-800">specialized physical therapy</a> and <a href="{% url 'main:massage' %}" class="text-blue-600 hover:text-blue-800">targeted massage therapy</a>.
                 </p>
             </div>
 

@@ -2,59 +2,105 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block meta_description %}Professional massage therapy in Greeley & Denver. Specializing in medical massage, deep tissue, and relaxation techniques. Book your appointment today!{% endblock %}
+{% block meta_description %}Healing massage therapy in Greeley and Denver, including medical massage, neuromuscular massage, sports massage and trigger-point therapy for pain relief.{% endblock %}
+
+{% block title %}Massage Therapy Greeley & Denver | Medical, Sports & Trigger Point{% endblock %}
 
 {% block og_title %}Expert Massage Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
 {% block og_description %}Find relief from pain and stress with our professional massage therapy services. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
 
 {% block extra_head %}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "name": "Accelerated Rehab Therapy - Massage Therapy",
-  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/massage-therapy.jpg' %}",
-  "@id": "{{ request.build_absolute_uri }}",
-  "url": "{{ request.build_absolute_uri }}",
-  "telephone": "+19703517465",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "3615 W 20th St",
-    "addressLocality": "Greeley",
-    "addressRegion": "CO",
-    "postalCode": "80634",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.3969,
-    "longitude": -104.7589
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday"
-      ],
-      "opens": "08:00",
-      "closes": "17:00"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Accelerated Rehab Therapy - Massage Therapy",
+    "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/massage-therapy.jpg' %}",
+    "@id": "{{ request.build_absolute_uri }}",
+    "url": "{{ request.build_absolute_uri }}",
+    "telephone": "+19703517465",
+    "priceRange": "$$",
+    "medicalSpecialty": "Massage Therapy",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3615 W 20th St",
+      "addressLocality": "Greeley",
+      "addressRegion": "CO",
+      "postalCode": "80634",
+      "addressCountry": "US"
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Friday",
-      "opens": "08:00",
-      "closes": "14:00"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.3969,
+      "longitude": -104.7589
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "08:00",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/acceleratedrehabtherapy",
+      "https://www.instagram.com/acceleratedrehabtherapy/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Massage Therapy Services",
+      "itemListElement": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Medical & Neuromuscular Massage",
+          "description": "Professional therapeutic massage targeting chronic pain, fibromyalgia, arthritis, and injury recovery."
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Trigger-Point & Deep-Tissue Massage",
+          "description": "Targeted treatment for muscle knots, sciatica, neck tension, and shoulder pain."
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Sports Massage & Recovery",
+          "description": "Specialized massage therapy for athletes including pre-event preparation and post-event recovery."
+        }
+      ]
     }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/acceleratedrehabtherapy",
-    "https://www.instagram.com/acceleratedrehabtherapy/"
-  ]
-}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalTherapy",
+    "name": "Massage Therapy Services",
+    "description": "Expert massage therapy in Greeley and Denver, including medical massage, neuromuscular therapy, and sports massage.",
+    "medicineSystem": "Physical Medicine",
+    "recognizingAuthority": "Colorado Department of Regulatory Agencies",
+    "relevantSpecialty": [
+      "Medical Massage",
+      "Sports Massage",
+      "Pain Management",
+      "Injury Recovery"
+    ],
+    "study": [
+      {
+        "@type": "MedicalStudy",
+        "description": "Evidence-based massage therapy techniques for pain relief and improved mobility"
+      }
+    ]
+  }
+]
 </script>
 {% endblock %}
 
@@ -66,8 +112,7 @@
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
-                I NEED QUALITY MASSAGE THERAPY<br class="hidden md:block"> 
-                IN GREELEY & DENVER, CO
+                Massage Therapy in Greeley & Denver, CO
             </h1>
             
             <div class="relative max-w-3xl">
@@ -82,32 +127,59 @@
 
     <!-- Massage Services Grid -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 py-8 mt-8">
-        <h2 class="text-4xl font-bold text-[#001524] mb-8">MASSAGE SERVICES</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Medical Massage -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">MEDICAL MASSAGE</h3>
-                <p class="text-gray-700">Specialized treatment focusing on specific injuries or medical conditions. Our therapists work with your healthcare providers to support your recovery.</p>
-            </div>
+        <!-- Medical & Neuromuscular Massage -->
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Medical & Neuromuscular Massage</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">Professional therapeutic massage targeting chronic conditions and pain management:</p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Chronic pain management</li>
+                <li>Fibromyalgia treatment</li>
+                <li>Arthritis relief</li>
+                <li>Injury recovery support</li>
+                <li>Neuromuscular therapy</li>
+                <li>Pain relief massage techniques</li>
+            </ul>
+        </div>
 
-            <!-- Neuromuscular Massage -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">NEUROMUSCULAR MASSAGE</h3>
-                <p class="text-gray-700">Advanced techniques targeting nerve and muscle interactions to relieve chronic pain and improve mobility.</p>
-            </div>
+        <!-- Trigger-Point & Deep-Tissue Section -->
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Trigger-Point & Deep-Tissue Massage</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">Targeted treatment for specific pain and tension areas:</p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Muscle knot release</li>
+                <li>Sciatica pain relief</li>
+                <li>Neck tension treatment</li>
+                <li>Shoulder pain therapy</li>
+                <li>Deep tissue massage techniques</li>
+                <li>Trigger point therapy</li>
+            </ul>
+        </div>
 
-            <!-- Trigger Point Massage -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">TRIGGER POINT MASSAGE</h3>
-                <p class="text-gray-700">Focused treatment on specific areas of muscle tension and pain, providing targeted relief and improved function.</p>
-            </div>
+        <!-- Sports Massage Section -->
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Sports Massage & Recovery</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">Specialized massage therapy for athletes and active individuals:</p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Pre-event preparation massage</li>
+                <li>Post-event recovery treatment</li>
+                <li>Flexibility enhancement</li>
+                <li>Circulation improvement</li>
+                <li>Injury prevention techniques</li>
+                <li>Performance optimization</li>
+            </ul>
+        </div>
 
-            <!-- Sports Massage -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">SPORTS MASSAGE</h3>
-                <p class="text-gray-700">Specialized techniques for athletes and active individuals, helping with performance, recovery, and injury prevention.</p>
-            </div>
+        <!-- Benefits Section -->
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Benefits of Massage Therapy</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Deep relaxation and stress reduction</li>
+                <li>Improved mobility and flexibility</li>
+                <li>Enhanced mental health and well-being</li>
+                <li>Better sleep quality</li>
+                <li>Reduced muscle tension and pain</li>
+                <li>Faster injury recovery</li>
+            </ul>
         </div>
     </div>
 
@@ -122,7 +194,7 @@
 
                 <div class="max-w-3xl mx-auto text-center">
                     <p class="text-gray-700 leading-relaxed mb-6">
-                        Getting a massage to relax is nice but when in pain, you need healing hands massage therapy. With this, a highly experienced and trained therapeutic massage therapist focuses on providing a healing form of treatment. Whether you deal with pain, stiff joints, headaches, or some other issue, our healing hands massage therapy works wonders.
+                        Getting a massage to relax is nice but when in pain, you need healing hands massage therapy. With this, a highly experienced and trained therapeutic massage therapist focuses on providing a healing form of treatment. For comprehensive care, we often combine massage therapy with <a href="{% url 'main:chiropractor' %}" class="text-blue-600 hover:text-blue-800">chiropractic adjustments</a> and <a href="{% url 'main:physical_therapy' %}" class="text-blue-600 hover:text-blue-800">physical therapy</a>. Whether you deal with pain, stiff joints, headaches, or some other issue, our healing hands massage therapy works wonders.
                     </p>
 
                     <p class="text-gray-700 leading-relaxed mb-6">
@@ -147,7 +219,7 @@
 
             <div class="max-w-3xl mx-auto">
                 <p class="text-gray-700 leading-relaxed mb-6">
-                    Seeing a pro massage therapist is the best way to feel better. Especially if you have car crash pain, you'll notice a quick improvement. Remember, when looking for "the best massage therapist near me," you can define your search however you want. That means if you prefer a deep muscle massage, you can change the words. If you're looking for a pro massage therapist that also performs hot stone therapy, you would use that as part of your search term.
+                    Seeing a pro massage therapist is the best way to feel better. Especially if you have car crash pain, you'll notice a quick improvement when combining massage with our <a href="{% url 'main:chiropractor' %}" class="text-blue-600 hover:text-blue-800">specialized chiropractic care</a> and <a href="{% url 'main:physical_therapy' %}" class="text-blue-600 hover:text-blue-800">targeted physical therapy</a>. Remember, when looking for "the best massage therapist near me," you can define your search however you want. That means if you prefer a deep muscle massage, you can change the words. If you're looking for a pro massage therapist that also performs hot stone therapy, you would use that as part of your search term.
                 </p>
 
                 <p class="text-gray-700 leading-relaxed" itemprop="description">

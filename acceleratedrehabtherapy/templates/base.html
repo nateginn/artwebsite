@@ -10,6 +10,13 @@
     <meta name="format-detection" content="telephone=no">
     <title>{% block title %}{{ meta_title|default:"Expert Chiropractic & Rehab in Greeley & Denver | Accelerated Rehab Therapy" }}{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}{{ meta_description|default:'Expert chiropractic care, physical therapy, and rehabilitation services in Greeley and Denver. Specializing in auto injuries, work comp, and chronic pain relief.' }}{% endblock %}">
+    {% block meta_keywords %}
+    <meta name="keywords" content="chiropractor Greeley, physical therapy Denver, rehabilitation services, auto injury treatment, work comp therapy, pain management, sports injury therapy, massage therapy, back pain relief, neck pain treatment, spinal adjustment, sports rehabilitation, injury recovery">
+    {% endblock %}
+    <meta name="geo.region" content="US-CO">
+    <meta name="geo.placename" content="Greeley, Denver">
+    <meta name="geo.position" content="40.3969;-104.7589">
+    <meta name="ICBM" content="40.3969, -104.7589">
     <meta name="keywords" content="chiropractor Greeley, physical therapy Denver, rehabilitation services, auto injury treatment, work comp therapy, pain management, chiropractic care, sports injury therapy">
     <meta name="author" content="Accelerated Rehab Therapy">
     <meta name="robots" content="index, follow">
@@ -20,12 +27,22 @@
     <meta property="og:title" content="{% block og_title %}{{ meta_title|default:'Accelerated Rehab Therapy' }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ meta_description|default:'Expert chiropractic and rehabilitation services in Greeley and Denver' }}{% endblock %}">
     <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-default.jpg' %}{% endblock %}">
+    <meta property="og:site_name" content="Accelerated Rehab Therapy">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:street-address" content="3615 W 20th St">
+    <meta property="og:locality" content="Greeley">
+    <meta property="og:region" content="CO">
+    <meta property="og:postal-code" content="80634">
+    <meta property="og:country-name" content="USA">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@acceleratedrehab">
+    <meta name="twitter:creator" content="@acceleratedrehab">
     <meta name="twitter:title" content="{% block twitter_title %}{{ meta_title|default:'Accelerated Rehab Therapy' }}{% endblock %}">
     <meta name="twitter:description" content="{% block twitter_description %}{{ meta_description|default:'Expert chiropractic and rehabilitation services in Greeley and Denver' }}{% endblock %}">
     <meta name="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-default.jpg' %}{% endblock %}">
+    <meta name="twitter:image:alt" content="{% block twitter_image_alt %}Accelerated Rehab Therapy - Expert chiropractic and rehabilitation services in Greeley and Denver{% endblock %}">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ request.build_absolute_uri }}">

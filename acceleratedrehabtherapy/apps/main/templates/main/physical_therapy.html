@@ -2,60 +2,104 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block meta_description %}Expert physical therapy in Greeley & Denver. Specializing in injury recovery, pain management, and rehabilitation. Accepting new patients. Call today!{% endblock %}
+{% block meta_description %}Accelerated Rehab Therapy provides sports, injury and orthopedic physical therapy in Greeley and Denver. Relief for back pain, sciatica, knee injuries and more.{% endblock %}
+
+{% block title %}Physical Therapy in Greeley & Denver | Sports & Injury Rehab{% endblock %}
 
 {% block og_title %}Expert Physical Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
 {% block og_description %}Regain mobility and reduce pain with our professional physical therapy services. Serving Greeley and Denver with personalized treatment plans.{% endblock %}
 
 {% block extra_head %}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "name": "Accelerated Rehab Therapy - Physical Therapy",
-  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/physical-therapy.jpg' %}",
-  "@id": "{{ request.build_absolute_uri }}",
-  "url": "{{ request.build_absolute_uri }}",
-  "telephone": "+19703517465",
-  "priceRange": "$$",
-  "medicalSpecialty": "Physical Therapy",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "3615 W 20th St",
-    "addressLocality": "Greeley",
-    "addressRegion": "CO",
-    "postalCode": "80634",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.3969,
-    "longitude": -104.7589
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday"
-      ],
-      "opens": "08:00",
-      "closes": "17:00"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "PhysicalTherapist",
+    "name": "Accelerated Rehab Therapy - Physical Therapy",
+    "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/physical-therapy.jpg' %}",
+    "@id": "{{ request.build_absolute_uri }}",
+    "url": "{{ request.build_absolute_uri }}",
+    "telephone": "+19703517465",
+    "priceRange": "$$",
+    "medicalSpecialty": "Physical Therapy",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3615 W 20th St",
+      "addressLocality": "Greeley",
+      "addressRegion": "CO",
+      "postalCode": "80634",
+      "addressCountry": "US"
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Friday",
-      "opens": "08:00",
-      "closes": "14:00"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.3969,
+      "longitude": -104.7589
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "08:00",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/acceleratedrehabtherapy",
+      "https://www.instagram.com/acceleratedrehabtherapy/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Physical Therapy Services",
+      "itemListElement": [
+        {
+          "@type": "HealthAndBeautyBusiness",
+          "name": "Sports Physical Therapy",
+          "description": "Comprehensive sports physical therapy program including running analysis, strength & conditioning, and return-to-sport testing."
+        },
+        {
+          "@type": "HealthAndBeautyBusiness",
+          "name": "Injury & Orthopedic Physical Therapy",
+          "description": "Expert treatment for back pain, sciatica, knee injuries, and post-surgical rehabilitation."
+        },
+        {
+          "@type": "HealthAndBeautyBusiness",
+          "name": "Specialized Physical Therapy Techniques",
+          "description": "Advanced therapeutic techniques including dry needling, shockwave therapy, and blood-flow restriction training."
+        }
+      ]
     }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/acceleratedrehabtherapy",
-    "https://www.instagram.com/acceleratedrehabtherapy/"
-  ]
-}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalTherapy",
+    "name": "Physical Therapy Services",
+    "description": "Expert physical therapy services in Greeley and Denver, including sports rehabilitation, injury recovery, and specialized therapeutic techniques.",
+    "medicineSystem": "Western Medicine",
+    "recognizingAuthority": "Colorado Department of Regulatory Agencies",
+    "relevantSpecialty": [
+      "Sports Medicine",
+      "Orthopedic Physical Therapy",
+      "Post-surgical Rehabilitation"
+    ],
+    "study": [
+      {
+        "@type": "MedicalStudy",
+        "description": "Evidence-based physical therapy protocols for optimal patient outcomes"
+      }
+    ]
+  }
+]
 </script>
 {% endblock %}
 
@@ -67,8 +111,7 @@
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
-                I AM SEARCHING FOR PHYSICAL<br class="hidden md:block"> 
-                THERAPY IN GREELEY & DENVER, CO
+                Physical Therapy in Greeley & Denver, CO
             </h1>
             
             <div class="relative max-w-3xl">
@@ -83,26 +126,56 @@
 
     <!-- Physical Therapy Services Grid -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 py-8 mt-8">
-        <h2 class="text-4xl font-bold text-[#001524] mb-8">PHYSICAL THERAPY</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Sports Physical Therapy -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">SPORTS PHYSICAL THERAPY</h3>
-                <p class="text-gray-700">Specialized treatment for athletes and active individuals, helping with recovery and performance enhancement.</p>
-            </div>
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Sports Physical Therapy</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">Our comprehensive sports physical therapy program helps athletes and active individuals return to peak performance. We offer:</p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Running analysis and gait assessment</li>
+                <li>Strength & conditioning programs</li>
+                <li>Return-to-sport testing and protocols</li>
+                <li>Sports injury rehabilitation</li>
+                <li>Performance enhancement training</li>
+            </ul>
+        </div>
 
-            <!-- Injury Physical Therapy -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">INJURY PHYSICAL THERAPY</h3>
-                <p class="text-gray-700">Focused care for injuries from accidents, work-related incidents, or other causes.</p>
-            </div>
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Injury & Orthopedic Physical Therapy</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">Expert treatment for a wide range of conditions including:</p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Back pain and sciatica treatment</li>
+                <li>Neck pain and cervical rehabilitation</li>
+                <li>Knee injury rehabilitation</li>
+                <li>Hip pain management</li>
+                <li>Shoulder injury recovery</li>
+                <li>Post-surgical rehabilitation</li>
+                <li>Joint replacement therapy</li>
+            </ul>
+        </div>
 
-            <!-- Orthopedic Physical Therapy -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-[#001524] mb-4">ORTHOPEDIC PHYSICAL THERAPY</h3>
-                <p class="text-gray-700">Treatment for musculoskeletal issues affecting bones, joints, muscles, and soft tissues.</p>
-            </div>
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Specialized Techniques</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">We utilize advanced therapeutic techniques including:</p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Dry needling therapy</li>
+                <li>Shockwave therapy</li>
+                <li>Blood-flow restriction training</li>
+                <li>Manual therapy techniques</li>
+                <li>Vestibular rehabilitation</li>
+                <li>Therapeutic exercise programs</li>
+                <li>Cupping therapy</li>
+            </ul>
+        </div>
+
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Why Choose Us for Physical Therapy in Greeley</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Personalized treatment plans tailored to your needs</li>
+                <li>Accepts most major insurance plans</li>
+                <li>Bilingual services available (English/Spanish)</li>
+                <li>Convenient locations in Greeley and Denver</li>
+                <li>State-of-the-art rehabilitation equipment</li>
+                <li>Evidence-based treatment protocols</li>
+            </ul>
         </div>
     </div>
 
@@ -128,7 +201,7 @@
                     </h2>
                     
                     <p class="text-gray-700 leading-relaxed mb-6">
-                        With the best physical therapy, you can overcome just about anything. Especially when it comes to advanced physical therapy, a trained professional can help people with a broad range of physical challenges. Along with reducing or eliminating auto accident pain, this is an excellent way to improve on mobility. This type of therapy is often used to deal with the more challenging problems, and it yields outstanding results. Best of all, this often helps people avoid surgery.
+                        With the best physical therapy, you can overcome just about anything. Especially when it comes to advanced physical therapy, a trained professional can help people with a broad range of physical challenges. Along with reducing or eliminating auto accident pain (which can be further addressed with our <a href="{% url 'main:chiropractor' %}" class="text-blue-600 hover:text-blue-800">specialized chiropractic treatments</a>), this is an excellent way to improve mobility. This type of therapy is often used to deal with the more challenging problems, and it yields outstanding results. Best of all, this often helps people avoid surgery.
                     </p>
                     
                     <p class="text-gray-700 leading-relaxed">
@@ -143,7 +216,7 @@
                     </h2>
                     
                     <p class="text-gray-700 leading-relaxed mb-6">
-                        Professional physical therapy offers many excellent benefits in addition to easing pain associated with a work injury or auto injury. As mentioned, this is a great way to improve mobility. Professional physical therapy also improves balance for individuals who tend to fall, it helps with managing vascular conditions and diabetes, and it can make it easier for a stroke patient to recover.
+                        Professional physical therapy offers many excellent benefits in addition to easing pain associated with a work injury or auto injury. As mentioned, this is a great way to improve mobility. Our physical therapy services can be combined with <a href="{% url 'main:chiropractor' %}" class="text-blue-600 hover:text-blue-800">chiropractic care</a> for enhanced results. We also offer <a href="{% url 'main:massage' %}" class="text-blue-600 hover:text-blue-800">therapeutic massage</a> to complement your treatment plan. Professional physical therapy improves balance for individuals who tend to fall, helps with managing vascular conditions and diabetes, and can make it easier for a stroke patient to recover.
                     </p>
                     
                     <p class="text-gray-700 leading-relaxed mb-6">
