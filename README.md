@@ -108,14 +108,31 @@ artwebsite/
 ### Website
 - Modern responsive design with mobile-first approach
 - Dynamic content management through Django admin
-- SEO-optimized pages
+- SEO-optimized pages with Schema.org structured data
 - Fast loading with optimized static files
+
+### Meta Ads Landing Pages
+Five dedicated landing pages for Facebook/Instagram campaigns — not linked in the main navigation. See [LANDING_PAGES.md](LANDING_PAGES.md) for full documentation.
+
+| Page | URL |
+|------|-----|
+| Shockwave Therapy Denver | `/shockwave-therapy-denver/` |
+| Shockwave Therapy Greeley | `/shockwave-therapy-greeley/` |
+| Shockwave Therapy for Plantar Fasciitis | `/shockwave-therapy-plantar-fasciitis/` |
+| Chronic Tendon Pain Treatment | `/chronic-tendon-pain-treatment/` |
+| Non-Surgical Pain Relief Denver | `/non-surgical-pain-relief-denver/` |
+
+- Lead capture form on every page with database storage
+- Location-based email routing (Greeley / Denver / Primary)
+- Meta Pixel integration (activates via `META_PIXEL_ID` in `.env`)
+- Shared `/thank-you/` confirmation page fires Meta Pixel `Lead` event
 
 ### Admin Interface
 - Customized Django Jazzmin theme
 - Rich text editing with CKEditor 5
 - User and permission management
 - Activity logs
+- Landing page leads viewable at `/admin/main/landingpagelead/`
 
 ### Development
 - Complete CI/CD pipeline
@@ -156,6 +173,12 @@ The project includes GitHub Actions for CI/CD. Pushing to the `main` branch trig
    EMAIL_HOST_PASSWORD=your-app-password
    DEFAULT_FROM_EMAIL=your-email@gmail.com
    SERVER_EMAIL=your-email@gmail.com
+
+   # Meta Ads landing pages
+   META_PIXEL_ID=                        # Set once Pixel is created in Meta Business Manager
+   LEAD_EMAIL_PRIMARY=casemanager.art@gmail.com
+   LEAD_EMAIL_GREELEY=greeleyrehab@gmail.com
+   LEAD_EMAIL_DENVER=artdenver.art@gmail.com
    ```
 
 3. **CI/CD Pipeline**

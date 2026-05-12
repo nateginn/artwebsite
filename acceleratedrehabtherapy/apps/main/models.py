@@ -64,3 +64,36 @@ class MainPageConfig(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class LandingPageLead(models.Model):
+    SOURCE_CHOICES = [
+        ('shockwave-denver', 'Shockwave Therapy Denver'),
+        ('shockwave-greeley', 'Shockwave Therapy Greeley'),
+        ('shockwave-plantar-fasciitis', 'Shockwave Plantar Fasciitis'),
+        ('chronic-tendon', 'Chronic Tendon Pain'),
+        ('non-surgical-denver', 'Non-Surgical Pain Relief Denver'),
+    ]
+    LOCATION_CHOICES = [
+        ('greeley', 'Greeley'),
+        ('denver', 'Denver'),
+        ('no-preference', 'No Preference'),
+    ]
+
+    name = models.CharField(_('Name'), max_length=128)
+    phone = models.CharField(_('Phone'), max_length=20)
+    email = models.EmailField(_('Email'))
+    condition = models.CharField(_('Condition / Reason for Visit'), max_length=256, blank=True)
+    preferred_location = models.CharField(
+        _('Preferred Location'), max_length=20, choices=LOCATION_CHOICES
+    )
+    source_page = models.CharField(_('Source Page'), max_length=50, choices=SOURCE_CHOICES)
+    created = models.DateTimeField(_('Submitted'), default=timezone.now)
+
+    class Meta:
+        verbose_name = _('Landing Page Lead')
+        verbose_name_plural = _('Landing Page Leads')
+        ordering = ['-created']
+
+    def __str__(self):
+        return f"{self.name} — {self.get_source_page_display()} ({self.created.strftime('%Y-%m-%d')})"

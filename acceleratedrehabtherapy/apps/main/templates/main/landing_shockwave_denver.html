@@ -1,0 +1,173 @@
+{% extends 'base_landing.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="bg-gradient-to-br from-[#001524] via-[#012E47] to-[#083B57] py-16 md:py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left: Headline + copy -->
+            <div>
+                <span class="inline-block bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Denver, CO</span>
+                <h1 class="text-white font-extrabold leading-tight mb-4 text-fluid-h1" style="font-family: 'Montserrat', sans-serif;">
+                    Non-Surgical Shockwave Therapy in Denver
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-6">
+                    Helping patients reduce chronic pain and improve function without injections or surgery.
+                </p>
+                <p class="text-gray-400 mb-6">
+                    If you are struggling with stubborn pain that has not responded well to traditional treatment, shockwave therapy may help stimulate healing and improve recovery.
+                </p>
+
+                <!-- Conditions list -->
+                <div class="mb-8">
+                    <p class="text-yellow-400 font-semibold mb-3">Conditions Commonly Treated:</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {% for condition in conditions %}
+                        <li class="flex items-center gap-2 text-gray-300 text-sm">
+                            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            {{ condition }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Desktop CTA -->
+                <a href="#lead-form" class="hidden md:inline-flex lp-pulse items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-transform">
+                    Schedule Your Consultation
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Right: Lead form -->
+            <div id="lead-form">
+                {% include 'includes/_landing_form.html' with form_cta_text="Schedule Your Consultation" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     WHY SHOCKWAVE THERAPY
+     ============================================================ -->
+<section class="bg-white py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Image placeholder -->
+            <div>
+                {% include 'includes/_landing_image_placeholder.html' with image_label="Provider performing shockwave therapy on a patient's foot or elbow in a modern rehab environment" image_height="380px" %}
+            </div>
+            <!-- Content -->
+            <div>
+                <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
+                    Why Patients Are Choosing Shockwave Therapy
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    Many patients are searching for alternatives to medications, injections, or surgery. Shockwave therapy is commonly used in sports medicine and rehabilitation settings to help support tissue healing and improve mobility.
+                </p>
+                <ul class="space-y-3 mb-8">
+                    {% for benefit in benefits %}
+                    <li class="flex items-start gap-3 text-gray-700">
+                        <span class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center">
+                            <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </span>
+                        {{ benefit }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="#lead-form" class="lp-pulse inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-7 py-3 rounded-full hover:scale-105 transition-transform">
+                    Request an Appointment Today
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     MID-PAGE CTA
+     ============================================================ -->
+{% include 'includes/_landing_cta.html' with cta_headline="Chronic Pain Doesn't Have To Be Permanent" cta_subtext="Shockwave therapy may help support your recovery. Schedule a consultation to find out if it is right for you." cta_button_text="Request Appointment" cta_phone_label="Call Denver: 720-604-2792" cta_phone_number="+17206042792" %}
+
+<!-- ============================================================
+     WHAT TO EXPECT
+     ============================================================ -->
+<section class="bg-gray-50 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
+                    What To Expect During Treatment
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    Your provider will evaluate your condition and determine whether shockwave therapy is appropriate for your goals. Treatments are typically brief and customized based on the affected tissue and severity of symptoms.
+                </p>
+                <p class="text-gray-600 mb-6">
+                    Patients often continue normal activities while progressing through a treatment plan.
+                </p>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                        <p class="text-[#001524] font-bold text-2xl">ESWT</p>
+                        <p class="text-gray-500 text-xs mt-1">Focused Shockwave</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                        <p class="text-[#001524] font-bold text-2xl">Brief</p>
+                        <p class="text-gray-500 text-xs mt-1">Treatment Sessions</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                        <p class="text-[#001524] font-bold text-2xl">Non‑Surgical</p>
+                        <p class="text-gray-500 text-xs mt-1">Approach</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                {% include 'includes/_landing_image_placeholder.html' with image_label="Athlete stretching after shockwave therapy treatment — active, confident lifestyle image" image_height="340px" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     TRUST / REVIEWS
+     ============================================================ -->
+{% include 'includes/_landing_trust.html' %}
+
+<!-- ============================================================
+     FINAL CTA + REPEAT FORM
+     ============================================================ -->
+<section class="bg-[#001524] py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-white font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
+                    Ready To See If Shockwave Therapy Can Help?
+                </h2>
+                <p class="text-gray-300 text-lg mb-6">
+                    Our Denver team is ready to evaluate your condition and build a plan designed around your recovery goals.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="tel:+17206042792" class="inline-flex items-center justify-center gap-2 border-2 border-yellow-400 text-yellow-400 font-bold px-6 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
+                        Call Denver: 720-604-2792
+                    </a>
+                </div>
+            </div>
+            <div>
+                {% include 'includes/_landing_form.html' with form_cta_text="Schedule Your Consultation" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

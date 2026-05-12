@@ -1,0 +1,83 @@
+{% comment %}
+Shared lead capture form for all landing pages.
+Required context: source_page
+{% endcomment %}
+<div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md mx-auto">
+    <p class="text-[#001524] font-bold text-lg mb-1 text-center">Request a Free Consultation</p>
+    <p class="text-gray-500 text-sm mb-5 text-center">We'll contact you within one business day.</p>
+
+    {% if messages %}
+    <div class="mb-4 space-y-2">
+        {% for message in messages %}
+        <div class="rounded-lg px-4 py-3 text-sm font-medium
+            {% if message.tags == 'error' %}bg-red-100 text-red-800{% else %}bg-green-100 text-green-800{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{% url 'main:landing_form_submit' %}" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="source_page" value="{{ source_page }}">
+
+        <div class="space-y-4">
+            <div>
+                <label for="lp-name" class="block text-sm font-semibold text-gray-700 mb-1">
+                    Full Name <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="lp-name" name="name" required autocomplete="name"
+                       placeholder="Jane Smith"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition">
+            </div>
+
+            <div>
+                <label for="lp-phone" class="block text-sm font-semibold text-gray-700 mb-1">
+                    Phone Number <span class="text-red-500">*</span>
+                </label>
+                <input type="tel" id="lp-phone" name="phone" required autocomplete="tel"
+                       placeholder="(970) 555-0100"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition">
+            </div>
+
+            <div>
+                <label for="lp-email" class="block text-sm font-semibold text-gray-700 mb-1">
+                    Email Address <span class="text-red-500">*</span>
+                </label>
+                <input type="email" id="lp-email" name="email" required autocomplete="email"
+                       placeholder="jane@example.com"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition">
+            </div>
+
+            <div>
+                <label for="lp-condition" class="block text-sm font-semibold text-gray-700 mb-1">
+                    Condition / Reason for Visit
+                </label>
+                <input type="text" id="lp-condition" name="condition"
+                       placeholder="e.g. heel pain, tendon injury, back pain"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition">
+            </div>
+
+            <div>
+                <label for="lp-location" class="block text-sm font-semibold text-gray-700 mb-1">
+                    Preferred Location
+                </label>
+                <select id="lp-location" name="preferred_location"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition bg-white">
+                    <option value="no-preference">No preference</option>
+                    <option value="greeley" {% if preferred_location == 'greeley' %}selected{% endif %}>Greeley — 970-324-1750</option>
+                    <option value="denver" {% if preferred_location == 'denver' %}selected{% endif %}>Denver — 720-604-2792</option>
+                </select>
+            </div>
+
+            <button type="submit"
+                    class="lp-pulse w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 rounded-xl text-base hover:scale-105 transition-transform shadow-lg">
+                {{ form_cta_text|default:"Schedule My Consultation" }}
+            </button>
+
+            <p class="text-center text-xs text-gray-400">
+                No obligation. We respect your privacy.
+            </p>
+        </div>
+    </form>
+</div>

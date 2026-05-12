@@ -1,0 +1,163 @@
+{% extends 'base_landing.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="bg-gradient-to-br from-[#001524] via-[#012E47] to-[#083B57] py-16 md:py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="inline-block bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Greeley &amp; Denver, CO</span>
+                <h1 class="text-white font-extrabold leading-tight mb-4 text-fluid-h1" style="font-family: 'Montserrat', sans-serif;">
+                    Frustrated With Chronic Tendon Pain?
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-6">
+                    Explore non-surgical treatment options designed to help improve mobility and function.
+                </p>
+                <p class="text-gray-400 mb-6">
+                    Chronic tendon injuries can make exercise, work, and daily activities difficult. Our rehab-focused approach combines advanced treatment options with progressive rehabilitation to help you move better and recover safely.
+                </p>
+
+                <div class="mb-8">
+                    <p class="text-yellow-400 font-semibold mb-3">Conditions Commonly Seen:</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {% for c in conditions %}
+                        <li class="flex items-center gap-2 text-gray-300 text-sm">
+                            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            {{ c }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <a href="#lead-form" class="hidden md:inline-flex lp-pulse items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-transform">
+                    Book Consultation
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div id="lead-form">
+                {% include 'includes/_landing_form.html' with form_cta_text="Book Consultation" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     HOW SHOCKWAVE THERAPY IS USED
+     ============================================================ -->
+<section class="bg-white py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                {% include 'includes/_landing_image_placeholder.html' with image_label="Athlete holding painful elbow — runner or gym athlete dealing with chronic tendon pain" image_height="360px" %}
+            </div>
+            <div>
+                <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
+                    Supporting Recovery and Rehabilitation
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    Shockwave therapy is commonly integrated with movement-based rehabilitation programs designed to improve tissue loading tolerance and restore functional movement.
+                </p>
+                <p class="text-gray-600 mb-6">
+                    Rather than masking pain, a rehab-focused plan addresses the underlying mechanics that contribute to ongoing tendon irritation — helping you build a foundation for lasting recovery.
+                </p>
+                <a href="#lead-form" class="lp-pulse inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-7 py-3 rounded-full hover:scale-105 transition-transform">
+                    See If Treatment Is Right For You
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     MID-PAGE CTA
+     ============================================================ -->
+{% include 'includes/_landing_cta.html' with cta_headline="Take The Next Step Toward Recovery" cta_subtext="Chronic tendon pain doesn't have to hold you back. Explore your options with our rehab team." cta_button_text="Schedule Today" cta_phone_label="Call Now" cta_phone_number="+19703241750" %}
+
+<!-- ============================================================
+     DESIGNED FOR ACTIVE ADULTS
+     ============================================================ -->
+<section class="bg-gray-50 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
+                    Designed For Active Adults
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    Whether you are an athlete, runner, weekend warrior, or active professional, treatment focuses on helping you safely return to the activities that matter most.
+                </p>
+                <p class="text-gray-600 mb-6">
+                    Our team builds individualized plans that progress at the right pace for your condition — not too aggressive, not too conservative.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+                        <p class="text-[#236E8C] font-bold text-lg">Athletes</p>
+                        <p class="text-gray-500 text-xs mt-1">Sport-specific rehab</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+                        <p class="text-[#236E8C] font-bold text-lg">Workers</p>
+                        <p class="text-gray-500 text-xs mt-1">Return-to-work focus</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+                        <p class="text-[#236E8C] font-bold text-lg">Runners</p>
+                        <p class="text-gray-500 text-xs mt-1">Gait and loading rehab</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
+                        <p class="text-[#236E8C] font-bold text-lg">Weekend Warriors</p>
+                        <p class="text-gray-500 text-xs mt-1">Activity-based recovery</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                {% include 'includes/_landing_image_placeholder.html' with image_label="Functional exercise scene in a modern rehab gym — active adult performing a movement exercise" image_height="360px" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     TRUST / REVIEWS
+     ============================================================ -->
+{% include 'includes/_landing_trust.html' %}
+
+<!-- ============================================================
+     FINAL CTA + REPEAT FORM
+     ============================================================ -->
+<section class="bg-[#001524] py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-white font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
+                    Take The Next Step Toward Recovery
+                </h2>
+                <p class="text-gray-300 text-lg mb-6">
+                    Chronic tendon pain is treatable. Our Greeley and Denver teams are ready to evaluate your condition and build a plan designed around your goals.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="tel:+19703241750" class="inline-flex items-center gap-2 border-2 border-yellow-400 text-yellow-400 font-bold px-6 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                        Greeley: 970-324-1750
+                    </a>
+                    <a href="tel:+17206042792" class="inline-flex items-center gap-2 border-2 border-gray-500 text-gray-300 font-bold px-6 py-3 rounded-full hover:border-yellow-400 hover:text-yellow-400 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                        Denver: 720-604-2792
+                    </a>
+                </div>
+            </div>
+            <div>
+                {% include 'includes/_landing_form.html' with form_cta_text="Schedule Today" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

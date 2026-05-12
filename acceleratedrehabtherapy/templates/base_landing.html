@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+{% load static %}
+{% load compress %}
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:site_name" content="Accelerated Rehab Therapy">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"></noscript>
+
+    <!-- Tailwind CSS -->
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+    {% endcompress %}
+
+    {% compress css %}
+    <style>
+        :root {
+            --fluid-h1: clamp(2rem, calc(1.8rem + 2vw), 4rem);
+            --fluid-h2: clamp(1.6rem, calc(1.4rem + 1.5vw), 3rem);
+            --fluid-h3: clamp(1.3rem, calc(1.1rem + 1vw), 2.2rem);
+            --fluid-body: clamp(1rem, calc(0.9rem + 0.5vw), 1.2rem);
+            --space-sm: clamp(1rem, calc(0.8rem + 1vw), 2rem);
+            --space-md: clamp(2rem, calc(1.5rem + 2vw), 4rem);
+            --space-lg: clamp(3rem, calc(2rem + 3vw), 6rem);
+        }
+        .text-fluid-h1 { font-size: var(--fluid-h1); }
+        .text-fluid-h2 { font-size: var(--fluid-h2); }
+        .text-fluid-h3 { font-size: var(--fluid-h3); }
+        /* Sticky mobile call bar */
+        .sticky-call-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            display: flex;
+        }
+        @media (min-width: 768px) {
+            .sticky-call-bar { display: none; }
+        }
+        /* Pulse on CTA buttons */
+        .lp-pulse {
+            animation: lp-pulse 2.2s infinite;
+        }
+        @keyframes lp-pulse {
+            0%   { box-shadow: 0 0 0 0 rgba(245,158,11,0.5); }
+            70%  { box-shadow: 0 0 0 10px rgba(245,158,11,0); }
+            100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+        }
+        /* Image placeholder styling */
+        .img-placeholder {
+            background: linear-gradient(135deg, #012E47 0%, #083B57 100%);
+            border: 2px dashed #236E8C;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #7dd3fc;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 2rem;
+            min-height: 280px;
+        }
+    </style>
+    {% endcompress %}
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Meta Pixel (activates when META_PIXEL_ID is set in .env) -->
+    {% if meta_pixel_id %}
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{ meta_pixel_id }}');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id={{ meta_pixel_id }}&ev=PageView&noscript=1"/></noscript>
+    {% endif %}
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen bg-white" style="font-family: 'Inter', sans-serif;">
+
+    <!-- Minimal Landing Page Header -->
+    <header class="sticky top-0 z-50 bg-[#001524] shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="{% url 'main:home' %}" class="flex-shrink-0">
+                <img src="{% static 'img/ARTlogoWHITE.png' %}" alt="Accelerated Rehab Therapy" class="h-12 w-auto">
+            </a>
+
+            <!-- Phone numbers — desktop -->
+            <div class="hidden md:flex items-center gap-6 text-sm text-white">
+                <a href="tel:+19703241750" class="flex items-center gap-2 hover:text-yellow-400 transition-colors">
+                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                    <span><span class="text-gray-400">Greeley:</span> 970-324-1750</span>
+                </a>
+                <a href="tel:+17206042792" class="flex items-center gap-2 hover:text-yellow-400 transition-colors">
+                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                    <span><span class="text-gray-400">Denver:</span> 720-604-2792</span>
+                </a>
+            </div>
+
+            <!-- Call Now CTA — header -->
+            <a href="tel:+19703241750"
+               class="lp-pulse inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-4 py-2 rounded-full text-sm hover:scale-105 transition-transform">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                </svg>
+                Call Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="bg-[#001524] text-white py-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Logo + tagline -->
+                <div>
+                    <img src="{% static 'img/ARTlogoWHITE.png' %}" alt="Accelerated Rehab Therapy" class="h-12 w-auto mb-3">
+                    <p class="text-gray-400 text-sm">Rehab-focused care in Greeley &amp; Denver, Colorado.</p>
+                </div>
+                <!-- Greeley -->
+                <div>
+                    <h3 class="text-yellow-400 font-semibold mb-2">Greeley Office</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        1705 61st Ave Unit M<br>Greeley, CO 80634<br>
+                        <a href="tel:+19703241750" class="hover:text-yellow-400 transition-colors">970-324-1750</a>
+                    </p>
+                </div>
+                <!-- Denver -->
+                <div>
+                    <h3 class="text-yellow-400 font-semibold mb-2">Denver Office</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        2480 W 26th Ave #90B<br>Denver, CO 80211<br>
+                        <a href="tel:+17206042792" class="hover:text-yellow-400 transition-colors">720-604-2792</a>
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500">
+                <p>&copy; {% now "Y" %} Accelerated Rehab Therapy. All rights reserved.</p>
+                <a href="{% url 'main:privacy_policy' %}" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile Call Bar (hidden on md+) -->
+    <div class="sticky-call-bar">
+        <a href="tel:+19703241750"
+           class="flex-1 flex items-center justify-center gap-2 bg-[#236E8C] text-white font-bold py-4 text-sm">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+            Call Greeley
+        </a>
+        <a href="tel:+17206042792"
+           class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 text-sm">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+            Call Denver
+        </a>
+    </div>
+
+    <!-- Extra bottom padding on mobile so content isn't hidden behind sticky bar -->
+    <div class="h-14 md:hidden"></div>
+
+    {% compress js %}
+    {% block extra_js %}{% endblock %}
+    {% endcompress %}
+</body>
+</html>

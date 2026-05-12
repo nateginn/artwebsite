@@ -1,0 +1,35 @@
+{% comment %}
+Reusable mid-page CTA section for landing pages.
+Optional context variables:
+  cta_headline      — main headline (default provided)
+  cta_subtext       — supporting line (default provided)
+  cta_button_text   — button label (default: "Schedule Now")
+  cta_phone_label   — phone label (default: "Call Now")
+  cta_phone_number  — tel href number (default: greeley)
+{% endcomment %}
+<section class="bg-gradient-to-r from-[#001524] to-[#012E47] py-14 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-white font-extrabold text-3xl md:text-4xl mb-3" style="font-family: 'Montserrat', sans-serif;">
+            {{ cta_headline|default:"Ready To Start Your Recovery?" }}
+        </h2>
+        <p class="text-gray-300 text-lg mb-8">
+            {{ cta_subtext|default:"Our rehab-focused team is ready to help you get back to the activities that matter most." }}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="{% url 'main:contact' %}"
+               class="lp-pulse inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                {{ cta_button_text|default:"Schedule Now" }}
+            </a>
+            <a href="tel:{{ cta_phone_number|default:'+19703241750' }}"
+               class="inline-flex items-center gap-2 border-2 border-yellow-400 text-yellow-400 font-bold px-8 py-4 rounded-full text-lg hover:bg-yellow-400 hover:text-black transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                </svg>
+                {{ cta_phone_label|default:"Call Now" }}
+            </a>
+        </div>
+    </div>
+</section>

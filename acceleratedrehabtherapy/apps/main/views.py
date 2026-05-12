@@ -2,15 +2,23 @@
 
 import hashlib
 import json
+import logging
 import os
+import time
+import uuid
 import requests
 from django.conf import settings
+from django.contrib import messages
 from django.core.cache import cache
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect, render
 from django.views.decorators.cache import cache_page
-from django.views.decorators.http import require_GET
-from django.views.decorators.http import require_http_methods
+from django.views.decorators.http import require_GET, require_http_methods
+
+from .models import LandingPageLead
+
+logger = logging.getLogger('main')
 
 @require_GET
 def home(request):
@@ -168,14 +176,6 @@ def test_google_reviews(request):
             'message': str(e)
         }, status=500)
 
-@require_GET
-def home(request):
-    """Main home page view"""
-    context = {
-        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
-    }
-    return render(request, 'main/home.html', context)
-
 CHIROPRACTIC_SERVICES = [
     'AUTO INJURY',
     'WORK COMP INJURY',
@@ -240,31 +240,9 @@ def physical_therapy(request):
     }
     return render(request, 'main/physical_therapy.html', context)
 
-import logging
-import sys
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.core.mail import send_mail, BadHeaderError
-from django.conf import settings
-from django.http import HttpResponse
-from django.views.decorators.http import require_http_methods, require_GET
-
-# Debug print to verify module loading
-print("\n=== VIEWS.PY LOADED ===")
-print(f"Current module: {__name__}")
-print(f"File: {__file__}")
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    stream=sys.stdout
-)
-logger = logging.getLogger('contact_form')
 
 @require_http_methods(["GET", "POST"])
 def contact(request):
-    logger = logging.getLogger('contact_form')
-    
     if request.method == "POST":
         # Get form data
         name = request.POST.get('name')
@@ -407,3 +385,229 @@ def privacy_policy(request):
         'meta_title': 'Privacy Policy | Accelerated Rehab Therapy'
     }
     return render(request, 'main/privacy_policy.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Meta Conversions API helpers
+# ---------------------------------------------------------------------------
+
+def _sha256(value: str) -> str:
+    return hashlib.sha256(value.strip().lower().encode()).hexdigest()
+
+
+def _send_capi_lead_event(*, pixel_id, token, event_id, source_url,
+                           name, email, phone, ip, user_agent, source_page):
+    parts = name.strip().split(None, 1)
+    user_data = {
+        'em': [_sha256(email)] if email else [],
+        'ph': [_sha256(''.join(filter(str.isdigit, phone)))] if phone else [],
+        'fn': [_sha256(parts[0])] if parts else [],
+        'ln': [_sha256(parts[1])] if len(parts) > 1 else [],
+        'client_ip_address': ip,
+        'client_user_agent': user_agent,
+    }
+    user_data = {k: v for k, v in user_data.items() if v != []}
+    payload = {
+        'data': [{
+            'event_name': 'Lead',
+            'event_time': int(time.time()),
+            'event_id': event_id,
+            'action_source': 'website',
+            'event_source_url': source_url,
+            'user_data': user_data,
+            'custom_data': {'lead_source': source_page},
+        }]
+    }
+    url = f'https://graph.facebook.com/v19.0/{pixel_id}/events'
+    try:
+        resp = requests.post(url, params={'access_token': token}, json=payload, timeout=5)
+        resp.raise_for_status()
+    except Exception:
+        logger.exception("CAPI Lead event failed for event_id %s", event_id)
+
+
+# ---------------------------------------------------------------------------
+# Landing page views (Meta Ads campaigns — not linked in main nav)
+# ---------------------------------------------------------------------------
+
+def _landing_context(meta_title, meta_description, source_page):
+    return {
+        'meta_title': meta_title,
+        'meta_description': meta_description,
+        'source_page': source_page,
+        'meta_pixel_id': settings.META_PIXEL_ID,
+        'greeley_phone': '970-324-1750',
+        'denver_phone': '720-604-2792',
+    }
+
+
+@require_GET
+def landing_shockwave_denver(request):
+    ctx = _landing_context(
+        meta_title='Shockwave Therapy Denver | Non-Surgical Pain Relief',
+        meta_description='Advanced shockwave therapy in Denver for plantar fasciitis, tendon pain, chronic injuries, and stubborn musculoskeletal conditions.',
+        source_page='shockwave-denver',
+    )
+    ctx['conditions'] = [
+        'Plantar fasciitis', 'Achilles tendon pain', 'Tennis elbow',
+        'Shoulder pain', 'Chronic tendon injuries', 'Scar tissue restrictions',
+    ]
+    ctx['benefits'] = [
+        'Non-invasive treatment', 'Short treatment sessions', 'Minimal downtime',
+        'Often combined with rehabilitation exercises', 'Drug-free approach',
+    ]
+    return render(request, 'main/landing_shockwave_denver.html', ctx)
+
+
+@require_GET
+def landing_shockwave_greeley(request):
+    ctx = _landing_context(
+        meta_title='Shockwave Therapy Greeley | Chronic Pain & Rehab Treatment',
+        meta_description='Shockwave therapy in Greeley for plantar fasciitis, tendon pain, chronic injuries, and musculoskeletal rehabilitation.',
+        source_page='shockwave-greeley',
+    )
+    ctx['conditions'] = [
+        'Plantar fasciitis', 'Heel pain', 'Tennis elbow', 'Shoulder tendinitis',
+        'Achilles pain', 'Chronic muscle tightness', 'Scar tissue restrictions',
+    ]
+    return render(request, 'main/landing_shockwave_greeley.html', ctx)
+
+
+@require_GET
+def landing_shockwave_plantar_fasciitis(request):
+    ctx = _landing_context(
+        meta_title='Shockwave Therapy for Plantar Fasciitis | Heel Pain Relief',
+        meta_description='Non-surgical treatment options for plantar fasciitis and chronic heel pain using shockwave therapy and rehabilitation.',
+        source_page='shockwave-plantar-fasciitis',
+    )
+    ctx['symptoms'] = [
+        'Sharp morning heel pain', 'Pain after prolonged standing',
+        'Pain with walking or exercise', 'Tight calf muscles', 'Tenderness near the heel',
+    ]
+    ctx['rehab_items'] = [
+        'Shockwave therapy', 'Mobility work', 'Calf and foot stretching',
+        'Progressive strengthening', 'Foot and gait recommendations',
+    ]
+    return render(request, 'main/landing_shockwave_plantar_fasciitis.html', ctx)
+
+
+@require_GET
+def landing_chronic_tendon(request):
+    ctx = _landing_context(
+        meta_title='Chronic Tendon Pain Treatment | Non-Surgical Rehab Options',
+        meta_description='Treatment options for chronic tendon pain including shockwave therapy, rehabilitation, and movement-based care.',
+        source_page='chronic-tendon',
+    )
+    ctx['conditions'] = [
+        'Tennis elbow', "Golfer's elbow", 'Achilles tendinopathy',
+        'Patellar tendon pain', 'Rotator cuff tendon irritation', 'Chronic overuse injuries',
+    ]
+    return render(request, 'main/landing_chronic_tendon.html', ctx)
+
+
+@require_GET
+def landing_non_surgical_denver(request):
+    ctx = _landing_context(
+        meta_title='Non-Surgical Pain Relief Denver | Rehab & Shockwave Therapy',
+        meta_description='Explore non-surgical pain relief options in Denver including rehabilitation, shockwave therapy, and movement-focused treatment.',
+        source_page='non-surgical-denver',
+    )
+    ctx['conditions'] = [
+        'Chronic joint pain', 'Tendon pain', 'Heel pain', 'Sports injuries',
+        'Neck and back pain', 'Muscle tightness', 'Movement restrictions',
+    ]
+    ctx['approach_items'] = [
+        'Rehabilitation exercises', 'Manual therapy', 'Shockwave therapy',
+        'Mobility training', 'Functional movement strategies',
+    ]
+    ctx['why_items'] = [
+        'Active rehabilitation approach', 'Individualized treatment plans',
+        'Advanced treatment technology', 'Experienced licensed providers',
+        'Insurance accepted including auto and work comp',
+    ]
+    return render(request, 'main/landing_non_surgical_denver.html', ctx)
+
+
+@require_http_methods(["POST"])
+def landing_form_submit(request):
+    name = request.POST.get('name', '').strip()
+    phone = request.POST.get('phone', '').strip()
+    email = request.POST.get('email', '').strip()
+    condition = request.POST.get('condition', '').strip()
+    preferred_location = request.POST.get('preferred_location', '').strip()
+    source_page = request.POST.get('source_page', '').strip()
+
+    if not all([name, phone, email]):
+        messages.error(request, 'Please fill in your name, phone, and email.')
+        return redirect(request.META.get('HTTP_REFERER', 'main:home'))
+
+    LandingPageLead.objects.create(
+        name=name,
+        phone=phone,
+        email=email,
+        condition=condition,
+        preferred_location=preferred_location or 'no-preference',
+        source_page=source_page,
+    )
+
+    source_labels = dict(LandingPageLead.SOURCE_CHOICES)
+    location_labels = dict(LandingPageLead.LOCATION_CHOICES)
+    subject = f'New Lead: {source_labels.get(source_page, source_page)} — {name}'
+    body = (
+        f"New landing page lead\n\n"
+        f"Source page: {source_labels.get(source_page, source_page)}\n"
+        f"Preferred location: {location_labels.get(preferred_location, preferred_location or 'Not specified')}\n\n"
+        f"Name: {name}\n"
+        f"Phone: {phone}\n"
+        f"Email: {email}\n"
+        f"Condition / Reason for visit: {condition or '—'}\n"
+    )
+
+    # Primary recipient always receives every lead
+    recipients = [settings.LEAD_EMAIL_PRIMARY]
+    # Route a copy to the location-specific inbox
+    if preferred_location == 'greeley':
+        recipients.append(settings.LEAD_EMAIL_GREELEY)
+    elif preferred_location == 'denver':
+        recipients.append(settings.LEAD_EMAIL_DENVER)
+    else:
+        # No preference — notify both location offices
+        recipients.extend([settings.LEAD_EMAIL_GREELEY, settings.LEAD_EMAIL_DENVER])
+
+    try:
+        send_mail(
+            subject=subject,
+            message=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=recipients,
+            fail_silently=False,
+        )
+    except Exception:
+        logger.exception("Failed to send landing lead email for %s", name)
+
+    event_id = str(uuid.uuid4())
+    if settings.META_PIXEL_ID and settings.META_CAPI_TOKEN:
+        _send_capi_lead_event(
+            pixel_id=settings.META_PIXEL_ID,
+            token=settings.META_CAPI_TOKEN,
+            event_id=event_id,
+            source_url=request.build_absolute_uri(),
+            name=name,
+            email=email,
+            phone=phone,
+            ip=request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', '')).split(',')[0].strip(),
+            user_agent=request.META.get('HTTP_USER_AGENT', ''),
+            source_page=source_page,
+        )
+
+    return redirect(f'/thank-you/?eid={event_id}')
+
+
+@require_GET
+def landing_thank_you(request):
+    return render(request, 'main/landing_thank_you.html', {
+        'meta_pixel_id': settings.META_PIXEL_ID,
+        'event_id': request.GET.get('eid', ''),
+        'greeley_phone': '970-324-1750',
+        'denver_phone': '720-604-2792',
+    })

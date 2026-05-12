@@ -286,6 +286,16 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 # Google Maps API Key
 GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY', '')
 
+# Meta Pixel ID — set META_PIXEL_ID in .env to activate tracking
+META_PIXEL_ID = os.getenv('META_PIXEL_ID', '')
+# Meta Conversions API token — set META_CAPI_TOKEN in .env to enable server-side events
+META_CAPI_TOKEN = os.getenv('META_CAPI_TOKEN', '')
+
+# Landing page lead notification recipients
+LEAD_EMAIL_PRIMARY = os.getenv('LEAD_EMAIL_PRIMARY', 'casemanager.art@gmail.com')
+LEAD_EMAIL_GREELEY = os.getenv('LEAD_EMAIL_GREELEY', 'greeleyrehab@gmail.com')
+LEAD_EMAIL_DENVER = os.getenv('LEAD_EMAIL_DENVER', 'artdenver.art@gmail.com')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

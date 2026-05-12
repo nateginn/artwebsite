@@ -21,4 +21,12 @@ urlpatterns = [
     # Spanish info page (not linked in top menu)
     path("es/", views.es_info, name="es_info"),
     path("privacy-policy/", views.privacy_policy, name="privacy_policy"),  # Privacy policy page
+    # Landing pages — Meta Ads campaigns (not linked in main nav)
+    path("shockwave-therapy-denver/", views.landing_shockwave_denver, name="landing_shockwave_denver"),
+    path("shockwave-therapy-greeley/", views.landing_shockwave_greeley, name="landing_shockwave_greeley"),
+    path("shockwave-therapy-plantar-fasciitis/", views.landing_shockwave_plantar_fasciitis, name="landing_shockwave_plantar_fasciitis"),
+    path("chronic-tendon-pain-treatment/", views.landing_chronic_tendon, name="landing_chronic_tendon"),
+    path("non-surgical-pain-relief-denver/", views.landing_non_surgical_denver, name="landing_non_surgical_denver"),
+    path("landing/submit/", views.landing_form_submit, name="landing_form_submit"),
+    path("thank-you/", views.landing_thank_you, name="landing_thank_you"),
 ]
