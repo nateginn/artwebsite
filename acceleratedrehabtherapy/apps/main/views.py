@@ -582,7 +582,7 @@ def landing_form_submit(request):
             recipient_list=recipients,
             fail_silently=False,
         )
-    except Exception:
+    except BaseException:
         logger.exception("Failed to send landing lead email for %s", name)
 
     event_id = str(uuid.uuid4())
