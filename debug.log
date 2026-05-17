@@ -2062,3 +2062,397 @@ WARNING 2025-10-06 22:57:15,681 basehttp "GET /static/site.webmanifest HTTP/1.1"
 INFO 2025-10-06 22:59:54,503 basehttp "GET / HTTP/1.1" 200 67501
 INFO 2025-10-06 22:59:54,657 basehttp "GET /api/reviews/ HTTP/1.1" 200 1397
 WARNING 2025-10-06 22:59:54,772 basehttp "GET /static/site.webmanifest HTTP/1.1" 404 1975
+INFO 2026-05-11 22:43:56,252 autoreload Watching for file changes with StatReloader
+ERROR 2026-05-11 22:44:11,378 log Internal Server Error: /shockwave-therapy-denver/
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py", line 410, in landing_shockwave_denver
+    return render(request, 'main/landing_shockwave_denver.html', ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 701, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 611, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'split'
+ERROR 2026-05-11 22:44:11,383 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 500 238156
+INFO 2026-05-11 22:44:19,385 autoreload Watching for file changes with StatReloader
+ERROR 2026-05-11 22:44:22,716 log Internal Server Error: /shockwave-therapy-denver/
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py", line 410, in landing_shockwave_denver
+    return render(request, 'main/landing_shockwave_denver.html', ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 701, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 611, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'split'
+ERROR 2026-05-11 22:44:22,717 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 500 238156
+ERROR 2026-05-11 22:44:48,258 log Internal Server Error: /shockwave-therapy-denver/
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py", line 410, in landing_shockwave_denver
+    return render(request, 'main/landing_shockwave_denver.html', ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 701, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 611, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'split'
+ERROR 2026-05-11 22:44:48,260 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 500 238156
+INFO 2026-05-11 22:44:48,261 basehttp - Broken pipe from ('127.0.0.1', 54564)
+ERROR 2026-05-11 22:44:56,301 log Internal Server Error: /shockwave-therapy-denver/
+Traceback (most recent call last):
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py", line 410, in landing_shockwave_denver
+    return render(request, 'main/landing_shockwave_denver.html', ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 701, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\growy\AppData\Local\pypoetry\Cache\virtualenvs\artwebsite-4OwBQkft-py3.12\Lib\site-packages\django\template\base.py", line 611, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'split'
+ERROR 2026-05-11 22:44:56,302 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 500 238156
+INFO 2026-05-11 22:45:48,715 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 22:45:49,151 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 22:45:49,494 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 22:45:49,930 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 22:47:19,845 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 22:47:23,146 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 200 44989
+INFO 2026-05-11 22:47:23,192 basehttp "GET /shockwave-therapy-greeley/ HTTP/1.1" 200 47014
+INFO 2026-05-11 22:47:23,238 basehttp "GET /shockwave-therapy-plantar-fasciitis/ HTTP/1.1" 200 43895
+INFO 2026-05-11 22:47:23,279 basehttp "GET /chronic-tendon-pain-treatment/ HTTP/1.1" 200 42486
+INFO 2026-05-11 22:47:23,320 basehttp "GET /non-surgical-pain-relief-denver/ HTTP/1.1" 200 47575
+INFO 2026-05-11 22:47:23,359 basehttp "GET /thank-you/ HTTP/1.1" 200 12622
+INFO 2026-05-11 22:47:37,161 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 200 44989
+WARNING 2026-05-11 22:47:37,213 log Forbidden (CSRF token from POST has incorrect length.): /landing/submit/
+WARNING 2026-05-11 22:47:37,213 basehttp "POST /landing/submit/ HTTP/1.1" 403 2514
+INFO 2026-05-11 22:48:02,939 basehttp "GET /shockwave-therapy-denver/ HTTP/1.1" 200 44989
+INFO 2026-05-11 22:48:06,065 basehttp "POST /landing/submit/ HTTP/1.1" 302 0
+INFO 2026-05-11 22:48:06,069 basehttp "GET /thank-you/ HTTP/1.1" 200 12622
+INFO 2026-05-11 22:50:50,465 basehttp "GET / HTTP/1.1" 200 69449
+INFO 2026-05-11 22:50:50,514 basehttp "GET /chiropractor/ HTTP/1.1" 200 66696
+INFO 2026-05-11 22:50:50,557 basehttp "GET /physical-therapy/ HTTP/1.1" 200 53808
+INFO 2026-05-11 22:50:50,598 basehttp "GET /massage/ HTTP/1.1" 200 49148
+INFO 2026-05-11 22:50:50,639 basehttp "GET /acupuncture/ HTTP/1.1" 200 45379
+INFO 2026-05-11 22:50:50,681 basehttp "GET /auto-injury/ HTTP/1.1" 200 50353
+INFO 2026-05-11 22:50:50,722 basehttp "GET /work-comp/ HTTP/1.1" 200 46684
+DEBUG 2026-05-11 22:50:50,762 views Rendering contact form template
+INFO 2026-05-11 22:50:50,765 basehttp "GET /contact/ HTTP/1.1" 200 44539
+INFO 2026-05-11 22:50:50,807 basehttp "GET /about/ HTTP/1.1" 200 43357
+INFO 2026-05-11 22:50:50,850 basehttp "GET /resources/ HTTP/1.1" 200 81770
+INFO 2026-05-11 22:50:50,891 basehttp "GET /privacy-policy/ HTTP/1.1" 200 40250
+INFO 2026-05-11 23:05:24,105 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-11 23:05:24,115 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-11 23:05:24,122 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-11 23:05:24,565 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:05:24,566 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:05:48,094 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:05:48,103 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:05:48,105 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:05:48,549 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:05:48,549 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:05:48,549 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:19,489 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-11 23:41:19,489 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-11 23:41:19,499 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-11 23:41:19,966 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:19,967 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:24,939 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:24,940 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:25,388 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:25,389 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:25,390 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:36,531 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:36,534 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:36,545 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:36,981 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:36,981 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:36,981 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:45,007 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:45,023 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:45,027 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:45,463 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:45,477 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:45,480 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:53,489 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:53,512 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:53,517 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-11 23:41:53,934 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:53,949 autoreload Watching for file changes with StatReloader
+INFO 2026-05-11 23:41:53,952 autoreload Watching for file changes with StatReloader
+INFO 2026-05-12 00:25:41,410 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-12 00:25:41,420 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-12 00:25:41,421 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\settings.py changed, reloading.
+INFO 2026-05-12 00:25:41,901 autoreload Watching for file changes with StatReloader
+INFO 2026-05-12 00:25:41,901 autoreload Watching for file changes with StatReloader
+INFO 2026-05-12 00:25:46,848 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-12 00:25:46,855 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-12 00:25:46,858 autoreload C:\Users\growy\CascadeProjects\artwebsite\acceleratedrehabtherapy\apps\main\views.py changed, reloading.
+INFO 2026-05-12 00:25:47,313 autoreload Watching for file changes with StatReloader
+INFO 2026-05-12 00:25:47,313 autoreload Watching for file changes with StatReloader
+INFO 2026-05-12 00:25:47,314 autoreload Watching for file changes with StatReloader
