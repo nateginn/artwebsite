@@ -3,8 +3,8 @@ Shared lead capture form for all landing pages.
 Required context: source_page
 {% endcomment %}
 <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md mx-auto">
-    <p class="text-[#001524] font-bold text-lg mb-1 text-center">Request a Free Consultation</p>
-    <p class="text-gray-500 text-sm mb-5 text-center">We'll contact you within one business day.</p>
+    <p class="text-[#001524] font-bold text-lg mb-1 text-center">{{ form_headline|default:"Claim Your $99 First Session" }}</p>
+    <p class="text-gray-500 text-sm mb-5 text-center">{{ form_subtext|default:"Risk-free evaluation + first treatment. Applied toward any package if you continue." }}</p>
 
     {% if messages %}
     <div class="mb-4 space-y-2">
@@ -72,7 +72,7 @@ Required context: source_page
 
             <button type="submit"
                     class="lp-pulse w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 rounded-xl text-base hover:scale-105 transition-transform shadow-lg">
-                {{ form_cta_text|default:"Schedule My Consultation" }}
+                {{ form_cta_text|default:"Claim My $99 Session" }}
             </button>
 
             <p class="text-center text-xs text-gray-400">

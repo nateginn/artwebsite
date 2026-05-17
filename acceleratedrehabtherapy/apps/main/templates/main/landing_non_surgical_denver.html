@@ -12,13 +12,13 @@
             <div>
                 <span class="inline-block bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Denver, CO</span>
                 <h1 class="text-white font-extrabold leading-tight mb-4 text-fluid-h1" style="font-family: 'Montserrat', sans-serif;">
-                    Looking For Non-Surgical Pain Relief?
+                    Non-Surgical Pain Relief That Addresses the Source — Not Just the Symptoms
                 </h1>
                 <p class="text-gray-300 text-lg md:text-xl mb-6">
-                    Helping patients improve movement and function with rehab-focused care in Denver.
+                    Helping Denver patients move better and recover faster with rehab-focused shockwave therapy.
                 </p>
                 <p class="text-gray-400 mb-6">
-                    Many patients want alternatives to medications, injections, or surgery. Our team focuses on movement-based rehabilitation and advanced treatment options designed to help you return to activity.
+                    If you're searching for an alternative to medications, injections, or surgery, our team focuses on movement-based rehabilitation and advanced treatment options designed to help you return to the activities that matter most.
                 </p>
 
                 <div class="mb-8">
@@ -36,7 +36,7 @@
                 </div>
 
                 <a href="#lead-form" class="hidden md:inline-flex lp-pulse items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-transform">
-                    Request Appointment
+                    Start for Just $99 Today
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
@@ -44,16 +44,57 @@
             </div>
 
             <div id="lead-form">
-                {% include 'includes/_landing_form.html' with form_cta_text="Request Appointment" preferred_location="denver" %}
+                {% include 'includes/_landing_form.html' with form_cta_text="Claim My $99 Session" preferred_location="denver" %}
             </div>
         </div>
     </div>
 </section>
 
 <!-- ============================================================
-     OUR APPROACH
+     PROBLEM AGITATION
      ============================================================ -->
 <section class="bg-white py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl text-center mb-3" style="font-family: 'Montserrat', sans-serif;">
+            Stuck in a Cycle Without a Clear Path Forward
+        </h2>
+        <p class="text-gray-500 text-center mb-10 max-w-2xl mx-auto">
+            Most patients we see have already tried the standard options — and they're frustrated that nothing has actually resolved the problem.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
+                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
+                <span class="text-gray-700 text-sm">Medications that manage symptoms but don't fix anything</span>
+            </div>
+            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
+                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
+                <span class="text-gray-700 text-sm">Injections that wear off and need to be repeated again and again</span>
+            </div>
+            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
+                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
+                <span class="text-gray-700 text-sm">Physical therapy that helps temporarily but the pain comes back</span>
+            </div>
+            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
+                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
+                <span class="text-gray-700 text-sm">Feeling like surgery is starting to sound like the only remaining option</span>
+            </div>
+            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
+                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
+                <span class="text-gray-700 text-sm">Pain disrupting work, sleep, workouts, or normal daily life</span>
+            </div>
+            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
+                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
+                <span class="text-gray-700 text-sm">No one giving you a real plan — just more appointments and more waiting</span>
+            </div>
+        </div>
+        <p class="text-center text-gray-600 font-medium">You deserve a clear path forward — a structured program with a plan, a provider who tracks your progress, and a realistic timeline.</p>
+    </div>
+</section>
+
+<!-- ============================================================
+     OUR APPROACH
+     ============================================================ -->
+<section class="bg-gray-50 py-16 px-4">
     <div class="max-w-5xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -61,10 +102,10 @@
             </div>
             <div>
                 <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
-                    A Functional Rehab Approach
+                    A Functional Rehab Approach — With a Plan You Can See
                 </h2>
                 <p class="text-gray-600 mb-6">
-                    Treatment plans are individualized and may include a combination of approaches based on your specific condition and goals.
+                    Treatment plans at Accelerated Rehab Therapy are individualized, progressive, and built around your specific goals — not a generic protocol. We pair shockwave therapy with targeted rehabilitation so you're addressing the root cause, not just treating the area.
                 </p>
                 <ul class="space-y-3 mb-8">
                     {% for item in approach_items %}
@@ -79,7 +120,7 @@
                     {% endfor %}
                 </ul>
                 <a href="#lead-form" class="lp-pulse inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-7 py-3 rounded-full hover:scale-105 transition-transform">
-                    Start Your Recovery Today
+                    Start for Just $99
                 </a>
             </div>
         </div>
@@ -87,46 +128,78 @@
 </section>
 
 <!-- ============================================================
-     MID-PAGE CTA
+     PRICING
      ============================================================ -->
-{% include 'includes/_landing_cta.html' with cta_headline="Ready To Explore Your Treatment Options?" cta_subtext="Our Denver rehab team will evaluate your condition and build a plan around your recovery goals." cta_button_text="Schedule Consultation" cta_phone_label="Call Denver: 720-604-2792" cta_phone_number="+17206042792" %}
-
-<!-- ============================================================
-     WHY PATIENTS CHOOSE ART
-     ============================================================ -->
-<section class="bg-gray-50 py-16 px-4">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl text-center mb-3" style="font-family: 'Montserrat', sans-serif;">
-            Focused On Function and Recovery
-        </h2>
-        <p class="text-gray-500 text-center mb-10 max-w-2xl mx-auto">
-            Patients choose Accelerated Rehab Therapy because of the clinic's focus on active rehabilitation, individualized treatment, and helping patients return to normal life safely.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <div class="space-y-4">
-                {% for point in why_items %}
-                <div class="flex items-start gap-3 bg-white rounded-xl px-5 py-4 shadow-sm border border-gray-100">
-                    <span class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center">
-                        <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                    </span>
-                    <span class="text-gray-700 font-medium">{{ point }}</span>
-                </div>
-                {% endfor %}
-            </div>
-            <div>
-                {% include 'includes/_landing_image_placeholder.html' with image_label="Functional exercise scene — provider guiding patient through a movement exercise in rehab gym" image_height="340px" %}
-            </div>
-        </div>
-    </div>
-</section>
+{% include 'includes/_landing_pricing.html' %}
 
 <!-- ============================================================
      TRUST / REVIEWS
      ============================================================ -->
 {% include 'includes/_landing_trust.html' %}
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="bg-white py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl text-center mb-10" style="font-family: 'Montserrat', sans-serif;">
+            Common Questions
+        </h2>
+        <div class="space-y-4" x-data="{ open: null }">
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button @click="open === 1 ? open = null : open = 1" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
+                    <span>Does insurance cover shockwave therapy?</span>
+                    <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div x-show="open === 1" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                    Most commercial insurance plans don't cover shockwave therapy — but that's actually good news for you. It means no prior authorization delays, no claim denials mid-treatment, and no confusing bills arriving weeks later. You get clear pricing upfront, and the $99 trial means you're not committing to a full program until you've experienced it firsthand.
+                </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button @click="open === 2 ? open = null : open = 2" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
+                    <span>Why is shockwave offered as a cash-pay service?</span>
+                    <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div x-show="open === 2" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                    Shockwave is classified as an elective advanced therapy by most carriers, which means insurance routinely excludes it. What this means for you: no waiting on approvals, no claim fights, and total price transparency. Compared to surgery ($5,000–$10,000 with months of downtime) or repeated injections that wear off, a shockwave program is a fraction of the cost — with outcomes designed to last.
+                </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button @click="open === 3 ? open = null : open = 3" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
+                    <span>How many sessions will I need?</span>
+                    <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div x-show="open === 3" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                    Most patients see meaningful improvement in 3–6 sessions. Complex or long-standing injuries may benefit from a full 12-session program. Your provider will evaluate your condition at your first visit and give you a realistic plan before you commit to anything beyond the initial session.
+                </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button @click="open === 4 ? open = null : open = 4" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
+                    <span>How soon will I notice results?</span>
+                    <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div x-show="open === 4" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                    Many patients notice improvement after the first 2–3 sessions. The full healing response continues for weeks after your program ends — meaning results often keep improving even after treatment is complete. Your provider tracks your progress throughout so you can see real change, not just feel it.
+                </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button @click="open === 5 ? open = null : open = 5" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
+                    <span>What does a shockwave session feel like?</span>
+                    <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 5 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div x-show="open === 5" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                    Most patients describe it as a deep pressure or vibration — similar to a focused deep tissue massage. Sensitive areas may feel mildly uncomfortable, but it is generally well-tolerated. Your provider adjusts intensity based on your feedback throughout the session.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <!-- ============================================================
      FINAL CTA + REPEAT FORM
@@ -135,19 +208,22 @@
     <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-white font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
-                    Ready To Explore Your Treatment Options?
+                <h2 class="text-white font-extrabold text-3xl md:text-4xl mb-5" style="font-family: 'Montserrat', sans-serif;">
+                    Imagine Having a Clear Path Forward — Not Another Round of Waiting
                 </h2>
-                <p class="text-gray-300 text-lg mb-6">
-                    Our Denver team is ready to help you find a path forward — without surgery or injections. Request a consultation today.
+                <p class="text-gray-300 text-lg mb-4">
+                    A structured program with a provider who tracks your progress and a realistic timeline to getting back to normal — without surgery, without another round of injections, without starting over.
+                </p>
+                <p class="text-gray-400 mb-8">
+                    Start with a $99 first session. No commitment beyond that. Just a clear picture of what recovery could look like for your specific situation.
                 </p>
                 <a href="tel:+17206042792" class="inline-flex items-center gap-2 border-2 border-yellow-400 text-yellow-400 font-bold px-6 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition-colors">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                    Call Now: 720-604-2792
+                    Call Denver: 720-604-2792
                 </a>
             </div>
             <div>
-                {% include 'includes/_landing_form.html' with form_cta_text="Schedule Consultation" preferred_location="denver" %}
+                {% include 'includes/_landing_form.html' with form_cta_text="Claim My $99 Session" preferred_location="denver" %}
             </div>
         </div>
     </div>
