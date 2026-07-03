@@ -9,9 +9,9 @@ Findings from a full review of templates, backend code, static assets, and CI/CD
 ### High Priority
 
 **1. Standardize the Greeley office address**
-- Footer shows: `1705 61st Ave Unit M`
-- `templates/includes/_structured_data.html` shows: `1705 61st Ave Unit C`
-- Pick one and update both locations.
+- Footer shows: `1823 65th Ave Suite 3, Greeley, CO 80634`
+- `templates/includes/_structured_data.html` shows: `1823 65th Ave Suite 3, Greeley, CO 80634`
+- Address is now standardized across the site.
 
 **2. Fix phone number in service page schema**
 - The chiropractic and physical therapy page schemas reference `+19703517465`
