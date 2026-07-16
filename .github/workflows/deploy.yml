@@ -37,24 +37,46 @@ jobs:
         
     - name: Deploy to production
       uses: appleboy/ssh-action@v1.0.0
+      env:
+        META_PIXEL_ID: ${{ secrets.META_PIXEL_ID }}
+        META_CAPI_TOKEN: ${{ secrets.META_CAPI_TOKEN }}
+        ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        envs: META_PIXEL_ID,META_CAPI_TOKEN,ALLOWED_HOSTS
         script: |
           # Set up environment
           export PATH="$HOME/.local/bin:$PATH"
-          
+
           # Fix Git safe directory issue
           git config --global --add safe.directory /var/www/artwebsite
-          
+
           # Navigate to project directory
           cd /var/www/artwebsite || exit 1
-          
+
           # Update code
           git fetch
           git reset --hard origin/main
-          
+
+          # Sync managed config keys from GitHub Secrets into .env
+          # (upsert: replaces or appends ONLY the keys listed below;
+          #  every other line in .env is preserved untouched)
+          touch .env
+          for key in META_PIXEL_ID META_CAPI_TOKEN ALLOWED_HOSTS; do
+            value="${!key}"
+            if [ -z "$value" ]; then
+              echo "WARNING: secret $key is empty - leaving existing .env value untouched"
+              continue
+            fi
+            grep -v "^${key}=" .env > .env.tmp || true
+            printf '%s=%s\n' "$key" "$value" >> .env.tmp
+            mv .env.tmp .env
+          done
+          chown www-data:www-data .env
+          chmod 600 .env
+
           # Install dependencies
           if [ -f "pyproject.toml" ]; then
               poetry install --no-interaction
