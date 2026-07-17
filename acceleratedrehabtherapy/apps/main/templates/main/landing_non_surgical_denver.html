@@ -3,29 +3,41 @@
 
 {% block content %}
 
-<!-- ============================================================
-     HERO SECTION
-     ============================================================ -->
-<section class="bg-gradient-to-br from-[#001524] via-[#012E47] to-[#083B57] py-16 md:py-24 px-4">
+<section class="lp-hero-section py-16 md:py-24 px-4 overflow-hidden">
     <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="inline-block bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Denver, CO</span>
+        <div class="lp-hero-grid">
+            <div class="lp-hero-copy">
+                <span class="lp-pill">Denver, CO</span>
                 <h1 class="text-white font-extrabold leading-tight mb-4 text-fluid-h1" style="font-family: 'Montserrat', sans-serif;">
-                    Non-Surgical Pain Relief That Addresses the Source — Not Just the Symptoms
+                    Non-Surgical Pain Relief That Addresses the Source, Not Just the Symptoms
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl mb-6">
+                <p class="lp-hero-lead mb-6">
                     Helping Denver patients move better and recover faster with rehab-focused shockwave therapy.
                 </p>
-                <p class="text-gray-400 mb-6">
+                <p class="lp-hero-sub mb-6">
                     If you're searching for an alternative to medications, injections, or surgery, our team focuses on movement-based rehabilitation and advanced treatment options designed to help you return to the activities that matter most.
                 </p>
 
+                <div class="lp-stat-grid mb-8">
+                    <div class="lp-dark-card">
+                        <p class="lp-stat-kicker">Best Fit</p>
+                        <p class="lp-stat-copy">Chronic pain you'd rather resolve than manage indefinitely</p>
+                    </div>
+                    <div class="lp-dark-card">
+                        <p class="lp-stat-kicker">Approach</p>
+                        <p class="lp-stat-copy">Functional rehab, manual therapy, and shockwave therapy</p>
+                    </div>
+                    <div class="lp-dark-card">
+                        <p class="lp-stat-kicker">First Step</p>
+                        <p class="lp-stat-copy">$89 evaluation and first treatment visit</p>
+                    </div>
+                </div>
+
                 <div class="mb-8">
                     <p class="text-yellow-400 font-semibold mb-3">Conditions Commonly Treated:</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <ul class="lp-condition-list">
                         {% for c in conditions %}
-                        <li class="flex items-center gap-2 text-gray-300 text-sm">
+                        <li class="lp-condition-item">
                             <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                             </svg>
@@ -35,8 +47,8 @@
                     </ul>
                 </div>
 
-                <a href="#lead-form" class="hidden md:inline-flex lp-pulse items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-transform">
-                    Start for Just $99 Today
+                <a href="#lead-form" class="hidden md:inline-flex lp-btn-solid lp-pulse items-center gap-2">
+                    Start for Just $89 Today
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
@@ -44,186 +56,277 @@
             </div>
 
             <div id="lead-form">
-                {% include 'includes/_landing_form.html' with form_cta_text="Claim My $99 Session" preferred_location="denver" %}
+                <div class="lp-hero-form-stack">
+                    {% include 'includes/_landing_form.html' with form_cta_text="Claim My $89 Session" preferred_location="denver" %}
+                    <div class="lp-shell-dark">
+                        <div class="flex items-start justify-between gap-4 mb-5">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.22em] text-sky-200 mb-2">What Your First Visit Covers</p>
+                                <h2 class="text-white text-2xl font-extrabold" style="font-family: 'Montserrat', sans-serif;">
+                                    More than a quick machine session
+                                </h2>
+                            </div>
+                            <div class="lp-offer-badge text-right">
+                                <p class="text-yellow-300 text-xs uppercase tracking-[0.18em]">Offer</p>
+                                <p class="text-white font-bold">$89 intro visit</p>
+                            </div>
+                        </div>
+                        <div class="lp-visit-grid">
+                            <div class="lp-dark-card">
+                                <p class="text-sm font-semibold text-white mb-1">Movement assessment</p>
+                                <p class="text-xs text-sky-100">We identify what's driving the pain and what's keeping it irritated.</p>
+                            </div>
+                            <div class="lp-dark-card">
+                                <p class="text-sm font-semibold text-white mb-1">First treatment session</p>
+                                <p class="text-xs text-sky-100">You experience hands-on care on day one, not just a consultation.</p>
+                            </div>
+                            <div class="lp-dark-card">
+                                <p class="text-sm font-semibold text-white mb-1">Rehab game plan</p>
+                                <p class="text-xs text-sky-100">You leave knowing what to do between visits to reinforce recovery.</p>
+                            </div>
+                            <div class="lp-dark-card">
+                                <p class="text-sm font-semibold text-white mb-1">Clear next-step guidance</p>
+                                <p class="text-xs text-sky-100">If you need more sessions, you'll know why and what the plan looks like.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     PROBLEM AGITATION
-     ============================================================ -->
-<section class="bg-white py-16 px-4">
+<section class="lp-problem-section py-16 px-4">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl text-center mb-3" style="font-family: 'Montserrat', sans-serif;">
-            Stuck in a Cycle Without a Clear Path Forward
-        </h2>
-        <p class="text-gray-500 text-center mb-10 max-w-2xl mx-auto">
-            Most patients we see have already tried the standard options — and they're frustrated that nothing has actually resolved the problem.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
-                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
-                <span class="text-gray-700 text-sm">Medications that manage symptoms but don't fix anything</span>
+        <div class="lp-problem-shell">
+            <div class="text-center">
+                <span class="lp-eyebrow">Sound Familiar?</span>
             </div>
-            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
-                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
-                <span class="text-gray-700 text-sm">Injections that wear off and need to be repeated again and again</span>
+            <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl text-center mb-3" style="font-family: 'Montserrat', sans-serif;">
+                Stuck in a Cycle Without a Clear Path Forward
+            </h2>
+            <p class="text-gray-500 text-center mb-10 max-w-2xl mx-auto">
+                Most patients we see have already tried the standard options, and they're frustrated that nothing has actually resolved the problem.
+            </p>
+            <div class="lp-problem-grid">
+                <div class="lp-problem-card">
+                    <span class="lp-problem-card-mark">&times;</span>
+                    <span class="lp-problem-card-text">Medications that manage symptoms but don't fix anything</span>
+                </div>
+                <div class="lp-problem-card">
+                    <span class="lp-problem-card-mark">&times;</span>
+                    <span class="lp-problem-card-text">Injections that wear off and need to be repeated again and again</span>
+                </div>
+                <div class="lp-problem-card">
+                    <span class="lp-problem-card-mark">&times;</span>
+                    <span class="lp-problem-card-text">Physical therapy that helps temporarily but the pain comes back</span>
+                </div>
+                <div class="lp-problem-card">
+                    <span class="lp-problem-card-mark">&times;</span>
+                    <span class="lp-problem-card-text">Feeling like surgery is starting to sound like the only remaining option</span>
+                </div>
+                <div class="lp-problem-card">
+                    <span class="lp-problem-card-mark">&times;</span>
+                    <span class="lp-problem-card-text">Pain disrupting work, sleep, workouts, or normal daily life</span>
+                </div>
+                <div class="lp-problem-card">
+                    <span class="lp-problem-card-mark">&times;</span>
+                    <span class="lp-problem-card-text">No one giving you a real plan, just more appointments and more waiting</span>
+                </div>
             </div>
-            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
-                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
-                <span class="text-gray-700 text-sm">Physical therapy that helps temporarily but the pain comes back</span>
-            </div>
-            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
-                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
-                <span class="text-gray-700 text-sm">Feeling like surgery is starting to sound like the only remaining option</span>
-            </div>
-            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
-                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
-                <span class="text-gray-700 text-sm">Pain disrupting work, sleep, workouts, or normal daily life</span>
-            </div>
-            <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-5 py-4">
-                <span class="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">✕</span>
-                <span class="text-gray-700 text-sm">No one giving you a real plan — just more appointments and more waiting</span>
-            </div>
+            <p class="lp-problem-summary">You deserve a clear path forward: a structured program with a plan, a provider who tracks your progress, and a realistic timeline.</p>
         </div>
-        <p class="text-center text-gray-600 font-medium">You deserve a clear path forward — a structured program with a plan, a provider who tracks your progress, and a realistic timeline.</p>
     </div>
 </section>
 
-<!-- ============================================================
-     OUR APPROACH
-     ============================================================ -->
 <section class="bg-gray-50 py-16 px-4">
     <div class="max-w-5xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="lp-two-col">
             <div>
-                {% include 'includes/_landing_image_placeholder.html' with image_label="Confident provider with active patient in a modern Denver rehab clinic — warm, professional environment" image_height="380px" %}
+                <div class="lp-image-shell">
+                    <img
+                        src="/media/page_photos/0000/Location%20images/IMG_4089.jpg"
+                        alt="Accelerated Rehab Therapy providers preparing a shockwave therapy treatment in the clinic"
+                        class="lp-image-frame"
+                    >
+                    <div class="lp-image-caption">
+                        <p class="text-xs uppercase tracking-[0.22em] text-sky-200 mb-2">Real providers, real clinic</p>
+                        <h2 class="text-white text-2xl font-extrabold mb-2" style="font-family: 'Montserrat', sans-serif;">
+                            A team that builds a plan around you.
+                        </h2>
+                        <p class="text-sky-100 text-sm leading-relaxed">
+                            This is the kind of care you're booking into: licensed providers, focused evaluation, and a plan built around getting you back to normal activity.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div>
+                <p class="lp-section-kicker">Our Approach</p>
                 <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-4" style="font-family: 'Montserrat', sans-serif;">
-                    A Functional Rehab Approach — With a Plan You Can See
+                    A Functional Rehab Approach, With a Plan You Can See
                 </h2>
                 <p class="text-gray-600 mb-6">
-                    Treatment plans at Accelerated Rehab Therapy are individualized, progressive, and built around your specific goals — not a generic protocol. We pair shockwave therapy with targeted rehabilitation so you're addressing the root cause, not just treating the area.
+                    Treatment plans at Accelerated Rehab Therapy are individualized, progressive, and built around your specific goals, not a generic protocol. We pair shockwave therapy with targeted rehabilitation so you're addressing the root cause, not just treating the area.
                 </p>
-                <ul class="space-y-3 mb-8">
+                <ul class="lp-checklist">
                     {% for item in approach_items %}
-                    <li class="flex items-start gap-3 text-gray-700">
-                        <span class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center">
-                            <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                        </span>
-                        {{ item }}
-                    </li>
+                    <li class="lp-check-item"><span class="lp-check-mark">+</span>{{ item }}</li>
                     {% endfor %}
                 </ul>
-                <a href="#lead-form" class="lp-pulse inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-7 py-3 rounded-full hover:scale-105 transition-transform">
-                    Start for Just $99
+                <a href="#lead-form" class="lp-btn-solid lp-pulse inline-flex items-center gap-2">
+                    Start for Just $89
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     PRICING
-     ============================================================ -->
-{% include 'includes/_landing_pricing.html' %}
+<section class="bg-white py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="lp-candidate-grid">
+            <div class="lp-candidate-shell">
+                <p class="text-xs uppercase tracking-[0.22em] text-[#236E8C] mb-3">Why patients choose us</p>
+                <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl mb-5" style="font-family: 'Montserrat', sans-serif;">
+                    A clear plan instead of another round of guessing
+                </h2>
+                <div class="lp-candidate-cards">
+                    {% for item in why_items %}
+                    <div class="lp-candidate-card">
+                        <p class="text-sm font-semibold text-[#001524] mb-2">{{ item }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
 
-<!-- ============================================================
-     TRUST / REVIEWS
-     ============================================================ -->
+            <div class="lp-process-shell">
+                <p class="text-xs uppercase tracking-[0.22em] text-sky-200 mb-3">What treatment usually looks like</p>
+                <h2 class="text-3xl font-extrabold mb-6" style="font-family: 'Montserrat', sans-serif;">
+                    A practical recovery path
+                </h2>
+                <div class="lp-process-steps">
+                    <div class="lp-process-step">
+                        <div class="lp-process-num">1</div>
+                        <div class="lp-process-copy">
+                            <p class="font-semibold mb-1">Full movement assessment</p>
+                            <p class="text-sm text-sky-100">We evaluate where the pain is coming from and what's driving it.</p>
+                        </div>
+                    </div>
+                    <div class="lp-process-step">
+                        <div class="lp-process-num">2</div>
+                        <div class="lp-process-copy">
+                            <p class="font-semibold mb-1">Build a personalized non-surgical plan</p>
+                            <p class="text-sm text-sky-100">Your plan may combine shockwave therapy, manual therapy, and mobility work based on what you need.</p>
+                        </div>
+                    </div>
+                    <div class="lp-process-step">
+                        <div class="lp-process-num">3</div>
+                        <div class="lp-process-copy">
+                            <p class="font-semibold mb-1">Progress through rehab and mobility work</p>
+                            <p class="text-sm text-sky-100">Functional movement strategies prepare your body for real-life demands, not just the clinic.</p>
+                        </div>
+                    </div>
+                    <div class="lp-process-step">
+                        <div class="lp-process-num">4</div>
+                        <div class="lp-process-copy">
+                            <p class="font-semibold mb-1">Track progress and adjust</p>
+                            <p class="text-sm text-sky-100">The plan evolves as your pain, function, and activity tolerance improve.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lp-process-note">
+                    <p class="text-sm text-sky-100">
+                        The goal is simple: give you a clear, structured alternative before surgery becomes the only option left.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/_landing_pricing.html' %}
 {% include 'includes/_landing_trust.html' %}
 
-<!-- ============================================================
-     FAQ
-     ============================================================ -->
 <section class="bg-white py-16 px-4">
-    <div class="max-w-3xl mx-auto">
+    <div class="lp-faq-shell">
         <h2 class="text-[#001524] font-extrabold text-3xl md:text-4xl text-center mb-10" style="font-family: 'Montserrat', sans-serif;">
             Common Questions
         </h2>
-        <div class="space-y-4" x-data="{ open: null }">
-
-            <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <div class="lp-faq-list" x-data="{ open: null }">
+            <div class="lp-faq-item">
                 <button @click="open === 1 ? open = null : open = 1" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
                     <span>Does insurance cover shockwave therapy?</span>
                     <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open === 1" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
-                    Most commercial insurance plans don't cover shockwave therapy — but that's actually good news for you. It means no prior authorization delays, no claim denials mid-treatment, and no confusing bills arriving weeks later. You get clear pricing upfront, and the $99 trial means you're not committing to a full program until you've experienced it firsthand.
+                    Most commercial insurance plans do not cover shockwave therapy, but that is actually good news for you. It means no prior authorization delays, no claim denials mid-treatment, and no confusing bills arriving weeks later. You get clear pricing upfront, and the $89 first visit means you are not committing to a full program until you have experienced it firsthand.
                 </div>
             </div>
 
-            <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="lp-faq-item">
                 <button @click="open === 2 ? open = null : open = 2" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
                     <span>Why is shockwave offered as a cash-pay service?</span>
                     <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open === 2" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
-                    Shockwave is classified as an elective advanced therapy by most carriers, which means insurance routinely excludes it. What this means for you: no waiting on approvals, no claim fights, and total price transparency. Compared to surgery ($5,000–$10,000 with months of downtime) or repeated injections that wear off, a shockwave program is a fraction of the cost — with outcomes designed to last.
+                    Shockwave is classified as an elective advanced therapy by most carriers, which means insurance routinely excludes it. What this means for you: no waiting on approvals, no claim fights, and total price transparency. Compared to surgery ($5,000-$10,000 with months of downtime) or repeated injections that wear off, a shockwave program is a fraction of the cost, with outcomes designed to last.
                 </div>
             </div>
 
-            <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="lp-faq-item">
                 <button @click="open === 3 ? open = null : open = 3" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
                     <span>How many sessions will I need?</span>
                     <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open === 3" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
-                    Most patients see meaningful improvement in 3–6 sessions. Complex or long-standing injuries may benefit from a full 12-session program. Your provider will evaluate your condition at your first visit and give you a realistic plan before you commit to anything beyond the initial session.
+                    Most patients see meaningful improvement in 3-6 sessions. Complex or long-standing conditions may benefit from a full 12-session program. Your provider will evaluate your condition at your first visit and give you a realistic plan before you commit to anything beyond the initial session.
                 </div>
             </div>
 
-            <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="lp-faq-item">
                 <button @click="open === 4 ? open = null : open = 4" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
-                    <span>How soon will I notice results?</span>
+                    <span>How is this different from the physical therapy I've already tried?</span>
                     <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open === 4" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
-                    Many patients notice improvement after the first 2–3 sessions. The full healing response continues for weeks after your program ends — meaning results often keep improving even after treatment is complete. Your provider tracks your progress throughout so you can see real change, not just feel it.
+                    Standard PT alone often stalls out on conditions that haven't responded to rest. We pair the same movement-based rehab principles with shockwave therapy, which is specifically designed to restart healing in tissue that has stopped progressing on its own.
                 </div>
             </div>
 
-            <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="lp-faq-item">
                 <button @click="open === 5 ? open = null : open = 5" class="w-full flex justify-between items-center px-6 py-5 text-left text-gray-800 font-semibold hover:bg-gray-50 transition-colors">
-                    <span>What does a shockwave session feel like?</span>
+                    <span>What does a treatment session feel like?</span>
                     <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 transition-transform" :class="open === 5 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open === 5" class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
-                    Most patients describe it as a deep pressure or vibration — similar to a focused deep tissue massage. Sensitive areas may feel mildly uncomfortable, but it is generally well-tolerated. Your provider adjusts intensity based on your feedback throughout the session.
+                    Most patients describe shockwave as a deep pressure or vibration, similar to a focused deep tissue massage. Sensitive areas may feel mildly uncomfortable, but it is generally well-tolerated. Your provider adjusts intensity based on your feedback throughout the session.
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     FINAL CTA + REPEAT FORM
-     ============================================================ -->
-<section class="bg-[#001524] py-16 px-4">
+<section class="lp-final-section py-16 px-4">
     <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="lp-final-grid">
             <div>
                 <h2 class="text-white font-extrabold text-3xl md:text-4xl mb-5" style="font-family: 'Montserrat', sans-serif;">
-                    Imagine Having a Clear Path Forward — Not Another Round of Waiting
+                    Imagine Having a Clear Path Forward, Not Another Round of Waiting
                 </h2>
                 <p class="text-gray-300 text-lg mb-4">
-                    A structured program with a provider who tracks your progress and a realistic timeline to getting back to normal — without surgery, without another round of injections, without starting over.
+                    A structured program with a provider who tracks your progress and a realistic timeline to getting back to normal, without surgery, without another round of injections, without starting over.
                 </p>
                 <p class="text-gray-400 mb-8">
-                    Start with a $99 first session. No commitment beyond that. Just a clear picture of what recovery could look like for your specific situation.
+                    Start with an $89 first session. No commitment beyond that. Just a clear picture of what recovery could look like for your specific situation.
                 </p>
-                <a href="tel:+17206042792" class="inline-flex items-center gap-2 border-2 border-yellow-400 text-yellow-400 font-bold px-6 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition-colors">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                    Call Denver: 720-604-2792
-                </a>
+                <div class="lp-call-stack">
+                    <a href="tel:+17206042792" class="lp-call-link lp-call-link-primary">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                        Call Denver: 720-604-2792
+                    </a>
+                </div>
             </div>
             <div>
-                {% include 'includes/_landing_form.html' with form_cta_text="Claim My $99 Session" preferred_location="denver" %}
+                {% include 'includes/_landing_form.html' with form_cta_text="Claim My $89 Session" preferred_location="denver" %}
             </div>
         </div>
     </div>
