@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/mmc_journal_reminder.py",
+            "timeout": 10,
+            "statusMessage": "Checking MMC journal reminder..."
+          }
+        ]
+      }
+    ]
+  }
+}

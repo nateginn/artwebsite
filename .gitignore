@@ -5,3 +5,4 @@ poetry.lock
 
 db.sqlite3
 *.log
+HANDOFF_ARTwebsite.md
