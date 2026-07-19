@@ -24,7 +24,9 @@ logger = logging.getLogger('main')
 def home(request):
     """Main home page view"""
     context = {
-        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY,
+        'meta_title': 'Chiropractor & Physical Therapy in Greeley & Denver, CO | Accelerated Rehab Therapy',
+        'meta_description': 'Accelerated Rehab Therapy offers chiropractic care, physical therapy, massage, and acupuncture in Greeley and Denver, CO. Auto injury, work comp, and chronic pain specialists. Schedule your appointment today.',
     }
     return render(request, 'main/home.html', context)
 
@@ -194,7 +196,8 @@ def work_comp(request):
     context = {
         'services': CHIROPRACTIC_SERVICES,
         'hide_margin': False,  # Set to True if you want to hide the top margin
-        'meta_title': 'Work Comp Injury Care in Greeley & Denver | Accelerated Rehab Therapy'
+        'meta_title': 'Work Comp Injury Care in Greeley & Denver | Accelerated Rehab Therapy',
+        'meta_description': "Injured on the job? Accelerated Rehab Therapy provides workers' comp injury treatment in Greeley and Denver, CO, including chiropractic care, physical therapy, and rehabilitation to help you recover and return to work safely.",
     }
     return render(request, 'main/work_comp.html', context)
 
@@ -204,7 +207,8 @@ def auto_injury(request):
     context = {
         'services': CHIROPRACTIC_SERVICES,
         'hide_margin': False,
-        'meta_title': 'Auto Injury Treatment in Greeley & Denver | Accelerated Rehab Therapy'
+        'meta_title': 'Auto Injury Treatment in Greeley & Denver, CO | Accelerated Rehab Therapy',
+        'meta_description': 'Injured in a car accident? Get expert auto injury treatment in Greeley and Denver, CO, including chiropractic care, physical therapy, and rehabilitation for whiplash, back pain, and soft tissue injuries. Schedule your evaluation today.',
     }
     return render(request, 'main/auto_injury.html', context)
 
@@ -293,7 +297,8 @@ def contact(request):
     # For GET requests or if there was an error
     logger.debug("Rendering contact form template")
     context = {
-        'meta_title': 'Contact Us in Greeley & Denver | Accelerated Rehab Therapy'
+        'meta_title': 'Contact Us in Greeley & Denver | Accelerated Rehab Therapy',
+        'meta_description': 'Contact Accelerated Rehab Therapy in Greeley or Denver, CO to schedule an appointment. Chiropractic, physical therapy, massage, and acupuncture for auto injury, work comp, and chronic pain.',
     }
     return render(request, 'main/contact.html', context)
 
@@ -301,7 +306,8 @@ def contact(request):
 def about(request):
     """About page view"""
     context = {
-        'meta_title': 'About Accelerated Rehab Therapy | Greeley & Denver'
+        'meta_title': 'About Accelerated Rehab Therapy | Chiropractic & Rehab Team in Greeley & Denver',
+        'meta_description': "Learn about Accelerated Rehab Therapy's licensed chiropractors and rehab specialists serving Greeley and Denver, CO. Our mission, values, and patient-first approach to auto injury, work comp, and chronic pain care.",
     }
     return render(request, 'main/about_us.html', context)
 
@@ -309,7 +315,8 @@ def about(request):
 def resources(request):
     """Resources page view"""
     context = {
-        'meta_title': 'Patient Resources & Information | Accelerated Rehab Therapy'
+        'meta_title': 'Health & Wellness Resources | Accelerated Rehab Therapy',
+        'meta_description': 'Explore patient resources and wellness articles from Accelerated Rehab Therapy in Greeley and Denver, CO, covering auto injury recovery, work injury care, chiropractic treatment, and pain management.',
     }
     return render(request, 'main/resources.html', context)
 
@@ -382,7 +389,8 @@ def es_info(request):
 def privacy_policy(request):
     """Privacy policy page view"""
     context = {
-        'meta_title': 'Privacy Policy | Accelerated Rehab Therapy'
+        'meta_title': 'Privacy Policy | Accelerated Rehab Therapy',
+        'meta_description': 'Read the privacy policy for Accelerated Rehab Therapy, covering how we collect, use, and protect patient information across our Greeley and Denver, CO clinics.',
     }
     return render(request, 'main/privacy_policy.html', context)
 
