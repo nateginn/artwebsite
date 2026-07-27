@@ -1,57 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/</loc>
+{% comment %}
+Rendered by django.contrib.sitemaps.views.sitemap (see urls.py) with
+StaticViewSitemap (apps/main/sitemaps.py) as the single source of URLs — this
+template intentionally shadows Django's built-in sitemap.xml. Paths come from
+StaticViewSitemap.items() via URL reversal, so adding/removing a page there is
+all that's needed — do not hand-list URLs here again. The host is pinned to the
+canonical non-www domain: every page self-canonicalizes to non-www, and the old
+www vs non-www split is what kept /massage/ out of Google's index.
+{% endcomment %}<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for url in urlset %}    <url>
+        <loc>https://acceleratedrehabtherapy.com{% url url.item %}</loc>
         <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
+        <changefreq>{{ url.changefreq }}</changefreq>
+        <priority>{{ url.priority }}</priority>
     </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/about/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/chiropractor/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/acupuncture/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/physical-therapy/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/massage/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/auto-injury/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/work-comp/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.acceleratedrehabtherapy.com/contact/</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-</urlset>
+{% endfor %}</urlset>
