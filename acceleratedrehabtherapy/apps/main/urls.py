@@ -21,6 +21,7 @@ urlpatterns = [
     # Spanish info page (not linked in top menu)
     path("es/", views.es_info, name="es_info"),
     path("privacy-policy/", views.privacy_policy, name="privacy_policy"),  # Privacy policy page
+    path("eula/", views.eula, name="eula"),  # End User License Agreement page
     # Landing pages — Meta Ads campaigns (not linked in main nav)
     path("shockwave-therapy-denver/", views.landing_shockwave_denver, name="landing_shockwave_denver"),
     path("shockwave-therapy-greeley/", views.landing_shockwave_greeley, name="landing_shockwave_greeley"),

@@ -395,6 +395,16 @@ def privacy_policy(request):
     return render(request, 'main/privacy_policy.html', context)
 
 
+@require_GET
+def eula(request):
+    """End User License Agreement page view"""
+    context = {
+        'meta_title': 'End User License Agreement (EULA) | Accelerated Rehab Therapy',
+        'meta_description': 'Read the End User License Agreement for Accelerated Rehab Therapy, including terms of use, medical disclaimers, and liability limitations.',
+    }
+    return render(request, 'main/eula.html', context)
+
+
 # ---------------------------------------------------------------------------
 # Meta Conversions API helpers
 # ---------------------------------------------------------------------------

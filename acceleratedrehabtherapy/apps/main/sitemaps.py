@@ -22,6 +22,7 @@ class StaticViewSitemap(Sitemap):
             'main:resources',
             'main:es_info',
             'main:privacy_policy',
+            'main:eula',
         ]
 
     def location(self, item):
