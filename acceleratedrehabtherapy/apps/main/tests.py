@@ -418,6 +418,68 @@ class UnpublishedTeamPageTests(TestCase):
         self.assertIn('Draft page', body)
 
 
+class ResourcesBlogTests(TestCase):
+    """Guards the /resources/ blog content.
+
+    Articles live as #anchors on this one page rather than at their own URLs.
+    The category cards link to those anchors, so a renamed or deleted article id
+    breaks a visible link with nothing else to catch it.
+    """
+
+    NEW_ARTICLE_IDS = [
+        'blog-delayed-symptoms',
+        'blog-colorado-work-injury',
+        'blog-back-pain-evidence',
+        'blog-first-visit-safety',
+        'blog-desk-setup-movement',
+    ]
+
+    def setUp(self):
+        self.body = self.client.get(reverse('main:resources')).content.decode()
+
+    def test_all_new_articles_present(self):
+        for article_id in self.NEW_ARTICLE_IDS:
+            with self.subTest(article=article_id):
+                self.assertIn(f'<article id="{article_id}"', self.body)
+
+    def test_no_broken_internal_anchors(self):
+        """Every #blog-* link on the page must resolve to an article on it."""
+        ids = set(re.findall(r'<article id="([^"]+)"', self.body))
+        hrefs = set(re.findall(r'href="#(blog-[^"]+)"', self.body))
+        self.assertEqual(
+            hrefs - ids, set(),
+            f"Category card(s) link to article anchors that do not exist: {sorted(hrefs - ids)}",
+        )
+
+    def test_no_dead_placeholder_links_remain(self):
+        """The category cards previously all pointed at href="#"."""
+        self.assertNotIn('<a href="#" class="inline-block mt-4', self.body)
+
+    def test_each_new_article_cites_sources(self):
+        """Sourcing is the point of these articles; an uncited one is a defect."""
+        for article_id in self.NEW_ARTICLE_IDS:
+            with self.subTest(article=article_id):
+                start = self.body.index(f'<article id="{article_id}"')
+                end = self.body.index('</article>', start)
+                section = self.body[start:end]
+                self.assertIn('<h5>Sources</h5>', section)
+                self.assertIn('href="https://', section)
+
+    def test_new_articles_carry_review_placeholder(self):
+        """Medical content must not read as reviewed until a clinician signs off."""
+        for article_id in self.NEW_ARTICLE_IDS:
+            with self.subTest(article=article_id):
+                start = self.body.index(f'<article id="{article_id}"')
+                end = self.body.index('</article>', start)
+                self.assertIn('Medically reviewed by:', self.body[start:end])
+
+    def test_external_source_links_are_safe(self):
+        """target="_blank" without rel=noopener is a known tab-nabbing vector."""
+        for match in re.finditer(r'<a\b[^>]*target="_blank"[^>]*>', self.body):
+            tag = match.group(0)
+            self.assertIn('rel="noopener noreferrer"', tag, f"Unsafe external link: {tag}")
+
+
 class GoogleReviewsCacheTests(TestCase):
     """Negative caching for the Google Places call.
 
