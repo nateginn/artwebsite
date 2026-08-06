@@ -496,6 +496,51 @@ class ResourcesBlogTests(TestCase):
                         "notice above the headline.",
                     )
 
+    def test_no_unverified_citation_urls(self):
+        """Tripwire for fabricated citations.
+
+        A URL invented by pattern-matching a plausible-looking path is the
+        exact failure mode this content must not have: during authoring, two
+        guessed source URLs turned out to be wrong (one NINDS path that does
+        not exist, one MedlinePlus article that is about a different
+        condition entirely). This pins the citations that were verified to
+        resolve and to be on-topic, so a future edit cannot quietly swap in
+        an unchecked one.
+        """
+        verified = {
+            'https://www.ncbi.nlm.nih.gov/books/NBK537200/',
+            'https://www.acpjournals.org/doi/10.7326/M16-2367',
+            'https://pubmed.ncbi.nlm.nih.gov/28192793/',
+            'https://www.nccih.nih.gov/health/spinal-manipulation-what-you-need-to-know',
+            'https://pubmed.ncbi.nlm.nih.gov/20227325/',
+            'https://pmc.ncbi.nlm.nih.gov/articles/PMC5719861/',
+            'https://pubmed.ncbi.nlm.nih.gov/17916783/',
+            'https://pmc.ncbi.nlm.nih.gov/articles/PMC2446396/',
+            'https://pubmed.ncbi.nlm.nih.gov/8164827/',
+            'https://www.cdc.gov/stroke/signs-symptoms/index.html',
+            'https://www.cdc.gov/traumatic-brain-injury/signs-symptoms/index.html',
+            'https://www.cdc.gov/physical-activity-basics/guidelines/adults.html',
+            'https://www.cdc.gov/niosh/ergonomics/index.html',
+            'https://www.osha.gov/etools/computer-workstations/positions',
+            'https://www.osha.gov/etools/computer-workstations/components/monitors',
+            'https://cdle.colorado.gov/dwc/injured-workers/reporting-your-injury',
+            'https://cdle.colorado.gov/dwc/employers/reporting-injuries',
+            'https://leg.colorado.gov/bills/hb22-1112',
+        }
+        cited = set()
+        for article_id in self.NEW_ARTICLE_IDS:
+            section = self._article_html(article_id)
+            sources_at = section.find('<h5>Sources</h5>')
+            if sources_at != -1:
+                cited.update(re.findall(r'href="(https://[^"]+)"', section[sources_at:]))
+        unverified = cited - verified
+        self.assertEqual(
+            unverified, set(),
+            "Citation URL(s) not in the verified set. Fetch each one and confirm "
+            "it resolves AND covers the claim before adding it here: "
+            f"{sorted(unverified)}",
+        )
+
     def test_legal_article_requires_more_than_clinical_review(self):
         """Clinical sign-off does not validate a legal deadline."""
         section = self._article_html('blog-colorado-work-injury')
