@@ -473,6 +473,47 @@ class ResourcesBlogTests(TestCase):
                 end = self.body.index('</article>', start)
                 self.assertIn('Medically reviewed by:', self.body[start:end])
 
+    def test_pending_articles_show_a_draft_notice(self):
+        """A pending article must look pending to a reader, not just in source.
+
+        Codex flagged the inverse of this: the page previously claimed all
+        resources were clinician-reviewed while these carried PENDING bylines.
+        """
+        for article_id in self.NEW_ARTICLE_IDS:
+            with self.subTest(article=article_id):
+                start = self.body.index(f'<article id="{article_id}"')
+                end = self.body.index('</article>', start)
+                section = self.body[start:end]
+                if 'PENDING CLINICAL REVIEW' in section:
+                    self.assertIn(
+                        'pending clinical review', section.lower(),
+                        "Article has an unreviewed byline but no visible draft notice.",
+                    )
+
+    def test_page_does_not_claim_all_content_is_reviewed(self):
+        """Blanket review claims must not outrun actual review status."""
+        if 'PENDING CLINICAL REVIEW' in self.body:
+            self.assertNotIn(
+                'All resources are reviewed by our medical professionals', self.body,
+                "Page claims every resource is clinician-reviewed while articles "
+                "are still marked pending review.",
+            )
+
+    def test_emergency_guidance_present_on_clinical_articles(self):
+        """Red-flag guidance is the safety-critical part of this content."""
+        expectations = {
+            'blog-delayed-symptoms': ['911', 'emergency'],
+            'blog-back-pain-evidence': ['emergency department', 'cauda equina'],
+            'blog-first-visit-safety': ['911', 'stroke'],
+        }
+        for article_id, needles in expectations.items():
+            start = self.body.index(f'<article id="{article_id}"')
+            end = self.body.index('</article>', start)
+            section = self.body[start:end].lower()
+            for needle in needles:
+                with self.subTest(article=article_id, needle=needle):
+                    self.assertIn(needle.lower(), section)
+
     def test_external_source_links_are_safe(self):
         """target="_blank" without rel=noopener is a known tab-nabbing vector."""
         for match in re.finditer(r'<a\b[^>]*target="_blank"[^>]*>', self.body):

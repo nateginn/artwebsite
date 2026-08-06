@@ -12,8 +12,21 @@
             </h1>
             
             <div class="relative max-w-3xl">
-                <p class="text-md text-gray-600 leading-relaxed mb-16">
-                    Expert guidance and comprehensive information about injury recovery, pain management, and maintaining optimal health. All resources are reviewed by our medical professionals.
+                <p class="text-md text-gray-600 leading-relaxed mb-4">
+                    Expert guidance and comprehensive information about injury recovery, pain management, and maintaining optimal health.
+                </p>
+                {% comment %}
+                The claim "All resources are reviewed by our medical professionals"
+                was removed 2026-08-06: five articles below currently carry a
+                "[ PENDING CLINICAL REVIEW ]" byline, so the blanket statement was
+                not accurate. Restore it only once every article on this page has a
+                named reviewer and date -- a review-status claim that isn't true is
+                worse than no claim, both for patients and for search quality
+                raters assessing health content.
+                {% endcomment %}
+                <p class="text-sm text-gray-500 mb-16">
+                    Educational information only &mdash; not a substitute for individual
+                    medical advice. Each article shows who reviewed it and when.
                 </p>
             </div>
         </div>
@@ -385,14 +398,17 @@
 
                 <!-- Blog Post 5: Auto Injury Resources -->
                 <article id="blog-delayed-symptoms" class="bg-white rounded-lg shadow p-6">
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded mb-4">
+                        <p class="text-xs text-yellow-900"><strong>Draft &mdash; pending clinical review.</strong> Sources are cited below. A licensed provider must review and sign off before this is presented as reviewed content; remove this notice and complete the byline at that point.</p>
+                    </div>
                     <h3 class="text-2xl font-bold text-[#083B57] mb-4">Why Car Accident Symptoms Often Show Up Days Later</h3>
                     <div class="prose max-w-none">
-                        <p><strong>Short answer:</strong> After a collision, neck and back symptoms are commonly delayed rather than immediate. Research on whiplash-associated disorders describes symptom onset that is typically delayed for several hours and worsens over the following 24 to 48 hours. Feeling fine at the scene does not mean you were not injured, which is why an evaluation is worthwhile even after a low-speed crash.</p>
+                        <p><strong>Short answer:</strong> After a collision, neck and back symptoms do not always start straight away — they can begin hours or even days later, and the timing varies from person to person. Feeling fine at the scene therefore does not confirm you were uninjured, which is why an evaluation is worthwhile even after a low-speed crash.</p>
 
                         <hr class="my-4">
 
-                        <h5>Why the delay happens</h5>
-                        <p>In a collision the head is rapidly moved back and forth, straining the muscles, ligaments, and joints of the neck and upper back. Adrenaline and inflammation both play a role in masking that injury at first: you may feel little at the scene, then stiffen up over the next day or two as the inflammatory response develops and the initial stress response fades.</p>
+                        <h5>Why symptoms can be delayed</h5>
+                        <p>In a collision the head is rapidly moved back and forth, which can strain the muscles, ligaments, and joints of the neck and upper back. Onset varies: some people hurt immediately, others notice stiffness or pain building over the following day or two. Because of that variability, "I felt fine afterwards" is not a reliable indicator of whether an injury occurred.</p>
                         <p>Whiplash-associated disorders also produce a wider range of symptoms than simple neck pain. The published clinical picture includes neck, shoulder, arm, low back, and head pain, as well as dizziness, visual symptoms, jaw pain, tinnitus, and pins-and-needles sensations.</p>
 
                         <hr class="my-4">
@@ -406,7 +422,22 @@
                             <li>Numbness or tingling in an arm or hand</li>
                             <li>Trouble concentrating or unusual fatigue</li>
                         </ul>
-                        <p><strong>Seek emergency care immediately</strong> — not a chiropractic appointment — for severe or worsening headache, weakness in an arm or leg, loss of coordination, trouble speaking, confusion, fainting, or loss of bladder or bowel control. These can signal problems that need urgent medical evaluation.</p>
+                        <hr class="my-4">
+
+                        <h5>When to call 911 or go to an emergency department</h5>
+                        <p><strong>After a collision, seek emergency care immediately — not a chiropractic appointment — for any of the following:</strong></p>
+                        <ul>
+                            <li>Loss of consciousness at any point, even briefly</li>
+                            <li>Repeated vomiting, seizure, or worsening confusion or drowsiness</li>
+                            <li>Severe headache, or a headache that keeps getting worse</li>
+                            <li>Severe neck pain, or any visible deformity of the neck or back</li>
+                            <li>Weakness, numbness, or tingling in an arm or leg</li>
+                            <li>Trouble speaking, loss of coordination, or new trouble walking</li>
+                            <li>New or sudden vision loss, double vision, or severe dizziness</li>
+                            <li>Chest pain, difficulty breathing, or abdominal pain, swelling, or bruising</li>
+                            <li>Loss of bladder or bowel control</li>
+                        </ul>
+                        <p>Head, spinal, and internal injuries can be present without obvious external signs, and some become apparent only after the adrenaline of the incident passes. <strong>This list is not exhaustive</strong> — if something feels seriously wrong after a crash, get emergency care rather than waiting for a routine appointment.</p>
 
                         <hr class="my-4">
 
@@ -434,6 +465,9 @@
 
                 <!-- Blog Post 6: Work Injury Recovery -->
                 <article id="blog-colorado-work-injury" class="bg-white rounded-lg shadow p-6">
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded mb-4">
+                        <p class="text-xs text-yellow-900"><strong>Draft &mdash; pending clinical review.</strong> Sources are cited below. A licensed provider must review and sign off before this is presented as reviewed content; remove this notice and complete the byline at that point.</p>
+                    </div>
                     <h3 class="text-2xl font-bold text-[#083B57] mb-4">Reporting a Work Injury in Colorado: Deadlines and What Happens Next</h3>
                     <div class="prose max-w-none">
                         <p><strong>Short answer:</strong> In Colorado you should notify your employer of a work injury <strong>in writing within 10 working days</strong>. That deadline was extended from four days by House Bill 22-1112. Your employer then has 10 days to report it to their insurer, and should give you a designated provider list to choose your treating provider from.</p>
@@ -484,6 +518,9 @@
 
                 <!-- Blog Post 7: Pain Management & Treatment -->
                 <article id="blog-back-pain-evidence" class="bg-white rounded-lg shadow p-6">
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded mb-4">
+                        <p class="text-xs text-yellow-900"><strong>Draft &mdash; pending clinical review.</strong> Sources are cited below. A licensed provider must review and sign off before this is presented as reviewed content; remove this notice and complete the byline at that point.</p>
+                    </div>
                     <h3 class="text-2xl font-bold text-[#083B57] mb-4">What the Evidence Says About Treating Low Back Pain Without Drugs</h3>
                     <div class="prose max-w-none">
                         <p><strong>Short answer:</strong> The American College of Physicians recommends that low back pain be treated with non-drug approaches <em>first</em>. For acute and subacute back pain that means heat, massage, acupuncture, or spinal manipulation. For chronic back pain it means exercise and multidisciplinary rehabilitation first, with spinal manipulation, acupuncture, and several other options also recommended.</p>
@@ -510,8 +547,17 @@
 
                         <hr class="my-4">
 
-                        <h5>When back pain needs urgent evaluation</h5>
-                        <p>See a physician promptly rather than booking routine care if back pain comes with loss of bladder or bowel control, numbness in the groin or inner thighs, progressive leg weakness, unexplained weight loss, fever, a history of cancer, or follows significant trauma.</p>
+                        <h5>When back pain is an emergency</h5>
+                        <p><strong>Go to an emergency department now — do not wait for an appointment — if back pain comes with any of:</strong></p>
+                        <ul>
+                            <li>Loss of bladder or bowel control, or difficulty starting to urinate</li>
+                            <li>Numbness in the groin, buttocks, or inner thighs (the area that would touch a saddle)</li>
+                            <li>Weakness in one or both legs, especially if it is getting worse</li>
+                            <li>Numbness or altered sensation in both legs</li>
+                        </ul>
+                        <p>Together these can indicate cauda equina syndrome, a compression of the nerve roots at the base of the spine. It is uncommon, but it is treated as a surgical emergency because delay can cause permanent loss of bladder, bowel, and sexual function. This is not a "call us in the morning" situation.</p>
+                        <p><strong>Arrange prompt medical assessment</strong> — sooner than a routine appointment, though not necessarily the emergency department — for back pain accompanied by unexplained weight loss, fever, a history of cancer, significant trauma, or pain that is severe and unrelenting at night.</p>
+                        <p>This list is not exhaustive. If something feels seriously wrong, seek emergency care.</p>
 
                         <hr class="my-4">
 
@@ -528,6 +574,9 @@
 
                 <!-- Blog Post 8: Chiropractic Education -->
                 <article id="blog-first-visit-safety" class="bg-white rounded-lg shadow p-6">
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded mb-4">
+                        <p class="text-xs text-yellow-900"><strong>Draft &mdash; pending clinical review.</strong> Sources are cited below. A licensed provider must review and sign off before this is presented as reviewed content; remove this notice and complete the byline at that point.</p>
+                    </div>
                     <h3 class="text-2xl font-bold text-[#083B57] mb-4">Your First Chiropractic Visit: What Happens, and What the Research Says About Safety</h3>
                     <div class="prose max-w-none">
                         <p><strong>Short answer:</strong> A first visit is mostly examination, not treatment. Expect a history, a physical and neurological exam, and a discussion of findings before anything is done. On safety, the evidence is consistent: mild, temporary side effects such as soreness or a brief headache are common, while serious complications are rare.</p>
@@ -546,9 +595,20 @@
                         <hr class="my-4">
 
                         <h5>What the safety research shows</h5>
-                        <p>The National Center for Complementary and Integrative Health, part of the NIH, summarises the evidence this way: side effects can include temporary headaches, tiredness, or discomfort in the area treated. Prospective studies suggest minor, short-lived effects occur in roughly half of people receiving spinal manipulation. These typically settle within a day or two.</p>
+                        <p>The National Center for Complementary and Integrative Health, part of the NIH, summarises the evidence this way: side effects can include temporary headaches, tiredness, or discomfort in the parts of the body that were treated, and these minor effects usually resolve within about a day. We have deliberately not attached a percentage to how often that happens — figures circulate, but the systematic review literature on adverse events after cervical manipulation is explicit that firm conclusions about frequency cannot be drawn from the available studies.</p>
                         <p>Serious complications are rare. Neck manipulation specifically has been linked in the literature to cervical artery dissection — a tear in an artery in the neck that can lead to stroke. The available evidence indicates the incidence among people receiving spinal manipulation is low, and whether manipulation causes these events or people seek care <em>because</em> of early symptoms of a dissection already in progress is not settled. NCCIH's position is that patients should be informed of the potential risk, which is why it is stated plainly here rather than omitted.</p>
-                        <p>A reasonable way to think about it: common effects are minor and temporary; serious ones are rare but not zero. That is a trade-off worth understanding before consenting, and worth discussing with your provider — especially if you have a history of vascular disease, connective tissue disorders, or are on blood thinners.</p>
+
+                        <p><strong>Call 911 immediately if you experience any of these, whether or not you have recently had treatment:</strong></p>
+                        <ul>
+                            <li>Sudden numbness or weakness in the face, arm, or leg — especially on one side</li>
+                            <li>Sudden confusion, or trouble speaking or understanding speech</li>
+                            <li>Sudden trouble seeing in one or both eyes, or double vision</li>
+                            <li>Sudden trouble walking, dizziness, or loss of balance or coordination</li>
+                            <li>Sudden severe headache with no known cause, or a sudden severe neck pain unlike your usual pain</li>
+                        </ul>
+                        <p>These are the recognised warning signs of stroke. Treatment is time-critical, so do not wait to see whether it passes and do not call the clinic first — call 911.</p>
+
+                        <p>A reasonable way to think about the trade-off: common effects are minor and temporary; serious ones are rare but not zero. That is worth understanding before consenting, and worth raising with your provider — particularly if you have a history of vascular disease or stroke, a connective tissue disorder, or take blood thinners. Tell us about those before treatment, not after.</p>
 
                         <hr class="my-4">
 
@@ -575,9 +635,12 @@
 
                 <!-- Blog Post 9: Wellness & Prevention -->
                 <article id="blog-desk-setup-movement" class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-2xl font-bold text-[#083B57] mb-4">Two Habits That Prevent Most Desk-Related Neck and Back Pain</h3>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded mb-4">
+                        <p class="text-xs text-yellow-900"><strong>Draft &mdash; pending clinical review.</strong> Sources are cited below. A licensed provider must review and sign off before this is presented as reviewed content; remove this notice and complete the byline at that point.</p>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#083B57] mb-4">Two Evidence-Based Habits for Desk Workers</h3>
                     <div class="prose max-w-none">
-                        <p><strong>Short answer:</strong> Set your workstation up so your body stays in a neutral position — head level, forearms roughly parallel to the floor, monitor top at or below eye level and at least 20 inches away — and meet the national activity guideline of 150 minutes of moderate activity per week plus muscle-strengthening on two days. Those two habits address the majority of desk-related complaints we see.</p>
+                        <p><strong>Short answer:</strong> Set your workstation up so your body stays in a neutral position — head level, forearms roughly parallel to the floor, monitor top at or below eye level and at least 20 inches away — and work toward the national activity guideline of 150 minutes of moderate activity per week plus muscle-strengthening on two days. OSHA states that neutral positioning reduces strain and lowers the risk of developing a musculoskeletal disorder, and the CDC's activity guideline supports general health.</p>
 
                         <hr class="my-4">
 
@@ -605,7 +668,8 @@
                         <hr class="my-4">
 
                         <h5>When to get it looked at</h5>
-                        <p>Discomfort that resolves overnight is usually a setup or workload issue. Pain that persists for weeks, wakes you at night, or comes with numbness, tingling, or weakness in an arm or hand deserves an evaluation rather than another chair adjustment.</p>
+                        <p>How long discomfort lasts does not on its own tell you what is causing it, so treat the guidance below as a prompt to get assessed rather than a way to self-diagnose. Arrange an evaluation rather than another chair adjustment if you have pain that persists for weeks, pain that wakes you at night, or numbness, tingling, or weakness in an arm or hand.</p>
+                        <p>Seek prompt medical attention for weakness that is worsening, symptoms in both arms, or any loss of coordination — those are outside the scope of a workstation fix.</p>
 
                         <hr class="my-4">
 
