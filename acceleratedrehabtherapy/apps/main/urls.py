@@ -16,6 +16,9 @@ urlpatterns = [
     path("work-comp/", views.work_comp, name="work_comp"), #work comp page
     path("contact/", views.contact, name="contact"),  # Contact page
     path("about/", views.about, name="about_us"),  # About page
+    # Team bios -- UNPUBLISHED scaffold: noindex, not in nav, not in sitemap.
+    # See the publish checklist at the top of main/team.html.
+    path("team/", views.team, name="team"),
     path("resources/", views.resources, name="resources"),  # Resources page  
     path("api/reviews/", views.reviews_api, name="reviews_api"),
     # NOTE: "api/test-google-reviews/" removed 2026-08-06 — it was a public,

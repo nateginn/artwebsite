@@ -64,6 +64,10 @@ NON_PUBLIC_ROUTES = {
     'main:landing_form_submit': 'POST handler, not a page',
     # JSON endpoints, not pages.
     'main:reviews_api': 'JSON API endpoint',
+    # Unpublished scaffold: renders noindex placeholder content with no real
+    # provider names or credentials. Move to PUBLIC_PAGES only after the
+    # publish checklist at the top of main/team.html is completed.
+    'main:team': 'unpublished scaffold (noindex, placeholder content)',
 }
 
 # Real per-page last-modified dates (YYYY-MM-DD).

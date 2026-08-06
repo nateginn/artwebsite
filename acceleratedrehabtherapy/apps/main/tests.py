@@ -364,6 +364,47 @@ class CanonicalOriginConfigTests(TestCase):
         self.assertNotIn('__CANONICAL_URL__', body)
 
 
+class UnpublishedTeamPageTests(TestCase):
+    """The team scaffold must stay invisible until real bios are added.
+
+    It exists so that publishing is a content task rather than a build task,
+    but a placeholder page leaking into search results would be worse than no
+    page at all. These tests are what make it safe to leave in the tree.
+    """
+
+    def test_page_renders(self):
+        self.assertEqual(self.client.get(reverse('main:team')).status_code, 200)
+
+    def test_page_is_noindex(self):
+        body = self.client.get(reverse('main:team')).content.decode()
+        self.assertIn('name="robots" content="noindex, nofollow"', body)
+        self.assertNotIn('name="robots" content="index, follow"', body)
+
+    def test_page_is_not_in_sitemap(self):
+        body = self.client.get('/sitemap.xml').content.decode()
+        self.assertNotIn(reverse('main:team'), body)
+
+    def test_page_is_not_linked_from_nav(self):
+        """Nav renders on every page; a link there would expose the draft."""
+        home = self.client.get(reverse('main:home')).content.decode()
+        self.assertNotIn(f'href="{reverse("main:team")}"', home)
+
+    def test_indexable_pages_still_say_index_follow(self):
+        """The new {% block robots %} must not have broken the default."""
+        body = self.client.get(reverse('main:home')).content.decode()
+        self.assertIn('name="robots" content="index, follow"', body)
+
+    def test_contains_no_real_looking_credentials(self):
+        """Guard against someone half-filling the placeholders and forgetting.
+
+        If real bios get added, this test should be deleted along with the
+        robots block -- it is a tripwire for the draft state, not a rule.
+        """
+        body = self.client.get(reverse('main:team')).content.decode()
+        self.assertIn('[ PROVIDER NAME ]', body)
+        self.assertIn('Draft page', body)
+
+
 class GoogleReviewsCacheTests(TestCase):
     """Negative caching for the Google Places call.
 

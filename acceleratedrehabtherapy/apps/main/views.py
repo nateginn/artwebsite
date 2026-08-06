@@ -236,6 +236,21 @@ def massage(request):
     return render(request, 'main/massage.html', context)
 
 @require_GET
+def team(request):
+    """Meet the Providers -- UNPUBLISHED SCAFFOLD.
+
+    Renders a noindex placeholder layout. It is intentionally not in the nav or
+    sitemap and contains no provider names or credentials: those must come from
+    the owner, and inventing them on a medical site is not an option. See the
+    publish checklist at the top of main/team.html.
+    """
+    context = {
+        'meta_title': 'Meet Our Providers | Accelerated Rehab Therapy',
+    }
+    return render(request, 'main/team.html', context)
+
+
+@require_GET
 def acupuncture(request):
     """Acupuncture page view"""
     context = {
