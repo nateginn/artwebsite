@@ -38,14 +38,21 @@ def generate_review_hash(review_text, author):
 def get_google_reviews():
     cache_key = 'google_reviews'
     cached_reviews = cache.get(cache_key)
-    
-    if cached_reviews:
+
+    # `is not None`, not a truthiness check: an empty list is a *valid, cached*
+    # result (see the negative-caching below). Testing `if cached_reviews:`
+    # would treat every negative-cache entry as a miss and re-hit Google on
+    # every request, defeating the point of caching the failure at all.
+    if cached_reviews is not None:
         return cached_reviews
 
     api_key = os.getenv('GOOGLE_MAPS_API_KEY')
     place_id = os.getenv('GOOGLE_PLACE_ID')
-    
+
     if not api_key or not place_id:
+        # Misconfiguration, not an upstream failure — don't cache it, so fixing
+        # the env var takes effect immediately rather than after a TTL.
+        logger.warning("Google reviews unavailable: missing API key or place ID")
         return []
 
     url = f'https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&fields=reviews&key={api_key}'

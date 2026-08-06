@@ -187,3 +187,71 @@ class RemovedEndpointTests(TestCase):
     def test_debug_reviews_endpoint_is_gone(self):
         """It was public, unauthenticated, and leaked raw exception text."""
         self.assertEqual(self.client.get('/api/test-google-reviews/').status_code, 404)
+
+
+class GoogleReviewsCacheTests(TestCase):
+    """Negative caching for the Google Places call.
+
+    An empty or failed upstream response used to be left uncached, so a Places
+    outage produced a live upstream call on every request, from every worker.
+    The subtle part is that an empty list is a *valid cached value*: a
+    truthiness check (`if cached_reviews:`) silently treats every negative-cache
+    entry as a miss, which reintroduces the bug while looking fixed.
+    """
+
+    def setUp(self):
+        from django.core.cache import cache
+        cache.delete('google_reviews')
+        self.addCleanup(cache.delete, 'google_reviews')
+
+    def test_empty_cached_result_is_a_hit_not_a_miss(self):
+        from unittest import mock
+        from django.core.cache import cache
+        from . import views
+
+        cache.set('google_reviews', [], 900)
+        # If the empty entry were treated as a miss, this would attempt a live
+        # HTTP call; patching requests.get lets us assert it never happens.
+        with mock.patch.object(views.requests, 'get') as mock_get:
+            result = views.get_google_reviews()
+        self.assertEqual(result, [])
+        mock_get.assert_not_called()
+
+    def test_upstream_failure_is_negative_cached(self):
+        from unittest import mock
+        from django.core.cache import cache
+        from . import views
+
+        with mock.patch.dict(
+            'os.environ',
+            {'GOOGLE_MAPS_API_KEY': 'test-key', 'GOOGLE_PLACE_ID': 'test-place'},
+        ):
+            with mock.patch.object(
+                views.requests, 'get', side_effect=Exception("upstream down")
+            ) as mock_get:
+                first = views.get_google_reviews()
+                self.assertEqual(first, [])
+                self.assertEqual(mock_get.call_count, 1)
+
+                # Second call must be served from the negative cache.
+                second = views.get_google_reviews()
+                self.assertEqual(second, [])
+                self.assertEqual(
+                    mock_get.call_count, 1,
+                    "Failed upstream response was not negative-cached; Google "
+                    "would be re-hit on every request during an outage.",
+                )
+
+    def test_missing_credentials_are_not_cached(self):
+        """Misconfiguration should recover immediately once env vars are set."""
+        from unittest import mock
+        from django.core.cache import cache
+        from . import views
+
+        with mock.patch.dict('os.environ', {}, clear=True):
+            self.assertEqual(views.get_google_reviews(), [])
+        self.assertIsNone(
+            cache.get('google_reviews'),
+            "Missing credentials must not be cached, or fixing the env var "
+            "would not take effect until the TTL expired.",
+        )
