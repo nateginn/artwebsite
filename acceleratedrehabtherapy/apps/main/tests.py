@@ -593,6 +593,33 @@ class ResourcesBlogTests(TestCase):
                 with self.subTest(article=article_id, needle=needle):
                     self.assertIn(needle.lower(), section)
 
+    def test_article_images_sit_below_their_heading(self):
+        """Every article leads with its <h3>, then the image, then the body.
+
+        Two of the older posts had the image above the heading and two below,
+        which read as unfinished on a page where the posts sit side by side in
+        a grid. Heading-first also keeps the element that names the section
+        ahead of the decorative content in the DOM.
+        """
+        article_re = re.compile(
+            r'<article id="(blog-[^"]+)"[^>]*>(.*?)</article>', re.DOTALL
+        )
+        offenders = []
+        for match in article_re.finditer(self.body):
+            slug, inner = match.group(1), match.group(2)
+            heading = re.search(r'<h3\b', inner)
+            image = re.search(r'<(?:picture|img)\b', inner)
+            if heading is None:
+                offenders.append(f'{slug}: no <h3> at all')
+            elif image is not None and image.start() < heading.start():
+                offenders.append(f'{slug}: image appears above the <h3>')
+
+        self.assertEqual(
+            offenders, [],
+            "Blog post images must sit below their heading:\n  "
+            + "\n  ".join(offenders),
+        )
+
     def test_external_source_links_are_safe(self):
         """target="_blank" without rel=noopener is a known tab-nabbing vector."""
         for match in re.finditer(r'<a\b[^>]*target="_blank"[^>]*>', self.body):
