@@ -342,11 +342,24 @@ class CanonicalOriginConfigTests(TestCase):
         self.assertTrue(issues)
         self.assertEqual(issues[0].id, 'main.E001')
 
-    def test_system_check_warns_on_non_production_origin_when_not_debug(self):
+    def test_system_check_errors_on_non_production_origin_when_not_debug(self):
+        """Must be an ERROR, not a warning.
+
+        deploy.yml does not pass --fail-level WARNING, so a warning would print
+        and the deploy would continue -- publishing a site whose canonical tags
+        and sitemap all point at the wrong origin. Errors abort management
+        commands, so migrate/collectstatic fail the deploy instead.
+        """
+        from django.core.checks import Error as CheckError
         from .checks import check_canonical_origin
         with self.settings(DEBUG=False, CANONICAL_ORIGIN='https://staging.example.com'):
-            ids = {i.id for i in check_canonical_origin(None)}
-        self.assertIn('main.W001', ids)
+            issues = check_canonical_origin(None)
+        ids = {i.id for i in issues}
+        self.assertIn('main.E003', ids)
+        for issue in issues:
+            if issue.id == 'main.E003':
+                self.assertIsInstance(issue, CheckError)
+                self.assertTrue(issue.is_serious())
 
     def test_system_check_errors_on_http_in_production(self):
         from .checks import check_canonical_origin
