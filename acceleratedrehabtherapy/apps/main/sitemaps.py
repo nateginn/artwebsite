@@ -82,8 +82,29 @@ LASTMOD = {
     'main:shockwave': '2026-08-03',      # page added
     'main:eula': '2026-07-30',           # page added
     'main:about_us': '2026-08-06',       # UNC seasonal copy corrected
+    'main:resources': '2026-08-06',      # five articles published + reviewer bylines
     'main:privacy_policy': '2025-05-24',
 }
+
+
+def last_updated(route):
+    """The real last-changed date for a route, or None if we don't claim one.
+
+    Exposed so a *page* can display the same date its sitemap entry reports.
+    /resources/ previously rendered `{% now "F Y" %}` in its Medical Disclaimer,
+    so it advertised current-month freshness on a health page every time the
+    month rolled over, with no edit behind it -- the same self-falsifying claim
+    this module's LASTMOD exists to stop making in sitemap.xml.
+
+    One date, one source. If a page's content changes, its LASTMOD entry is the
+    single thing to bump, and both the sitemap and the page follow.
+    """
+    from datetime import date
+
+    stamp = LASTMOD.get(route)
+    if not stamp:
+        return None
+    return date.fromisoformat(stamp)
 
 
 class StaticViewSitemap(Sitemap):

@@ -593,6 +593,62 @@ class ResourcesBlogTests(TestCase):
                 with self.subTest(article=article_id, needle=needle):
                     self.assertIn(needle.lower(), section)
 
+    # The articles published on /resources/, as of LASTMOD['main:resources'].
+    #
+    # Adding, removing, or renaming a post changes this set and fails the test
+    # below. Fixing that failure means editing this list *and* bumping
+    # LASTMOD['main:resources'] to the day the change was made -- which is the
+    # point. The page's "Last updated" line renders from that same LASTMOD
+    # entry, so the visible date cannot drift away from the actual content.
+    #
+    # Honest limit: this forces the date to be *reconsidered* whenever the
+    # article set changes. It cannot verify the date you type is truthful, and
+    # it deliberately ignores body-copy edits -- otherwise every typo fix would
+    # fail CI.
+    PUBLISHED_ARTICLES = (
+        'blog-auto-injury',
+        'blog-back-pain-evidence',
+        'blog-better-posture',
+        'blog-colorado-work-injury',
+        'blog-delayed-symptoms',
+        'blog-desk-setup-movement',
+        'blog-first-visit-safety',
+        'blog-neck-pain',
+        'blog-unlocking-wellness',
+    )
+
+    def test_article_set_matches_the_recorded_last_updated_date(self):
+        """Adding a post must force the 'Last updated' date to be revisited."""
+        from .sitemaps import LASTMOD
+
+        on_page = tuple(sorted(re.findall(r'<article id="(blog-[^"]+)"', self.body)))
+        self.assertEqual(
+            on_page, tuple(sorted(self.PUBLISHED_ARTICLES)),
+            "The set of articles on /resources/ changed.\n"
+            "Update PUBLISHED_ARTICLES above AND bump "
+            f"LASTMOD['main:resources'] (currently {LASTMOD.get('main:resources')!r}) "
+            "in sitemaps.py to the date of the change. The disclaimer's "
+            "'Last updated' line and the sitemap both read from that entry.",
+        )
+
+    def test_last_updated_is_a_real_date_not_the_render_date(self):
+        """The disclaimer date must be a fixed fact, not today's date."""
+        from datetime import date
+        from .sitemaps import last_updated
+
+        stamp = last_updated('main:resources')
+        self.assertIsNotNone(
+            stamp, "/resources/ needs a LASTMOD entry to display a date at all"
+        )
+        self.assertLessEqual(stamp, date.today(), "lastmod is in the future")
+        self.assertNotIn(
+            '{% now', self.body, "Template still renders a self-advancing date"
+        )
+        self.assertIn(
+            stamp.strftime('Last updated: %B ') + str(stamp.day), self.body,
+            "The rendered disclaimer date does not match LASTMOD['main:resources']",
+        )
+
     def test_article_images_sit_below_their_heading(self):
         """Every article leads with its <h3>, then the image, then the body.
 

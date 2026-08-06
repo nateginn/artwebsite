@@ -363,9 +363,13 @@ def about(request):
 @require_GET
 def resources(request):
     """Resources page view"""
+    from .sitemaps import last_updated
+
     context = {
         'meta_title': 'Health & Wellness Resources | Accelerated Rehab Therapy',
         'meta_description': 'Explore patient resources and wellness articles from Accelerated Rehab Therapy in Greeley and Denver, CO, covering auto injury recovery, work injury care, chiropractic treatment, and pain management.',
+        # Same date the sitemap reports for this page. See sitemaps.LASTMOD.
+        'page_last_updated': last_updated('main:resources'),
     }
     return render(request, 'main/resources.html', context)
 
