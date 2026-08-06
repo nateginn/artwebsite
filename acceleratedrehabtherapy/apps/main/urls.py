@@ -18,7 +18,9 @@ urlpatterns = [
     path("about/", views.about, name="about_us"),  # About page
     path("resources/", views.resources, name="resources"),  # Resources page  
     path("api/reviews/", views.reviews_api, name="reviews_api"),
-    path("api/test-google-reviews/", views.test_google_reviews, name="test_google_reviews"),
+    # NOTE: "api/test-google-reviews/" removed 2026-08-06 — it was a public,
+    # unauthenticated debug endpoint that returned raw exception text to any
+    # caller and could reach the Google Places API. See views.py.
     # Spanish info page (not linked in top menu)
     path("es/", views.es_info, name="es_info"),
     path("privacy-policy/", views.privacy_policy, name="privacy_policy"),  # Privacy policy page

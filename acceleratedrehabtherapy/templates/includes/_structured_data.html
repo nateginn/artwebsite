@@ -59,10 +59,14 @@
     }
   ],
   "priceRange": "$$",
-  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo.png' %}",
-  "sameAs": [
-    "https://www.facebook.com/yourpage",
-    "https://www.instagram.com/yourprofile"
-  ]
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo.png' %}"
 }
 </script>
+{% comment %}
+"sameAs" removed 2026-08-06: it shipped unedited boilerplate placeholders
+("facebook.com/yourpage", "instagram.com/yourprofile") on every page of the
+site. sameAs is an entity-disambiguation signal, so pointing it at non-existent
+profiles is worse than omitting it. To restore, add the clinic's real profile
+URLs — verified live, not guessed:
+  "sameAs": ["<real facebook URL>", "<real instagram URL>"]
+{% endcomment %}

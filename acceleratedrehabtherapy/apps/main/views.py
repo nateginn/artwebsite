@@ -72,13 +72,26 @@ def get_google_reviews():
                 if review['rating'] >= 4
             ]
             
-            if filtered_reviews:
-                cache.set(cache_key, filtered_reviews, 43200)  # 12 hours
+            # Cache the result even when empty (negative caching). Previously
+            # only non-empty results were cached, so an empty or failed upstream
+            # response caused a live Google Places call on *every* request, from
+            # every worker — unbounded amplification during an outage.
+            ttl = 43200 if filtered_reviews else 900  # 12h on success, 15m on empty
+            cache.set(cache_key, filtered_reviews, ttl)
             return filtered_reviews
         else:
+            logger.warning(
+                "Google Places returned no 'result' key (status=%s)",
+                data.get('status', 'unknown'),
+            )
+            cache.set(cache_key, [], 900)
             return []
             
     except Exception:
+        logger.exception("Failed to fetch Google reviews from Places API")
+        # Negative-cache the failure so a Places outage doesn't turn into a
+        # live upstream call on every single request.
+        cache.set(cache_key, [], 900)
         return []
 
 def get_legacy_reviews():
@@ -104,6 +117,7 @@ def get_legacy_reviews():
             ]
             return formatted_reviews
     except Exception:
+        logger.exception("Failed to load legacy reviews from legacy_reviews.json")
         return []
 
 def merge_reviews(google_reviews, legacy_reviews):
@@ -147,36 +161,20 @@ def reviews_api(request):
             'status': 'success',
             'reviews': all_reviews
         })
-    except Exception as e:
+    except Exception:
+        # Log the detail server-side; never return exception text to the client.
+        logger.exception("reviews_api failed while assembling reviews")
         return JsonResponse({
             'status': 'error',
-            'message': str(e)
+            'message': 'Reviews are temporarily unavailable.'
         }, status=500)
 
-@require_GET
-def test_google_reviews(request):
-    """Temporary endpoint to test Google Reviews API only"""
-    try:
-        api_key = os.getenv('GOOGLE_MAPS_API_KEY')
-        place_id = os.getenv('GOOGLE_PLACE_ID')
-        
-        if not api_key or not place_id:
-            return JsonResponse({
-                'status': 'error',
-                'message': 'Missing API credentials'
-            }, status=400)
-            
-        google_reviews = get_google_reviews()
-        
-        return JsonResponse({
-            'status': 'success',
-            'reviews': google_reviews
-        })
-    except Exception as e:
-        return JsonResponse({
-            'status': 'error',
-            'message': str(e)
-        }, status=500)
+
+# NOTE: test_google_reviews() removed 2026-08-06.
+# It was a public, unauthenticated endpoint (self-described "Temporary") that
+# returned raw exception text via str(e) to any caller and could reach the
+# Google Places API. Its only purpose was manual debugging; use the Django
+# shell or a management command instead of a live public route.
 
 CHIROPRACTIC_SERVICES = [
     'AUTO INJURY',

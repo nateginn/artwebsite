@@ -242,7 +242,10 @@ STATICFILES_FINDERS = [
 ]
 
 # Media files
-MEDIA_URL = "media/"
+# MEDIA_URL must be root-relative. It was "media/" (no leading slash), which
+# resolves against the *current* path, so /media/x.jpg referenced from a nested
+# URL would resolve to /some/path/media/x.jpg and 404.
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "acceleratedrehabtherapy" / "media"
 
 # Whitenoise
