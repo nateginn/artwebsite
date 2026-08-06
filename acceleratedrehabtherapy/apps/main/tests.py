@@ -434,6 +434,16 @@ class ResourcesBlogTests(TestCase):
         'blog-desk-setup-movement',
     ]
 
+    # Read and cleared by the clinician named in the byline.
+    CLINICALLY_REVIEWED_IDS = [
+        'blog-delayed-symptoms',
+        'blog-back-pain-evidence',
+        'blog-first-visit-safety',
+        'blog-desk-setup-movement',
+    ]
+
+    REVIEWER = 'Nathan Ginn, DC, L.Ac., FIAMA'
+
     def setUp(self):
         self.body = self.client.get(reverse('main:resources')).content.decode()
 
@@ -469,32 +479,39 @@ class ResourcesBlogTests(TestCase):
         start = self.body.index(f'<article id="{article_id}"')
         return self.body[start:self.body.index('</article>', start)]
 
-    def test_new_articles_carry_review_placeholder(self):
-        """Content must not read as reviewed until someone qualified signs off.
-
-        Accepts either byline form: most articles say "Medically reviewed by",
-        while the Colorado work-injury article describes a legal process and
-        says "Reviewed by" -- clinical review does not validate legal accuracy.
-        """
-        for article_id in self.NEW_ARTICLE_IDS:
-            with self.subTest(article=article_id):
-                self.assertIn('reviewed by:', self._article_html(article_id).lower())
-
-    def test_pending_articles_show_a_draft_notice(self):
-        """A pending article must look pending to a reader, not just in source.
-
-        Codex flagged the inverse of this: the page previously claimed all
-        resources were clinician-reviewed while these carried PENDING bylines.
-        """
-        for article_id in self.NEW_ARTICLE_IDS:
+    def test_clinical_articles_name_their_reviewer(self):
+        """A review claim must name who made it, not assert review generically."""
+        for article_id in self.CLINICALLY_REVIEWED_IDS:
             with self.subTest(article=article_id):
                 section = self._article_html(article_id)
-                if 'PENDING' in section:
-                    self.assertIn(
-                        'pending', section.lower().split('<h3')[0],
-                        "Article has an unreviewed byline but no visible draft "
-                        "notice above the headline.",
-                    )
+                self.assertIn('medically reviewed by:', section.lower())
+                self.assertIn(self.REVIEWER, section)
+                self.assertIn('Last reviewed:', section)
+
+    def test_legal_article_names_no_reviewer(self):
+        """The work-injury article is published on its disclaimer, not on review.
+
+        Clinical sign-off does not validate a statutory deadline, so this one
+        deliberately carries no reviewer while the other four do. Asserting the
+        absence stops a later edit from extending the clinical byline across the
+        whole page for consistency's sake -- which would attribute a legal
+        review to a clinician. A named reviewer here needs to be someone
+        competent in Colorado workers' compensation.
+        """
+        section = self._article_html('blog-colorado-work-injury')
+        self.assertNotIn('reviewed by:', section.lower())
+        self.assertIn('Last updated:', section)
+
+    def test_no_review_placeholders_remain(self):
+        """Unfilled placeholders must never survive to a published page.
+
+        These articles shipped with "[ PENDING CLINICAL REVIEW ]" bylines and
+        yellow draft banners while awaiting sign-off. Publishing meant removing
+        both by hand, which is exactly the kind of edit that misses one.
+        """
+        for marker in ('PENDING', '[ DATE ]', 'pending review'):
+            with self.subTest(marker=marker):
+                self.assertNotIn(marker, self.body)
 
     def test_no_unverified_citation_urls(self):
         """Tripwire for fabricated citations.
@@ -548,13 +565,18 @@ class ResourcesBlogTests(TestCase):
         self.assertIn('workers\' compensation attorney', section.lower())
 
     def test_page_does_not_claim_all_content_is_reviewed(self):
-        """Blanket review claims must not outrun actual review status."""
-        if 'PENDING CLINICAL REVIEW' in self.body:
-            self.assertNotIn(
-                'All resources are reviewed by our medical professionals', self.body,
-                "Page claims every resource is clinician-reviewed while articles "
-                "are still marked pending review.",
-            )
+        """Blanket review claims must not outrun actual review status.
+
+        Removed 2026-08-06 and confirmed by the owner on review that it stays
+        removed. It is still false: the older articles on this page carry no
+        reviewer, and the work-injury article is published on its disclaimer
+        rather than a named reviewer. A page-level claim would cover both.
+        """
+        self.assertNotIn(
+            'All resources are reviewed by our medical professionals', self.body,
+            "Page-level review claim covers articles that have no named "
+            "reviewer. Review claims belong in individual bylines.",
+        )
 
     def test_emergency_guidance_present_on_clinical_articles(self):
         """Red-flag guidance is the safety-critical part of this content."""
