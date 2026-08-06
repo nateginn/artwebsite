@@ -13,10 +13,19 @@ from django.test import TestCase
 from django.urls import URLPattern, URLResolver, reverse
 from django.urls import get_resolver
 
+from django.conf import settings
+
 from .sitemaps import LASTMOD, NON_PUBLIC_ROUTES, PUBLIC_PAGES
 
 SITEMAP_NS = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-CANONICAL_ORIGIN = 'https://acceleratedrehabtherapy.com'
+CANONICAL_ORIGIN = settings.CANONICAL_ORIGIN.rstrip('/')
+
+CANONICAL_RE = re.compile(
+    r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"', re.IGNORECASE
+)
+OG_URL_RE = re.compile(
+    r'<meta[^>]+property="og:url"[^>]+content="([^"]+)"', re.IGNORECASE
+)
 
 
 def _collect_main_route_names():
@@ -187,6 +196,86 @@ class RemovedEndpointTests(TestCase):
     def test_debug_reviews_endpoint_is_gone(self):
         """It was public, unauthenticated, and leaked raw exception text."""
         self.assertEqual(self.client.get('/api/test-google-reviews/').status_code, 404)
+
+
+class CanonicalUrlTests(TestCase):
+    """Canonical/OG URLs must be host-pinned and query-free.
+
+    Two separate live defects motivated this:
+      * request.build_absolute_uri() used the *request's* host, so a page served
+        over www self-canonicalized to www while the sitemap advertised non-www.
+      * It also kept the query string, so Meta Ads traffic arriving at
+        /page/?fbclid=... canonicalized each tracking variant to itself.
+    """
+
+    LANDING_ROUTE = 'main:landing_shockwave_denver'
+
+    def _canonical_of(self, response):
+        match = CANONICAL_RE.search(response.content.decode())
+        self.assertIsNotNone(match, "No <link rel=\"canonical\"> found on the page.")
+        return match.group(1)
+
+    def test_canonical_strips_fbclid_on_standard_pages(self):
+        """The specific Meta Ads defect, on a base.html page."""
+        url = reverse('main:massage')
+        response = self.client.get(url, {'fbclid': 'IwAR_test_123'})
+        self.assertEqual(
+            self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}',
+            "Canonical must drop the query string, not canonicalize the "
+            "tracking-parameter variant to itself.",
+        )
+
+    def test_canonical_strips_fbclid_on_ad_landing_pages(self):
+        """base_landing.html is where fbclid traffic actually arrives."""
+        url = reverse(self.LANDING_ROUTE)
+        response = self.client.get(url, {'fbclid': 'IwAR_test_123', 'utm_source': 'fb'})
+        self.assertEqual(self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}')
+
+    def test_canonical_ignores_request_host(self):
+        """A www request must still canonicalize to the pinned origin."""
+        url = reverse('main:massage')
+        response = self.client.get(url, HTTP_HOST='www.acceleratedrehabtherapy.com')
+        self.assertEqual(self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}')
+
+    def test_og_url_matches_canonical(self):
+        for route in ('main:massage', self.LANDING_ROUTE):
+            with self.subTest(route=route):
+                url = reverse(route)
+                body = self.client.get(url, {'fbclid': 'x'}).content.decode()
+                og = OG_URL_RE.search(body)
+                self.assertIsNotNone(og, f"No og:url on {route}")
+                self.assertEqual(og.group(1), f'{CANONICAL_ORIGIN}{url}')
+
+    def test_every_public_page_self_canonicalizes_to_pinned_origin(self):
+        for name in PUBLIC_PAGES:
+            with self.subTest(route=name):
+                url = reverse(name)
+                response = self.client.get(url)
+                self.assertEqual(self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}')
+
+    def test_no_template_uses_build_absolute_uri_for_urls(self):
+        """Guard against reintroducing the pattern in a new template."""
+        from pathlib import Path
+        root = Path(settings.BASE_DIR) / 'acceleratedrehabtherapy'
+        offenders = []
+        for path in root.rglob('*.html'):
+            if 'staticfiles' in path.parts:
+                continue
+            if 'build_absolute_uri' in path.read_text(encoding='utf-8', errors='ignore'):
+                offenders.append(str(path.relative_to(root)))
+        self.assertEqual(
+            offenders, [],
+            "Use {{ canonical_url }} instead of request.build_absolute_uri for "
+            f"canonical/OG/schema URLs: {offenders}",
+        )
+
+    def test_sitemap_origin_matches_page_canonical_origin(self):
+        """The sitemap and the canonical tags must not drift apart."""
+        sitemap_body = self.client.get('/sitemap.xml').content.decode()
+        page_url = reverse('main:massage')
+        canonical = self._canonical_of(self.client.get(page_url))
+        self.assertIn(f'{CANONICAL_ORIGIN}{page_url}', sitemap_body)
+        self.assertTrue(canonical.startswith(CANONICAL_ORIGIN + '/'))
 
 
 class GoogleReviewsCacheTests(TestCase):

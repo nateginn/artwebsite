@@ -16,6 +16,7 @@ from django.shortcuts import redirect, render
 from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_GET, require_http_methods
 
+from .context_processors import build_canonical_url
 from .models import LandingPageLead
 
 logger = logging.getLogger('main')
@@ -354,7 +355,17 @@ def resources(request):
 
 @require_GET
 def es_info(request):
-    """Spanish information page summarizing clinic services (not linked in top menu)."""
+    """Spanish information page summarizing clinic services (not linked in top menu).
+
+    This page is built from an inline HTML string rather than a template, so it
+    does not inherit base.html's <head>. That meant it shipped with no canonical
+    tag at all despite being published in sitemap.xml — caught by
+    CanonicalUrlTests.test_every_public_page_self_canonicalizes_to_pinned_origin.
+    The canonical link below is injected explicitly for that reason.
+    """
+    # NB: a plain string with a placeholder, deliberately not an f-string —
+    # the inline <style> block below is full of CSS braces, which an f-string
+    # would try to interpret.
     html = """
     <!DOCTYPE html>
     <html lang=\"es\">
@@ -362,6 +373,7 @@ def es_info(request):
         <meta charset=\"utf-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
         <title>A.R.T. | Información en Español</title>
+        <link rel=\"canonical\" href=\"__CANONICAL_URL__\">
         <meta name=\"description\" content=\"Hablamos Español. Clínica de rehabilitación y quiropráctica en Greeley y Denver: lesiones de auto y trabajo, terapia física, masaje y acupuntura.\">
         <style>
             body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #0b1320; }
@@ -415,6 +427,7 @@ def es_info(request):
     </body>
     </html>
     """
+    html = html.replace('__CANONICAL_URL__', build_canonical_url(request))
     return HttpResponse(html)
 
 @require_GET

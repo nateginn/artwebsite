@@ -174,6 +174,10 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # Supplies canonical_url / canonical_origin. Templates must use
+                # these instead of request.build_absolute_uri for canonical, OG,
+                # and schema.org URLs — see apps/main/context_processors.py.
+                "acceleratedrehabtherapy.apps.main.context_processors.canonical",
             ],
             "builtins": [
                 "django.template.defaultfilters",
@@ -240,6 +244,12 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+
+# Canonical origin for canonical/OG/schema URLs and sitemap.xml.
+# Deliberately a single fixed value rather than request-derived: serving the
+# same page on www and non-www with each self-canonicalizing is what split this
+# site's indexing before. Keep in sync with the deploy host / DNS.
+CANONICAL_ORIGIN = os.getenv("CANONICAL_ORIGIN", "https://acceleratedrehabtherapy.com")
 
 # Media files
 # MEDIA_URL must be root-relative. It was "media/" (no leading slash), which

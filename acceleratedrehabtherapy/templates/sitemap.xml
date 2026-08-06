@@ -10,8 +10,12 @@ model objects for a blog sitemap), this template must change too -- it fails
 silently otherwise. A model-backed sitemap should get its own template or this
 one should switch to {{ url.location }}; see the design note in sitemaps.py.
 
-The host is pinned to the canonical non-www domain: the old www vs non-www split
-is what kept /massage/ out of Google's index.
+The host comes from `canonical_origin` (settings.CANONICAL_ORIGIN, supplied by
+apps/main/context_processors.canonical), the same single source the pages'
+<link rel="canonical"> tags use. It was hardcoded here, which meant the sitemap
+and the canonical tags could drift apart — and they had: the sitemap pinned
+non-www while base.html mirrored whatever host the request arrived on. The old
+www vs non-www split is what kept /massage/ out of Google's index.
 
 <lastmod> is emitted only for pages with a real date in sitemaps.LASTMOD. This
 previously used {% now 'Y-m-d' %}, which told Google every page changed today on
@@ -19,7 +23,7 @@ every crawl -- an unreliable lastmod is discounted, so a false one actively
 devalues the signal. Omitting it is better than faking it.
 {% endcomment %}<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for url in urlset %}    <url>
-        <loc>https://acceleratedrehabtherapy.com{% url url.item %}</loc>
+        <loc>{{ canonical_origin }}{% url url.item %}</loc>
 {% if url.lastmod %}        <lastmod>{{ url.lastmod|date:"Y-m-d" }}</lastmod>
 {% endif %}        <changefreq>{{ url.changefreq }}</changefreq>
         <priority>{{ url.priority }}</priority>
