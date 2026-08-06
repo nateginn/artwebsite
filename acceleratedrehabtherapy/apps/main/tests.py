@@ -666,3 +666,121 @@ class GoogleReviewsCacheTests(TestCase):
             "Missing credentials must not be cached, or fixing the env var "
             "would not take effect until the TTL expired.",
         )
+
+
+class StaticAssetReferenceTests(TestCase):
+    """Every `{% static %}` path in a template must resolve to a real file.
+
+    This exists because four <picture> blocks on /resources/ referenced .webp
+    files that were never created (cb96fc4, 2025-11-05). The images were broken
+    in production for nine months and nothing caught it, because a missing
+    static file is not an error anywhere -- the page still returns 200.
+
+    The failure is specific to <picture>: the browser picks the first <source>
+    whose `type` it supports, and if that URL 404s it does *not* fall back to
+    the next <source> or to the <img>. So a missing .webp shows nothing at all,
+    even with a perfectly good .png sitting right beneath it.
+    """
+
+    STATIC_TAG_RE = re.compile(r"""\{%\s*static\s+['"]([^'"]+)['"]\s*%\}""")
+
+    # Assets that are referenced but have never existed in the repo. Each one is
+    # a real defect, not a false positive -- all nine 404 in production today.
+    # They are listed here rather than fixed because each needs a design asset
+    # somebody has to actually produce, and shipping a wrong-looking favicon or
+    # OG card is worse than shipping none. The test fails on anything NOT in
+    # this set, so the debt is pinned and cannot quietly grow.
+    #
+    #   og-default.jpg  -- og:image AND twitter:image on every page (base.html).
+    #                      Every social share of this site has no preview card.
+    #   img/<service>.jpg -- the `image` property of MedicalBusiness JSON-LD on
+    #                      the four service pages, so the structured data points
+    #                      at a 404.
+    #   favicon.* / site.webmanifest -- no favicon anywhere on the site.
+    KNOWN_MISSING = frozenset({
+        'img/og-default.jpg',
+        'img/favicon.ico',
+        'img/favicon-32x32.png',
+        'img/favicon-16x16.png',
+        'site.webmanifest',
+        'img/acupuncture.jpg',
+        'img/chiropractic-care.jpg',
+        'img/massage-therapy.jpg',
+        'img/physical-therapy.jpg',
+    })
+
+    def _template_files(self):
+        from pathlib import Path
+
+        roots = []
+        for engine in settings.TEMPLATES:
+            roots.extend(Path(d) for d in engine.get('DIRS', []))
+        roots.append(Path(settings.BASE_DIR) / 'apps' / 'main' / 'templates')
+
+        seen = set()
+        for root in roots:
+            if not root.exists():
+                continue
+            for path in root.rglob('*.html'):
+                if path not in seen:
+                    seen.add(path)
+                    yield path
+
+    def test_every_static_reference_resolves(self):
+        from django.contrib.staticfiles import finders
+
+        missing = []
+        checked = 0
+        for template in self._template_files():
+            text = template.read_text(encoding='utf-8', errors='replace')
+            for asset in self.STATIC_TAG_RE.findall(text):
+                checked += 1
+                if asset in self.KNOWN_MISSING:
+                    continue
+                if finders.find(asset) is None:
+                    missing.append(f'{template.name}: {asset}')
+
+        self.assertGreater(checked, 0, "Found no {% static %} references at all")
+        self.assertEqual(
+            missing, [],
+            "Templates reference static files that do not exist:\n  "
+            + "\n  ".join(sorted(set(missing))),
+        )
+
+    def test_known_missing_list_has_no_stale_entries(self):
+        """If someone supplies a missing asset, make them delete its excuse.
+
+        Without this, KNOWN_MISSING rots into a permanent allowlist and the
+        sweep above silently stops covering assets that now exist.
+        """
+        from django.contrib.staticfiles import finders
+
+        now_present = sorted(a for a in self.KNOWN_MISSING if finders.find(a) is not None)
+        self.assertEqual(
+            now_present, [],
+            "These assets now exist and must be removed from KNOWN_MISSING so "
+            "they are covered by the sweep again:\n  " + "\n  ".join(now_present),
+        )
+
+    def test_picture_sources_all_exist(self):
+        """Narrower guard on the exact construct that broke.
+
+        Kept separate from the sweep above so the failure message names the
+        <picture> fallback trap rather than reading as a generic missing file.
+        """
+        from django.contrib.staticfiles import finders
+
+        source_re = re.compile(r'<source[^>]+srcset="\{%\s*static\s+[\'"]([^\'"]+)[\'"]\s*%\}"')
+        missing = []
+        for template in self._template_files():
+            text = template.read_text(encoding='utf-8', errors='replace')
+            for asset in source_re.findall(text):
+                if finders.find(asset) is None:
+                    missing.append(f'{template.name}: {asset}')
+
+        self.assertEqual(
+            missing, [],
+            "A <picture> <source> points at a missing file. Browsers will show "
+            "NO image rather than falling back to the <img>:\n  "
+            + "\n  ".join(sorted(set(missing))),
+        )
