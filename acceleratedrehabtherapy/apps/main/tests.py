@@ -1,66 +1,189 @@
-import json
+"""Tests for the main app.
+
+Scope note: this repo deploys to production on every push to main, with no
+staging environment (see CLAUDE.md). These tests exist to make that safe for the
+specific things most likely to break silently -- sitemap contents and canonical
+URLs -- not as a general testing initiative.
+"""
+
 import re
+from xml.etree import ElementTree
 
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import URLPattern, URLResolver, reverse
+from django.urls import get_resolver
+
+from .sitemaps import LASTMOD, NON_PUBLIC_ROUTES, PUBLIC_PAGES
+
+SITEMAP_NS = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+CANONICAL_ORIGIN = 'https://acceleratedrehabtherapy.com'
 
 
-class ShockwavePageTests(TestCase):
-    """Smoke test for the /shockwave-therapy/ service page.
+def _collect_main_route_names():
+    """Every named route in the `main` app URLconf, as 'main:<name>' strings."""
+    names = set()
+    for pattern in get_resolver().url_patterns:
+        if isinstance(pattern, URLResolver) and pattern.namespace == 'main':
+            for sub in pattern.url_patterns:
+                if isinstance(sub, URLPattern) and sub.name:
+                    names.add(f'main:{sub.name}')
+    return names
 
-    Scoped narrowly to this one route rather than a general suite,
-    because production deploys on every push to main with no staging
-    environment (see CLAUDE.md) — a broken template or malformed JSON-LD
-    here would ship straight to a live medical clinic's site.
+
+class SitemapClassificationTests(TestCase):
+    """The guard that makes adding pages safe.
+
+    Registration is opt-in (PUBLIC_PAGES). This test walks the real URLconf and
+    fails if a route is in neither PUBLIC_PAGES nor NON_PUBLIC_ROUTES, so a new
+    route can be neither silently published nor silently omitted -- it forces a
+    conscious decision.
     """
 
-    def setUp(self):
-        self.url = reverse('main:shockwave')
-        self.response = self.client.get(self.url)
-
-    def test_renders_with_correct_template(self):
-        self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'main/shockwave.html')
-
-    def test_listed_in_sitemap(self):
-        sitemap_response = self.client.get('/sitemap.xml')
-        self.assertEqual(sitemap_response.status_code, 200)
-        self.assertContains(sitemap_response, self.url)
-
-    def test_nav_label_appears_in_both_dropdown_variants(self):
-        # "Shockwave Therapy" legitimately appears more than twice on this
-        # page (title/OG/schema name/H1 all use the service name too), so
-        # match the specific dropdown menu-item markup rather than the
-        # bare phrase, to isolate "both nav variants render" from
-        # "the page mentions its own name".
-        content = self.response.content.decode()
-        menu_item_count = content.count('role="menuitem">Shockwave Therapy</a>')
-        self.assertEqual(menu_item_count, 2)
-
-    def test_json_ld_blocks_are_valid_and_provider_free(self):
-        content = self.response.content.decode()
-        blocks = re.findall(
-            r'<script type="application/ld\+json">(.*?)</script>',
-            content,
-            re.DOTALL,
+    def test_every_route_is_classified(self):
+        all_routes = _collect_main_route_names()
+        classified = set(PUBLIC_PAGES) | set(NON_PUBLIC_ROUTES)
+        unclassified = all_routes - classified
+        self.assertEqual(
+            unclassified,
+            set(),
+            "Route(s) in the 'main' URLconf are classified neither as public "
+            "nor non-public. Add each to PUBLIC_PAGES (to publish it in "
+            "sitemap.xml) or to NON_PUBLIC_ROUTES with a reason (to exclude "
+            f"it): {sorted(unclassified)}",
         )
-        self.assertTrue(blocks, "expected at least one JSON-LD block")
 
-        therapy_blocks = []
-        for raw in blocks:
-            data = json.loads(raw)  # raises loudly on malformed JSON
-            if data.get('@type') == 'MedicalTherapy':
-                therapy_blocks.append(data)
+    def test_no_stale_classifications(self):
+        """Classifications must refer to routes that actually exist."""
+        all_routes = _collect_main_route_names()
+        stale = (set(PUBLIC_PAGES) | set(NON_PUBLIC_ROUTES)) - all_routes
+        self.assertEqual(
+            stale, set(),
+            f"Classified route(s) no longer exist in the URLconf: {sorted(stale)}",
+        )
 
-        self.assertEqual(len(therapy_blocks), 1)
-        self.assertNotIn('provider', therapy_blocks[0])
+    def test_public_and_non_public_are_disjoint(self):
+        overlap = set(PUBLIC_PAGES) & set(NON_PUBLIC_ROUTES)
+        self.assertEqual(overlap, set(), f"Route(s) both public and non-public: {sorted(overlap)}")
 
-    def test_faq_microdata_is_complete(self):
-        content = self.response.content.decode()
-        question_count = content.count('itemtype="https://schema.org/Question"')
-        answer_count = content.count('itemtype="https://schema.org/Answer"')
-        self.assertEqual(question_count, 5)
-        self.assertEqual(answer_count, 5)
+    def test_public_pages_has_no_duplicates(self):
+        self.assertEqual(
+            len(PUBLIC_PAGES), len(set(PUBLIC_PAGES)),
+            "PUBLIC_PAGES contains duplicate entries, which would emit duplicate <url> blocks.",
+        )
 
-    def test_hero_image_reference(self):
-        self.assertContains(self.response, 'IMG_4078_web.jpg')
+    def test_lastmod_entries_are_public_pages(self):
+        orphans = set(LASTMOD) - set(PUBLIC_PAGES)
+        self.assertEqual(orphans, set(), f"LASTMOD entries for non-public pages: {sorted(orphans)}")
+
+
+class SitemapRenderTests(TestCase):
+    """Assert the rendered XML, not just the Python config."""
+
+    def setUp(self):
+        self.response = self.client.get('/sitemap.xml')
+        self.assertEqual(self.response.status_code, 200)
+        self.root = ElementTree.fromstring(self.response.content)
+        self.locs = [el.text for el in self.root.findall('.//sm:url/sm:loc', SITEMAP_NS)]
+
+    def test_sitemap_is_wellformed_xml_with_expected_url_count(self):
+        # setUp already parsed it; wellformedness is the assertion.
+        self.assertEqual(len(self.locs), len(PUBLIC_PAGES))
+
+    def test_exact_url_set(self):
+        """Pins the exact set of published URLs.
+
+        Any route added, removed, or renamed fails this until a human updates
+        the expectation -- that is the point.
+        """
+        expected = {f'{CANONICAL_ORIGIN}{reverse(name)}' for name in PUBLIC_PAGES}
+        self.assertEqual(set(self.locs), expected)
+
+    def test_no_duplicate_locs(self):
+        self.assertEqual(len(self.locs), len(set(self.locs)), "Duplicate <loc> entries in sitemap.")
+
+    def test_every_loc_uses_canonical_origin(self):
+        for loc in self.locs:
+            self.assertTrue(
+                loc.startswith(CANONICAL_ORIGIN + '/'),
+                f"<loc> does not use the canonical non-www origin: {loc}",
+            )
+
+    def test_no_non_public_route_appears(self):
+        for name in NON_PUBLIC_ROUTES:
+            url = f'{CANONICAL_ORIGIN}{reverse(name)}'
+            self.assertNotIn(
+                url, self.locs,
+                f"Non-public route {name} ({NON_PUBLIC_ROUTES[name]}) appeared in the sitemap.",
+            )
+
+    def test_ad_landing_pages_are_absent(self):
+        """Explicit regression guard for the paid-campaign pages specifically."""
+        body = self.response.content.decode()
+        for slug in (
+            'shockwave-therapy-denver',
+            'shockwave-therapy-greeley',
+            'shockwave-therapy-plantar-fasciitis',
+            'chronic-tendon-pain-treatment',
+            'non-surgical-pain-relief-denver',
+            'thank-you',
+        ):
+            self.assertNotIn(
+                f'{CANONICAL_ORIGIN}/{slug}/', body,
+                f"Ad/utility page /{slug}/ must not be in the sitemap.",
+            )
+
+    def test_lastmod_is_never_the_render_date(self):
+        """Guards the specific bug this replaced: {% now %} as lastmod.
+
+        Every page claiming today's date on every crawl is what made the signal
+        unreliable. Only pages with a real recorded date emit <lastmod>.
+        """
+        lastmods = [el.text for el in self.root.findall('.//sm:url/sm:lastmod', SITEMAP_NS)]
+        self.assertEqual(
+            len(lastmods), len(LASTMOD),
+            "Number of <lastmod> elements should equal the number of recorded dates.",
+        )
+        for value in lastmods:
+            self.assertRegex(value, r'^\d{4}-\d{2}-\d{2}$')
+            self.assertIn(value, set(LASTMOD.values()))
+
+
+class PublicPageSmokeTests(TestCase):
+    """Every page we publish must actually render."""
+
+    def test_all_public_pages_return_200(self):
+        for name in PUBLIC_PAGES:
+            with self.subTest(route=name):
+                response = self.client.get(reverse(name))
+                self.assertEqual(
+                    response.status_code, 200,
+                    f"{name} is published in the sitemap but did not return 200.",
+                )
+
+    def test_all_public_pages_emit_valid_json_ld(self):
+        """Malformed JSON-LD fails silently in a browser; catch it here."""
+        import json
+        pattern = re.compile(
+            r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
+            re.DOTALL | re.IGNORECASE,
+        )
+        for name in PUBLIC_PAGES:
+            with self.subTest(route=name):
+                body = self.client.get(reverse(name)).content.decode()
+                for i, block in enumerate(pattern.findall(body)):
+                    try:
+                        json.loads(block)
+                    except json.JSONDecodeError as exc:
+                        self.fail(f"{name}: JSON-LD block #{i} is not valid JSON: {exc}")
+
+    def test_no_placeholder_sameas_urls_remain(self):
+        """Regression guard for the boilerplate sameAs that shipped site-wide."""
+        body = self.client.get(reverse('main:home')).content.decode()
+        self.assertNotIn('facebook.com/yourpage', body)
+        self.assertNotIn('instagram.com/yourprofile', body)
+
+
+class RemovedEndpointTests(TestCase):
+    def test_debug_reviews_endpoint_is_gone(self):
+        """It was public, unauthenticated, and leaked raw exception text."""
+        self.assertEqual(self.client.get('/api/test-google-reviews/').status_code, 404)

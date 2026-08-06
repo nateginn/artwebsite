@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 {% comment %}
 Rendered by django.contrib.sitemaps.views.sitemap (see urls.py) with
-StaticViewSitemap (apps/main/sitemaps.py) as the single source of URLs — this
-template intentionally shadows Django's built-in sitemap.xml. Paths come from
-StaticViewSitemap.items() via URL reversal, so adding/removing a page there is
-all that's needed — do not hand-list URLs here again. The host is pinned to the
-canonical non-www domain: every page self-canonicalizes to non-www, and the old
-www vs non-www split is what kept /massage/ out of Google's index.
+StaticViewSitemap (apps/main/sitemaps.py) as the single source of URLs -- this
+template intentionally shadows Django's built-in sitemap.xml.
+
+Paths come from StaticViewSitemap.items(), which yields URL *name* strings, via
+{% url %} below. If items() ever returns something other than name strings (e.g.
+model objects for a blog sitemap), this template must change too -- it fails
+silently otherwise. A model-backed sitemap should get its own template or this
+one should switch to {{ url.location }}; see the design note in sitemaps.py.
+
+The host is pinned to the canonical non-www domain: the old www vs non-www split
+is what kept /massage/ out of Google's index.
+
+<lastmod> is emitted only for pages with a real date in sitemaps.LASTMOD. This
+previously used {% now 'Y-m-d' %}, which told Google every page changed today on
+every crawl -- an unreliable lastmod is discounted, so a false one actively
+devalues the signal. Omitting it is better than faking it.
 {% endcomment %}<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for url in urlset %}    <url>
         <loc>https://acceleratedrehabtherapy.com{% url url.item %}</loc>
-        <lastmod>{% now 'Y-m-d' %}</lastmod>
-        <changefreq>{{ url.changefreq }}</changefreq>
+{% if url.lastmod %}        <lastmod>{{ url.lastmod|date:"Y-m-d" }}</lastmod>
+{% endif %}        <changefreq>{{ url.changefreq }}</changefreq>
         <priority>{{ url.priority }}</priority>
     </url>
 {% endfor %}</urlset>
