@@ -13,6 +13,7 @@ from django.core.cache import cache
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
+from django.utils.html import escape
 from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_GET, require_http_methods
 
@@ -427,7 +428,9 @@ def es_info(request):
     </body>
     </html>
     """
-    html = html.replace('__CANONICAL_URL__', build_canonical_url(request))
+    # escape(): this bypasses the template engine, so nothing else would escape
+    # the interpolated value before it lands inside an href attribute.
+    html = html.replace('__CANONICAL_URL__', escape(build_canonical_url(request)))
     return HttpResponse(html)
 
 @require_GET

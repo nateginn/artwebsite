@@ -278,6 +278,92 @@ class CanonicalUrlTests(TestCase):
         self.assertTrue(canonical.startswith(CANONICAL_ORIGIN + '/'))
 
 
+class CanonicalOriginConfigTests(TestCase):
+    """Guards the setting itself, not just consistency with it.
+
+    CanonicalUrlTests derives its expectations from settings.CANONICAL_ORIGIN,
+    so it proves pages and sitemap *agree* — it would pass just as happily if
+    the setting were wrong. These tests pin the real value and reject malformed
+    ones.
+    """
+
+    # Deliberately hardcoded, NOT read from settings. If someone changes the
+    # setting, this test should fail and make them justify it.
+    EXPECTED_PRODUCTION_ORIGIN = 'https://acceleratedrehabtherapy.com'
+
+    def test_production_origin_is_the_real_site(self):
+        from .context_processors import DEFAULT_CANONICAL_ORIGIN
+        self.assertEqual(DEFAULT_CANONICAL_ORIGIN, self.EXPECTED_PRODUCTION_ORIGIN)
+        self.assertEqual(
+            settings.CANONICAL_ORIGIN.rstrip('/'), self.EXPECTED_PRODUCTION_ORIGIN,
+            "CANONICAL_ORIGIN is not the production origin. Every canonical tag "
+            "and sitemap entry advertises this value.",
+        )
+
+    def test_valid_origins_are_normalized(self):
+        from .context_processors import validate_canonical_origin
+        self.assertEqual(
+            validate_canonical_origin('https://example.com/'), 'https://example.com'
+        )
+        self.assertEqual(
+            validate_canonical_origin('  https://example.com  '), 'https://example.com'
+        )
+
+    def test_malformed_origins_are_rejected(self):
+        from django.core.exceptions import ImproperlyConfigured
+        from .context_processors import validate_canonical_origin
+
+        bad_values = [
+            '',                                   # empty
+            '   ',                                # whitespace only
+            'acceleratedrehabtherapy.com',        # no scheme
+            'ftp://acceleratedrehabtherapy.com',  # wrong scheme
+            'https://',                           # no host
+            'https://example.com/some/path',      # has a path
+            'https://example.com?a=b',            # has a query
+            'https://example.com#frag',           # has a fragment
+            'https://exa mple.com',               # space
+            'https://example.com" onload="x',     # attribute-breaking
+            None,                                 # wrong type
+        ]
+        for value in bad_values:
+            with self.subTest(value=value):
+                with self.assertRaises(ImproperlyConfigured):
+                    validate_canonical_origin(value)
+
+    def test_system_check_passes_with_current_settings(self):
+        from .checks import check_canonical_origin
+        self.assertEqual(check_canonical_origin(None), [])
+
+    def test_system_check_errors_on_malformed_value(self):
+        from .checks import check_canonical_origin
+        with self.settings(CANONICAL_ORIGIN='not-a-url'):
+            issues = check_canonical_origin(None)
+        self.assertTrue(issues)
+        self.assertEqual(issues[0].id, 'main.E001')
+
+    def test_system_check_warns_on_non_production_origin_when_not_debug(self):
+        from .checks import check_canonical_origin
+        with self.settings(DEBUG=False, CANONICAL_ORIGIN='https://staging.example.com'):
+            ids = {i.id for i in check_canonical_origin(None)}
+        self.assertIn('main.W001', ids)
+
+    def test_system_check_errors_on_http_in_production(self):
+        from .checks import check_canonical_origin
+        with self.settings(DEBUG=False, CANONICAL_ORIGIN='http://acceleratedrehabtherapy.com'):
+            ids = {i.id for i in check_canonical_origin(None)}
+        self.assertIn('main.E002', ids)
+
+    def test_es_info_canonical_is_html_escaped(self):
+        """/es/ bypasses the template engine, so escaping is manual."""
+        response = self.client.get(reverse('main:es_info'))
+        body = response.content.decode()
+        self.assertIn(
+            f'<link rel="canonical" href="{CANONICAL_ORIGIN}/es/">', body
+        )
+        self.assertNotIn('__CANONICAL_URL__', body)
+
+
 class GoogleReviewsCacheTests(TestCase):
     """Negative caching for the Google Places call.
 
