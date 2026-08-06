@@ -244,6 +244,33 @@ def physical_therapy(request):
     }
     return render(request, 'main/physical_therapy.html', context)
 
+SHOCKWAVE_CONDITIONS = [
+    'Plantar fasciitis',
+    'Achilles tendon pain',
+    'Tennis elbow',
+    'Shoulder pain',
+    'Chronic tendon injuries',
+    'Scar tissue restrictions',
+]
+
+SHOCKWAVE_BENEFITS = [
+    'Non-invasive treatment',
+    'Short treatment sessions',
+    'Minimal downtime',
+    'Often combined with rehabilitation exercises',
+    'Drug-free approach',
+]
+
+@require_GET
+def shockwave(request):
+    """Shockwave therapy page view"""
+    context = {
+        'meta_title': 'Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy',
+        'conditions': SHOCKWAVE_CONDITIONS,
+        'benefits': SHOCKWAVE_BENEFITS,
+    }
+    return render(request, 'main/shockwave.html', context)
+
 
 @require_http_methods(["GET", "POST"])
 def contact(request):

@@ -1,0 +1,136 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/shockwave.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_description %}Shockwave therapy for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.{% endblock %}
+
+{% block title %}Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+
+{% block og_title %}Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Shockwave therapy for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalTherapy",
+  "name": "Shockwave Therapy",
+  "description": "Shockwave therapy for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.",
+  "url": "{{ request.build_absolute_uri }}"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<main>
+<section class="relative bg-white pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Content -->
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                Shockwave Therapy in Greeley & Denver, CO
+            </h1>
+
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-12">
+                    Shockwave therapy targets the root cause, stimulating your body's natural healing response in tissue that has stopped progressing on its own, often combined with rehabilitation exercises.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="w-full bg-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-8 mt-4 relative z-20">
+
+            <!-- Why Shockwave Works -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Why Shockwave Works</h2>
+                <p class="text-gray-700 mb-4">
+                    Most treatments manage symptoms. Shockwave therapy targets the root cause, stimulating your body's natural healing response in tissue that has stopped progressing on its own.
+                </p>
+                <p class="text-gray-700 mb-4">
+                    Rather than masking pain, our rehab-focused plan addresses the underlying mechanics, helping you build a foundation for lasting recovery and a safe return to activity.
+                </p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    {% for benefit in benefits %}
+                    <li>{{ benefit }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Conditions Commonly Treated -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Conditions Commonly Treated</h2>
+                <p class="text-gray-700 mb-4">Shockwave therapy is often used for chronic and stubborn conditions that have not improved with rest alone, including:</p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    {% for condition in conditions %}
+                    <li>{{ condition }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- What Treatment Looks Like -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">What Treatment Looks Like</h2>
+                <ol class="list-decimal pl-6 text-gray-700 space-y-4">
+                    <li>
+                        <span class="font-semibold text-[#001524]">Evaluate the condition and movement pattern.</span>
+                        We assess where the pain is coming from and what's keeping it overloaded.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-[#001524]">Deliver shockwave treatment.</span>
+                        The treatment is used to stimulate healing in tissue that has stalled out.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-[#001524]">Build strength and tolerance between visits.</span>
+                        You get the rehab side too, so the area is better prepared for real-life loading.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-[#001524]">Adjust based on your response.</span>
+                        The plan isn't one-size-fits-all; it evolves as pain, function, and activity tolerance improve.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Real Treatment Image -->
+            <div class="rounded-lg overflow-hidden shadow-md">
+                <img src="/media/page_photos/0000/Location%20images/IMG_4078_web.jpg"
+                     alt="Shockwave therapy treatment being performed on a patient's foot in the clinic"
+                     class="w-full h-auto"
+                     width="1200"
+                     height="1600"
+                     loading="lazy"
+                     decoding="async">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% include 'includes/_cta_section.html' %}
+
+<div class="w-full bg-white" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-8 mt-4 relative z-20">
+
+            <!-- FAQs Section -->
+            <div class="pt-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6" id="faq">Frequently Asked Questions</h2>
+                <div class="space-y-6">
+                    {% include 'includes/_shockwave_faqs.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'includes/_reviews.html' %}
+
+</main>
+{% endblock %}

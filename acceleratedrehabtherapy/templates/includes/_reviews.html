@@ -1,5 +1,85 @@
 <!-- acceleratedrehabtherapy/templates/includes/_reviews.html -->
-<section class="text-white"
+<!--
+    Self-contained styling: this component's .lp-review-*/.lp-btn-* classes
+    are normally supplied by base_landing.html's stylesheet. This include is
+    also used on pages that extend the regular base.html (home.html,
+    chiropractor.html, shockwave.html), which never load that stylesheet, so
+    the rules are duplicated here to make the component render correctly
+    everywhere it's included. Harmless if base_landing.html's copy is also
+    present on the page (identical rules, last one wins).
+-->
+<style>
+    .lp-review-shell {
+        border-radius: 2rem;
+        background: linear-gradient(180deg, #0a3852 0%, #145b82 100%);
+        box-shadow: 0 28px 70px rgba(2, 22, 36, 0.22);
+        overflow: hidden;
+    }
+    .lp-review-inner {
+        padding: clamp(1.75rem, 4vw, 2.5rem);
+    }
+    .lp-review-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .lp-review-card {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 1.5rem;
+        padding: 1.4rem;
+    }
+    .lp-review-text {
+        color: #ffffff;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin: 0;
+    }
+    .lp-review-stars {
+        color: #fde047;
+        font-size: 1.35rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 1rem;
+    }
+    .lp-review-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.75rem;
+    }
+    .lp-btn-outline,
+    .lp-btn-solid {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.95rem 1.25rem;
+        border-radius: 9999px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .lp-btn-solid {
+        background: linear-gradient(90deg, #fff200 0%, #fbbf24 100%);
+        color: #111827;
+        box-shadow: 0 16px 32px rgba(251, 191, 36, 0.22);
+    }
+    .lp-btn-outline {
+        border: 2px solid #0f172a;
+        color: #0f172a;
+        background: transparent;
+    }
+    @media (min-width: 640px) {
+        .lp-review-actions {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+    @media (min-width: 768px) {
+        .lp-review-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
+<section class="text-white py-16 px-4"
          x-data="{
             currentSlide: 0,
             reviews: [],
@@ -23,6 +103,7 @@
                 this.fetchReviews();
             }
          }">
+    <div class="max-w-5xl mx-auto">
     <div class="lp-review-shell">
         <div class="lp-review-inner">
             <h2 class="text-4xl font-bold text-center mb-4 text-white">
@@ -97,5 +178,6 @@
         <div x-show="!loaded" class="flex justify-center py-12">
             <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
         </div>
+    </div>
     </div>
 </section>

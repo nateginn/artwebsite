@@ -15,6 +15,7 @@ class StaticViewSitemap(Sitemap):
             'main:massage',
             'main:physical_therapy',
             'main:acupuncture',
+            'main:shockwave',
             'main:auto_injury',
             'main:work_comp',
             'main:contact',

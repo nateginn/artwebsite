@@ -11,6 +11,7 @@ urlpatterns = [
     path("massage/", views.massage, name="massage"),  # Massage page
     path("physical-therapy/", views.physical_therapy, name="physical_therapy"),  # Physical therapy page
     path("acupuncture/", views.acupuncture, name="acupuncture"),  # Acupuncture page
+    path("shockwave-therapy/", views.shockwave, name="shockwave"),  # Shockwave therapy page
     path("auto-injury/", views.auto_injury, name="auto_injury"),  # Auto injury page
     path("work-comp/", views.work_comp, name="work_comp"), #work comp page
     path("contact/", views.contact, name="contact"),  # Contact page
