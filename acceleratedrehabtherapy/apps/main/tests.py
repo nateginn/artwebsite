@@ -465,13 +465,20 @@ class ResourcesBlogTests(TestCase):
                 self.assertIn('<h5>Sources</h5>', section)
                 self.assertIn('href="https://', section)
 
+    def _article_html(self, article_id):
+        start = self.body.index(f'<article id="{article_id}"')
+        return self.body[start:self.body.index('</article>', start)]
+
     def test_new_articles_carry_review_placeholder(self):
-        """Medical content must not read as reviewed until a clinician signs off."""
+        """Content must not read as reviewed until someone qualified signs off.
+
+        Accepts either byline form: most articles say "Medically reviewed by",
+        while the Colorado work-injury article describes a legal process and
+        says "Reviewed by" -- clinical review does not validate legal accuracy.
+        """
         for article_id in self.NEW_ARTICLE_IDS:
             with self.subTest(article=article_id):
-                start = self.body.index(f'<article id="{article_id}"')
-                end = self.body.index('</article>', start)
-                self.assertIn('Medically reviewed by:', self.body[start:end])
+                self.assertIn('reviewed by:', self._article_html(article_id).lower())
 
     def test_pending_articles_show_a_draft_notice(self):
         """A pending article must look pending to a reader, not just in source.
@@ -481,14 +488,19 @@ class ResourcesBlogTests(TestCase):
         """
         for article_id in self.NEW_ARTICLE_IDS:
             with self.subTest(article=article_id):
-                start = self.body.index(f'<article id="{article_id}"')
-                end = self.body.index('</article>', start)
-                section = self.body[start:end]
-                if 'PENDING CLINICAL REVIEW' in section:
+                section = self._article_html(article_id)
+                if 'PENDING' in section:
                     self.assertIn(
-                        'pending clinical review', section.lower(),
-                        "Article has an unreviewed byline but no visible draft notice.",
+                        'pending', section.lower().split('<h3')[0],
+                        "Article has an unreviewed byline but no visible draft "
+                        "notice above the headline.",
                     )
+
+    def test_legal_article_requires_more_than_clinical_review(self):
+        """Clinical sign-off does not validate a legal deadline."""
+        section = self._article_html('blog-colorado-work-injury')
+        self.assertIn('not legal advice', section.lower())
+        self.assertIn('workers\' compensation attorney', section.lower())
 
     def test_page_does_not_claim_all_content_is_reviewed(self):
         """Blanket review claims must not outrun actual review status."""
