@@ -254,19 +254,31 @@ class CanonicalUrlTests(TestCase):
                 self.assertEqual(self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}')
 
     def test_no_template_uses_build_absolute_uri_for_urls(self):
-        """Guard against reintroducing the pattern in a new template."""
+        """Guard against reintroducing the pattern in a new template.
+
+        `request.get_host` is checked as well as `build_absolute_uri`: both
+        mirror whatever host the visitor arrived on, which is the defect this
+        guards. Checking only the latter is why six templates kept building
+        og:image and JSON-LD `image` URLs as
+        `{{ request.scheme }}://{{ request.get_host }}...` long after the
+        canonical fix -- and `request.scheme` also emitted http:// behind the
+        proxy, which some social platforms refuse to load at all.
+        """
         from pathlib import Path
         root = Path(settings.BASE_DIR) / 'acceleratedrehabtherapy'
+        banned = ('build_absolute_uri', 'request.get_host')
         offenders = []
         for path in root.rglob('*.html'):
             if 'staticfiles' in path.parts:
                 continue
-            if 'build_absolute_uri' in path.read_text(encoding='utf-8', errors='ignore'):
-                offenders.append(str(path.relative_to(root)))
+            text = path.read_text(encoding='utf-8', errors='ignore')
+            for pattern in banned:
+                if pattern in text:
+                    offenders.append(f'{path.relative_to(root)}: {pattern}')
         self.assertEqual(
             offenders, [],
-            "Use {{ canonical_url }} instead of request.build_absolute_uri for "
-            f"canonical/OG/schema URLs: {offenders}",
+            "Use {{ canonical_url }} or {{ canonical_origin }} instead of "
+            f"request-derived hosts for canonical/OG/schema URLs: {offenders}",
         )
 
     def test_sitemap_origin_matches_page_canonical_origin(self):
@@ -767,25 +779,21 @@ class StaticAssetReferenceTests(TestCase):
 
     STATIC_TAG_RE = re.compile(r"""\{%\s*static\s+['"]([^'"]+)['"]\s*%\}""")
 
-    # Assets that are referenced but have never existed in the repo. Each one is
-    # a real defect, not a false positive -- all nine 404 in production today.
-    # They are listed here rather than fixed because each needs a design asset
-    # somebody has to actually produce, and shipping a wrong-looking favicon or
-    # OG card is worse than shipping none. The test fails on anything NOT in
-    # this set, so the debt is pinned and cannot quietly grow.
+    # Assets that are referenced but do not exist. Each is a real defect, not a
+    # false positive. The test fails on anything NOT in this set, so the debt is
+    # pinned and cannot quietly grow.
     #
-    #   og-default.jpg  -- og:image AND twitter:image on every page (base.html).
-    #                      Every social share of this site has no preview card.
-    #   img/<service>.jpg -- the `image` property of MedicalBusiness JSON-LD on
-    #                      the four service pages, so the structured data points
-    #                      at a 404.
-    #   favicon.* / site.webmanifest -- no favicon anywhere on the site.
+    # These four are the `image` property of the MedicalBusiness JSON-LD on the
+    # service pages, so the structured data currently points Google at a 404.
+    # They need real photographs of the clinic delivering each service --
+    # substituting the logo or a stock image would misrepresent the practice, so
+    # they stay listed until somebody supplies actual photos.
+    #
+    # The favicon set, site.webmanifest and og-default.jpg used to be here too.
+    # They were generated from the clinic's own logo on 2026-08-06; before that,
+    # apple-touch-icon.png was the only declared icon that resolved and it was a
+    # stock globe, which is what Google showed beside the business name.
     KNOWN_MISSING = frozenset({
-        'img/og-default.jpg',
-        'img/favicon.ico',
-        'img/favicon-32x32.png',
-        'img/favicon-16x16.png',
-        'site.webmanifest',
         'img/acupuncture.jpg',
         'img/chiropractic-care.jpg',
         'img/massage-therapy.jpg',

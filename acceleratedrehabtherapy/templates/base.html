@@ -25,7 +25,7 @@
     <meta property="og:url" content="{{ canonical_url }}">
     <meta property="og:title" content="{% block og_title %}{{ meta_title|default:'Accelerated Rehab Therapy' }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ meta_description|default:'Expert chiropractic and rehabilitation services in Greeley and Denver' }}{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-default.jpg' %}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ canonical_origin }}{% static 'img/og-default.jpg' %}{% endblock %}">
     <meta property="og:site_name" content="Accelerated Rehab Therapy">
     <meta property="og:locale" content="en_US">
     <meta property="og:street-address" content="1823 65th Ave Suite 3">
@@ -40,7 +40,7 @@
     <meta name="twitter:creator" content="@acceleratedrehab">
     <meta name="twitter:title" content="{% block twitter_title %}{{ meta_title|default:'Accelerated Rehab Therapy' }}{% endblock %}">
     <meta name="twitter:description" content="{% block twitter_description %}{{ meta_description|default:'Expert chiropractic and rehabilitation services in Greeley and Denver' }}{% endblock %}">
-    <meta name="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-default.jpg' %}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ canonical_origin }}{% static 'img/og-default.jpg' %}{% endblock %}">
     <meta name="twitter:image:alt" content="{% block twitter_image_alt %}Accelerated Rehab Therapy - Expert chiropractic and rehabilitation services in Greeley and Denver{% endblock %}">
     
     <!-- Canonical URL -->

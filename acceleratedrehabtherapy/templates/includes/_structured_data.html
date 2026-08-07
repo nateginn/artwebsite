@@ -59,7 +59,7 @@
     }
   ],
   "priceRange": "$$",
-  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo.png' %}"
+  "image": "{{ canonical_origin }}{% static 'img/logo.png' %}"
 }
 </script>
 {% comment %}

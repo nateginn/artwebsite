@@ -16,7 +16,7 @@
     "@context": "https://schema.org",
     "@type": "PhysicalTherapist",
     "name": "Accelerated Rehab Therapy - Physical Therapy",
-    "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/physical-therapy.jpg' %}",
+    "image": "{{ canonical_origin }}{% static 'img/physical-therapy.jpg' %}",
     "@id": "{{ canonical_url }}",
     "url": "{{ canonical_url }}",
     "telephone": "+19703517465",

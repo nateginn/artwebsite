@@ -1,0 +1,11 @@
+{
+  "name": "Accelerated Rehab Therapy",
+  "short_name": "ART",
+  "icons": [
+    { "src": "/static/img/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/static/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#083B57",
+  "background_color": "#ffffff",
+  "display": "browser"
+}
