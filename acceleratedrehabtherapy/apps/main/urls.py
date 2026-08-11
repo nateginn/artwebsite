@@ -9,6 +9,10 @@ urlpatterns = [
     path("", views.home, name="home"),  # Root URL for the app
     path("chiropractor/", views.chiropractor, name="chiropractor"), # Chiropractor page
     path("massage/", views.massage, name="massage"),  # Massage page
+    # Restores a URL from the pre-Django site that Google was still crawling
+    # (and 404ing) months later. Keep this path exactly as-is -- its value is
+    # that it is the *old* URL. See views.neuromuscular_massage.
+    path("massage/neuromuscular-massage/", views.neuromuscular_massage, name="neuromuscular_massage"),
     path("physical-therapy/", views.physical_therapy, name="physical_therapy"),  # Physical therapy page
     path("acupuncture/", views.acupuncture, name="acupuncture"),  # Acupuncture page
     path("shockwave-therapy/", views.shockwave, name="shockwave"),  # Shockwave therapy page

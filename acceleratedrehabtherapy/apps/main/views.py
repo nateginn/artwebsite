@@ -235,6 +235,33 @@ def massage(request):
     }
     return render(request, 'main/massage.html', context)
 
+
+@require_GET
+def neuromuscular_massage(request):
+    """Neuromuscular massage -- a service page that used to exist and 404'd.
+
+    Google still crawled /massage/neuromuscular-massage/ months after the
+    pre-Django site was retired (reported under "Not found (404)" in Search
+    Console, last crawled 2026-03-25), and Search Console query data shows the
+    demand behind it never went away: "neuromuscular therapy near me",
+    "neuromuscular massage locally", "neuromuscular therapy timnath co" and
+    ~10 more variants, roughly 150 impressions/month, all ranking at position
+    40-99 because the only thing covering them was a single bullet on
+    /massage/.
+
+    Restoring the original URL rather than inventing a new one keeps whatever
+    links and history the old page accumulated.
+    """
+    context = {
+        'meta_title': 'Neuromuscular Massage Therapy in Greeley & Denver | Accelerated Rehab Therapy',
+        'meta_description': (
+            'Neuromuscular massage therapy in Greeley and Denver, CO. Trigger-point '
+            'release and soft-tissue treatment for chronic pain, nerve compression, '
+            'and postural strain. Covered by most auto injury and work comp claims.'
+        ),
+    }
+    return render(request, 'main/neuromuscular_massage.html', context)
+
 @require_GET
 def team(request):
     """Meet the Providers -- UNPUBLISHED SCAFFOLD.

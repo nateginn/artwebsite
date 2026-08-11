@@ -232,9 +232,19 @@ class CanonicalUrlTests(TestCase):
         self.assertEqual(self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}')
 
     def test_canonical_ignores_request_host(self):
-        """A www request must still canonicalize to the pinned origin."""
+        """A non-canonical host must still canonicalize to the pinned origin.
+
+        This used to send a www request. It can't any more -- CanonicalHostMiddleware
+        now 301s www before a page is ever rendered, so there is no canonical tag
+        in that response to inspect (see CanonicalHostMiddlewareTests).
+
+        The bare server IP is the right vehicle now: it is in ALLOWED_HOSTS, it is
+        deliberately NOT redirected (the deploy's post-restart check uses it), and
+        it still renders. So it is exactly the case this test exists for -- a host
+        that isn't the canonical one and whose pages must not mirror it.
+        """
         url = reverse('main:massage')
-        response = self.client.get(url, HTTP_HOST='www.acceleratedrehabtherapy.com')
+        response = self.client.get(url, HTTP_HOST='146.190.174.50')
         self.assertEqual(self._canonical_of(response), f'{CANONICAL_ORIGIN}{url}')
 
     def test_og_url_matches_canonical(self):
@@ -387,6 +397,130 @@ class CanonicalOriginConfigTests(TestCase):
             f'<link rel="canonical" href="{CANONICAL_ORIGIN}/es/">', body
         )
         self.assertNotIn('__CANONICAL_URL__', body)
+
+
+class PhoneNumberTests(TestCase):
+    """No page may advertise a phone number that doesn't ring.
+
+    +19703517465 sat in the JSON-LD `telephone` field of four service pages
+    (chiropractor, massage, physical_therapy, acupuncture) while every visible
+    tel: link on the site used the correct Greeley number. It was a dead line.
+
+    That is the worst possible place to hide one: structured data is what Google
+    reads for rich results and the knowledge panel, so the number a searcher taps
+    can come from JSON-LD without ever appearing in the page text a human would
+    proofread. Nothing about the rendered page looked wrong.
+    """
+
+    # Every number the site is allowed to publish, digits only.
+    APPROVED = {
+        '+19703241750',   # Greeley -- 1823 65th Ave
+        '+17206042792',   # Denver -- 2480 W 26th Ave
+        '+19703512412',   # UNC Campus -- Cassidy Hall
+    }
+    RETIRED = '9703517465'
+
+    TELEPHONE_RE = re.compile(r'"telephone"\s*:\s*"([^"]+)"')
+
+    def _templates(self):
+        from pathlib import Path
+        root = Path(settings.BASE_DIR) / 'acceleratedrehabtherapy'
+        for path in root.rglob('*.html'):
+            if 'staticfiles' in path.parts or 'node_modules' in path.parts:
+                continue
+            yield path, path.read_text(encoding='utf-8', errors='ignore')
+
+    def test_retired_number_appears_nowhere(self):
+        offenders = [
+            str(path) for path, text in self._templates()
+            if self.RETIRED in text.replace('-', '').replace('.', '')
+        ]
+        self.assertEqual(
+            offenders, [],
+            f"The retired number {self.RETIRED} is a dead line and must not be "
+            f"published: {offenders}",
+        )
+
+    def test_structured_data_phone_numbers_are_approved(self):
+        """Covers JSON-LD on every published page, rendered rather than scanned."""
+        for name in PUBLIC_PAGES:
+            with self.subTest(route=name):
+                body = self.client.get(reverse(name)).content.decode()
+                for raw in self.TELEPHONE_RE.findall(body):
+                    normalized = re.sub(r'[^\d+]', '', raw)
+                    self.assertIn(
+                        normalized, self.APPROVED,
+                        f"{name} publishes an unapproved telephone value {raw!r}. "
+                        "Add it to PhoneNumberTests.APPROVED only if it really rings.",
+                    )
+
+
+class CanonicalHostMiddlewareTests(TestCase):
+    """www must 301 to the canonical host, not serve a second copy of the site.
+
+    Before this middleware, www.acceleratedrehabtherapy.com answered every URL
+    with a live 200 and relied solely on <link rel="canonical"> to stop Google
+    treating it as a separate site. Google reported it in three separate "not
+    indexed" buckets. nginx now also terminates this, but nginx config lives
+    outside this repo and outside CI -- these tests are the only thing that can
+    fail a build if the behavior disappears again.
+    """
+
+    WWW_HOST = f'www.{CANONICAL_ORIGIN.split("://", 1)[1]}'
+
+    def test_www_root_redirects_permanently_to_canonical_origin(self):
+        response = self.client.get('/', HTTP_HOST=self.WWW_HOST)
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response['Location'], f'{CANONICAL_ORIGIN}/')
+
+    def test_www_preserves_path(self):
+        url = reverse('main:massage')
+        response = self.client.get(url, HTTP_HOST=self.WWW_HOST)
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response['Location'], f'{CANONICAL_ORIGIN}{url}')
+
+    def test_www_preserves_query_string(self):
+        """Unlike the canonical tag, the redirect must NOT strip the query.
+
+        This clinic runs Meta Ads. A www click carrying ?fbclid=... that landed
+        on a query-stripped redirect would lose its attribution parameters.
+        """
+        response = self.client.get(
+            '/shockwave-therapy-denver/',
+            {'fbclid': 'ABC123'},
+            HTTP_HOST=self.WWW_HOST,
+        )
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(
+            response['Location'],
+            f'{CANONICAL_ORIGIN}/shockwave-therapy-denver/?fbclid=ABC123',
+        )
+
+    def test_www_redirects_before_the_url_resolver(self):
+        """Even a nonexistent path must redirect rather than 404 on www.
+
+        Proves the middleware short-circuits ahead of WhiteNoise and routing --
+        a 404 here would mean www still gets to answer requests itself.
+        """
+        response = self.client.get('/no-such-page/', HTTP_HOST=self.WWW_HOST)
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response['Location'], f'{CANONICAL_ORIGIN}/no-such-page/')
+
+    def test_canonical_host_is_not_redirected(self):
+        host = CANONICAL_ORIGIN.split('://', 1)[1]
+        response = self.client.get('/', HTTP_HOST=host)
+        self.assertEqual(response.status_code, 200)
+
+    def test_local_and_healthcheck_hosts_are_not_redirected(self):
+        """ALLOWED_HOSTS also carries dev hosts and the bare server IP.
+
+        Blanket-redirecting every non-canonical host would break local
+        development and bounce the deploy's post-restart check to production.
+        """
+        for host in ('localhost', '127.0.0.1', 'testserver'):
+            with self.subTest(host=host):
+                response = self.client.get('/', HTTP_HOST=host)
+                self.assertEqual(response.status_code, 200)
 
 
 class UnpublishedTeamPageTests(TestCase):

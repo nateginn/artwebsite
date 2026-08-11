@@ -148,6 +148,11 @@ TAILWIND_APP_NAME = "acceleratedrehabtherapy.theme"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    # Must precede WhiteNoise: a www request should 301 before it can be
+    # answered with a static file or a rendered page. See middleware.py --
+    # www was serving the entire site as a live 200, which is what produced
+    # three separate GSC "not indexed" buckets.
+    "acceleratedrehabtherapy.apps.main.middleware.CanonicalHostMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

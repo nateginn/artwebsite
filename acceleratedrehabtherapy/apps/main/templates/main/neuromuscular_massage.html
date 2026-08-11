@@ -1,0 +1,292 @@
+<!-- acceleratedrehabtherapy/apps/main/templates/main/neuromuscular_massage.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_description %}Neuromuscular massage therapy in Greeley and Denver, CO. Trigger-point release and soft-tissue treatment for chronic pain, nerve compression, and postural strain.{% endblock %}
+
+{% block title %}Neuromuscular Massage Therapy | Greeley & Denver, CO{% endblock %}
+
+{% block og_title %}Neuromuscular Massage Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Trigger-point and neuromuscular therapy for chronic pain, sciatica, headaches, and injury recovery. Serving Greeley and Denver, CO.{% endblock %}
+
+{% block og_image %}{{ canonical_origin }}{% static 'img/massage-therapy.jpg' %}{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalTherapy",
+    "name": "Neuromuscular Massage Therapy",
+    "@id": "{{ canonical_url }}",
+    "url": "{{ canonical_url }}",
+    "image": "{{ canonical_origin }}{% static 'img/massage-therapy.jpg' %}",
+    "description": "Neuromuscular therapy is a soft-tissue technique that locates and releases trigger points -- tight, irritable bands of muscle that refer pain to other areas of the body -- and addresses the postural and biomechanical patterns that keep re-creating them.",
+    "medicineSystem": "Physical Medicine",
+    "recognizingAuthority": "Colorado Department of Regulatory Agencies",
+    "relevantSpecialty": [
+      "Massage Therapy",
+      "Pain Management",
+      "Injury Recovery"
+    ],
+    "howPerformed": "A therapist palpates the affected muscle to locate trigger points, applies sustained static pressure to release them, then works through the surrounding soft tissue to restore normal length and circulation. Treatment is typically followed by corrective movement so the pattern does not immediately return.",
+    "provider": {
+      "@type": "MedicalBusiness",
+      "name": "Accelerated Rehab Therapy",
+      "telephone": "+19703241750",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "1823 65th Ave Suite 3",
+          "addressLocality": "Greeley",
+          "addressRegion": "CO",
+          "postalCode": "80634",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "2480 W 26th Ave #90B",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "postalCode": "80211",
+          "addressCountry": "US"
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Massage Therapy",
+        "item": "{{ canonical_origin }}{% url 'main:massage' %}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Neuromuscular Massage",
+        "item": "{{ canonical_url }}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between neuromuscular massage and a regular massage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A relaxation massage works broadly across the whole body. Neuromuscular therapy is targeted: the therapist works to find the specific trigger points responsible for your pain and releases them individually. It is a clinical treatment aimed at a problem rather than an hour of general relaxation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does neuromuscular therapy hurt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pressure on an active trigger point is usually tender, and you may feel the referred pain reproduce briefly before it releases. It should stay within a range you can breathe through -- tell your therapist if it does not. Some soreness for a day or two afterward is normal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is neuromuscular massage covered by insurance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is frequently covered under auto injury (MedPay) and workers' compensation claims, and some health plans cover it when it is part of a treatment plan. Coverage depends on your specific policy and claim, so call us and we will check your benefits before you commit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many sessions will I need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on how long the pattern has been present and what is driving it. A recent strain may resolve in a few visits; long-standing postural pain generally takes longer and responds better when combined with physical therapy or chiropractic care. Your therapist will give you a realistic estimate after the first evaluation."
+        }
+      }
+    ]
+  }
+]
+</script>
+{% endblock %}
+
+{% block content %}
+<main itemscope itemtype="https://schema.org/MedicalBusiness">
+<section class="relative bg-white pt-16 pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Breadcrumb" class="mb-6">
+            <ol class="flex items-center gap-2 text-sm text-gray-500">
+                <li><a href="{% url 'main:massage' %}" class="hover:text-blue-800">Massage Therapy</a></li>
+                <li aria-hidden="true">/</li>
+                <li class="text-gray-700" aria-current="page">Neuromuscular Massage</li>
+            </ol>
+        </nav>
+
+        <div class="max-w-5xl">
+            <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
+                Neuromuscular Massage Therapy in Greeley &amp; Denver, CO
+            </h1>
+
+            <div class="relative max-w-3xl">
+                <p class="text-md text-gray-600 leading-relaxed mb-16">
+                    When pain keeps coming back to the same spot, the problem usually isn't where you feel it.
+                    Neuromuscular therapy finds the trigger points actually causing it and releases them &mdash;
+                    then addresses the posture and movement patterns that keep putting them back.
+                </p>
+
+                {% include 'includes/_cta_arrow_button.html' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 py-8 mt-8">
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">What Neuromuscular Therapy Actually Does</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">
+                A trigger point is a tight, irritable band within a muscle that refers pain somewhere else. That's why
+                a knot between your shoulder blades can produce a headache, and why tension in the glute can send pain
+                down the leg in a pattern that looks like sciatica. Treating only where it hurts tends to give you a
+                few hours of relief before it returns.
+            </p>
+            <p class="text-gray-700 mb-4">
+                Neuromuscular therapy works the other direction. Your therapist palpates the muscle to locate the
+                actual trigger point, applies sustained pressure until it releases, then works the surrounding tissue
+                to restore normal length and circulation. Sessions typically address:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Trigger points and chronic muscle knots</li>
+                <li>Referred pain patterns &mdash; headaches, sciatic-type leg pain, arm and hand symptoms</li>
+                <li>Nerve compression from surrounding soft tissue</li>
+                <li>Postural strain from desk work, driving, or repetitive lifting</li>
+                <li>Ischemia &mdash; tissue that isn't getting enough blood flow to recover on its own</li>
+                <li>Scar tissue and restricted movement following an injury</li>
+            </ul>
+        </div>
+
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">Conditions We Treat This Way</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <p class="text-gray-700 mb-4">
+                Neuromuscular therapy is most useful for pain that is persistent, recurring, or clearly tied to a
+                muscular pattern:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Chronic neck and upper-back pain</li>
+                <li>Tension headaches originating in the neck and shoulders</li>
+                <li>Low back pain and sciatic-type symptoms</li>
+                <li>Whiplash and soft-tissue injury after a car accident</li>
+                <li>Repetitive-strain and overuse injuries from work or training</li>
+                <li>Shoulder, hip, and jaw pain with a muscular component</li>
+                <li>Fibromyalgia and widespread chronic pain, as part of a broader plan</li>
+            </ul>
+        </div>
+
+        <h2 class="text-4xl font-bold text-[#001524] mb-8">What Your First Session Looks Like</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <p class="text-gray-700 mb-4">
+                We start by asking where the pain is, what makes it worse, and how long it's been going on &mdash;
+                then we assess how you move and where the tissue is actually restricted. Those two things often point
+                to different places, and that gap is usually the useful information.
+            </p>
+            <p class="text-gray-700 mb-4">
+                Treatment is firm and specific rather than gentle and general. Pressure on an active trigger point is
+                tender, and you may briefly feel the referred pain reproduce before it lets go. It should stay within
+                a range you can breathe through &mdash; tell your therapist if it doesn't, because working past that
+                point makes the muscle guard and defeats the purpose. Mild soreness for a day or two afterward is
+                normal.
+            </p>
+            <p class="text-gray-700">
+                You'll leave with something to do between visits. Releasing a trigger point without changing what
+                created it just buys time, so most plans pair hands-on work with corrective movement, and often with
+                <a href="{% url 'main:physical_therapy' %}" class="text-blue-600 hover:text-blue-800">physical therapy</a>
+                or <a href="{% url 'main:chiropractor' %}" class="text-blue-600 hover:text-blue-800">chiropractic care</a>
+                when the underlying issue is structural.
+            </p>
+        </div>
+    </div>
+
+    <div class="w-full bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-8 text-center">
+                AFTER A CAR ACCIDENT OR<br>
+                WORKPLACE INJURY
+            </h2>
+
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Soft-tissue injury is the part of a crash that imaging often misses. You can have a clean X-ray
+                    and still be unable to turn your head, because the damage is in muscle and fascia rather than
+                    bone. Neuromuscular therapy is well suited to that, and it's a routine part of how we treat
+                    <a href="{% url 'main:auto_injury' %}" class="text-blue-600 hover:text-blue-800">auto injuries</a>
+                    and <a href="{% url 'main:work_comp' %}" class="text-blue-600 hover:text-blue-800">work comp claims</a>.
+                </p>
+
+                <p class="text-gray-700 leading-relaxed" itemprop="description">
+                    Neuromuscular work is frequently covered under auto injury (MedPay) and workers' compensation
+                    claims, and some health plans cover it as part of a documented treatment plan. Coverage depends
+                    on your specific policy and claim &mdash; call us before you book and we'll check your benefits
+                    and tell you straight what's covered.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[1.75rem] md:text-[2.5rem] font-black text-[#001524] leading-tight mb-8 text-center">
+                COMMON QUESTIONS
+            </h2>
+
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-[#001524] mb-2">How is this different from a regular massage?</h3>
+                    <p class="text-gray-700">
+                        A relaxation massage works broadly across the whole body. Neuromuscular therapy is targeted:
+                        the therapist works to find the specific trigger points responsible for your pain and releases
+                        them individually. It's a clinical treatment aimed at a problem, not an hour of general
+                        relaxation &mdash; though most people find it relaxing anyway once the tissue lets go.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-[#001524] mb-2">How many sessions will I need?</h3>
+                    <p class="text-gray-700">
+                        It depends on how long the pattern has been present and what's driving it. A recent strain may
+                        resolve in a few visits; long-standing postural pain generally takes longer and responds
+                        better when combined with rehab. You'll get a realistic estimate after the first evaluation,
+                        not an open-ended package.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-[#001524] mb-2">Do you serve areas outside Greeley and Denver?</h3>
+                    <p class="text-gray-700">
+                        Yes. Our Greeley clinic regularly sees patients from across northern Colorado, including
+                        Evans, Windsor, Timnath, Loveland, and Fort Collins. Our Denver location serves the metro
+                        area. See our <a href="{% url 'main:contact' %}" class="text-blue-600 hover:text-blue-800">contact page</a>
+                        for addresses and hours.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-[#001524] mb-2">Can I combine it with other treatment?</h3>
+                    <p class="text-gray-700">
+                        That's usually the better approach. Neuromuscular therapy pairs well with
+                        <a href="{% url 'main:chiropractor' %}" class="text-blue-600 hover:text-blue-800">chiropractic adjustments</a>,
+                        <a href="{% url 'main:physical_therapy' %}" class="text-blue-600 hover:text-blue-800">physical therapy</a>,
+                        and <a href="{% url 'main:acupuncture' %}" class="text-blue-600 hover:text-blue-800">acupuncture</a>.
+                        See all our <a href="{% url 'main:massage' %}" class="text-blue-600 hover:text-blue-800">massage therapy services</a>
+                        for the full range.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/_cta_section.html' %}
+</section>
+</main>
+{% endblock %}

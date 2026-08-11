@@ -33,6 +33,7 @@ PUBLIC_PAGES = [
     'main:home',
     'main:chiropractor',
     'main:massage',
+    'main:neuromuscular_massage',
     'main:physical_therapy',
     'main:acupuncture',
     'main:shockwave',
@@ -79,6 +80,7 @@ NON_PUBLIC_ROUTES = {
 # A page with no entry here simply omits <lastmod>, which is correct and
 # honest -- an absent lastmod is strictly better than a false one.
 LASTMOD = {
+    'main:neuromuscular_massage': '2026-08-10',  # page added (restores a 404'd legacy URL)
     'main:shockwave': '2026-08-03',      # page added
     'main:eula': '2026-07-30',           # page added
     'main:about_us': '2026-08-06',       # UNC seasonal copy corrected

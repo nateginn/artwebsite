@@ -4,4 +4,20 @@ Disallow: /admin/
 Disallow: /static/admin/
 Disallow: /accounts/
 
-Sitemap: https://www.acceleratedrehabtherapy.com/sitemap.xml
+# Raw Markdown handouts linked as downloads from /resources/. They are meant
+# for humans who click "download", not for the index -- Google crawled
+# /static/resources/whiplash-recovery-guide.md and (correctly) declined to
+# index raw Markdown. Keep the files; keep them out of search.
+Disallow: /static/resources/
+
+# STATICFILES_DIRS includes theme/static_src, so collectstatic copies the whole
+# node_modules tree into staticfiles/ and WhiteNoise serves it publicly. That is
+# thousands of crawlable URLs with no search value. Blocking them here stops the
+# crawl-budget waste; excluding them from collectstatic is the real fix.
+Disallow: /static/node_modules/
+
+# Must match settings.CANONICAL_ORIGIN and templates/sitemap.xml. This line
+# used to advertise the www host while every canonical tag pointed at non-www;
+# that exact www/non-www drift is what previously kept /massage/ out of the
+# index (see the design note in templates/sitemap.xml).
+Sitemap: https://acceleratedrehabtherapy.com/sitemap.xml
