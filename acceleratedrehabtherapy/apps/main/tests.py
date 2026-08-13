@@ -636,6 +636,33 @@ class ShockwavePageTests(TestCase):
         """On this page "focused" means the device type, not an intensity."""
         self.assertNotIn('focused deep tissue massage', self.body)
 
+    def test_eswt_synonym_faq_is_present(self):
+        """ESWT is its own search term; the FAQ is its rich-result surface."""
+        self.assertIn(
+            '<h3 class="text-lg font-bold mb-2" itemprop="name">'
+            'Is shockwave therapy the same as ESWT?</h3>',
+            self.body,
+        )
+        self.assertIn('ESWT stands for extracorporeal shockwave therapy', self.body)
+
+    def test_every_faq_question_is_marked_up_for_rich_results(self):
+        """A Question without itemprop="mainEntity" is invisible to rich results.
+
+        This include is the site's reference implementation of FAQPage markup --
+        elsewhere the wrapper exists but the questions lack mainEntity, so only
+        one of them publishes. Adding a question here without the itemprop would
+        silently repeat that bug.
+        """
+        questions = self.body.count('itemtype="https://schema.org/Question"')
+        answers = self.body.count('itemtype="https://schema.org/Answer"')
+        entities = self.body.count('itemprop="mainEntity"')
+        self.assertEqual(questions, 6, f'Expected 6 FAQs, found {questions}.')
+        self.assertEqual(
+            entities, questions,
+            f'{questions - entities} question(s) lack itemprop="mainEntity".',
+        )
+        self.assertEqual(answers, questions, 'Every question needs an answer.')
+
     def test_no_outcome_or_cure_promises(self):
         """Claims stay mechanistic: no cures, guarantees, or success rates."""
         for pattern in (
