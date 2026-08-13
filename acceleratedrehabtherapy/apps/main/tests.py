@@ -564,6 +564,93 @@ class UnpublishedTeamPageTests(TestCase):
         self.assertIn('Draft page', body)
 
 
+class ShockwavePageTests(TestCase):
+    """Guards the focused-shockwave positioning on /shockwave-therapy/.
+
+    Both clinics run focused (fESWT) devices while competitors typically run
+    radial, and the page said nothing about it -- the differentiator was
+    invisible. These tests pin the claim to the places that actually carry it
+    (title, H1, meta description, the focused-vs-radial explainer) so a future
+    copy edit cannot quietly drop it back to generic "shockwave therapy".
+    """
+
+    META_DESCRIPTION_RE = re.compile(
+        r'<meta name="description" content="([^"]*)"', re.IGNORECASE
+    )
+
+    # Coverage that predates the focused rewrite and must survive it.
+    CONDITIONS = [
+        'Plantar fasciitis',
+        'Achilles tendon pain',
+        'Tennis elbow',
+        'Shoulder pain',
+        'Chronic tendon injuries',
+        'Scar tissue restrictions',
+    ]
+
+    def setUp(self):
+        self.body = self.client.get(reverse('main:shockwave')).content.decode()
+
+    def test_title_and_h1_claim_focused(self):
+        self.assertIn(
+            '<title>Focused Shockwave Therapy in Greeley & Denver | '
+            'Accelerated Rehab Therapy</title>',
+            self.body,
+        )
+        self.assertIn('Focused Shockwave Therapy in Greeley & Denver, CO', self.body)
+
+    def test_meta_description_is_present_and_fits_the_serp(self):
+        match = self.META_DESCRIPTION_RE.search(self.body)
+        self.assertIsNotNone(match, 'No <meta name="description"> on the page.')
+        description = match.group(1)
+        self.assertIn('Focused shockwave therapy', description)
+        self.assertLess(
+            len(description), 150,
+            f'Meta description is {len(description)} chars; Google truncates it.',
+        )
+
+    def test_clinical_terminology_is_present(self):
+        """The searched-for terms, in descending order of prominence."""
+        for term in (
+            'focused shockwave therapy',
+            'Extracorporeal shockwave therapy (ESWT)',
+            'fESWT',
+        ):
+            with self.subTest(term=term):
+                self.assertIn(term, self.body)
+
+    def test_focused_versus_radial_is_explained(self):
+        self.assertIn('Focused vs. Radial Shockwave', self.body)
+        self.assertIn('Radial shockwave', self.body)
+        self.assertIn(
+            'Both our Greeley and Denver clinics use focused shockwave devices',
+            self.body,
+        )
+
+    def test_condition_coverage_survived_the_rewrite(self):
+        for condition in self.CONDITIONS:
+            with self.subTest(condition=condition):
+                self.assertIn(condition, self.body)
+
+    def test_focused_is_not_also_used_as_a_massage_analogy(self):
+        """On this page "focused" means the device type, not an intensity."""
+        self.assertNotIn('focused deep tissue massage', self.body)
+
+    def test_no_outcome_or_cure_promises(self):
+        """Claims stay mechanistic: no cures, guarantees, or success rates."""
+        for pattern in (
+            r'\bcures?\b',
+            r'\bguarantee(d|s)?\b',
+            r'\bsuccess rate\b',
+            r'\b\d+% of patients\b',
+        ):
+            with self.subTest(pattern=pattern):
+                self.assertIsNone(
+                    re.search(pattern, self.body, re.IGNORECASE),
+                    f'Page contains an outcome promise matching {pattern}.',
+                )
+
+
 class ResourcesBlogTests(TestCase):
     """Guards the /resources/ blog content.
 

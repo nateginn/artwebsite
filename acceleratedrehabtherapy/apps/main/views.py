@@ -303,6 +303,7 @@ SHOCKWAVE_CONDITIONS = [
 ]
 
 SHOCKWAVE_BENEFITS = [
+    'Focused shockwave devices at both clinics, not radial',
     'Non-invasive treatment',
     'Short treatment sessions',
     'Minimal downtime',
@@ -314,7 +315,7 @@ SHOCKWAVE_BENEFITS = [
 def shockwave(request):
     """Shockwave therapy page view"""
     context = {
-        'meta_title': 'Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy',
+        'meta_title': 'Focused Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy',
         'conditions': SHOCKWAVE_CONDITIONS,
         'benefits': SHOCKWAVE_BENEFITS,
     }

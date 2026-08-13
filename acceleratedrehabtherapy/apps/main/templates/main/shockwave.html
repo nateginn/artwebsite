@@ -3,20 +3,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block meta_description %}Shockwave therapy for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.{% endblock %}
+{% block meta_description %}Focused shockwave therapy (fESWT) in Greeley and Denver, CO. Targeted acoustic energy for plantar fasciitis, tendon pain, and tennis elbow.{% endblock %}
 
-{% block title %}Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block title %}Focused Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
 
-{% block og_title %}Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
-{% block og_description %}Shockwave therapy for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.{% endblock %}
+{% block og_title %}Focused Shockwave Therapy in Greeley & Denver | Accelerated Rehab Therapy{% endblock %}
+{% block og_description %}Focused shockwave therapy (fESWT) for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.{% endblock %}
 
 {% block extra_head %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MedicalTherapy",
-  "name": "Shockwave Therapy",
-  "description": "Shockwave therapy for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.",
+  "name": "Focused Shockwave Therapy",
+  "alternateName": "Focused Extracorporeal Shockwave Therapy (fESWT)",
+  "description": "Focused shockwave therapy (fESWT) for plantar fasciitis, Achilles tendon pain, tennis elbow, shoulder pain, chronic tendon injuries, and scar tissue restrictions, offered in Greeley and Denver, CO. Non-invasive treatment often combined with rehabilitation exercises.",
   "url": "{{ canonical_url }}"
 }
 </script>
@@ -29,12 +30,12 @@
         <!-- Hero Content -->
         <div class="max-w-5xl">
             <h1 class="text-[1rem] md:text-[2rem] leading-tight font-black text-[#001524] tracking-tight mb-4">
-                Shockwave Therapy in Greeley & Denver, CO
+                Focused Shockwave Therapy in Greeley & Denver, CO
             </h1>
 
             <div class="relative max-w-3xl">
                 <p class="text-md text-gray-600 leading-relaxed mb-12">
-                    Shockwave therapy targets the root cause, stimulating your body's natural healing response in tissue that has stopped progressing on its own, often combined with rehabilitation exercises.
+                    Our Greeley and Denver clinics both use focused shockwave therapy, delivering targeted acoustic energy to tissue that has stopped progressing on its own, often combined with rehabilitation exercises.
                 </p>
 
                 {% include 'includes/_cta_arrow_button.html' %}
@@ -52,7 +53,7 @@
             <div class="bg-white p-6 rounded-lg shadow-md mb-8">
                 <h2 class="text-4xl font-bold text-[#001524] mb-6">Why Shockwave Works</h2>
                 <p class="text-gray-700 mb-4">
-                    Most treatments manage symptoms. Shockwave therapy targets the root cause, stimulating your body's natural healing response in tissue that has stopped progressing on its own.
+                    Most treatments manage symptoms. Extracorporeal shockwave therapy (ESWT) targets the root cause, using acoustic pressure waves to stimulate your body's natural healing response in tissue that has stopped progressing on its own.
                 </p>
                 <p class="text-gray-700 mb-4">
                     Rather than masking pain, our rehab-focused plan addresses the underlying mechanics, helping you build a foundation for lasting recovery and a safe return to activity.
@@ -62,6 +63,20 @@
                     <li>{{ benefit }}</li>
                     {% endfor %}
                 </ul>
+            </div>
+
+            <!-- Focused vs. Radial Shockwave -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-4xl font-bold text-[#001524] mb-6">Focused vs. Radial Shockwave</h2>
+                <p class="text-gray-700 mb-4">
+                    Shockwave devices come in two types, and the difference is in how deep the energy reaches.
+                </p>
+                <p class="text-gray-700 mb-4">
+                    Focused shockwave, or focused ESWT (fESWT), generates acoustic energy that converges at a set depth below the skin, so the pressure wave is concentrated on the specific tissue being treated. Radial shockwave generates its energy at the applicator head and disperses it outward as it travels, so the effect is strongest close to the surface and spreads more broadly.
+                </p>
+                <p class="text-gray-700">
+                    Both our Greeley and Denver clinics use focused shockwave devices. Many clinics that advertise shockwave therapy use radial devices, which work differently. If a deeper structure is involved, such as an Achilles tendon or a hip, it is worth asking any provider which type they actually use.
+                </p>
             </div>
 
             <!-- Conditions Commonly Treated -->
@@ -84,7 +99,7 @@
                         We assess where the pain is coming from and what's keeping it overloaded.
                     </li>
                     <li>
-                        <span class="font-semibold text-[#001524]">Deliver shockwave treatment.</span>
+                        <span class="font-semibold text-[#001524]">Deliver focused shockwave treatment.</span>
                         The treatment is used to stimulate healing in tissue that has stalled out.
                     </li>
                     <li>
@@ -101,7 +116,7 @@
             <!-- Real Treatment Image -->
             <div class="rounded-lg overflow-hidden shadow-md">
                 <img src="/media/page_photos/0000/Location%20images/IMG_4078_web.jpg"
-                     alt="Shockwave therapy treatment being performed on a patient's foot in the clinic"
+                     alt="Focused shockwave therapy being performed on a patient's foot in the clinic"
                      class="w-full h-auto"
                      width="1200"
                      height="1600"
