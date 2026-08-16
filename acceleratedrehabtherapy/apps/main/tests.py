@@ -9,7 +9,8 @@ URLs -- not as a general testing initiative.
 import re
 from xml.etree import ElementTree
 
-from django.test import TestCase
+from django.core import mail
+from django.test import TestCase, override_settings
 from django.urls import URLPattern, URLResolver, reverse
 from django.urls import get_resolver
 
@@ -1171,3 +1172,37 @@ class LandingPageFocusedShockwaveTests(TestCase):
                     '<meta name="robots" content="noindex, nofollow">',
                     self._body(route),
                 )
+
+
+@override_settings(
+    EMAIL_HOST_USER='leads@example.com',
+    DEFAULT_FROM_EMAIL='noreply@example.com',
+    EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend',
+)
+class ContactFormSubmissionTests(TestCase):
+    """Every contact-form POST returned 500 until 2026-08-15.
+
+    `urls.py` sets `app_name = 'main'`, so the route is only reachable as
+    `main:contact`; the view redirected to the bare name `contact` and raised
+    NoReverseMatch. `send_mail` had already run by then, so the lead was
+    delivered and the visitor saw a server error instead of the confirmation.
+
+    EMAIL_HOST_USER is `os.getenv('EMAIL_HOST_USER')` with no default
+    (`settings.py:328`), so it is None in any environment without a populated
+    .env -- these settings are overridden so the test asserts the view's
+    behaviour rather than the runner's environment.
+    """
+
+    def test_valid_submission_redirects_to_contact_and_sends_mail(self):
+        response = self.client.post(reverse('main:contact'), {
+            'name': 'Test Person',
+            'email': 'test@example.com',
+            'message': 'Please call me about shockwave therapy.',
+        })
+        self.assertRedirects(response, reverse('main:contact'))
+        self.assertEqual(len(mail.outbox), 1)
+
+    def test_missing_required_field_redirects_without_sending(self):
+        response = self.client.post(reverse('main:contact'), {'name': 'Test Person'})
+        self.assertRedirects(response, reverse('main:contact'))
+        self.assertEqual(len(mail.outbox), 0)

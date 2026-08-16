@@ -335,7 +335,7 @@ def contact(request):
         if not all([name, email, message]):
             messages.error(request, 'Please fill in all required fields.')
             logger.warning("Form validation failed - missing required fields")
-            return redirect('contact')
+            return redirect('main:contact')
             
         logger.info(f"New contact form submission from {name} ({email})")
         
@@ -362,7 +362,7 @@ def contact(request):
             )
             logger.info(f"Contact form email sent successfully to {settings.EMAIL_HOST_USER}")
             messages.success(request, 'Thank you for your message. We will get back to you soon!')
-            return redirect('contact')
+            return redirect('main:contact')
             
         except Exception as e:
             logger.error(f"Error sending contact form email: {str(e)}")
