@@ -557,8 +557,8 @@ def _landing_context(meta_title, meta_description, source_page):
 @require_GET
 def landing_shockwave_denver(request):
     ctx = _landing_context(
-        meta_title='Shockwave Therapy Denver | Non-Surgical Pain Relief',
-        meta_description='Advanced shockwave therapy in Denver for plantar fasciitis, tendon pain, chronic injuries, and stubborn musculoskeletal conditions.',
+        meta_title='Focused Shockwave Therapy Denver | Non-Surgical Pain Relief',
+        meta_description='Focused shockwave therapy (fESWT) in Denver for plantar fasciitis, tendon pain, chronic injuries, and stubborn musculoskeletal conditions.',
         source_page='shockwave-denver',
     )
     ctx['conditions'] = [
@@ -566,6 +566,7 @@ def landing_shockwave_denver(request):
         'Shoulder pain', 'Chronic tendon injuries', 'Scar tissue restrictions',
     ]
     ctx['benefits'] = [
+        'Focused shockwave device (fESWT), not radial',
         'Non-invasive treatment', 'Short treatment sessions', 'Minimal downtime',
         'Often combined with rehabilitation exercises', 'Drug-free approach',
     ]
@@ -575,8 +576,8 @@ def landing_shockwave_denver(request):
 @require_GET
 def landing_shockwave_greeley(request):
     ctx = _landing_context(
-        meta_title='Shockwave Therapy Greeley | Chronic Pain & Rehab Treatment',
-        meta_description='Shockwave therapy in Greeley for plantar fasciitis, tendon pain, chronic injuries, and musculoskeletal rehabilitation.',
+        meta_title='Focused Shockwave Therapy Greeley | Chronic Pain & Rehab Treatment',
+        meta_description='Focused shockwave therapy (fESWT) in Greeley for plantar fasciitis, tendon pain, chronic injuries, and musculoskeletal rehabilitation.',
         source_page='shockwave-greeley',
     )
     ctx['conditions'] = [
@@ -589,8 +590,8 @@ def landing_shockwave_greeley(request):
 @require_GET
 def landing_shockwave_plantar_fasciitis(request):
     ctx = _landing_context(
-        meta_title='Shockwave Therapy for Plantar Fasciitis | Heel Pain Relief',
-        meta_description='Non-surgical treatment options for plantar fasciitis and chronic heel pain using shockwave therapy and rehabilitation.',
+        meta_title='Focused Shockwave Therapy for Plantar Fasciitis | Heel Pain Relief',
+        meta_description='Non-surgical treatment options for plantar fasciitis and chronic heel pain using focused shockwave therapy (fESWT) and rehabilitation.',
         source_page='shockwave-plantar-fasciitis',
     )
     ctx['symptoms'] = [
@@ -598,7 +599,7 @@ def landing_shockwave_plantar_fasciitis(request):
         'Pain with walking or exercise', 'Tight calf muscles', 'Tenderness near the heel',
     ]
     ctx['rehab_items'] = [
-        'Shockwave therapy', 'Mobility work', 'Calf and foot stretching',
+        'Focused shockwave therapy', 'Mobility work', 'Calf and foot stretching',
         'Progressive strengthening', 'Foot and gait recommendations',
     ]
     return render(request, 'main/landing_shockwave_plantar_fasciitis.html', ctx)
@@ -608,7 +609,7 @@ def landing_shockwave_plantar_fasciitis(request):
 def landing_chronic_tendon(request):
     ctx = _landing_context(
         meta_title='Chronic Tendon Pain Treatment | Non-Surgical Rehab Options',
-        meta_description='Treatment options for chronic tendon pain including shockwave therapy, rehabilitation, and movement-based care.',
+        meta_description='Treatment options for chronic tendon pain including focused shockwave therapy (fESWT), rehabilitation, and movement-based care.',
         source_page='chronic-tendon',
     )
     ctx['conditions'] = [
@@ -621,8 +622,8 @@ def landing_chronic_tendon(request):
 @require_GET
 def landing_non_surgical_denver(request):
     ctx = _landing_context(
-        meta_title='Non-Surgical Pain Relief Denver | Rehab & Shockwave Therapy',
-        meta_description='Explore non-surgical pain relief options in Denver including rehabilitation, shockwave therapy, and movement-focused treatment.',
+        meta_title='Non-Surgical Pain Relief Denver | Rehab & Focused Shockwave',
+        meta_description='Explore non-surgical pain relief options in Denver including rehabilitation, focused shockwave therapy (fESWT), and movement-based treatment.',
         source_page='non-surgical-denver',
     )
     ctx['conditions'] = [
@@ -630,7 +631,7 @@ def landing_non_surgical_denver(request):
         'Neck and back pain', 'Muscle tightness', 'Movement restrictions',
     ]
     ctx['approach_items'] = [
-        'Rehabilitation exercises', 'Manual therapy', 'Shockwave therapy',
+        'Rehabilitation exercises', 'Manual therapy', 'Focused shockwave therapy',
         'Mobility training', 'Functional movement strategies',
     ]
     ctx['why_items'] = [

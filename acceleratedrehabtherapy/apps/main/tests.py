@@ -1123,3 +1123,51 @@ class StaticAssetReferenceTests(TestCase):
             "NO image rather than falling back to the <img>:\n  "
             + "\n  ".join(sorted(set(missing))),
         )
+
+
+class LandingPageFocusedShockwaveTests(TestCase):
+    """Ad copy promising focused shockwave must land on a page that says so.
+
+    `/shockwave-therapy/` was rewritten to lead with focused (fESWT) while the
+    five noindex ad landing pages still said generic "shockwave therapy" -- a
+    paid click on a focused-shockwave ad arrived at a page that did not
+    corroborate the claim. These pages are noindex and carry no organic risk,
+    so the guard is message-match, not SEO: every page that sells shockwave
+    names the device type.
+    """
+
+    ROUTES = [
+        'main:landing_shockwave_denver',
+        'main:landing_shockwave_greeley',
+        'main:landing_shockwave_plantar_fasciitis',
+        'main:landing_chronic_tendon',
+        'main:landing_non_surgical_denver',
+    ]
+
+    def _body(self, route):
+        return self.client.get(reverse(route)).content.decode()
+
+    def test_every_shockwave_landing_page_claims_focused(self):
+        for route in self.ROUTES:
+            with self.subTest(route=route):
+                self.assertIn('ocused shockwave', self._body(route))
+
+    def test_focused_is_not_also_used_as_a_massage_analogy(self):
+        """"Focused" means the device type here, the same as on /shockwave-therapy/."""
+        for route in self.ROUTES:
+            with self.subTest(route=route):
+                self.assertNotIn('focused deep tissue massage', self._body(route))
+
+    def test_pages_stay_noindex(self):
+        """The focused claim must not arrive with accidental indexability.
+
+        These pages duplicate `/shockwave-therapy/`'s subject matter. Indexed,
+        they would compete with the money page for the term it was just
+        rewritten to own.
+        """
+        for route in self.ROUTES:
+            with self.subTest(route=route):
+                self.assertIn(
+                    '<meta name="robots" content="noindex, nofollow">',
+                    self._body(route),
+                )
