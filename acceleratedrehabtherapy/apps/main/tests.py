@@ -6,6 +6,7 @@ specific things most likely to break silently -- sitemap contents and canonical
 URLs -- not as a general testing initiative.
 """
 
+import json
 import re
 from xml.etree import ElementTree
 
@@ -1206,3 +1207,159 @@ class ContactFormSubmissionTests(TestCase):
         response = self.client.post(reverse('main:contact'), {'name': 'Test Person'})
         self.assertRedirects(response, reverse('main:contact'))
         self.assertEqual(len(mail.outbox), 0)
+
+
+def _template_paths():
+    """Every .html under the configured template roots.
+
+    Deliberately a separate helper from StaticAssetReferenceTests._template_files:
+    scoping the sweep to template dirs is the whole point, since staticfiles/
+    ships Django admin JS containing the day names these tests look for.
+    """
+    from pathlib import Path
+
+    roots = []
+    for engine in settings.TEMPLATES:
+        roots.extend(Path(d) for d in engine.get('DIRS', []))
+    roots.append(Path(settings.BASE_DIR) / 'apps' / 'main' / 'templates')
+
+    seen = set()
+    for root in roots:
+        if not root.exists():
+            continue
+        for path in sorted(root.rglob('*.html')):
+            if path not in seen:
+                seen.add(path)
+                yield path
+
+
+def _opening_hours_specs(node):
+    """Every OpeningHoursSpecification anywhere in a parsed JSON-LD document."""
+    if isinstance(node, dict):
+        if node.get('@type') == 'OpeningHoursSpecification':
+            yield node
+        for value in node.values():
+            yield from _opening_hours_specs(value)
+    elif isinstance(node, list):
+        for item in node:
+            yield from _opening_hours_specs(item)
+
+
+class PublishedHoursTests(TestCase):
+    """The site must not contradict itself about when the clinics are open.
+
+    Owner-confirmed 2026-08-15 (recorded in MMC's client registry as the source
+    of truth): Greeley is Mon-Thu 08:00-18:00 and CLOSED FRIDAY year-round --
+    not a summer schedule. Denver is Mon-Thu 08:00-17:00 plus Fri 08:00-15:00,
+    and IS open Thursday.
+
+    The 18:00 close is deliberate and was corrected once: the registry briefly
+    said 17:00, the owner retracted that the same day, and the four service-page
+    schemas had been publishing 17:00 all along -- so they were wrong on the
+    close time as well as the Friday block, not just the Friday block.
+
+    Before this guard the site published five different Greeley schedules, all
+    wrong in the same direction (they advertised Friday hours), and the header
+    additionally claimed Denver was closed Thursday while the footer said it was
+    open. Two of the wrong sets were JSON-LD, which is what Google reads
+    directly -- the site-wide schema and the four service-page schemas disagreed
+    with each other about the same business.
+
+    Only Greeley hours reach JSON-LD today, so a published Friday
+    OpeningHoursSpecification is unambiguously the Greeley bug. If Denver hours
+    are ever added to schema, this test needs to learn the difference first.
+    """
+
+    JSON_LD_RE = re.compile(
+        r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>',
+        re.IGNORECASE | re.DOTALL,
+    )
+
+    GREELEY_OPENS = '08:00'
+    GREELEY_CLOSES = '18:00'
+
+    def _published_specs(self):
+        """(route, spec) for every OpeningHoursSpecification on every public page."""
+        for route in PUBLIC_PAGES:
+            body = self.client.get(reverse(route)).content.decode()
+            for raw in self.JSON_LD_RE.findall(body):
+                document = json.loads(raw)
+                for spec in _opening_hours_specs(document):
+                    yield route, spec
+
+    @staticmethod
+    def _days(spec):
+        days = spec.get('dayOfWeek', [])
+        if isinstance(days, str):
+            days = [days]
+        return [d.rsplit('/', 1)[-1] for d in days]
+
+    def test_the_sweep_actually_finds_schema(self):
+        """Guard against the sweep passing because it parsed nothing."""
+        self.assertGreater(
+            len(list(self._published_specs())), 0,
+            "Found no OpeningHoursSpecification on any public page -- the JSON-LD "
+            "regex or the schema itself changed, and the hours tests below are "
+            "passing vacuously.",
+        )
+
+    def test_no_page_publishes_friday_opening_hours(self):
+        offenders = sorted({
+            f'{route}: {self._days(spec)} {spec.get("opens")}-{spec.get("closes")}'
+            for route, spec in self._published_specs()
+            if 'Friday' in self._days(spec)
+        })
+        self.assertEqual(
+            offenders, [],
+            "Greeley is closed Friday, but these pages publish Friday hours in "
+            "JSON-LD:\n  " + "\n  ".join(offenders),
+        )
+
+    def test_published_hours_are_the_confirmed_greeley_schedule(self):
+        """Banning Friday is not enough -- the service pages also closed at 17:00."""
+        wrong = sorted({
+            f'{route}: {self._days(spec)} {spec.get("opens")}-{spec.get("closes")}'
+            for route, spec in self._published_specs()
+            if sorted(self._days(spec)) != sorted(
+                ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
+            )
+            or spec.get('opens') != self.GREELEY_OPENS
+            or spec.get('closes') != self.GREELEY_CLOSES
+        })
+        self.assertEqual(
+            wrong, [],
+            "Published schema hours disagree with the owner-confirmed Greeley "
+            "schedule (Mon-Thu 08:00-17:00):\n  " + "\n  ".join(wrong),
+        )
+
+    def test_no_template_claims_denver_is_closed_thursday(self):
+        """Denver is open Thursday 8-5; only the header ever said otherwise."""
+        offenders = sorted(
+            path.name for path in _template_paths()
+            if 'Thursday: Closed' in path.read_text(encoding='utf-8', errors='replace')
+        )
+        self.assertEqual(
+            offenders, [],
+            "Denver is open Thursday, but these templates say it is closed:\n  "
+            + "\n  ".join(offenders),
+        )
+
+
+class FormerLocationTests(TestCase):
+    """Thornton closed around 2021-22 and must not be advertised as current.
+
+    It was a real Accelerated Rehab Therapy location, not an invented one -- the
+    FAQ copy simply went stale. Naming it in present-tense copy is a local-entity
+    signal pointing at an address the business no longer occupies.
+    """
+
+    def test_thornton_appears_in_no_template(self):
+        offenders = sorted(
+            path.name for path in _template_paths()
+            if 'Thornton' in path.read_text(encoding='utf-8', errors='replace')
+        )
+        self.assertEqual(
+            offenders, [],
+            "Thornton is a former location and must not appear in site copy:\n  "
+            + "\n  ".join(offenders),
+        )
